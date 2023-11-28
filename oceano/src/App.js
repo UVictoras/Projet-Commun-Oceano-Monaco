@@ -1,5 +1,5 @@
 import Act from "./pages/act.js"
-
+import Impact from "./pages/impact.js";
 
 import {
   BrowserRouter as Router,
@@ -12,6 +12,9 @@ function App(props){
       <Switch>
         <Route exact path="/">
           <Act /> 
+        </Route>
+        <Route exact path="/impact">
+          <Impact /> 
         </Route>
       </Switch>
   </Router>
