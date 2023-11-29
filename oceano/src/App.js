@@ -3,7 +3,6 @@ import Impact from "./pages/impact.js";
 import Community from "./pages/community.js";
 import Signup from "./pages/signup.js";
 
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +13,6 @@ import {
 function App(props){
   return <Router>
       <Switch>
-
         <Route exact path="/">
           <Act /> 
         </Route>
