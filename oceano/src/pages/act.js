@@ -1,5 +1,6 @@
 import Navbar from "../components/navbar";
 import Searchbar from "../components/searchbar";
+import Play from "../canva"; 
 function Act(props){
 
     return <div className="Act">
