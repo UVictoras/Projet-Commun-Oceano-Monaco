@@ -16,6 +16,7 @@ function App(props){
         <Route exact path="/">
           <Act /> 
         </Route>
+
         <Route exact path="/impact">
           <Impact /> 
         </Route>
