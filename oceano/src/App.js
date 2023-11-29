@@ -8,12 +8,14 @@ import {
   Route 
 } from "react-router-dom"
 
+
 function App(props){
   return <Router>
       <Switch>
         <Route exact path="/">
           <Act /> 
         </Route>
+
         <Route exact path="/impact">
           <Impact /> 
         </Route>
