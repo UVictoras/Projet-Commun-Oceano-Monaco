@@ -2,6 +2,7 @@ import { Canvas } from "./Canva.jsx";
 
 // const a = window.SDK3DVerse
 
+
 export async function Anim(props){
     const test = ['7f79f21d-ef6c-44eb-9922-7b0515f8c7fd', 'b2e76a8a-d75e-4868-b5f3-04fe31620158']
 
@@ -19,5 +20,15 @@ export async function Anim(props){
 
 
 export async function Click(props){
+    console.log(window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports())
+    const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    camera[0].cameraEntity.components.local_transform.eulerOrientation[0] = 2;
+    camera[0].cameraEntity.components.local_transform.eulerOrientation[1] = 2;
+    camera[0].cameraEntity.components.local_transform.eulerOrientation[2] = 2;
+    camera[0].cameraEntity.components.local_transform.position[0] = 2;
+    camera[0].cameraEntity.components.local_transform.position[1] = 2;
+    camera[0].cameraEntity.components.local_transform.position[2] = 2;
+
     
+
 }
