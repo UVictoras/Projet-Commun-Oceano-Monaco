@@ -1,7 +1,7 @@
 import Navbar from "../components/navbar";
 import Searchbar from "../components/searchbar";
 import { Canvas } from "../Canva.jsx";
-import Anim from "../3DVerse.js";
+import { Anim, Click } from "../3DVerse.js";
 
 function Act(props){
 
@@ -11,7 +11,7 @@ function Act(props){
         <Canvas/>
 
         <div className = "container mx-auto bg-gray-200 rounded-xl " onClick={() => Anim()}>
-            <div className="ml-3">
+            <div className="ml-3" onClick={() => Click()}>
                 <p className="text-sm font-medium text-gray-900">aaa</p>
                 <p className="text-sm text-gray-500">bizoabgazg</p>
             </div>
