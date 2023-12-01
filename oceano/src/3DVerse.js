@@ -6,9 +6,9 @@ import { Canvas } from "./Canva.jsx";
 export async function Anim(props){
     const test = ['7f79f21d-ef6c-44eb-9922-7b0515f8c7fd', 'b2e76a8a-d75e-4868-b5f3-04fe31620158']
 
-    const entity = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('dd582951-6348-4fca-a352-294de65f515c');
+    const entity = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('30e6e720-827f-4eb8-bcc1-7990ce91d388');
 
-    let component = entity[0].getComponent('mesh_ref').value
+    const component = entity[0].getComponent('mesh_ref').value
 
     if(component == test[0]){ 
         entity[0].setComponent('mesh_ref',entity[0].getComponent('mesh_ref').value = test[1])
