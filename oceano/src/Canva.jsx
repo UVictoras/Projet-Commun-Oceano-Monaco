@@ -1,5 +1,8 @@
+import { Click } from './3DVerse';
 import { useCallback, useEffect } from 'react';
+
 import { useScript } from '@uidotdev/usehooks';
+
 
 export const Canvas = () => {
     const status = useScript(
@@ -22,7 +25,10 @@ export const Canvas = () => {
 
     useEffect(() => {
         if (status === 'ready') {
+            
             initApp();
+            Click();
+            
         }
     }, [status]);
 
@@ -34,6 +40,7 @@ export const Canvas = () => {
                     height: '100vh',
                     width: '100vw',
                     verticalAlign: 'middle',
+                    
                 }}
             ></canvas>
         </>
