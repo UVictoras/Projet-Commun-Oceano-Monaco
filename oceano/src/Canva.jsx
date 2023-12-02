@@ -1,4 +1,4 @@
-import { Click } from './3DVerse';
+import { Anim, Click } from './utils/3DVerse';
 import { useCallback, useEffect } from 'react';
 
 import { useScript } from '@uidotdev/usehooks';
@@ -14,8 +14,8 @@ export const Canvas = () => {
 
     const initApp = useCallback(async () => {
         await SDK3DVerse.joinOrStartSession({
-            userToken: 'public_RMKn_AQskeSYIngV',
-            sceneUUID: '25174276-7390-4710-a75e-a0a0950bcfc3',
+            userToken: 'public_0rtYmFmJfCyVxB7-',
+            sceneUUID: '33ed765f-9a1c-4f8c-933c-077eeb5503e0',
             canvas: document.getElementById('display-canvas'),
             viewportProperties: {
                 defaultControllerType: SDK3DVerse.controller_type.orbit,
@@ -27,6 +27,7 @@ export const Canvas = () => {
         if (status === 'ready') {
             
             initApp();
+            Anim();
             Click();
             
         }
