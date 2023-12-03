@@ -25,6 +25,8 @@ export async function Anim(props, index) {
 
 export async function Camera(props) {
     console.log(window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports())
+    const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    
 
 }
 
@@ -42,7 +44,7 @@ export async function Click(props) {
             position[0] = pickedPosition[0]
             position[1] = pickedPosition[1]
             position[2] = pickedPosition[2]
-            newElement();
+            // newElement();
         }else{
             console.log('No entity selected');
         }
