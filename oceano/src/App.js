@@ -18,19 +18,30 @@ function App(props){
 
   const [time,setTime] = useState(0);
   const [deltaTime, setDeltaTime] = useState(0);
-
+  let index = 0
 
   useFrameLoop((time, deltaTime)=>{
 
-    // Anim(deltaTime);
+    // if(Math.floor(time/1000)%10){
+    //   if(index){
+    //     Anim(index)
+    //     index +=1
+    //   }else{
+    //     Anim(index)
+    //     index -=1
+    //   }
+    // }
+
+
     setTime(time);
     setDeltaTime(deltaTime)
-
+    
   });
 
 
   return <Router>
       <Switch>
+
         <Route exact path="/">
           <Act /> 
         </Route>

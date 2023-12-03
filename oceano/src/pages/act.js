@@ -9,7 +9,7 @@ function Act(props) {
         <Navbar />
         <Searchbar />
         <Canvas />
-        <div className="container mx-auto bg-gray-200 rounded-xl ">
+        <div className="container mx-auto bg-gray-200 rounded-xl "onClick={() => Anim()}>
             <div className="ml-3" onClick={() => Camera()}>
                 <p className="text-sm font-medium text-gray-900">aaa</p>
                 <p className="text-sm text-gray-500">bizoabgazg</p>

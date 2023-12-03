@@ -2,24 +2,23 @@
 //--------------------- Game Loop ---------------------
 
 
-export async function Anim(props, deltaTime) {
+export async function Anim(props, index) {
 
-    console.log(deltaTime)
-    const test = ['c77be900-43c3-4598-a6db-d67dd9a7585d', '6e8b13bd-cf97-4d39-b6f1-250cf134da54']
+    const meshUUID = ['c77be900-43c3-4598-a6db-d67dd9a7585d', '6e8b13bd-cf97-4d39-b6f1-250cf134da54']
 
     const entity = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('4eb52ad0-728e-4900-8234-f7fde894b98c');
-
+    console.log(entity)
     const component = entity[0].getComponent('mesh_ref').value
 
-    entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = test[deltaTime % 2])
+    // entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[index])
 
 
-    // if (component === test[0]) {
-    //     entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = test[1])
+    if (component === meshUUID[0]) {
+        entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[1])
 
-    // } else {
-    //     entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = test[0])
-    // }
+    } else {
+        entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[0])
+    }
 }
 
 // --------------------- Partie Camera ---------------------
@@ -52,12 +51,20 @@ export async function Click(props) {
 
 //--------------------- Création d'élément ---------------------
 
-export async function newElement(props){
+export function newElement(props){
         console.log(position)
-        const entityTemplate = await new window.SDK3DVerse.EntityTemplate();
-        entityTemplate.attachComponent('label');
+        const meshUUID = 'b8c210e4-12cc-4e01-9e91-62595cdb4e63';
+        const materialUUID = '03da3293-a5c0-4948-858e-f97b703be3c2'
+        const entityTemplate = new window.SDK3DVerse.EntityTemplate();
+        entityTemplate.attachComponent('mesh_ref',{value : meshUUID})
+        entityTemplate.attachComponent('material_ref', {value : materialUUID})
+        
         entityTemplate.entityTemplate.local_transform.position[0] = position[0]
         entityTemplate.entityTemplate.local_transform.position[1] = position[1]
         entityTemplate.entityTemplate.local_transform.position[2] = position[2]
+        entityTemplate.entityTemplate.local_transform.scale[0] = 0.05
+        entityTemplate.entityTemplate.local_transform.scale[1] = 0.05
+        entityTemplate.entityTemplate.local_transform.scale[2] = 0.05
         entityTemplate.instantiateEntity()
+
 }
