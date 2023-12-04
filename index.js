@@ -21,7 +21,7 @@ app.listen(port, function () {
 app.get("/user", function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
-          .query("SELECT * FROM User WHERE id = " + body.id, 
+          .query("SELECT * FROM user WHERE ID = " + body.id, 
           
           function (err, result) {
             if (err){
@@ -38,26 +38,30 @@ app.post('/user/insert', jsonParser, (req, res) => {
     const body = req.body;
     console.log('Got body:', body);
     dbConnect
-            .query("INSERT INTO User (last_name          , \
-                                      first_name         , \
-                                      pseudo             , \
-                                      email              , \
-                                      password           , \
-                                      picture            , \
-                                      x                  , \
-                                      y                  , \
-                                      z                  , \
-                                      type               , \
-                                      level              , \
-                                      money              , \
-                                      xp             , \
-                                      streak_max         , \
-                                      streak_in_progress , \
-                                      banner             , \
-                                      title              ) \
+            .query("INSERT INTO user (Last_name          , \
+                                      First_name         , \
+                                      Pseudo             , \
+                                      Birthday           , \
+                                      Country            , \
+                                      Email              , \
+                                      Password           , \
+                                      Picture            , \
+                                      X                  , \
+                                      Y                  , \
+                                      Z                  , \
+                                      Type               , \
+                                      Level              , \
+                                      Money              , \
+                                      XP                 , \
+                                      Streak             , \
+                                      Streak_progress    , \
+                                      Banner             , \
+                                      Title              ) \
                     VALUES (\"" + body.last_name      + "\" , \
                             \"" + body.first_name     + "\" , \
                             \"" + body.pseudo         + "\" , \
+                            \"" + body.birthday       + "\" , \
+                            \"" + body.country        + "\" , \
                             \"" + body.email          + "\" , \
                             \"" + sha1(body.password) + "\" , \
                               " + body.picture        + "   , \
@@ -88,18 +92,18 @@ app.post('/user/update/personal_data', jsonParser, (req, res) => {
     const body = req.body;
     console.log('Got body:', body);
     dbConnect
-            .query("UPDATE User SET last_name  = \"" + body.last_name      + "\" , \
-                                    first_name = \"" + body.first_name     + "\" , \
-                                    pseudo     = \"" + body.pseudo         + "\" , \
-                                    email      = \"" + body.email          + "\" , \
-                                    password   = \"" + sha1(body.password) + "\" , \
-                                    picture    =   " + body.picture        + "   , \
-                                    x          =   " + body.x              + "   , \
-                                    y          =   " + body.y              + "   , \
-                                    z          =   " + body.z              + "   , \
-                                    banner     =   " + body.banner         + "   , \
-                                    title      =   " + body.title          + "     \
-                    WHERE id = " + body.id,
+            .query("UPDATE user SET Last_name  = \"" + body.last_name      + "\" , \
+                                    First_name = \"" + body.first_name     + "\" , \
+                                    Pseudo     = \"" + body.pseudo         + "\" , \
+                                    Email      = \"" + body.email          + "\" , \
+                                    Password   = \"" + sha1(body.password) + "\" , \
+                                    Picture    =   " + body.picture        + "   , \
+                                    X          =   " + body.x              + "   , \
+                                    Y          =   " + body.y              + "   , \
+                                    Z          =   " + body.z              + "   , \
+                                    Banner     =   " + body.banner         + "   , \
+                                    Title      =   " + body.title          + "     \
+                    WHERE ID = " + body.id,
             function (err, result) {
               if (err){
                 throw err;
@@ -115,7 +119,7 @@ app.delete('/user/delete', jsonParser, (req, res) => {
   const body = req.body;
   console.log('Got body:', body);
   dbConnect
-          .query("DELETE FROM User WHERE id = " + body.id,
+          .query("DELETE FROM user WHERE ID = " + body.id,
           function (err, result) {
             if (err){
               throw err;
