@@ -2,6 +2,8 @@ import Navbar from "../components/navbar";
 import Searchbar from "../components/searchbar";
 import Play from "../canva"; 
 import Create from "../components/createaction";
+import Join from "../components/joinaction";
+import Quest from "../components/quest";
 function Act(props){
 
     return <div className="Act">
@@ -14,6 +16,8 @@ function Act(props){
             </div>
         </div>
         <Create/> 
+        <Join/>
+        <Quest/>
     </div>
 }
 export default Act;
