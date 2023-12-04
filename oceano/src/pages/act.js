@@ -2,6 +2,7 @@ import Navbar from "../components/navbar";
 import Searchbar from "../components/searchbar";
 import Play from "../canva"; 
 import Create from "../components/createaction";
+import IndexPage from "../components/calendar";
 function Act(props){
 
     return <div className="Act">
@@ -13,7 +14,8 @@ function Act(props){
                 <p className="text-sm text-gray-500">bizoabgazg</p>
             </div>
         </div>
-        <Create/> 
+        <Create/>
+        <IndexPage/> 
     </div>
 }
 export default Act;

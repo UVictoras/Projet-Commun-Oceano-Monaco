@@ -1,5 +1,5 @@
 import Navbar from "../components/navbar";
-import Signupform from "../components/signupform";
+
 function Signup(props){
     return <div>
         <Navbar/>
