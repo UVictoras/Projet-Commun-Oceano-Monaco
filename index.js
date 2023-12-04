@@ -252,6 +252,47 @@ app.get("/event", function (req, res) {
           })
 });
 
+/*------------- INSERT Event --------------*/
+app.post('/event/insert', jsonParser, (req, res) => {
+  const dbConnect = dbo.getDb();
+  const body = req.body;
+  console.log('Got body:', body);
+  dbConnect
+          .query("INSERT INTO Event (title          ,\
+                                     description    ,\
+                                     start_date     ,\
+                                     end_date       ,\
+                                     type           ,\
+                                     image          ,\
+                                     x              ,\
+                                     y              ,\
+                                     z              ,\
+                                     region         ,\
+                                     feedback       ,\
+                                     thread         ,\
+                                     organizartor   ,\
+                                     money          ,\
+                                     xp             ,\
+                  VALUES (\"" + body.title          + "\" , \
+                          \"" + body.description    + "\" , \
+                          \"" + body.end_date       + "\" , \
+                          \"" + body.type           + "\" , \
+                          \"" + body.image          + "\" , \
+                            " + body.x              + "   , \
+                            " + body.y              + "   , \
+                            " + body.z              + "   , \
+                          \"" + body.region         + "\" , \
+                          \"" + body.thread         + "\" , \
+                          \"" + body.organizartor   + "\" , \ ", 
+          function (err, result) {
+              if (err){
+              throw err;
+              }
+              console.log(result);     
+          })
+  res.json(body);
+});
+
 // /*------------- UPDATE Personal Data Event --------------*/
 // app.post('/event/update/personal_data', jsonParser, (req, res) => {
 //   const dbConnect = dbo.getDb();
@@ -386,3 +427,5 @@ app.get("/level", function (req, res) {
             console.log(result);     
           })
 });
+
+
