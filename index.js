@@ -18,10 +18,35 @@ app.listen(port, function () {
 });
 
 /*------------- GET USER --------------*/
-app.get("/user", function (req, res) {
+app.get("/user", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
+  const body = req.body;
   dbConnect
-          .query("SELECT * FROM user WHERE ID = " + body.id, 
+          .query("SELECT  u.ID                , \
+                          u.Last_name         , \
+                          u.First_name        , \
+                          u.Pseudo            , \
+                          u.Birthday          , \
+                          u.Country           , \
+                          u.Email             , \
+                          u.Password          , \
+                          pp.Image AS Picture , \
+                          u.X                 , \
+                          u.Y                 , \
+                          u.Z                 , \
+                          u.Type              , \
+                          l.Number            , \
+                          u.Money             , \
+                          u.XP                , \
+                          u.Streak            , \
+                          u.Streak_progress   , \
+                          b.Image AS Banner   , \
+                          t.Image AS Title      \
+                  FROM user u INNER JOIN level l ON u.Level = l.ID               \
+                              INNER JOIN Banner b ON u.Banner = b.ID             \
+                              INNER JOIN Title t ON u.Title = t.ID               \
+                              INNER JOIN profil_picture pp ON u.Picture = pp.ID  \
+                  WHERE u.ID = " + body.id, 
           
           function (err, result) {
             if (err){
@@ -69,7 +94,7 @@ app.post('/user/insert', jsonParser, (req, res) => {
                               " + body.y              + "   , \
                               " + body.z              + "   , \
                             \"" + body.type           + "\" , \
-                                    0                       , \
+                                    1                       , \
                                     0                       , \
                                     0                       , \
                                     0                       , \
@@ -79,7 +104,7 @@ app.post('/user/insert', jsonParser, (req, res) => {
             
             function (err, result) {
                 if (err){
-                throw err;
+                  throw err;
                 }
                 console.log(result);     
             })
@@ -95,6 +120,8 @@ app.post('/user/update/personal_data', jsonParser, (req, res) => {
             .query("UPDATE user SET Last_name  = \"" + body.last_name      + "\" , \
                                     First_name = \"" + body.first_name     + "\" , \
                                     Pseudo     = \"" + body.pseudo         + "\" , \
+                                    Birthday   = \"" + body.birthday       + "\" , \
+                                    Country    = \"" + body.country        + "\" , \
                                     Email      = \"" + body.email          + "\" , \
                                     Password   = \"" + sha1(body.password) + "\" , \
                                     Picture    =   " + body.picture        + "   , \
