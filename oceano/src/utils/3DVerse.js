@@ -27,7 +27,6 @@ export async function Camera(props) {
     console.log(window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports())
     const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
     
-
 }
 
 //--------------------- Récupération des Positions ---------------------
@@ -44,7 +43,7 @@ export async function Click(props) {
             position[0] = pickedPosition[0]
             position[1] = pickedPosition[1]
             position[2] = pickedPosition[2]
-            // newElement();
+            newElement();
         }else{
             console.log('No entity selected');
         }
@@ -53,20 +52,19 @@ export async function Click(props) {
 
 //--------------------- Création d'élément ---------------------
 
-export function newElement(props){
+async function newElement(props){
         console.log(position)
-        const meshUUID = 'b8c210e4-12cc-4e01-9e91-62595cdb4e63';
-        const materialUUID = '03da3293-a5c0-4948-858e-f97b703be3c2'
         const entityTemplate = new window.SDK3DVerse.EntityTemplate();
-        entityTemplate.attachComponent('mesh_ref',{value : meshUUID})
-        entityTemplate.attachComponent('material_ref', {value : materialUUID})
+        entityTemplate.attachComponent('label')
         
         entityTemplate.entityTemplate.local_transform.position[0] = position[0]
         entityTemplate.entityTemplate.local_transform.position[1] = position[1]
         entityTemplate.entityTemplate.local_transform.position[2] = position[2]
-        entityTemplate.entityTemplate.local_transform.scale[0] = 0.05
-        entityTemplate.entityTemplate.local_transform.scale[1] = 0.05
-        entityTemplate.entityTemplate.local_transform.scale[2] = 0.05
+
         entityTemplate.instantiateEntity()
+        const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('583bd537-2e51-4be6-9055-83ff20857b23');
+        console.log(test)
+
+        console.log(entityTemplate)
 
 }
