@@ -1,9 +1,7 @@
 
 //--------------------- Game Loop ---------------------
 
-import Modal from "../components/modal";
-
-export async function Anim(props, index) {
+export async function Anim(props) {
 
     const meshUUID = ['c77be900-43c3-4598-a6db-d67dd9a7585d', '6e8b13bd-cf97-4d39-b6f1-250cf134da54']
 
@@ -54,7 +52,7 @@ export async function Click(props) {
             position[2] = pickedPosition[2]
             if(entity.getName() === "SM_Cube"){
                 console.log("aaa");
-                <Modal />
+                
             }else if(entity.getName() === "sphere"){
                 newElement();
             }

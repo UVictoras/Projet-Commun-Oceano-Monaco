@@ -2,7 +2,6 @@ import Navbar from "../components/navbar";
 import Searchbar from "../components/searchbar";
 import { Canvas } from "../Canva.jsx";
 import { Anim, Camera } from "../utils/3DVerse.js";
-import Modal from "../components/modal.js";
 
 function Act(props) {
 
@@ -18,7 +17,6 @@ function Act(props) {
                 <p className="text-sm text-gray-500">bizoabgazg</p>
             </div>
         </div>
-        <Modal />
     </div>
 }
 export default Act;
