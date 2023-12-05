@@ -1,71 +1,64 @@
 import Navbar from "../components/navbar";
 import Onedate from "../components/pickonedate";
+import { useState } from "react";
+import Modal from "../components/modal";
 
 function Signup(props){
+   
     return <div>
         <Navbar/>
-        <h1 class=" grid place-content-center h-48 ...  text font-medium   text-gray-900 dark:text-white">Créez votre compte</h1>
+        <h1 class=" grid place-content-center h-48 ...  text font-medium   text-gray-900 ">Créez votre compte</h1>
         <form class="max-w-sm mx-auto">
             <div class="mb-5">
-                <label for="first name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre Prénom</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Entrer votre Prénom" name="first name" required></input>
+                <label for="first name" class="block mb-2 text-sm font-medium text-gray-900 ">Votre Prénom</label>
+                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre Prénom" name="first name" required></input>
             </div>
             <div class="mb-5">
-                <label for="last name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre Nom</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Entrer votre Nom" name="last name" required></input>
+                <label for="last name" class="block mb-2 text-sm font-medium text-gray-900 ">Votre Nom</label>
+                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre Nom" name="last name" required></input>
 
     
             </div>
             <div class="mb-5">
-                <label for="pseudo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre Pseudo</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Entrer votre Pseudo" name="pseudo" required></input>
+                <label for="pseudo" class="block mb-2 text-sm font-medium text-gray-900 ">Votre Pseudo</label>
+                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre Pseudo" name="pseudo" required></input>
 
     
             </div>
             <div class="mb-5">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre email</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Entrer votre email" name="email" required></input>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Votre email</label>
+                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre email" name="email" required></input>
 
     
             </div>
             <div class="mb-5">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre mot de passe</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Entrer votre mot de passe" name="password" required></input>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Votre mot de passe</label>
+                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" placeholder="Entrer votre mot de passe" name="password" required></input>
             </div>
             <div class="mb-5">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre date de naissance</label>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Votre date de naissance</label>
                 <Onedate/>
     
             </div>
             <div class="mb-5">
-                <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre pays</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Entrer votre pays" name="country" required></input>
+                <label for="country" class="block mb-2 text-sm font-medium text-gray-900 ">Votre pays</label>
+                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre pays" name="country" required></input>
 
     
             </div>
             <div class="mb-5">
-                <label for="photo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre photo de profil :</label>
-                
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type d'utilisateur</label>
+                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
-<fieldset>
-  <legend class="sr-only">Countries</legend>
-
-  <div class="flex items-center mb-4">
-    <input id="country-option-1" type="radio" name="countries" value="USA" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked></input>
-    <img src="vert.jpg" alt="ouui" />
-    
-    <input id="country-option-1" type="radio" name="countries" value="USA" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" checked></input>
-    
-  </div>
-
-
-</fieldset>
-
+                    <option>Particulier</option>
+                    <option>Association</option>
+                    
+                </select>
             </div>
             <div class="mb-5">
                 <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre localisation :</label>
             </div>
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">S'inscrire</button>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">S'inscrire</button>
         </form>
     </div>
 }

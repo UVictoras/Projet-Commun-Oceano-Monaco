@@ -5,9 +5,12 @@ import Create from "../components/createaction";
 import Join from "../components/joinaction";
 import Calendar from "../components/calendar";
 import Onedate from "../components/pickonedate";
+import { useState } from "react";
+import Modal from "../components/modal";
+
 
 function Act(props){
-
+    
     return <div className="Act">
         <Navbar />
         <Searchbar />
@@ -19,6 +22,10 @@ function Act(props){
         </div>
         
         <Create/>
+        
+        
+
+        
         
         
     </div>
