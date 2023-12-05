@@ -22,6 +22,7 @@ function Act(props){
         </div>
         
         <Create/>
+        <Join/>
         
         
 
