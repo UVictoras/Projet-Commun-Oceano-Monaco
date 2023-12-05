@@ -3,6 +3,9 @@ import Searchbar from "../components/searchbar";
 import Play from "../canva"; 
 import Create from "../components/createaction";
 import Join from "../components/joinaction";
+import Calendar from "../components/calendar";
+import Onedate from "../components/pickonedate";
+
 function Act(props){
 
     return <div className="Act">
@@ -14,8 +17,10 @@ function Act(props){
                 <p className="text-sm text-gray-500">bizoabgazg</p>
             </div>
         </div>
+        
         <Create/>
-        <Join/> 
+        
+        
     </div>
 }
 export default Act;

@@ -1,7 +1,7 @@
 import React, {useState} from "react"; 
 import Datepicker from "react-tailwindcss-datepicker"; 
 
-const Calendar = () => { 
+const Onedate = () => { 
 const [value, setValue] = useState({ 
 startDate: null, 
 endDate: null 
@@ -14,13 +14,10 @@ setValue(newValue);
 
 return (
 <Datepicker 
+asSingle={true} 
 value={value} 
 onChange={handleValueChange} 
-showShortcuts={true} 
 /> 
 );
 }; 
-export default Calendar;
-    
-
-
+export default Onedate;
