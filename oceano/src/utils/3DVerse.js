@@ -1,6 +1,9 @@
 
 //--------------------- Game Loop ---------------------
 
+import { useState } from "react";
+import Modal from "../components/modal";
+
 export async function Anim(props) {
 
     const meshUUID = ['c77be900-43c3-4598-a6db-d67dd9a7585d', '6e8b13bd-cf97-4d39-b6f1-250cf134da54']
@@ -29,7 +32,7 @@ export async function Camera(props) {
 
     const settings = {
         speed: 5,
-        sensitivity: 1,
+        sensitivity: 10,
         damping: 0.65,
         angularDamping: 0.65
     };
@@ -39,6 +42,8 @@ export async function Camera(props) {
 //--------------------- Récupération des Positions ---------------------
 
 const position = [0,0,0]
+let isVisible = false
+const twoDPos = [0,0]
 export async function Click(props) {
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
@@ -52,9 +57,16 @@ export async function Click(props) {
             position[2] = pickedPosition[2]
             if(entity.getName() === "SM_Cube"){
                 console.log("aaa");
+                isVisible = true
+                twoDPos[0] = e.clientX
+                twoDPos[1] = e.clientY
+                console.log(twoDPos)
+             
                 
             }else if(entity.getName() === "sphere"){
                 newElement();
+                isVisible = false
+                
             }
             
         }else{
@@ -77,4 +89,9 @@ async function newElement(props){
         entityTemplate.instantiateEntity()
         const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('583bd537-2e51-4be6-9055-83ff20857b23');
 
+}
+
+export function OpenModal(){
+ 
+    return isVisible
 }
