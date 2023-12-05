@@ -172,11 +172,57 @@ app.get("/accessories", function (req, res) {
           })
 });
 
+/*------------- GET  rarety Accessories  --------------*/
+app.get("/accessories", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT Rarity FROM Accessories", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET Type Accessories  --------------*/
+app.get("/accessories", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT Type FROM Accessories", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+
 /*------------- GET Emote  --------------*/
 app.get("/emote", function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
           .query("SELECT * FROM Emote ", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET  rarety Emote  --------------*/
+app.get("/emote", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT Rarity FROM Emote", 
           
           function (err, result) {
             if (err){
@@ -240,8 +286,27 @@ app.get("/badges", function (req, res) {
 app.get("/event", function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
-          .query("SELECT * FROM Event WHERE id = " + body.id, 
-          
+          .query("SELECT  e.ID                   , \
+                          e.Title                , \
+                          e.Description          , \
+                          e.Start_date           , \
+                          e.End_date             , \
+                          e.Type                 , \
+                          pp.Image AS Picture    , \
+                          e.X                    , \
+                          e.Y                    , \
+                          e.Z                    , \
+                          r.Region               , \
+                          e.Feedback             , \
+                          t.Thread               , \
+                          u.Organizator          , \
+                          u.Money                , \
+                          u.XP                   , \
+                  FROM event e INNER JOIN User u ON e.Organisator = u.ID               \
+                          INNER JOIN User u ON e.Money = u.Money             \
+                          INNER JOIN User u ON e.XP = u.XP               \
+                          INNER JOIN profil_picture pp ON e.Picture = pp.ID  \
+              WHERE u.ID = " + body.id, 
           function (err, result) {
             if (err){
               throw err;
@@ -274,15 +339,19 @@ app.post('/event/insert', jsonParser, (req, res) => {
                                      xp             ,\
                   VALUES (\"" + body.title          + "\" , \
                           \"" + body.description    + "\" , \
+                          \"" + body.start_date       + "\" , \
                           \"" + body.end_date       + "\" , \
                           \"" + body.type           + "\" , \
                           \"" + body.image          + "\" , \
                             " + body.x              + "   , \
                             " + body.y              + "   , \
                             " + body.z              + "   , \
-                          \"" + body.region         + "\" , \
+                            1                       , \
+                            0                       , \
                           \"" + body.thread         + "\" , \
-                          \"" + body.organizartor   + "\" , \ ", 
+                          0                       , \
+                          0                       , \
+                          0                       , \)",   
           function (err, result) {
               if (err){
               throw err;
@@ -366,11 +435,6 @@ app.get("/messaage", function (req, res) {
             console.log(result);     
           })
 });
-
-
-
-
-
 
 
 /*------------- GET level  --------------*/
