@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.modal{
-    position : absolute 
+
+.test{
+    padding-right: 110px;
 }

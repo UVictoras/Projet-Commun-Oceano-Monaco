@@ -1,26 +1,24 @@
 
 //--------------------- Game Loop ---------------------
 
-import { useState } from "react";
-import Modal from "../components/modal";
 
 export async function Anim(props) {
 
-    const meshUUID = ['c77be900-43c3-4598-a6db-d67dd9a7585d', '6e8b13bd-cf97-4d39-b6f1-250cf134da54']
+    // const meshUUID = ['c77be900-43c3-4598-a6db-d67dd9a7585d', '6e8b13bd-cf97-4d39-b6f1-250cf134da54']
 
-    const entity = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('c410caff-7a0d-4f9c-88ca-0a9d54daf854');
-    // console.log(entity)
-    const component = entity[0].getComponent('mesh_ref').value
+    // const entity = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
+    // // console.log(entity)
+    // const component = entity[0].getComponent('mesh_ref').value
 
-    // entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[index])
+    // // entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[index])
 
 
-    if (component === meshUUID[0]) {
-        entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[1])
+    // if (component === meshUUID[0]) {
+    //     entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[1])
 
-    } else {
-        entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[0])
-    }
+    // } else {
+    //     entity[0].setComponent('mesh_ref', entity[0].getComponent('mesh_ref').value = meshUUID[0])
+    // }
 }
 
 // --------------------- Partie Camera ---------------------
@@ -32,7 +30,7 @@ export async function Camera(props) {
 
     const settings = {
         speed: 5,
-        sensitivity: 10,
+        sensitivity: 1,
         damping: 0.65,
         angularDamping: 0.65
     };
@@ -58,9 +56,7 @@ export async function Click(props) {
             if(entity.getName() === "SM_Cube"){
                 console.log("aaa");
                 isVisible = true
-                twoDPos[0] = e.clientX
-                twoDPos[1] = e.clientY
-                console.log(twoDPos)
+                
              
                 
             }else if(entity.getName() === "sphere"){
@@ -72,6 +68,8 @@ export async function Click(props) {
         }else{
             console.log('No entity selected');
         }
+        twoDPos[0] = e.clientX
+        twoDPos[1] = e.clientY
     }, false);
 }
 
