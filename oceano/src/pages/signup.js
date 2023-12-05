@@ -1,21 +1,20 @@
 import Navbar from "../components/navbar";
 import { addUser } from "../api/user";
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 function Signup(props){
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        console.log(data.pseudo);
-        // data.birthday = "2004-10-23";
-        // data.country = "France";
-        // data.picture = 1;
-        // data.x = 15.6;
-        // data.y = 19.1;
-        // data.z = 17.2;
-        // data.type = "Visiteur";
-        // data.banner = 1;
-        // data.title = 1;
+        data.birthday = "2004-10-23";
+        data.country = "France";
+        data.picture = 1;
+        data.x = 15.6;
+        data.y = 19.1;
+        data.z = 17.2;
+        data.type = "Visiteur";
+        data.banner = 1;
+        data.title = 1;
         addUser(data);
     }
 

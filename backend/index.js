@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const sha1 = require('js-sha1');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+var cors = require('cors');
+app.use(cors());
 const port = 4444;
 const jsonParser = bodyParser.json();
 
@@ -15,6 +17,25 @@ app.get("/", function (req, res) {
 
 app.listen(port, function () {
   console.log(`App listening on port ${port}!`);
+});
+
+/*------------- GET ALL USERS --------------*/
+app.get("/user/all", jsonParser, function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT  ID        , \
+                          Pseudo    , \
+                          Email     , \
+                          Password    \
+                  FROM user u ",
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
 });
 
 /*------------- GET USER --------------*/
