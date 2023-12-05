@@ -26,46 +26,54 @@ export async function Anim(props) {
 export async function Camera(props) {
     const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
     // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
-    console.log(viewports)
-
-    const settings = {
-        speed: 5,
-        sensitivity: 1,
-        damping: 0.65,
-        angularDamping: 0.65
+    
+    const entity = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
+    if (viewports != []){
+        // const settings = {
+        //     speed: 5,
+        //     sensitivity: 1,
+        //     damping: 0.65,
+        //     angularDamping: 0.65
+            
+        // }
+        // window.SDK3DVerse.updateControllerSetting(settings);
     };
-    window.SDK3DVerse.updateControllerSetting(settings);
+
+
+    console.log(viewports[0].hasOrthographicProjection())
+
+    
+    // window.SDK3DVerse.updateControllerSetting(settings);
+
+
 }
 
 //--------------------- Récupération des Positions ---------------------
 
-const position = [0,0,0]
+const position = [0, 0, 0]
 let isVisible = false
-const twoDPos = [0,0]
+const twoDPos = [0, 0]
 export async function Click(props) {
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
         const selectEntity = true;
         const keepOldSelection = e.ctrlKey;
         const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, selectEntity, keepOldSelection);
-        if(entity){
+        if (entity) {
             console.log('Selected entity', entity.getName())
             position[0] = pickedPosition[0]
             position[1] = pickedPosition[1]
             position[2] = pickedPosition[2]
-            if(entity.getName() === "SM_Cube"){
-                console.log("aaa");
-                isVisible = true
-                
-             
-                
-            }else if(entity.getName() === "sphere"){
+            if (entity.getName() === "Globe") {
                 newElement();
                 isVisible = false
-                
+
+            } else if (entity.getName() === "SM_Cube") {
+                isVisible = true
+
             }
-            
-        }else{
+
+        } else {
             console.log('No entity selected');
         }
         twoDPos[0] = e.clientX
@@ -75,21 +83,24 @@ export async function Click(props) {
 
 //--------------------- Création d'élément ---------------------
 
-async function newElement(props){
-        console.log(position)
-        const entityTemplate = new window.SDK3DVerse.EntityTemplate();
-        entityTemplate.attachComponent('label')
-        
-        entityTemplate.entityTemplate.local_transform.position[0] = position[0]
-        entityTemplate.entityTemplate.local_transform.position[1] = position[1]
-        entityTemplate.entityTemplate.local_transform.position[2] = position[2]
+async function newElement(props) {
+    
+    const entityTemplate = new window.SDK3DVerse.EntityTemplate();
+    entityTemplate.attachComponent('label')
 
-        entityTemplate.instantiateEntity()
-        const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('583bd537-2e51-4be6-9055-83ff20857b23');
+    entityTemplate.entityTemplate.local_transform.position[0] = position[0]
+    entityTemplate.entityTemplate.local_transform.position[1] = position[1]
+    entityTemplate.entityTemplate.local_transform.position[2] = position[2]
+    entityTemplate.instantiateEntity()
+    // entityTemplate.entityTemplate.label.setDisplayState(true)
+    const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('1400fde3-a1b6-4e6b-a772-8aca119ef758')
+    console.log(test)
+    // test[0].installExtension()
+    setDisplayState(true)
 
 }
 
-export function OpenModal(){
- 
+export function OpenModal() {
+
     return isVisible
 }

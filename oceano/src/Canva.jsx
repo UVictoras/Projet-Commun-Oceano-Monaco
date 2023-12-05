@@ -7,10 +7,25 @@ import { useScript } from '@uidotdev/usehooks';
 export const Canvas = () => {
     const status = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js`,
+
         {
             removeOnUnmount: false,
         }
     );
+    const dom = useScript(
+        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ViewportDomOverlay_Ext.js`,
+
+        {
+            removeOnUnmount: false,
+        }
+    )
+    const label = useScript(
+        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_LabelDisplay_Ext.js`,
+
+        {
+            removeOnUnmount: false,
+        }
+    )
 
     const initApp = useCallback(async () => {
         await SDK3DVerse.joinOrStartSession({
@@ -24,9 +39,10 @@ export const Canvas = () => {
     }, []);
 
     useEffect(() => {
-        if (status === 'ready') {
+        if (status === 'ready' && dom === 'ready' && label === 'ready') {
             
             initApp();
+            Camera();
             Anim();
             Click();
             
