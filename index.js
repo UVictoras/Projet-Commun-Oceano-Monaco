@@ -208,8 +208,7 @@ app.post('/user/update', jsonParser, (req, res) => {
   const body = req.body;
   console.log('Got body:', body);
   dbConnect
-          .query("UPDATE User SET Rate  = \"" + body.Rate      + "\" , \
-                                Rate      =   " + body.title          + "     \
+          .query("UPDATE User SET Rate  = \"" + body.Rate +  "\" \
                   WHERE id = " + body.id,
           function (err, result) {
             if (err){
@@ -368,48 +367,9 @@ app.get("/messaage", function (req, res) {
           })
 });
 
-/*------------- UPDATE Personal Data message --------------*/
-app.post('/message/update/personal_data', jsonParser, (req, res) => {
-  const dbConnect = dbo.getDb();
-  const body = req.body;
-  console.log('Got body:', body);
-  dbConnect
-          .query("UPDATE User SET last_name  = \"" + body.last_name      + "\" , \
-                                  first_name = \"" + body.first_name     + "\" , \
-                                  pseudo     = \"" + body.pseudo         + "\" , \
-                                  email      = \"" + body.email          + "\" , \
-                                  password   = \"" + sha1(body.password) + "\" , \
-                                  picture    =   " + body.picture        + "   , \
-                                  x          =   " + body.x              + "   , \
-                                  y          =   " + body.y              + "   , \
-                                  z          =   " + body.z              + "   , \
-                                  banner     =   " + body.banner         + "   , \
-                                  title      =   " + body.title          + "     \
-                  WHERE id = " + body.id,
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            console.log(result);     
-          })
-  res.json(body);
-});
 
-/*------------- DELETE message --------------*/
-app.delete('/message/delete', jsonParser, (req, res) => {
-  const dbConnect = dbo.getDb();
-  const body = req.body;
-  console.log('Got body:', body);
-  dbConnect
-          .query("DELETE FROM message WHERE id = " + body.id,
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            console.log(result);     
-          })
-  res.json(body);
-});
+
+
 
 
 
