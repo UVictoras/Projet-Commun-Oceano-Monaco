@@ -5,6 +5,7 @@ import Create from "../components/createaction";
 import Join from "../components/joinaction";
 import Calendar from "../components/calendar";
 import Onedate from "../components/pickonedate";
+import Quest from "../components/quest";
 import { useState } from "react";
 import Modal from "../components/modal";
 
@@ -23,6 +24,7 @@ function Act(props){
         
         <Create/>
         <Join/>
+        <Quest/>
         
         
 
