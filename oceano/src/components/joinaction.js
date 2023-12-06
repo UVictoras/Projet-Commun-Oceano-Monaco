@@ -1,11 +1,10 @@
 function Join(){
     return(
         <div class=" grid place-content-center">
-            <h1 class=" grid place-content-center h-24 ... text font-medium   text-gray-900 dark:text-white">Titre de l'action</h1>
-            <h2 class=" grid place-content-center h-24 ... text font-medium   text-gray-900 dark:text-white">Le nom de l'utilisatuer qui a créé l'action</h2>           
+            <h1 class=" grid place-content-center h-24 ... text font-medium   text-gray-900 ">Titre de l'action</h1>
+            <h2 class=" grid place-content-center h-24 ... text font-medium   text-gray-900 ">Le nom de l'utilisatuer qui a créé l'action</h2>           
             <p class="grid place-content-center h-24 ...">Description de l'action</p>
             <p class="grid place-content-center ">Votre manière de contribuer :</p>
-
             <form class="grid place-content-center ">
                 <fieldset class="grid place-content-center h-48 ... ">
                 <div className="mt-6 space-y-6">
@@ -56,12 +55,8 @@ function Join(){
                     </div>
                 </div>
                 </fieldset>
-
                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Rejoindre</button>
-
-            </form>
-            
-            
+            </form>    
         </div>
     )
 }

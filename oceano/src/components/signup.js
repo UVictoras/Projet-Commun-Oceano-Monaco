@@ -24,13 +24,13 @@ function Signup(props){
             </div>
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Votre email</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre email" name="email" required></input>
+                <input type="email" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre email" name="email" required></input>
 
     
             </div>
             <div class="mb-5">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Votre mot de passe</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" placeholder="Entrer votre mot de passe" name="password" required></input>
+                <input type="password" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" placeholder="Entrer votre mot de passe" name="password" required></input>
             </div>
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Votre date de naissance</label>
@@ -42,8 +42,8 @@ function Signup(props){
                 <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre pays" name="country" required></input>   
             </div>
             <div class="mb-5">
-                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type d'utilisateur</label>
-                <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type d'utilisateur</label>
+                <select id="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     <option>Particulier</option>
                     <option>Association</option>                   
                 </select>
