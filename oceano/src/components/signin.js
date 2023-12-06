@@ -14,6 +14,6 @@ function Signin(props){
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Se connecter</button>
                     </div>
                 </form>
-        </div>
+    </div>
 }
 export default Signin;

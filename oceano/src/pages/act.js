@@ -28,12 +28,7 @@ function Act(props){
         <Join/>
         <Quest/>
         <Signin/>
-        <Signup/>
-        
-
-        
-        
-        
+        <Signup/>        
     </div>
 }
 export default Act;
