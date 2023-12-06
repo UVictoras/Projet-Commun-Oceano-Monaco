@@ -16,18 +16,18 @@ function Signin(props){
         .catch(error=>console.error("Error :",error.message))
     },[]);
 
+    useEffect(() => {
+        console.log(user);
+    })
+
+
     const onSubmit = (data) => {
-        console.log(data);
-        users.map((user) => {
-            if((user.Pseudo == data.pseudo || user.Email == data.pseudo) && user.Password == sha1(data.password)){
-                const usersFetched = getUser([{id: user.id}]);
+        users.map((userMap) => {
+            if((userMap.Pseudo == data.pseudo || userMap.Email == data.pseudo) && userMap.Password == sha1(data.password)){
+                const usersFetched = getUser({id: userMap.ID});
                 usersFetched
                 .then(result => setUser(result))
                 .catch(error=>console.error("Error :",error.message))
-                console.log("yes");
-            }
-            else{
-                console.log("no");
             }
         })
     }

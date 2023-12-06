@@ -28,17 +28,17 @@ export const getUsers = async () => {
     return users
 }
 
-export const getUser = async () => {
+export const getUser = async (id) => {
     const response = await fetch(
         'http://localhost:4444/user', {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type':'application/json'
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(id)
         }
     )
-    const user = await response.json()
-    return user
+    const user = await response.json();
+    return user;
 }

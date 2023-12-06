@@ -39,7 +39,7 @@ app.get("/user/all", jsonParser, function (req, res) {
 });
 
 /*------------- GET USER --------------*/
-app.get("/user", jsonParser, function (req, res) {
+app.post("/user", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
   const body = req.body;
   dbConnect
