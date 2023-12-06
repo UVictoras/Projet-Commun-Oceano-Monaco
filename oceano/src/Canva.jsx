@@ -18,15 +18,14 @@ export const Canvas = () => {
         {
             removeOnUnmount: false,
         }
-    )
+    );
     const label = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_LabelDisplay_Ext.js`,
 
         {
             removeOnUnmount: false,
         }
-    )
-
+    );
     const initApp = useCallback(async () => {
         await SDK3DVerse.joinOrStartSession({
             userToken: 'public_0rtYmFmJfCyVxB7-',
@@ -36,10 +35,13 @@ export const Canvas = () => {
                 defaultControllerType: SDK3DVerse.controller_type.orbit,
             },
         });
+        await window.SDK3DVerse.installExtension(SDK3DVerse_ViewportDomOverlay_Ext);
+        await window.SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
     }, []);
 
     useEffect(() => {
         if (status === 'ready' && dom === 'ready' && label === 'ready') {
+
             
             initApp();
             Camera();

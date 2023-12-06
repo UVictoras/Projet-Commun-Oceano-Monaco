@@ -84,19 +84,23 @@ export async function Click(props) {
 //--------------------- Création d'élément ---------------------
 
 async function newElement(props) {
+
     
+
     const entityTemplate = new window.SDK3DVerse.EntityTemplate();
     entityTemplate.attachComponent('label')
-
+    
     entityTemplate.entityTemplate.local_transform.position[0] = position[0]
     entityTemplate.entityTemplate.local_transform.position[1] = position[1]
     entityTemplate.entityTemplate.local_transform.position[2] = position[2]
     entityTemplate.instantiateEntity()
-    // entityTemplate.entityTemplate.label.setDisplayState(true)
-    const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('1400fde3-a1b6-4e6b-a772-8aca119ef758')
-    console.log(test)
-    // test[0].installExtension()
-    setDisplayState(true)
+
+    // const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('1400fde3-a1b6-4e6b-a772-8aca119ef758')
+    // const label = test[0].getComponent('label');
+    // console.log(label)
+    // label.setDisplayState(true)
+
+    
 
 }
 
