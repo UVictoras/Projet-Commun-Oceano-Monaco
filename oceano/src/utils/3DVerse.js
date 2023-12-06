@@ -26,21 +26,27 @@ export async function Anim(props) {
 export async function Camera(props) {
     const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
     // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
+    const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
+    console.log(test)
+    const settings = {
+        speed: 5,
+        sensitivity: 1,
+        damping: 0.65,
+        angularDamping: 0.65
+        
+    }
     
-    const entity = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
+
+    window.SDK3DVerse.updateControllerSetting(settings);
+
     if (viewports != []){
-        // const settings = {
-        //     speed: 5,
-        //     sensitivity: 1,
-        //     damping: 0.65,
-        //     angularDamping: 0.65
-            
+        // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
+        //     console.log("aa")
         // }
-        // window.SDK3DVerse.updateControllerSetting(settings);
     };
 
 
-    console.log(viewports[0].hasOrthographicProjection())
+
 
     
     // window.SDK3DVerse.updateControllerSetting(settings);
@@ -64,7 +70,7 @@ export async function Click(props) {
             position[0] = pickedPosition[0]
             position[1] = pickedPosition[1]
             position[2] = pickedPosition[2]
-            if (entity.getName() === "Globe") {
+            if (entity.getName() === "Globe" || entity.getName() == "Extract3" ) {
                 newElement();
                 isVisible = false
 
@@ -75,6 +81,7 @@ export async function Click(props) {
 
         } else {
             console.log('No entity selected');
+            isVisible = false
         }
         twoDPos[0] = e.clientX
         twoDPos[1] = e.clientY
@@ -85,22 +92,24 @@ export async function Click(props) {
 
 async function newElement(props) {
 
-    
-
     const entityTemplate = new window.SDK3DVerse.EntityTemplate();
     entityTemplate.attachComponent('label')
     
     entityTemplate.entityTemplate.local_transform.position[0] = position[0]
     entityTemplate.entityTemplate.local_transform.position[1] = position[1]
     entityTemplate.entityTemplate.local_transform.position[2] = position[2]
+    console.log(entityTemplate)
     entityTemplate.instantiateEntity()
-
+    console.log(entityTemplate)
     // const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('1400fde3-a1b6-4e6b-a772-8aca119ef758')
     // const label = test[0].getComponent('label');
     // console.log(label)
     // label.setDisplayState(true)
-
+    const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('166009d9-1d03-4033-923d-b4cc2ef87c6f')
     
+    // console.log(test[0].labelIndex)
+
+
 
 }
 

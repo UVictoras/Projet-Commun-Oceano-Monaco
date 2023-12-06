@@ -1,6 +1,5 @@
 import { Anim, Camera, Click } from './utils/3DVerse';
 import { useCallback, useEffect } from 'react';
-
 import { useScript } from '@uidotdev/usehooks';
 
 
@@ -41,7 +40,6 @@ export const Canvas = () => {
 
     useEffect(() => {
         if (status === 'ready' && dom === 'ready' && label === 'ready') {
-
             
             initApp();
             Camera();

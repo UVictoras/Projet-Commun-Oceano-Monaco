@@ -11,6 +11,9 @@
 .SDK3DVerse-viewport-container{
     top:0 !important;
 }
+.SDK3DVerse-viewport{
+    border: 0px !important;
+}
 .label-container > .active, .label-container > :hover {
     z-index: 10 !important;
 }
@@ -18,7 +21,7 @@
     z-index: 10 !important;
 }
 .label-container.active .label, .label-container .label:hover, .label-container .label:focus {
-    color: rgba(241, 241, 241, .9);
+    color: rgba(190, 25, 25, 0.9);
     background-color: var(--color-accent);
 }
 .label-container .label:hover + .label-title:not(:empty), .label-container .label:focus + .label-title:not(:empty) {
@@ -30,14 +33,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     transform: translate(-50%, -50%);
     border-radius: 1rem;
     font-size: 0.75rem;
     line-height: 1rem;
     color: rgba(9, 11, 12, .6);
-    background-color: rgba(241, 241, 241, .7);
+    background-color: rgba(219, 29, 29, 0.7);
     transition: opacity 0.35s, color 0.35s, background-color 0.35s;
     user-select: none;
     pointer-events: all !important;
