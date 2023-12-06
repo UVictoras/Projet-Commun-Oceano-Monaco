@@ -142,6 +142,31 @@ app.get("/level", function (req, res) {
 
 
 
+/*------------- GET ALL Event --------------*/
+app.get("/event/all", jsonParser, function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT  ID           , \
+                          Title        , \
+                          Description  , \
+                          Start_date   , \
+                          End_date     , \
+                          Type           \
+                  FROM event ",
+
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+
+
+
+
 
 
 
@@ -231,29 +256,32 @@ app.post('/user/update', jsonParser, (req, res) => {
 
 
 
-/*------------- GET Event  --------------*/
+
+
+
+/*------------- GET  Event  --------------*/
 app.get("/event", function (req, res) {
   const dbConnect = dbo.getDb();
+  const body = req.body;
   dbConnect
           .query("SELECT  e.ID                   , \
                           e.Title                , \
                           e.Description          , \
                           e.Start_date           , \
                           e.End_date             , \
-                          ty.Type                , \
+                          ty.Name                , \
                           e.Image                , \
                           e.X                    , \
                           e.Y                    , \
-                          e.Z                    , \
-                          r.Region               , \
+                          r.Name                 , \
                           e.Feedback             , \
-                          t.Thread               , \
-                          u.Organizator          , \
+                          u.Pseudo               , \
                           e.Money                , \
-                          e.XP                   , \
-                  FROM event e INNER JOIN User u ON e.Organisator = u.ID     \
+                          e.XP                     \
+                  FROM event e INNER JOIN User u ON e.Organisator = u.ID  \
+                               INNER JOIN Region r ON e.Region = r.ID     \
                                INNER JOIN Type_event ty ON e.Type = ty.ID \
-              WHERE u.ID = " + body.id, 
+              WHERE e.ID = " + body.id, 
           function (err, result) {
             if (err){
               throw err;
@@ -269,36 +297,34 @@ app.post('/event/insert', jsonParser, (req, res) => {
   const body = req.body;
   console.log('Got body:', body);
   dbConnect
-          .query("INSERT INTO Event (title          ,\
-                                     description    ,\
-                                     start_date     ,\
-                                     end_date       ,\
-                                     type           ,\
-                                     image          ,\
-                                     x              ,\
-                                     y              ,\
-                                     z              ,\
-                                     region         ,\
-                                     feedback       ,\
-                                     thread         ,\
-                                     organizartor   ,\
-                                     money          ,\
-                                     xp             ,\
+          .query("INSERT INTO Event (Title          ,\
+                                     Description    ,\
+                                     Start_date     ,\
+                                     End_date       ,\
+                                     Type           ,\
+                                     Image          ,\
+                                     X              ,\
+                                     Y              ,\
+                                     Region         ,\
+                                     Feedback       ,\
+                                     Thread         ,\
+                                     Organizartor   ,\
+                                     Money          ,\
+                                     Xp             ,\
                   VALUES (\"" + body.title          + "\" , \
                           \"" + body.description    + "\" , \
-                          \"" + body.start_date       + "\" , \
+                          \"" + body.start_date     + "\" , \
                           \"" + body.end_date       + "\" , \
-                          \"" + body.type           + "\" , \
+                            " + body.type           + "   , \
                           \"" + body.image          + "\" , \
                             " + body.x              + "   , \
                             " + body.y              + "   , \
-                            " + body.z              + "   , \
                             " + body.region         + "   , \
-                            0                       , \
-                          \"" + body.thread         + "\" , \
-                          0                       , \
-                          0                       , \
-                          0                       , \)",   
+                          0                               , \
+                            " + body.thread         + "   , \
+                          0                               , \
+                          0                               , \
+                          0                               , \)",   
           function (err, result) {
               if (err){
               throw err;
