@@ -1,12 +1,20 @@
 import Onedate from "./pickonedate";
 import { addUser } from "../api/user";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 function Signup(props){
     const { register, handleSubmit } = useForm();
+    const [ birthday, setBirthday ] = useState([]);
+
+    const handleOnedateChange = (newValue) => {
+        setBirthday(newValue.startDate);
+        console.log("Nouvelle valeur de Onedate:", newValue);
+    };
+
     const onSubmit = (data) => {
         console.log(data);
-        data.birthday = "2004-10-23";
+        data.birthday = birthday;
         data.picture = 1;
         data.x = 15.6;
         data.y = 19.1;
@@ -51,7 +59,7 @@ function Signup(props){
             </div>
             <div class="mb-5">
                 <label for="date" class="block mb-2 text-sm font-medium text-gray-900 ">Votre date de naissance</label>
-                <Onedate/>    
+                <Onedate onChange={handleOnedateChange} />    
             </div>
             <div class="mb-5">
                 <label for="country" class="block mb-2 text-sm font-medium text-gray-900 ">Votre pays</label>

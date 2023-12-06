@@ -3,6 +3,7 @@ import Impact from "./pages/impact.js";
 import Community from "./pages/community.js";
 import Profile from "./pages/profil.js";
 import React, {useState} from 'react'
+import Signup from "./components/signup.js";
 
 import {
   BrowserRouter as Router,
@@ -49,7 +50,7 @@ function App(props){
           <Impact /> 
         </Route>
         <Route exact path="/pages/profil.js">
-          <Profile/>
+          <Signup/>
         </Route>
         <Route exact path="/community">
           <Community /> 
