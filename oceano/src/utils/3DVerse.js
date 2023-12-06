@@ -24,42 +24,60 @@ export async function Anim(props) {
 // --------------------- Partie Camera ---------------------
 
 export async function Camera(props) {
-    const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    
     // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
-    const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
-    console.log(test)
-    const settings = {
-        speed: 5,
-        sensitivity: 1,
-        damping: 0.65,
-        angularDamping: 0.65
+
+
+    const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    const globe = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
+    console.log("aa")
+    
+    if(transform.length != 0){
+        // console.log(globe[0].components.local_transform.position[1])
+        // console.log(await transform[0].getTransform())
+
+        // console.log(transform[0].getTransform().position[2])
+        console.log(transform[0].getTransform())
+        console.log(transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1])
+        console.log(1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0))
+        const settings = {
+            speed: 1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0),
+            sensitivity: 1,
+            damping: 0.65,
+            angularDamping: 0.65
+            
+        }
         
-    }
+        window.SDK3DVerse.updateControllerSetting(settings);
+        // if(transform[0].getTransform().position[2] < 3){
+            
     
-
-    window.SDK3DVerse.updateControllerSetting(settings);
-
-    if (viewports != []){
-        // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
-        //     console.log("aa")
         // }
-    };
+    }
 
 
 
 
-    
-    // window.SDK3DVerse.updateControllerSetting(settings);
+
+
+    // if (viewports != []){
+    //     // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
+    //     //     console.log("aa")
+    //     // }
+    // };
+
 
 
 }
 
 //--------------------- Récupération des Positions ---------------------
 
-const position = [0, 0, 0]
+
+
 let isVisible = false
-const twoDPos = [0, 0]
 export async function Click(props) {
+    const twoDPos = [0, 0]
+    const position = [0, 0, 0]
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
         const selectEntity = true;
@@ -71,7 +89,7 @@ export async function Click(props) {
             position[1] = pickedPosition[1]
             position[2] = pickedPosition[2]
             if (entity.getName() === "Globe" || entity.getName() == "Extract3" ) {
-                newElement();
+                newElement.apply(null,position);
                 isVisible = false
 
             } else if (entity.getName() === "SM_Cube") {
@@ -85,27 +103,33 @@ export async function Click(props) {
         }
         twoDPos[0] = e.clientX
         twoDPos[1] = e.clientY
+
+        return isVisible
     }, false);
 }
 
 //--------------------- Création d'élément ---------------------
 
-async function newElement(props) {
-
+async function newElement(x,y,z) {
     const entityTemplate = new window.SDK3DVerse.EntityTemplate();
     entityTemplate.attachComponent('label')
     
-    entityTemplate.entityTemplate.local_transform.position[0] = position[0]
-    entityTemplate.entityTemplate.local_transform.position[1] = position[1]
-    entityTemplate.entityTemplate.local_transform.position[2] = position[2]
-    console.log(entityTemplate)
+    entityTemplate.entityTemplate.local_transform.position[0] = x
+    entityTemplate.entityTemplate.local_transform.position[1] = y
+    entityTemplate.entityTemplate.local_transform.position[2] = z
+    // console.log(entityTemplate)
+
+    const clickedPosition = window.SDK3DVerse.engineAPI.cameraAPI.computeLocalPositionInCanvas(x, y);
+    const hoveredViewport = window.SDK3DVerse.engineAPI.cameraAPI.getHoveredViewport(clickedPosition);
+    // const offset = hoveredViewport.getOffset();
+    console.log(hoveredViewport);
+    // window.SDK3DVerse.extensions.LabelDisplay.createLabelElement(200,entityTemplate)
     entityTemplate.instantiateEntity()
-    console.log(entityTemplate)
     // const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('1400fde3-a1b6-4e6b-a772-8aca119ef758')
     // const label = test[0].getComponent('label');
     // console.log(label)
     // label.setDisplayState(true)
-    const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('166009d9-1d03-4033-923d-b4cc2ef87c6f')
+
     
     // console.log(test[0].labelIndex)
 

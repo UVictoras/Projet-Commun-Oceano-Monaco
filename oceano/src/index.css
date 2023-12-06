@@ -41,6 +41,8 @@
     line-height: 1rem;
     color: rgba(9, 11, 12, .6);
     background-color: rgba(219, 29, 29, 0.7);
+    background-image: url("../img/victor.jpg");
+    background-size: 30px;
     transition: opacity 0.35s, color 0.35s, background-color 0.35s;
     user-select: none;
     pointer-events: all !important;

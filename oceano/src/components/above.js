@@ -1,4 +1,4 @@
-import { OpenModal } from "../utils/3DVerse";
+import { Click, OpenModal } from "../utils/3DVerse";
 import Modal from "./modal";
 import Searchbar from "./searchbar";
 
