@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const sha1 = require('js-sha1');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+var cors = require('cors');
+app.use(cors());
 const port = 4444;
 const jsonParser = bodyParser.json();
 
@@ -16,7 +18,6 @@ app.get("/", function (req, res) {
 app.listen(port, function () {
   console.log(`App listening on port ${port}!`);
 });
-
 
 
 /*------------- GET Banner --------------*/
