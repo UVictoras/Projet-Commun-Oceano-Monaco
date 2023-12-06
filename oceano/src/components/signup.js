@@ -24,18 +24,15 @@ function Signup(props){
             </div>
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Votre email</label>
-                <input type="email" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre email" name="email" required></input>
-
-    
+                <input type="email" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre email" name="email" required></input>   
             </div>
             <div class="mb-5">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Votre mot de passe</label>
                 <input type="password" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" placeholder="Entrer votre mot de passe" name="password" required></input>
             </div>
             <div class="mb-5">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Votre date de naissance</label>
-                <Onedate/>
-    
+                <label for="date" class="block mb-2 text-sm font-medium text-gray-900 ">Votre date de naissance</label>
+                <Onedate/>    
             </div>
             <div class="mb-5">
                 <label for="country" class="block mb-2 text-sm font-medium text-gray-900 ">Votre pays</label>
