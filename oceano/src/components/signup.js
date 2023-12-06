@@ -1,12 +1,9 @@
-import Navbar from "../components/navbar";
-import Onedate from "../components/pickonedate";
-import { useState } from "react";
-import Modal from "../components/modal";
+import Onedate from "./pickonedate";
 
 function Signup(props){
    
     return <div>
-        <Navbar/>
+        
         <h1 class=" grid place-content-center h-48 ...  text font-medium   text-gray-900 ">Créez votre compte</h1>
         <form class="max-w-sm mx-auto">
             <div class="mb-5">

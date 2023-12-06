@@ -8,6 +8,8 @@ import Onedate from "../components/pickonedate";
 import Quest from "../components/quest";
 import { useState } from "react";
 import Modal from "../components/modal";
+import Signin from "../components/signin";
+import Signup from "../components/signup";
 
 
 function Act(props){
@@ -25,7 +27,8 @@ function Act(props){
         <Create/>
         <Join/>
         <Quest/>
-        
+        <Signin/>
+        <Signup/>
         
 
         
