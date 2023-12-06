@@ -12,6 +12,7 @@ import Signin from "../components/signin";
 import Signup from "../components/signup";
 import { Canvas } from "../Canva.jsx";
 import Anim from "../3DVerse.js";
+import { Camera } from "../utils/3DVerse.js";
 
 function Act(props){
     
@@ -20,18 +21,12 @@ function Act(props){
         <Searchbar />
         <Canvas/>
 
-        <div className = "container mx-auto bg-gray-200 rounded-xl " onClick={() => Anim()}>
+        <div className = "container mx-auto bg-gray-200 rounded-xl " onClick={() => Camera()}>
             <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">aaa</p>
                 <p className="text-sm text-gray-500">bizoabgazg</p>
             </div>
-        </div>
-        
-        <Create/>
-        <Join/>
-        <Quest/>
-        <Signin/>
-        <Signup/>        
+        </div>    
     </div>
 }
 export default Act;

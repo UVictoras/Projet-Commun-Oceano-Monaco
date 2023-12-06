@@ -42,7 +42,7 @@ export const Canvas = () => {
         if (status === 'ready' && dom === 'ready' && label === 'ready') {
             
             initApp();
-            Camera();
+            
             Anim();
             Click();
             

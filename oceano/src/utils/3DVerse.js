@@ -25,19 +25,33 @@ export async function Anim(props) {
 
 export async function Camera(props) {
     const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    
     // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
     const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
-    console.log(test)
+    
+    const entity = viewports[0].cameraEntity.components.local_transform.position
+
+
+    const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+
+    console.log(await transform[0].getTransform())
+
+    console.log(transform[0].getTransform().position[2])
+
+
     const settings = {
-        speed: 5,
+        speed: 0.1,
         sensitivity: 1,
         damping: 0.65,
         angularDamping: 0.65
         
     }
     
+    if(transform[0].getTransform().position[2] < 3){
+        window.SDK3DVerse.updateControllerSetting(settings);
 
-    window.SDK3DVerse.updateControllerSetting(settings);
+    }
+    
 
     if (viewports != []){
         // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
