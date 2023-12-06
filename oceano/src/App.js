@@ -54,6 +54,8 @@ function App(props){
         <Route exact path="/community">
           <Community /> 
         </Route>
+        
+        
       </Switch>
   </Router>
 }

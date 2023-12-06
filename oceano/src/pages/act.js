@@ -1,31 +1,37 @@
 import Navbar from "../components/navbar";
 import Searchbar from "../components/searchbar";
-import { Canvas } from "../Canva.jsx";
-import { Anim, Camera, OpenModal } from "../utils/3DVerse.js";
+import Play from "../canva"; 
+import Create from "../components/createaction";
+import Join from "../components/joinaction";
+import Calendar from "../components/calendar";
+import Onedate from "../components/pickonedate";
+import Quest from "../components/quest";
 import { useState } from "react";
-import Modal from "../components/modal.js";
-import Above from "../components/above.js";
+import Modal from "../components/modal";
+import Signin from "../components/signin";
+import Signup from "../components/signup";
+import { Canvas } from "../Canva.jsx";
+import Anim from "../3DVerse.js";
 
-function Act(props) {
+function Act(props){
     
-    return <div className="">
+    return <div className="Act">
         <Navbar />
+        <Searchbar />
+        <Canvas/>
 
-        <Above/>
-    
-        <Canvas />
-        {/* {console.log(OpenModal())} */}
-        
-
-        <div className="container mx-auto bg-gray-200 rounded-xl " onClick={() => {
-            Anim();
-            Camera()
-        }}>
+        <div className = "container mx-auto bg-gray-200 rounded-xl " onClick={() => Anim()}>
             <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">aaa</p>
                 <p className="text-sm text-gray-500">bizoabgazg</p>
             </div>
         </div>
+        
+        <Create/>
+        <Join/>
+        <Quest/>
+        <Signin/>
+        <Signup/>        
     </div>
 }
 export default Act;
