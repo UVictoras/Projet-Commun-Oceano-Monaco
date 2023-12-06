@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.test{
+    padding-right: 110px;
+}
+
+/********************* CSS pour les labels *****************/
+.SDK3DVerse-viewport-container{
+    top:0 !important;
+}
+.SDK3DVerse-viewport{
+    border: 0px !important;
+}
+.label-container > .active, .label-container > :hover {
+    z-index: 10 !important;
+}
+.label-container.active, .label-container:hover {
+    z-index: 10 !important;
+}
+.label-container.active .label, .label-container .label:hover, .label-container .label:focus {
+    color: rgba(190, 25, 25, 0.9);
+    background-color: var(--color-accent);
+}
+.label-container .label:hover + .label-title:not(:empty), .label-container .label:focus + .label-title:not(:empty) {
+    transform: scaleX(1);
+    opacity: 1;
+}
+.label {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(9, 11, 12, .6);
+    background-color: rgba(219, 29, 29, 0.7);
+    transition: opacity 0.35s, color 0.35s, background-color 0.35s;
+    user-select: none;
+    pointer-events: all !important;
+    cursor: pointer;
+    z-index: 1;
+}
+.label-title {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: -12px;
+    left: -12px;
+    transform: scaleX(0.9);
+    transform-origin: center left;
+    width: max-content;
+    max-width: 15rem;
+    min-height: 24px;
+    padding: 0.25rem 0.75rem 0.25rem 1.75rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    border-radius: 12px;
+    color: rgba(9, 11, 12, .8);
+    background-color: rgba(241, 241, 241, .9);
+    transition: opacity 0.25s, transform 0.25s;
+    opacity: 0;
+    pointer-events: none;
+}

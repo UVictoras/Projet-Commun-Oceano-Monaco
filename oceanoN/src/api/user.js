@@ -1,5 +1,4 @@
 export const addUser = async (user) => {
-    console.log(JSON.stringify(user));
     await fetch(
         'http://localhost:4444/user/insert', {
             method: 'POST',
