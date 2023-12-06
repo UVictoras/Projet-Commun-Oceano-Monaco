@@ -291,7 +291,7 @@ app.get("/event", function (req, res) {
                           e.Description          , \
                           e.Start_date           , \
                           e.End_date             , \
-                          e.Type                 , \
+                          ty.Type                 , \
                           pp.Image AS Picture    , \
                           e.X                    , \
                           e.Y                    , \
@@ -302,10 +302,11 @@ app.get("/event", function (req, res) {
                           u.Organizator          , \
                           u.Money                , \
                           u.XP                   , \
-                  FROM event e INNER JOIN User u ON e.Organisator = u.ID               \
+                  FROM event e INNER JOIN User u ON e.Organisator = u.ID     \
                           INNER JOIN User u ON e.Money = u.Money             \
-                          INNER JOIN User u ON e.XP = u.XP               \
+                          INNER JOIN User u ON e.XP = u.XP                   \
                           INNER JOIN profil_picture pp ON e.Picture = pp.ID  \
+                          INNER JOIN Type event ty ON e.Type = ty.ID \
               WHERE u.ID = " + body.id, 
           function (err, result) {
             if (err){
@@ -405,6 +406,25 @@ app.delete('/event/delete', jsonParser, (req, res) => {
 });
 
 
+/*------------- GET Type event  --------------*/
+app.get("/type event", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM type event ", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+
+
+
+
 /*------------- GET thread  --------------*/
 app.get("/thread", function (req, res) {
   const dbConnect = dbo.getDb();
@@ -453,3 +473,17 @@ app.get("/level", function (req, res) {
 });
 
 
+/*------------- GET Title --------------*/
+app.get("/title", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM Title " , 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
