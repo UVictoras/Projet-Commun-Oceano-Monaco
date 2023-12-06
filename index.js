@@ -17,114 +17,6 @@ app.listen(port, function () {
   console.log(`App listening on port ${port}!`);
 });
 
-/*------------- GET USER --------------*/
-app.get("/user", function (req, res) {
-  const dbConnect = dbo.getDb();
-  dbConnect
-          .query("SELECT * FROM User WHERE id = " + body.id, 
-          
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            res.json(result);
-            console.log(result);     
-          })
-});
-
-/*------------- INSERT USER --------------*/
-app.post('/user/insert', jsonParser, (req, res) => {
-    const dbConnect = dbo.getDb();
-    const body = req.body;
-    console.log('Got body:', body);
-    dbConnect
-            .query("INSERT INTO User (last_name          , \
-                                      first_name         , \
-                                      pseudo             , \
-                                      email              , \
-                                      password           , \
-                                      picture            , \
-                                      x                  , \
-                                      y                  , \
-                                      z                  , \
-                                      type               , \
-                                      level              , \
-                                      money              , \
-                                      xp             , \
-                                      streak_max         , \
-                                      streak_in_progress , \
-                                      banner             , \
-                                      title              ) \
-                    VALUES (\"" + body.last_name      + "\" , \
-                            \"" + body.first_name     + "\" , \
-                            \"" + body.pseudo         + "\" , \
-                            \"" + body.email          + "\" , \
-                            \"" + sha1(body.password) + "\" , \
-                              " + body.picture        + "   , \
-                              " + body.x              + "   , \
-                              " + body.y              + "   , \
-                              " + body.z              + "   , \
-                            \"" + body.type           + "\" , \
-                                    0                       , \
-                                    0                       , \
-                                    0                       , \
-                                    0                       , \
-                                    0                       , \
-                              " + body.banner         + "   , \
-                              " + body.title          + ")", 
-            
-            function (err, result) {
-                if (err){
-                throw err;
-                }
-                console.log(result);     
-            })
-    res.json(body);
-});
-
-/*------------- UPDATE Personal Data USER --------------*/
-app.post('/user/update/personal_data', jsonParser, (req, res) => {
-    const dbConnect = dbo.getDb();
-    const body = req.body;
-    console.log('Got body:', body);
-    dbConnect
-            .query("UPDATE User SET last_name  = \"" + body.last_name      + "\" , \
-                                    first_name = \"" + body.first_name     + "\" , \
-                                    pseudo     = \"" + body.pseudo         + "\" , \
-                                    email      = \"" + body.email          + "\" , \
-                                    password   = \"" + sha1(body.password) + "\" , \
-                                    picture    =   " + body.picture        + "   , \
-                                    x          =   " + body.x              + "   , \
-                                    y          =   " + body.y              + "   , \
-                                    z          =   " + body.z              + "   , \
-                                    banner     =   " + body.banner         + "   , \
-                                    title      =   " + body.title          + "     \
-                    WHERE id = " + body.id,
-            function (err, result) {
-              if (err){
-                throw err;
-              }
-              console.log(result);     
-            })
-    res.json(body);
-});
-
-/*------------- DELETE USER --------------*/
-app.delete('/user/delete', jsonParser, (req, res) => {
-  const dbConnect = dbo.getDb();
-  const body = req.body;
-  console.log('Got body:', body);
-  dbConnect
-          .query("DELETE FROM User WHERE id = " + body.id,
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            console.log(result);     
-          })
-  res.json(body);
-});
-
 
 
 /*------------- GET Banner --------------*/
@@ -172,6 +64,94 @@ app.get("/accessories", function (req, res) {
           })
 });
 
+/*------------- GET Emote  --------------*/
+app.get("/emote", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM Emote ", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET Region  --------------*/
+app.get("/region", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM Region" , 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET Badges  --------------*/
+app.get("/badges", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM Badges" , 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET Title --------------*/
+app.get("/title", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM Title " , 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET level  --------------*/
+app.get("/level", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM Level" , 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*------------- GET  rarety Accessories  --------------*/
 app.get("/accessories", function (req, res) {
   const dbConnect = dbo.getDb();
@@ -203,20 +183,7 @@ app.get("/accessories", function (req, res) {
 });
 
 
-/*------------- GET Emote  --------------*/
-app.get("/emote", function (req, res) {
-  const dbConnect = dbo.getDb();
-  dbConnect
-          .query("SELECT * FROM Emote ", 
-          
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            res.json(result);
-            console.log(result);     
-          })
-});
+
 
 /*------------- GET  rarety Emote  --------------*/
 app.get("/emote", function (req, res) {
@@ -233,20 +200,7 @@ app.get("/emote", function (req, res) {
           })
 });
 
-/*------------- GET Region  --------------*/
-app.get("/region", function (req, res) {
-  const dbConnect = dbo.getDb();
-  dbConnect
-          .query("SELECT * FROM Region" , 
-          
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            res.json(result);
-            console.log(result);     
-          })
-});
+
 
 /*------------- UPDATE Region --------------*/
 app.post('/user/update', jsonParser, (req, res) => {
@@ -266,21 +220,6 @@ app.post('/user/update', jsonParser, (req, res) => {
 });
 
 
-/*------------- GET Badges  --------------*/
-app.get("/badges", function (req, res) {
-  const dbConnect = dbo.getDb();
-  dbConnect
-          .query("SELECT * FROM Badges" , 
-          
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            res.json(result);
-            console.log(result);     
-          })
-});
-
 
 /*------------- GET Event  --------------*/
 app.get("/event", function (req, res) {
@@ -291,8 +230,8 @@ app.get("/event", function (req, res) {
                           e.Description          , \
                           e.Start_date           , \
                           e.End_date             , \
-                          ty.Type                 , \
-                          pp.Image AS Picture    , \
+                          ty.Type                , \
+                          e.Image                , \
                           e.X                    , \
                           e.Y                    , \
                           e.Z                    , \
@@ -300,13 +239,10 @@ app.get("/event", function (req, res) {
                           e.Feedback             , \
                           t.Thread               , \
                           u.Organizator          , \
-                          u.Money                , \
-                          u.XP                   , \
+                          e.Money                , \
+                          e.XP                   , \
                   FROM event e INNER JOIN User u ON e.Organisator = u.ID     \
-                          INNER JOIN User u ON e.Money = u.Money             \
-                          INNER JOIN User u ON e.XP = u.XP                   \
-                          INNER JOIN profil_picture pp ON e.Picture = pp.ID  \
-                          INNER JOIN Type event ty ON e.Type = ty.ID \
+                               INNER JOIN Type_event ty ON e.Type = ty.ID \
               WHERE u.ID = " + body.id, 
           function (err, result) {
             if (err){
@@ -347,7 +283,7 @@ app.post('/event/insert', jsonParser, (req, res) => {
                             " + body.x              + "   , \
                             " + body.y              + "   , \
                             " + body.z              + "   , \
-                            1                       , \
+                            " + body.region         + "   , \
                             0                       , \
                           \"" + body.thread         + "\" , \
                           0                       , \
@@ -407,7 +343,7 @@ app.delete('/event/delete', jsonParser, (req, res) => {
 
 
 /*------------- GET Type event  --------------*/
-app.get("/type event", function (req, res) {
+app.get("/type_event", function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
           .query("SELECT * FROM type event ", 
@@ -420,7 +356,6 @@ app.get("/type event", function (req, res) {
             console.log(result);     
           })
 });
-
 
 
 
@@ -457,33 +392,4 @@ app.get("/messaage", function (req, res) {
 });
 
 
-/*------------- GET level  --------------*/
-app.get("/level", function (req, res) {
-  const dbConnect = dbo.getDb();
-  dbConnect
-          .query("SELECT * FROM Level" , 
-          
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            res.json(result);
-            console.log(result);     
-          })
-});
 
-
-/*------------- GET Title --------------*/
-app.get("/title", function (req, res) {
-  const dbConnect = dbo.getDb();
-  dbConnect
-          .query("SELECT * FROM Title " , 
-          
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            res.json(result);
-            console.log(result);     
-          })
-});
