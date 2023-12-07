@@ -14,8 +14,4 @@ npm start
 
 Close the App 
 
-npm i @uidotdev/usehooks 
-
-npm install react-tailwindcss-datepicker 
-
 npm start 
