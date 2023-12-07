@@ -164,6 +164,38 @@ app.get("/event/all", jsonParser, function (req, res) {
 });
 
 
+/*------------- GET  Event  --------------*/
+app.post("/event", function (req, res) {
+  const dbConnect = dbo.getDb();
+  const body = req.body;
+  dbConnect
+          .query("SELECT  e.ID                   , \
+                          e.Title                , \
+                          e.Description          , \
+                          e.Start_date           , \
+                          e.End_date             , \
+                          ty.Name                , \
+                          e.Image                , \
+                          e.X                    , \
+                          e.Y                    , \
+                          r.Name                 , \
+                          e.Feedback             , \
+                          u.Pseudo               , \
+                          e.Money                , \
+                          e.XP                     \
+                  FROM event e INNER JOIN User_in_event ui ON e.Organisator = u.ID_Event \
+                               INNER JOIN User u ON ui.ID_User = u.id \
+                               INNER JOIN Region r ON e.Region = r.ID     \
+                               INNER JOIN Type_event ty ON e.Type = ty.ID \
+              WHERE e.ID = " + body.id, 
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
 
 
 
@@ -173,8 +205,7 @@ app.get("/event/all", jsonParser, function (req, res) {
 
 
 
-
-
+/*------------------------------------------------ Marche pas en bas   --------------------------------------------------*/
 
 
 
@@ -258,76 +289,30 @@ app.post('/user/update', jsonParser, (req, res) => {
 
 
 
-
-/*------------- GET  Event  --------------*/
-app.get("/event", function (req, res) {
-  const dbConnect = dbo.getDb();
-  const body = req.body;
-  dbConnect
-          .query("SELECT  e.ID                   , \
-                          e.Title                , \
-                          e.Description          , \
-                          e.Start_date           , \
-                          e.End_date             , \
-                          ty.Name                , \
-                          e.Image                , \
-                          e.X                    , \
-                          e.Y                    , \
-                          r.Name                 , \
-                          e.Feedback             , \
-                          u.Pseudo               , \
-                          e.Money                , \
-                          e.XP                     \
-                  FROM event e INNER JOIN User u ON e.Organisator = u.ID  \
-                               INNER JOIN Region r ON e.Region = r.ID     \
-                               INNER JOIN Type_event ty ON e.Type = ty.ID \
-              WHERE e.ID = " + body.id, 
-          function (err, result) {
-            if (err){
-              throw err;
-            }
-            res.json(result);
-            console.log(result);     
-          })
-});
-
-/*------------- INSERT Event --------------*/
+/*------------- INSERT event --------------*/
 app.post('/event/insert', jsonParser, (req, res) => {
   const dbConnect = dbo.getDb();
   const body = req.body;
   console.log('Got body:', body);
   dbConnect
-          .query("INSERT INTO event (Title          ,\
-                                     Description    ,\
-                                     Start_date     ,\
-                                     End_date       ,\
-                                     Type           ,\
-                                     Image          ,\
-                                     X              ,\
-                                     Y              ,\
-                                     Region         ,\
-                                     Feedback       ,\
-                                     Thread         ,\
-                                     Organizartor   ,\
-                                     Money          ,\
-                                     Xp             ,\
-                  VALUES (\"" + body.title          + "\" , \
-                          \"" + body.description    + "\" , \
-                          \"" + body.start_date     + "\" , \
-                          \"" + body.end_date       + "\" , \
-                            " + body.type           + "   , \
-                          \"" + body.image          + "\" , \
-                            " + body.x              + "   , \
-                            " + body.y              + "   , \
-                            " + body.region         + "   , \
-                            " + body.feedback       + "   , \
-                            " + body.thread         + "   , \
-                          0                               , \
-                          0                               , \
-                          0                               , \)",   
+          .query("INSERT INTO event (Title  , Description  , Start_dat , End_date , Type   , Image , X    ,Y   , Region  , Feedback , Thread , Organizator , Money  ,XP , ) \
+                  VALUES (\"" + body.title           + "\" , \
+                          \"" + body.description     + "\" , \
+                          \"" + body.start_date      + "\" , \
+                          \"" + body.end_date        + "\" , \
+                          \"" + body.type            + "\" , \
+                          \"" + body.image           + "\" , \
+                          " + body.x                 + "   , \
+                          " + body.y                 + "   , \
+                          " + body.region            + "   , \
+                          \"" + body.feedback        + "\" , \
+                          " + body.thread            + "   , \
+                                1                       , \
+                                0                       , \
+                                0                       , \")", 
           function (err, result) {
               if (err){
-              throw err;
+                throw err;
               }
               console.log(result);     
           })
