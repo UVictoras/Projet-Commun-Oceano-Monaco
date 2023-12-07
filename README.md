@@ -3,11 +3,18 @@
 To start : 
 
 cd oceano
-npm i \n
-npm i @uidotdev/usehooks \n
-npm install react-tailwindcss-datepicker \n
-npm start \n
-Close the App \n 
-npm i @uidotdev/usehooks \n
-npm install react-tailwindcss-datepicker \n
-npm start \n
+npm i 
+
+npm i @uidotdev/usehooks 
+
+npm install react-tailwindcss-datepicker 
+
+npm start 
+
+Close the App 
+
+npm i @uidotdev/usehooks 
+
+npm install react-tailwindcss-datepicker 
+
+npm start 
