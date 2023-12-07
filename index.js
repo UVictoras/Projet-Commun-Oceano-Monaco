@@ -165,7 +165,7 @@ app.get("/event/all", jsonParser, function (req, res) {
 
 
 /*------------- GET  Event  --------------*/
-app.post("/event", function (req, res) {
+app.post("/event", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
   const body = req.body;
   dbConnect
@@ -183,11 +183,11 @@ app.post("/event", function (req, res) {
                           u.Pseudo               , \
                           e.Money                , \
                           e.XP                     \
-                  FROM event e INNER JOIN User_in_event ui ON e.Organisator = u.ID_Event \
+                  FROM event e INNER JOIN users_in_event ui ON e.Organizator = ui.ID_Event \
                                INNER JOIN User u ON ui.ID_User = u.id \
                                INNER JOIN Region r ON e.Region = r.ID     \
                                INNER JOIN Type_event ty ON e.Type = ty.ID \
-              WHERE e.ID = " + body.id, 
+              WHERE e.ID = 1",  
           function (err, result) {
             if (err){
               throw err;
