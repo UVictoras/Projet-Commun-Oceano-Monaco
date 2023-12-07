@@ -9,7 +9,9 @@
 
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container{
-    top:0 !important;
+    top:64px !important;
+    height: 100vh !important;
+    width: 100vw !important;
 }
 .SDK3DVerse-viewport{
     border: 0px !important;

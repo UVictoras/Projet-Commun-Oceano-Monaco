@@ -6,7 +6,7 @@ function Above(props){
 
     return <div className="Act absolute">
         <Searchbar />
-        <Modal isVisible={OpenModal()} />
+        <Modal isVisible={() =>Click()} />
         
     </div>
 }
