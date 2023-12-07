@@ -1,9 +1,14 @@
 import { useEffect, useState} from "react";
 import { getUsers, getUser } from "../api/user";
+import { setUserSession, getUserSession } from "../api/session";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
+
 var sha1 = require('sha1');
 
 function Signin(props){
+    let history = useHistory();
+
     const { register, handleSubmit } = useForm();
     const [ users, setUsers ] = useState([]);
     const [ user, setUser ] = useState([]);
@@ -16,8 +21,11 @@ function Signin(props){
     },[]);
 
     useEffect(() => {
-        console.log(user);
-    })
+        console.log("test1 :", user[0]);
+        setUserSession(user[0]);
+        console.log("test2 :", getUserSession());
+        //history.push("/profil");
+    },[user])
 
 
     const onSubmit = (data) => {
@@ -48,6 +56,6 @@ function Signin(props){
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Se connecter</button>
                     </div>
                 </form>
-    </div>
+            </div>
 }
 export default Signin;

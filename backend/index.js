@@ -1,4 +1,6 @@
 const express = require("express");
+const session = require('express-session');
+var cookieParser = require('cookie-parser');
 const dbo = require("./db/db");
 const bodyParser = require('body-parser');
 const sha1 = require('js-sha1');
@@ -6,8 +8,18 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 var cors = require('cors');
 app.use(cors());
+app.use(cookieParser());
 const port = 4444;
 const jsonParser = bodyParser.json();
+
+
+app.use(session({ secret: 'user', resave: false, saveUninitialized: true }));
+
+// /*------------- CREATE SESSION USER --------------*/
+// app.use((req, res, next) => {
+//   req.session.user = [];
+//   next();
+// });
 
 dbo.connectToServer();
 
@@ -175,4 +187,21 @@ app.delete('/user/delete', jsonParser, (req, res) => {
             console.log(result);     
           })
   res.json(body);
+});
+
+/*------------- SET SESSION USER --------------*/
+app.post('/setUserSession', jsonParser, (req, res) => {
+    const body = req.body;
+    console.log(req.session);
+    req.session.user = body;
+    console.log(req.session);
+    res.send('Variable de session définie');
+});
+
+/*------------- GET SESSION USER --------------*/
+app.get('/getUserSession', (req, res) => {
+  console.log(req.session);
+  console.log("get :", req.session.user);
+  const myVariable = req.session.user || "";
+  res.json(myVariable);
 });
