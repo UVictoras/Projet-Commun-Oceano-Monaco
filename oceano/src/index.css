@@ -12,6 +12,7 @@
     top:64px !important;
     height: 100vh !important;
     width: 100vw !important;
+    vertical-align: middle !important;
 }
 .SDK3DVerse-viewport{
     border: 0px !important;
