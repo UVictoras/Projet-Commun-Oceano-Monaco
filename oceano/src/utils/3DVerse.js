@@ -37,11 +37,12 @@ export async function Camera(props) {
         // console.log(await transform[0].getTransform())
 
         // console.log(transform[0].getTransform().position[2])
-        console.log(transform[0].getTransform())
-        console.log(transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1])
-        console.log(1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0))
+        
+
+        // console.log(1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0))
+        console.log (Math.abs(1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0)))
         const settings = {
-            speed: 1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0),
+            speed: Math.abs(1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0)),
             sensitivity: 1,
             damping: 0.65,
             angularDamping: 0.65
