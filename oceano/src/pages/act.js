@@ -26,12 +26,6 @@ function Act(props){
                 <p className="text-sm text-gray-500">bizoabgazg</p>
             </div>
         </div>
-        
-        <Create/>
-        <Join/>
-        <Quest/>
-        <Signin/>
-        <Signup/>        
     </div>
 }
 export default Act;
