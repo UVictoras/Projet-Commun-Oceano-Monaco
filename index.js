@@ -297,7 +297,7 @@ app.post('/event/insert', jsonParser, (req, res) => {
   const body = req.body;
   console.log('Got body:', body);
   dbConnect
-          .query("INSERT INTO Event (Title          ,\
+          .query("INSERT INTO event (Title          ,\
                                      Description    ,\
                                      Start_date     ,\
                                      End_date       ,\
@@ -320,7 +320,7 @@ app.post('/event/insert', jsonParser, (req, res) => {
                             " + body.x              + "   , \
                             " + body.y              + "   , \
                             " + body.region         + "   , \
-                          0                               , \
+                            " + body.feedback       + "   , \
                             " + body.thread         + "   , \
                           0                               , \
                           0                               , \
