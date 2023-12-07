@@ -9,7 +9,9 @@
 
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container{
-    top:0 !important;
+    top:64px !important;
+    width: 426px !important;
+    height: 931px;
 }
 .SDK3DVerse-viewport{
     border: 0px !important;
@@ -36,19 +38,25 @@
     width: 30px;
     height: 30px;
     transform: translate(-50%, -50%);
+    transform-origin: center;
     border-radius: 1rem;
     font-size: 0.75rem;
     line-height: 1rem;
     color: rgba(9, 11, 12, .6);
     background-color: rgba(219, 29, 29, 0.7);
-    background-image: url("../img/victor.jpg");
     background-size: 30px;
-    transition: opacity 0.35s, color 0.35s, background-color 0.35s;
+    transition: opacity 0.35s, color 0.35s, background-color 0.35s, width 0.3s, height 0.3s;
     user-select: none;
     pointer-events: all !important;
     cursor: pointer;
     z-index: 1;
 }
+
+.label:hover {
+    height:40px;
+    width:40px;
+}
+
 .label-title {
     position: absolute;
     display: flex;
@@ -69,4 +77,8 @@
     transition: opacity 0.25s, transform 0.25s;
     opacity: 0;
     pointer-events: none;
+}
+
+.label-title:hover {
+    z-index: 20 !important;
 }
