@@ -37,6 +37,10 @@ export async function Camera(props) {
     console.log(await transform[0].getTransform())
 
     console.log(transform[0].getTransform().position[2])
+    if(transform.length != 0){
+        
+
+    }
 
 
     const settings = {
