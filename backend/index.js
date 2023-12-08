@@ -1,19 +1,19 @@
 const express = require("express");
 const session = require('express-session');
-var cookieParser = require('cookie-parser');
+const app = express();
+
 const dbo = require("./db/db");
 const bodyParser = require('body-parser');
-const sha1 = require('js-sha1');
-const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
 var cors = require('cors');
+const sha1 = require('js-sha1');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({resave: false, saveUninitialized: true, secret: 'jsopki' },));
 app.use(cors());
-app.use(cookieParser());
-const port = 4444;
+
 const jsonParser = bodyParser.json();
+const port = 4444;
 
-
-app.use(session({ secret: 'user', resave: false, saveUninitialized: true }));
 
 // /*------------- CREATE SESSION USER --------------*/
 // app.use((req, res, next) => {
