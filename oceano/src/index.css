@@ -3,55 +3,72 @@
 @tailwind utilities;
 
 
-.test{
+.test {
     padding-right: 110px;
 }
 
 /********************* CSS pour les labels *****************/
-.SDK3DVerse-viewport-container{
-    top:64px !important;
+.SDK3DVerse-viewport-container {
+    top: 64px !important;
     height: 100vh !important;
     width: 100vw !important;
     vertical-align: middle !important;
 }
-.SDK3DVerse-viewport{
+
+.SDK3DVerse-viewport {
     border: 0px !important;
 }
-.label-container > .active, .label-container > :hover {
+
+.label-container>.active,
+.label-container> :hover {
     z-index: 10 !important;
 }
-.label-container.active, .label-container:hover {
+
+.label-container.active,
+.label-container:hover {
     z-index: 10 !important;
 }
-.label-container.active .label, .label-container .label:hover, .label-container .label:focus {
+
+.label-container.active .label,
+.label-container .label:hover,
+.label-container .label:focus {
     color: rgba(190, 25, 25, 0.9);
     background-color: var(--color-accent);
 }
-.label-container .label:hover + .label-title:not(:empty), .label-container .label:focus + .label-title:not(:empty) {
+
+.label-container .label:hover+.label-title:not(:empty),
+.label-container .label:focus+.label-title:not(:empty) {
     transform: scaleX(1);
     opacity: 1;
 }
+
 .label {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
-    transform: translate(-50%, -50%);
-    border-radius: 1rem;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    color: rgba(9, 11, 12, .6);
-    background-color: rgba(219, 29, 29, 0.7);
-    background-image: url("../img/victor.jpg");
-    background-size: 30px;
-    transition: opacity 0.35s, color 0.35s, background-color 0.35s;
     user-select: none;
     pointer-events: all !important;
     cursor: pointer;
-    z-index: 1;
+    transform: perspective(30px) rotateX(20deg) rotateZ(-45deg);
+    transform-origin: 50% 50%;
+    border-radius: 50% 50% 50% 0;
+    padding: 0 3px 3px 0;
+    width: 30px;
+    height: 30px;
+    background: #ed1f34;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(9, 11, 12, .6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -2.2em 0 0 -1.3em;
+    -webkit-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
+    -moz-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
+    box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
 }
+
+
 .label-title {
     position: absolute;
     display: flex;

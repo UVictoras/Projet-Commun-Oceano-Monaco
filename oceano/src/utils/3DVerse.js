@@ -119,7 +119,6 @@ async function newElement(x,y,z) {
 
     // let labelEntities = window.SDK3DVerse.extensions.LabelDisplay.labelEntities un tableau avec tout les labels
 
-
     const entityTemplate = new window.SDK3DVerse.EntityTemplate();
 
     //window.SDK3DVerse.extensions.LabelDisplay.labelIndex = 200 a modifier par la variable qu on recuperera
