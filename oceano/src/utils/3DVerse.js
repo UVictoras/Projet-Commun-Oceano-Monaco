@@ -32,37 +32,97 @@ export async function Camera(props) {
     const canvas = document.getElementById('display-canvas')
     console.log("1")
     
-        canvas.addEventListener('wheel', async() => {
+        canvas.addEventListener('wheel', async(event) => {
             
             console.log("2")
-            const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+            const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
             
         //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
         
         // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
             const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
             
-            if(transform.length != 0){
-                console.log(await transform[0].getTransform())
-    
-                console.log(transform[0].getTransform().position[2])
-    
-                const settings = {
-                    speed: 10,
-                    sensitivity: 1,
-                    damping: 0.65,
-                    angularDamping: 0.65
-                    
-                }
+            if(camera.length != 0){
+                console.log(await camera[0].getTransform())
+                let speed = 0
                 
-                if(transform[0].getTransform().position[2] < 3){
+                if (camera[0].getTransform().position[2] >= 1.5){
+
+                    const settings = {
+                        speed: 10,
+                        sensitivity: 1,
+                        damping: 0.65,
+                        angularDamping: 0.65
+                        
+                    }
+                    console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
+                    speed = settings["speed"]
             
                 }
-    
+
+                else if(camera[0].getTransform().position[2] >= 1){
+
+                    const settings = {
+                        speed: 5,
+                        sensitivity: 1,
+                        damping: 0.65,
+                        angularDamping: 0.65
+                        
+                    }
+                    console.log(settings["speed"])
+                    window.SDK3DVerse.updateControllerSetting(settings);
+                    speed = settings["speed"]
+            
+                }
+
+                else if(camera[0].getTransform().position[2] >= 0.5){
+
+                    const settings = {
+                        speed: 1,
+                        sensitivity: 1,
+                        damping: 0.65,
+                        angularDamping: 0.65
+                        
+                    }
+                    console.log(settings["speed"])
+                    window.SDK3DVerse.updateControllerSetting(settings);
+                    speed = settings["speed"]
+                }
+
+                else{
+
+                    const settings = {
+                        speed: 0.5,
+                        sensitivity: 1,
+                        damping: 0.65,
+                        angularDamping: 0.65
+                        
+                    }
+                    console.log(settings["speed"])
+                    window.SDK3DVerse.updateControllerSetting(settings);
+                    speed = settings["speed"]
+            
+                }               
+                let molette = 0 
+                
+                if(event.deltaY < 0)
+                {
+                    molette = - 0.1                  
+                }
+
+                else if(event.deltaY > 0)
+                {
+                    molette =  0.1
+                }              
+                window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
+                    ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+                    , speed, 
+                    [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+                    [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+                    console.log(camera[0].getTransform().position[2])   
+                console.log(camera[0])
             }
-            
-            
             });
         
 
