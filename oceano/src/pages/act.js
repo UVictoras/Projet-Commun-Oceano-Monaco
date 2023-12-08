@@ -8,9 +8,11 @@ import Modal from "../components/modal.js";
 
 
 function Act(props) {
-    
+    const [showModal,setShowModal] = useState(true)
     return <div className="">
         <Navbar />
+
+        
 
         <Above/>
     
