@@ -40,7 +40,7 @@ export async function Camera(props) {
 
 
     const settings = {
-        speed: 0.1,
+        speed: 5,
         sensitivity: 1,
         damping: 0.65,
         angularDamping: 0.65
