@@ -140,3 +140,10 @@ export function OpenModal() {
 
     return isVisible
 }
+
+async function showVisibleLabelsOnly() {
+    const earth = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83')
+
+    let camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
+
+}
