@@ -27,7 +27,6 @@ export async function Camera(props) {
     
     // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 
-
     const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
     const globe = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
     console.log("aa")
@@ -37,9 +36,6 @@ export async function Camera(props) {
         // console.log(await transform[0].getTransform())
 
         // console.log(transform[0].getTransform().position[2])
-        console.log(transform[0].getTransform())
-        console.log(transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1])
-        console.log(1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0))
         const settings = {
             speed: 1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0),
             sensitivity: 1,
@@ -56,20 +52,26 @@ export async function Camera(props) {
     }
 
 
-
-
-
-
     // if (viewports != []){
     //     // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
     //     //     console.log("aa")
     //     // }
     // };
 
+}
+
+
+export function DisabledInput(){
+    // console.log(window.SDK3DVerse.actionMap.values)
+    window.SDK3DVerse.actionMap.values["DISPLACE_DOWN"] = []
+    window.SDK3DVerse.actionMap.values["DISPLACE_LEFT"] = []
+    window.SDK3DVerse.actionMap.values["DISPLACE_RIGHT"] = []
+    window.SDK3DVerse.actionMap.values["DISPLACE_UP"] = []
+    window.SDK3DVerse.actionMap.propagate();
+
 
 
 }
-
 //--------------------- Récupération des Positions ---------------------
 
 
@@ -78,11 +80,15 @@ let isVisible = false
 export async function Click(props) {
     const twoDPos = [0, 0]
     const position = [0, 0, 0]
+
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
+        
         const selectEntity = true;
         const keepOldSelection = e.ctrlKey;
-        const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, selectEntity, keepOldSelection);
+
+        const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, keepOldSelection);
+
         if (entity) {
             console.log('Selected entity', entity.getName())
             position[0] = pickedPosition[0]
@@ -104,38 +110,31 @@ export async function Click(props) {
         twoDPos[0] = e.clientX
         twoDPos[1] = e.clientY
 
-        return isVisible
+        
     }, false);
 }
 
 //--------------------- Création d'élément ---------------------
 
 async function newElement(x,y,z) {
+
+    // let labelEntities = window.SDK3DVerse.extensions.LabelDisplay.labelEntities un tableau avec tout les labels
+
+
     const entityTemplate = new window.SDK3DVerse.EntityTemplate();
+
+    //window.SDK3DVerse.extensions.LabelDisplay.labelIndex = 200 a modifier par la variable qu on recuperera
     entityTemplate.attachComponent('label')
-    
+
+
     entityTemplate.entityTemplate.local_transform.position[0] = x
     entityTemplate.entityTemplate.local_transform.position[1] = y
     entityTemplate.entityTemplate.local_transform.position[2] = z
-    // console.log(entityTemplate)
 
-    const clickedPosition = window.SDK3DVerse.engineAPI.cameraAPI.computeLocalPositionInCanvas(x, y);
-    const hoveredViewport = window.SDK3DVerse.engineAPI.cameraAPI.getHoveredViewport(clickedPosition);
-    // const offset = hoveredViewport.getOffset();
-    console.log(hoveredViewport);
-    // window.SDK3DVerse.extensions.LabelDisplay.createLabelElement(200,entityTemplate)
     entityTemplate.instantiateEntity()
-    // const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('1400fde3-a1b6-4e6b-a772-8aca119ef758')
-    // const label = test[0].getComponent('label');
-    // console.log(label)
-    // label.setDisplayState(true)
-
-    
-    // console.log(test[0].labelIndex)
-
-
 
 }
+
 
 export function OpenModal() {
 

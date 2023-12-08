@@ -1,4 +1,4 @@
-import { Anim, Camera, Click } from './utils/3DVerse';
+import { Anim, Camera, Click, DisabledInput } from './utils/3DVerse';
 import { useCallback, useEffect } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 
@@ -45,6 +45,7 @@ export const Canvas = () => {
             Camera();
             Anim();
             Click();
+            
             
         }
     }, [status]);
