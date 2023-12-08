@@ -2,6 +2,7 @@ export const setUserSession = async (user) => {
     await fetch(
         'http://localhost:4444/setUserSession', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type':'application/json'
@@ -16,6 +17,7 @@ export const getUserSession = async () => {
     const response = await fetch(
         'http://localhost:4444/getUserSession', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type':'application/json'
@@ -23,5 +25,6 @@ export const getUserSession = async () => {
         }
     )
     const user = await response.json();
+    console.log(user);
     return user;
 }

@@ -8,8 +8,8 @@ var cors = require('cors');
 const sha1 = require('js-sha1');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({resave: false, saveUninitialized: true, secret: 'jsopki' },));
-app.use(cors());
+app.use(session({resave: false, saveUninitialized: false, secret: 'jsopki', cookie: {httpOnly: false,},},));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 const jsonParser = bodyParser.json();
 const port = 4444;
@@ -192,16 +192,13 @@ app.delete('/user/delete', jsonParser, (req, res) => {
 /*------------- SET SESSION USER --------------*/
 app.post('/setUserSession', jsonParser, (req, res) => {
     const body = req.body;
-    console.log(req.session);
     req.session.user = body;
-    console.log(req.session);
+    req.session.save();
     res.send('Variable de session définie');
 });
 
 /*------------- GET SESSION USER --------------*/
 app.get('/getUserSession', (req, res) => {
-  console.log(req.session);
-  console.log("get :", req.session.user);
   const myVariable = req.session.user || "";
   res.json(myVariable);
 });

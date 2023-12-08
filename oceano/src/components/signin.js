@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react";
 import { getUsers, getUser } from "../api/user";
-import { setUserSession, getUserSession } from "../api/session";
+import { setUserSession } from "../api/session";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
@@ -21,10 +21,10 @@ function Signin(props){
     },[]);
 
     useEffect(() => {
-        console.log("test1 :", user[0]);
-        setUserSession(user[0]);
-        console.log("test2 :", getUserSession());
-        //history.push("/profil");
+        if(user.length != 0){
+            setUserSession(user[0]);
+            history.push("/profil");
+        }
     },[user])
 
 
