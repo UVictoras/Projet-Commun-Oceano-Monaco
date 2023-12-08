@@ -21,43 +21,63 @@ export async function Anim(props) {
     // }
 }
 
+
+
 // --------------------- Partie Camera ---------------------
 
+
+
 export async function Camera(props) {
-    const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    console.log("0")
+    const canvas = document.getElementById('display-canvas')
+    console.log("1")
     
-    // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
-    const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
-    
-    const entity = viewports[0].cameraEntity.components.local_transform.position
-
-
-    const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-
-    console.log(await transform[0].getTransform())
-
-    console.log(transform[0].getTransform().position[2])
-
-
-    const settings = {
-        speed: 5,
-        sensitivity: 1,
-        damping: 0.65,
-        angularDamping: 0.65
+        canvas.addEventListener('wheel', async() => {
+            
+            console.log("2")
+            const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+            
+        //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
         
-    }
+        // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
+            const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
+            
+            if(transform.length != 0){
+                console.log(await transform[0].getTransform())
     
-    if(transform[0].getTransform().position[2] < 3){
-        window.SDK3DVerse.updateControllerSetting(settings);
+                console.log(transform[0].getTransform().position[2])
+    
+                const settings = {
+                    speed: 10,
+                    sensitivity: 1,
+                    damping: 0.65,
+                    angularDamping: 0.65
+                    
+                }
+                
+                if(transform[0].getTransform().position[2] < 3){
+                    window.SDK3DVerse.updateControllerSetting(settings);
+            
+                }
+    
+            }
+            
+            
+            });
+        
 
-    }
+    
     
 
-    if (viewports != []){
+
+    
+    
+
+    //if (viewports != []){
         // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
         //     console.log("aa")
         // }
-    };
+    //};
 
 
 
@@ -74,6 +94,7 @@ const position = [0, 0, 0]
 let isVisible = false
 const twoDPos = [0, 0]
 export async function Click(props) {
+    console.log("25")
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
         const selectEntity = true;
@@ -81,6 +102,7 @@ export async function Click(props) {
         const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, selectEntity, keepOldSelection);
         if (entity) {
             console.log('Selected entity', entity.getName())
+            console.log(27)
             position[0] = pickedPosition[0]
             position[1] = pickedPosition[1]
             position[2] = pickedPosition[2]
