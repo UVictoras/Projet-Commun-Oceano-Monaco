@@ -124,42 +124,63 @@ export async function Camera(props) {
                 console.log(camera[0])
             }
             });
+    
+    // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
+
+    const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    const globe = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
+    console.log("aa")
+    
+    if(transform.length != 0){
+        // console.log(globe[0].components.local_transform.position[1])
+        // console.log(await transform[0].getTransform())
+
+        // console.log(transform[0].getTransform().position[2])
+        const settings = {
+            speed: 1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0),
+            sensitivity: 1,
+            damping: 0.65,
+            angularDamping: 0.65
+            
+        }
         
-
-    
-    
-
-
-    
-    
-
-    //if (viewports != []){
-        // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
-        //     console.log("aa")
+        window.SDK3DVerse.updateControllerSetting(settings);
+        // if(transform[0].getTransform().position[2] < 3)    
         // }
-    //};
+    }
+}
 
 
+export function DisabledInput(){
+    // console.log(window.SDK3DVerse.actionMap.values)
+    window.SDK3DVerse.actionMap.values["DISPLACE_DOWN"] = []
+    window.SDK3DVerse.actionMap.values["DISPLACE_LEFT"] = []
+    window.SDK3DVerse.actionMap.values["DISPLACE_RIGHT"] = []
+    window.SDK3DVerse.actionMap.values["DISPLACE_UP"] = []
+    window.SDK3DVerse.actionMap.propagate();
 
-
-    
-    // window.SDK3DVerse.updateControllerSetting(settings);
 
 
 }
-
 //--------------------- Récupération des Positions ---------------------
 
-const position = [0, 0, 0]
+
+
 let isVisible = false
-const twoDPos = [0, 0]
 export async function Click(props) {
-    console.log("25")
+
+    const twoDPos = [0, 0]
+    const position = [0, 0, 0]
+
+
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
+        
         const selectEntity = true;
         const keepOldSelection = e.ctrlKey;
-        const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, selectEntity, keepOldSelection);
+
+        const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, keepOldSelection);
+
         if (entity) {
             console.log('Selected entity', entity.getName())
             console.log(27)
@@ -167,7 +188,7 @@ export async function Click(props) {
             position[1] = pickedPosition[1]
             position[2] = pickedPosition[2]
             if (entity.getName() === "Globe" || entity.getName() == "Extract3" ) {
-                newElement();
+                newElement.apply(null,position);
                 isVisible = false
 
             } else if (entity.getName() === "SM_Cube") {
@@ -181,33 +202,31 @@ export async function Click(props) {
         }
         twoDPos[0] = e.clientX
         twoDPos[1] = e.clientY
+
+        
     }, false);
 }
 
 //--------------------- Création d'élément ---------------------
 
-async function newElement(props) {
+async function newElement(x,y,z) {
+
+    // let labelEntities = window.SDK3DVerse.extensions.LabelDisplay.labelEntities un tableau avec tout les labels
 
     const entityTemplate = new window.SDK3DVerse.EntityTemplate();
+
+    //window.SDK3DVerse.extensions.LabelDisplay.labelIndex = 200 a modifier par la variable qu on recuperera
     entityTemplate.attachComponent('label')
-    
-    entityTemplate.entityTemplate.local_transform.position[0] = position[0]
-    entityTemplate.entityTemplate.local_transform.position[1] = position[1]
-    entityTemplate.entityTemplate.local_transform.position[2] = position[2]
-    console.log(entityTemplate)
+
+
+    entityTemplate.entityTemplate.local_transform.position[0] = x
+    entityTemplate.entityTemplate.local_transform.position[1] = y
+    entityTemplate.entityTemplate.local_transform.position[2] = z
+
     entityTemplate.instantiateEntity()
-    console.log(entityTemplate)
-    // const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('1400fde3-a1b6-4e6b-a772-8aca119ef758')
-    // const label = test[0].getComponent('label');
-    // console.log(label)
-    // label.setDisplayState(true)
-    const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('166009d9-1d03-4033-923d-b4cc2ef87c6f')
-    
-    // console.log(test[0].labelIndex)
-
-
 
 }
+
 
 export function OpenModal() {
 

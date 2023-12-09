@@ -10,7 +10,7 @@ function Profile(props) {
                         <div className="picture flex justify-self-end pr-10">
                             <img
                                 className="h-20 w-20 rounded-full justify-items-end"
-                                src="https://media.discordapp.net/attachments/1166020127339327637/1181569102859489290/20231205_131257.jpg?ex=658188fa&is=656f13fa&hm=dc4e2074fd533cb0f90439fe28767a7a115a8ab40faa59a6e0a53f70aae79f65&=&format=webp&width=454&height=605"
+                                src="../img/avatar.png" 
                                 alt=""
                             />
                         </div>
