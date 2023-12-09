@@ -1,12 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;900&display=swap');
 
 .test {
     padding-right: 110px;
 }
 
+/********************* CSS Général *************************/
+.extraBoldNunito{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+}
+
+.mediumNunito{
+    font-family: 'Nunito', sans-serif;
+}
+.blackNunito{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+}
+.size28{
+    font-size: 28px;
+}
+.uppercaseText{
+    text-transform: uppercase;
+}
+
+/********************* CSS pour le loading screen **********/
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 60px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 22px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 46px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(14px, 0);
+    }
+  }
+  
+  
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {
     top: 64px !important;

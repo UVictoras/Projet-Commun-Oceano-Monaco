@@ -11,6 +11,8 @@ import {
 } from "react-router-dom"
 import { useFrameLoop } from "./utils/FrameLoop.js";
 import { Anim } from "./utils/3DVerse.js";
+import FirstPage from "./pages/firstPage.js";
+import LoadingScreen from "./pages/loadingScreen.js";
 
 
 
@@ -47,9 +49,14 @@ function App(props){
 
   return <Router>
       <Switch>
-
         <Route exact path="/">
-          <Act /> 
+          <FirstPage /> 
+        </Route>
+        <Route exact path="/loading">
+          <LoadingScreen /> 
+        </Route>
+        <Route path ="/act">
+          <Act/>
         </Route>
         <Route exact path="/impact">
           <Impact /> 
