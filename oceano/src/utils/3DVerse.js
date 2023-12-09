@@ -1,5 +1,4 @@
 
-//--------------------- Game Loop ---------------------
 
 
 export async function Anim(props) {

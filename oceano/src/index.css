@@ -28,6 +28,9 @@
 }
 
 /********************* CSS pour le loading screen **********/
+.index{
+    z-index: 12 !important;
+}
 .lds-ellipsis {
     display: inline-block;
     position: relative;

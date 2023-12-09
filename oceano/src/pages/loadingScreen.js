@@ -1,5 +1,6 @@
 export default function LoadingScreen() {
-    return <div className="md:container md:mx-auto h-screen flex flex-col items-center justify-center">
+
+    return <div className="md:container md:mx-auto h-screen flex flex-col items-center justify-center index">
         <div className="imgLogo h-2/3 w-full flex items-end">
             <img src="img/avatar.png" alt="make a blue logo" className="w-24 h-24 md:w-32 md:h-32 lg:w-80 lg:h-80 mx-auto">
 
@@ -18,6 +19,5 @@ export default function LoadingScreen() {
                 </p>
             </div>
         </div>
-
     </div>
 }

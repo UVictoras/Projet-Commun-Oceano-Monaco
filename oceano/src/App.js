@@ -52,9 +52,9 @@ function App(props){
         <Route exact path="/">
           <FirstPage /> 
         </Route>
-        <Route exact path="/loading">
+        {/* <Route exact path="/loading">
           <LoadingScreen /> 
-        </Route>
+        </Route> */}
         <Route path ="/act">
           <Act/>
         </Route>

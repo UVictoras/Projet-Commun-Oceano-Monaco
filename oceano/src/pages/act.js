@@ -5,18 +5,28 @@ import { Canvas } from "../Canva.jsx";
 import { Anim, Camera, OpenModal } from "../utils/3DVerse.js";
 import { useState } from "react";
 import Modal from "../components/modal.js";
+import LoadingScreen from "./loadingScreen.js";
 
 
 function Act(props) {
-    const [showModal,setShowModal] = useState(true)
+
     return <div className="">
-        <Navbar />
 
-        
+        {!props.isLoaded ? 
+            (
+                <LoadingScreen/>
+            ) : (
+                console.log("aa")
 
+            )
+        }
+        <Canvas/>
+        <Navbar/>
         <Above/>
-    
-        <Canvas />
+        {console.log(props.isLoaded)}
+
+
+
         {/* {console.log(OpenModal())} */}
         
 
