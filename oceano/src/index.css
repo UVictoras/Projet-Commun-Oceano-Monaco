@@ -13,6 +13,7 @@
     height: 100vh !important;
     width: 100vw !important;
     vertical-align: middle !important;
+
 }
 
 .SDK3DVerse-viewport {
@@ -68,7 +69,6 @@
     box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
 }
 
-
 .label-title {
     position: absolute;
     display: flex;
@@ -89,4 +89,8 @@
     transition: opacity 0.25s, transform 0.25s;
     opacity: 0;
     pointer-events: none;
+}
+
+.label-title:hover {
+    z-index: 20 !important;
 }

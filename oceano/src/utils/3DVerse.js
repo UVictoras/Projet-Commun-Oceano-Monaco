@@ -86,6 +86,7 @@ export async function Click(props) {
         
         const selectEntity = true;
         const keepOldSelection = e.ctrlKey;
+
         const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, keepOldSelection);
 
         if (entity) {
@@ -130,7 +131,6 @@ async function newElement(x,y,z) {
     entityTemplate.entityTemplate.local_transform.position[2] = z
 
     entityTemplate.instantiateEntity()
-
 
 }
 
