@@ -2,8 +2,9 @@ import Navbar from "../components/navbar";
 import Above from "../components/above.js";
 import Searchbar from "../components/searchbar";
 import { Canvas } from "../Canva.jsx";
-import Anim from "../3DVerse.js";
+import { Anim } from "../utils/3DVerse.js";
 import { Camera } from "../utils/3DVerse.js";
+import React, { useState } from 'react';
 
 function Act(props) {
     const [showModal,setShowModal] = useState(true)

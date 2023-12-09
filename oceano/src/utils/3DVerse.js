@@ -31,21 +31,21 @@ export async function Camera(props) {
     console.log("0")
     const canvas = document.getElementById('display-canvas')
     console.log("1")
-    
+
         canvas.addEventListener('wheel', async(event) => {
-            
+
             console.log("2")
             const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-            
+
         //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-        
+
         // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
             const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
-            
+
             if(camera.length != 0){
                 console.log(await camera[0].getTransform())
                 let speed = 0
-                
+
                 if (camera[0].getTransform().position[2] >= 1.5){
 
                     const settings = {
@@ -53,12 +53,12 @@ export async function Camera(props) {
                         sensitivity: 1,
                         damping: 0.65,
                         angularDamping: 0.65
-                        
+
                     }
                     console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
                     speed = settings["speed"]
-            
+
                 }
 
                 else if(camera[0].getTransform().position[2] >= 1){
@@ -68,12 +68,12 @@ export async function Camera(props) {
                         sensitivity: 1,
                         damping: 0.65,
                         angularDamping: 0.65
-                        
+
                     }
                     console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
                     speed = settings["speed"]
-            
+
                 }
 
                 else if(camera[0].getTransform().position[2] >= 0.5){
@@ -83,7 +83,7 @@ export async function Camera(props) {
                         sensitivity: 1,
                         damping: 0.65,
                         angularDamping: 0.65
-                        
+
                     }
                     console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
@@ -97,15 +97,15 @@ export async function Camera(props) {
                         sensitivity: 1,
                         damping: 0.65,
                         angularDamping: 0.65
-                        
+
                     }
                     console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
                     speed = settings["speed"]
-            
+
                 }               
                 let molette = 0 
-                
+
                 if(event.deltaY < 0)
                 {
                     molette = - 0.1                  
@@ -124,30 +124,19 @@ export async function Camera(props) {
                 console.log(camera[0])
             }
             });
-    
-    // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 
-    const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-    const globe = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
-    console.log("aa")
-    
-    if(transform.length != 0){
-        // console.log(globe[0].components.local_transform.position[1])
-        // console.log(await transform[0].getTransform())
 
-        // console.log(transform[0].getTransform().position[2])
-        const settings = {
-            speed: 1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0),
-            sensitivity: 1,
-            damping: 0.65,
-            angularDamping: 0.65
-            
-        }
-        
-        window.SDK3DVerse.updateControllerSetting(settings);
-        // if(transform[0].getTransform().position[2] < 3)    
+    
+    
+    
+    
+    //if (viewports != []){
+        // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
+        //     console.log("aa")
         // }
-    }
+    //};
+    
+    // window.SDK3DVerse.updateControllerSetting(settings);
 }
 
 
