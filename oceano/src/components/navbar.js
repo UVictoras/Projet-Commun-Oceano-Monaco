@@ -96,7 +96,7 @@ function Navbar() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://media.discordapp.net/attachments/1166020127339327637/1181569102859489290/20231205_131257.jpg?ex=658188fa&is=656f13fa&hm=dc4e2074fd533cb0f90439fe28767a7a115a8ab40faa59a6e0a53f70aae79f65&=&format=webp&width=454&height=605"
+                        src="/img/avatar.png" 
                         alt=""
                       />
                     </Menu.Button>

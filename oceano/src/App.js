@@ -33,6 +33,12 @@ function App(props){
     //   }
     // }
 
+    var labelElements = document.getElementsByClassName('label');
+
+    // Check if the element is found before attempting to modify its style
+    for (var i = 0; i < labelElements.length; i++) {
+        labelElements[i].style.backgroundImage = "url('img/avatar.png')";
+    }
 
     setTime(time);
     setDeltaTime(deltaTime)
