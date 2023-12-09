@@ -1,6 +1,7 @@
 import Act from "./pages/act.js"
 import Impact from "./pages/impact.js";
 import Community from "./pages/community.js";
+import Test from "./pages/test.js"
 import Profile from "./pages/profil.js";
 import React, {useState} from 'react'
 
@@ -53,6 +54,9 @@ function App(props){
         </Route>
         <Route exact path="/community">
           <Community /> 
+        </Route>
+        <Route exact path="/test">
+          <Test /> 
         </Route>
         
         

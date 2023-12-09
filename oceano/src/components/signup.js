@@ -4,52 +4,31 @@ function Signup(props){
    
     return <div>
         
-        <h1 class=" grid place-content-center h-48 ...  text font-medium   text-gray-900 ">Créez votre compte</h1>
+        <h1 class=" grid place-content-center h-48 ...  text font-medium   text-gray-900  text-xl ">Crée ton profil</h1>
         <form class="max-w-sm mx-auto">
-            <div class="mb-5">
-                <label for="first name" class="block mb-2 text-sm font-medium text-gray-900 ">Votre Prénom</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre Prénom" name="first name" required></input>
+            <div class="mb-5">                
+                <Onedate/>
+                <label for="date" class="block mb-2 text-xs  ">Tu dois avoir au moins 13 ans pour utiliser Make it Blue. Pour en savoir plus, tu peux consulter notre<span class = "text-sky-500 "> Politique de confidentialité.</span></label>    
             </div>
-            <div class="mb-5">
-                <label for="last name" class="block mb-2 text-sm font-medium text-gray-900 ">Votre Nom</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre Nom" name="last name" required></input>
-
-    
+            <div class="mb-5">               
+                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Nom d'utilisateur" name="first name" required></input>
             </div>
-            <div class="mb-5">
-                <label for="pseudo" class="block mb-2 text-sm font-medium text-gray-900 ">Votre Pseudo</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre Pseudo" name="pseudo" required></input>
-
-    
+            <div class="mb-5">                
+                <input type="email" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="E-mail" name="email" required></input>   
             </div>
-            <div class="mb-5">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Votre email</label>
-                <input type="email" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre email" name="email" required></input>   
+            <div class="mb-5"> 
+                <input type="password" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" placeholder="Mot de passe" name="password" required></input>
             </div>
-            <div class="mb-5">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Votre mot de passe</label>
-                <input type="password" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" placeholder="Entrer votre mot de passe" name="password" required></input>
-            </div>
-            <div class="mb-5">
-                <label for="date" class="block mb-2 text-sm font-medium text-gray-900 ">Votre date de naissance</label>
-                <Onedate/>    
-            </div>
-            <div class="mb-5">
-                <label for="country" class="block mb-2 text-sm font-medium text-gray-900 ">Votre pays</label>
-                <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Entrer votre pays" name="country" required></input>   
-            </div>
-            <div class="mb-5">
-                <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type d'utilisateur</label>
-                <select id="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                    <option>Particulier</option>
-                    <option>Association</option>                   
-                </select>
-            </div>
-            <div class="mb-5">
-                <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre localisation :</label>
-            </div>
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">S'inscrire</button>
+            <div class="mb-5"> 
+                <button type="submit" class="text-white bg-sky-500 hover:bg-sky-600  border-b-4 border-sky-600 font-medium rounded-lg text-sm w-full p-2.5  text-center ">CREER MON COMPTE</button>
+            </div>   
         </form>
+        <div class="mb-5"> 
+            <p class ="text-center">ou</p>
+        </div> 
+        
     </div>
 }
 export default Signup;
+
+

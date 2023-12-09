@@ -13,7 +13,7 @@ setValue(newValue);
 } 
 
 return (
-<Datepicker 
+<Datepicker class=" bg-gray-300 " 
 asSingle={true} 
 value={value} 
 onChange={handleValueChange} 
