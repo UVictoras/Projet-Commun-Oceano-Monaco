@@ -25,6 +25,7 @@ export const Canvas = () => {
             removeOnUnmount: false,
         }
     );
+    
     const initApp = useCallback(async () => {
         await SDK3DVerse.joinOrStartSession({
             userToken: 'public_0rtYmFmJfCyVxB7-',
