@@ -13,9 +13,9 @@ function Act(props) {
 
         <div className = "container mx-auto bg-gray-200 rounded-xl " onClick={() => Camera()}>
         
-          <Above/>
+        <Above/>
 
-          <Canvas />
+        <Canvas />
         {/* {console.log(OpenModal())} */}
        
           <div className="container mx-auto bg-gray-200 rounded-xl " onClick={() => {

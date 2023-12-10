@@ -125,6 +125,7 @@ export async function Camera(props) {
             }
             });
 
+            showVisibleLabelsOnly();
 
     
     
@@ -222,9 +223,57 @@ export function OpenModal() {
     return isVisible
 }
 
-async function showVisibleLabelsOnly() {
+async function compareArrays(arr1 = ['', '', ''], arr2 = ['', '', '']) {
+    if (arr1[0] == arr2[0] && arr1[1] == arr2[1] && arr1[2] && arr2[2])
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+    
+}
+
+async function getValuesSign(arr = [0., 0., 0.]) {
+    let arrSigns = ['', '', '']
+    for (var i = 0; i < arr.length; i++)
+    {
+        if (arr[i] < 0)
+        {
+            arrSigns[i] = 'Minus'
+        }
+        else
+        {
+            arrSigns[i] = 'Plus'
+        }
+    }
+    return arrSigns
+}
+
+export async function showVisibleLabelsOnly() {
     const earth = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83')
 
-    let camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
+    let camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+
+    var labelElements = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
+
+    var cameraSigns = getValuesSign([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]])
+
+    var labelSigns = ['', '', '']
+    
+    for (var j = 0; j < labelElements.length; j++)
+    {
+        let labelSigns = getValuesSign([labelElements[j].labelElement.position[0], labelElements[j].labelElement.position[1], labelElements[j].labelElement.position[2]])
+        if (compareArrays(cameraSigns, labelSigns) == true)
+        {
+            labelElements[j].visible = true;
+        }
+        else 
+        {
+            labelElements[j].visible = false;
+        }
+    }
+    console.log(labelElements)
 
 }
