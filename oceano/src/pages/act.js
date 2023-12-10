@@ -15,14 +15,13 @@ function Act(props) {
         setLoad(isLoaded);
     };
 
-    return <div className="">
+    return <>
 
         {!load ? 
             (
                 <LoadingScreen/>
             ) : (
-                console.log("aa")
-
+                null
             )
         }
         <Navbar/>
@@ -44,6 +43,6 @@ function Act(props) {
                 <p className="text-sm text-gray-500">bizoabgazg</p>
             </div>
         </div>
-    </div>
+    </>
 }
 export default Act;

@@ -3,6 +3,11 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;900&display=swap');
 
+
+.body{
+  margin: 0 !important;
+  padding : 0 !important;
+}
 .test {
     padding-right: 110px;
 }
@@ -28,9 +33,7 @@
 }
 
 /********************* CSS pour le loading screen **********/
-.index{
-    z-index: 12 !important;
-}
+
 .lds-ellipsis {
     display: inline-block;
     position: relative;
