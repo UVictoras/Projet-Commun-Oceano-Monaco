@@ -39,7 +39,7 @@ function classNames(...classes) {
 
 function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-white-800 ">
+    <Disclosure as="nav" className="bg-neutral-50 ">
       {({ open }) => (
         <>
 
@@ -96,7 +96,7 @@ function Navbar() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://media.discordapp.net/attachments/1166020127339327637/1181569102859489290/20231205_131257.jpg?ex=658188fa&is=656f13fa&hm=dc4e2074fd533cb0f90439fe28767a7a115a8ab40faa59a6e0a53f70aae79f65&=&format=webp&width=454&height=605"
+                        src="/img/avatar.png" 
                         alt=""
                       />
                     </Menu.Button>
@@ -111,7 +111,7 @@ function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a

@@ -1,21 +1,23 @@
 import React, {useState} from "react"; 
 import Datepicker from "react-tailwindcss-datepicker"; 
 
-// const Onedate = () => { 
-function Onedate(props) {
-    const [value, setValue] = useState({ 
-        startDate: null, 
-        endDate: null 
-    }); 
+function Onedate(props) { 
+    console.log(props.value)
+    const [value, setValue] = useState(
+        {  
+            startDate: props.value ? props.value : null, 
+            endDate: null 
+        }
+    ); 
 
     const handleValueChange = (newValue) => {
-        console.log("newValue:", newValue); 
-        setValue(newValue);
+        setValue(newValue); 
         if (props.onChange) {
             props.onChange(newValue);
         }
     } 
 
-    return <Datepicker asSingle={true} value={value} onChange={handleValueChange} /> 
+    return <Datepicker asSingle={true} value={value} onChange={handleValueChange} />
+
 }; 
 export default Onedate;

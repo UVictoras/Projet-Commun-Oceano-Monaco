@@ -1,4 +1,5 @@
 import Navbar from "../components/navbar";
+import Onedate from "../components/pickonedate";
 import { useEffect, useState } from "react";
 import { getUserSession } from "../api/session";
 
@@ -21,7 +22,7 @@ function Profile(props) {
                         <div className="picture flex justify-self-end pr-10">
                             <img
                                 className="h-20 w-20 rounded-full justify-items-end"
-                                src="https://media.discordapp.net/attachments/1166020127339327637/1181569102859489290/20231205_131257.jpg?ex=658188fa&is=656f13fa&hm=dc4e2074fd533cb0f90439fe28767a7a115a8ab40faa59a6e0a53f70aae79f65&=&format=webp&width=454&height=605"
+                                src="../img/avatar.png" 
                                 alt=""
                             />
                         </div>
@@ -42,42 +43,27 @@ function Profile(props) {
                     <div className="grid grid-cols-3 ">
                         <div className="pt-8">
                             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 flex justify-content-center">Nom d'utilisateur :</label>
-                            <input type="text" id="first_name" class=" flex justify-content-center border border-gray-300 text-gray-900 text-sm rounded-full 
-                                                                        focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 
-                                                                        dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                    value={user.Pseudo} required></input>
+                            <input type="text" id="first_name" class=" flex justify-content-center border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value={user.Pseudo} required></input>
                         </div>
                         <div className=" pt-8">
                             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Date de naissance :</label>
-                            <input type="text" id="first_name" class=" border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 
-                                                                        focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 
-                                                                        dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                    value={user.Birthday} required></input>
+                            <Onedate value={user.birthday} readOnly={true}/>
                         </div>
                     </div>
                     <div className="grid grid-cols-3 ">
                         <div className="pt-8">
                             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 flex justify-content-center">Email :</label>
-                            <input type="text" id="first_name" class=" flex justify-content-center border border-gray-300 text-gray-900 text-sm rounded-full 
-                                                                        focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 
-                                                                        dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                    value={user.Email} required></input>
+                            <input type="text" id="first_name" class=" flex justify-content-center border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value={user.Email} required></input>
                         </div>
                     </div>
                     <div className="grid grid-cols-3 ">
                         <div className="pt-8">
                             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 flex justify-content-center">Mot de passe :</label>
-                            <input type="text" id="first_name" class=" flex justify-content-center border border-gray-300 text-gray-900 text-sm rounded-full 
-                                                                        focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 
-                                                                        dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                    placeholder="•••••••••" required></input>
+                            <input type="text" id="first_name" class=" flex justify-content-center border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required></input>
                         </div>
                         <div className=" pt-8">
                             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Pays :</label>
-                            <input type="text" id="first_name" class=" border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 
-                                                                        focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 
-                                                                        dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                                    value={user.Country} required></input>
+                            <input type="text" id="first_name" class=" border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value={user.Country} required></input>
                         </div>
                     </div>
                 </div>
