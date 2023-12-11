@@ -28,13 +28,13 @@ export async function Anim(props) {
 
 
 export async function Camera(props) {
-    console.log("0")
+    
     const canvas = document.getElementById('display-canvas')
-    console.log("1")
+    
     
         canvas.addEventListener('wheel', async(event) => {
             
-            console.log("2")
+           
             const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
             
         //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
@@ -46,108 +46,115 @@ export async function Camera(props) {
                 console.log(await camera[0].getTransform())
                 let speed = 0
                 
-                if (camera[0].getTransform().position[2] >= 1.5){
+                    if (camera[0].getTransform().position[2] >= 4){
 
-                    const settings = {
-                        speed: 10,
-                        sensitivity: 1,
-                        damping: 0.65,
-                        angularDamping: 0.65
-                        
-                    }
-                    console.log(settings["speed"])
-                    window.SDK3DVerse.updateControllerSetting(settings);
-                    speed = settings["speed"]
-            
-                }
-
-                else if(camera[0].getTransform().position[2] >= 1){
-
-                    const settings = {
-                        speed: 5,
-                        sensitivity: 1,
-                        damping: 0.65,
-                        angularDamping: 0.65
-                        
-                    }
-                    console.log(settings["speed"])
-                    window.SDK3DVerse.updateControllerSetting(settings);
-                    speed = settings["speed"]
-            
-                }
-
-                else if(camera[0].getTransform().position[2] >= 0.5){
-
-                    const settings = {
-                        speed: 1,
-                        sensitivity: 1,
-                        damping: 0.65,
-                        angularDamping: 0.65
-                        
-                    }
-                    console.log(settings["speed"])
-                    window.SDK3DVerse.updateControllerSetting(settings);
-                    speed = settings["speed"]
-                }
-
-                else{
-
-                    const settings = {
-                        speed: 0.5,
-                        sensitivity: 1,
-                        damping: 0.65,
-                        angularDamping: 0.65
-                        
-                    }
-                    console.log(settings["speed"])
-                    window.SDK3DVerse.updateControllerSetting(settings);
-                    speed = settings["speed"]
-            
-                }               
-                let molette = 0 
+                        const settings = {
+                            speed: 15,
+                            sensitivity: 1,
+                            damping: 0.65,
+                            angularDamping: 0.65
+                            
+                        }
+                        console.log(settings["speed"])
+                        window.SDK3DVerse.updateControllerSetting(settings);
+                        speed = settings["speed"]
                 
-                if(event.deltaY < 0)
-                {
-                    molette = - 0.1                  
-                }
+                    }
+                    else if (camera[0].getTransform().position[2] >= 3){
+    
+                        const settings = {
+                            speed: 10,
+                            sensitivity: 1,
+                            damping: 0.65,
+                            angularDamping: 0.65
+                            
+                        }
+                        console.log(settings["speed"])
+                        window.SDK3DVerse.updateControllerSetting(settings);
+                        speed = settings["speed"]
+                
+                    }
+    
+                    else if(camera[0].getTransform().position[2] >= 2){
+    
+                        const settings = {
+                            speed: 5,
+                            sensitivity: 1,
+                            damping: 0.65,
+                            angularDamping: 0.65
+                            
+                        }
+                        console.log(settings["speed"])
+                        window.SDK3DVerse.updateControllerSetting(settings);
+                        speed = settings["speed"]
+                
+                    }
+    
+                    else if(camera[0].getTransform().position[2] >= 1){
+    
+                        const settings = {
+                            speed: 1,
+                            sensitivity: 1,
+                            damping: 0.65,
+                            angularDamping: 0.65
+                            
+                        }
+                        console.log(settings["speed"])
+                        window.SDK3DVerse.updateControllerSetting(settings);
+                        speed = settings["speed"]
+                    }
+    
+                    else{
+    
+                        const settings = {
+                            speed: 0.5,
+                            sensitivity: 1,
+                            damping: 0.65,
+                            angularDamping: 0.65
+                            
+                        }
+                        console.log(settings["speed"])
+                        window.SDK3DVerse.updateControllerSetting(settings);
+                        speed = settings["speed"]
+                
+                    }               
+                    let molette = 0 
+                    
+                    if(event.deltaY < 0)
+                    {
+                        if (camera[0].getTransform().position[2] >= 1 || camera[0].getTransform().position[1] >= 1 || camera[0].getTransform().position[0] >= 1){
+                            molette = - 0.2 
+                        }
+                        else if (camera[0].getTransform().position[2] <= -1){
+                            molette = - 0.2 
+                        }
 
-                else if(event.deltaY > 0)
-                {
-                    molette =  0.1
-                }              
-                window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
-                    ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-                    , speed, 
-                    [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
-                    [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
-                    console.log(camera[0].getTransform().position[2])   
-                console.log(camera[0])
+                        else{
+                            molette = 0
+                        }
+                                         
+                    }
+    
+                    else if(event.deltaY > 0)
+                    {
+                        molette =  0.2
+                    }              
+                    window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
+                        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+                        , speed, 
+                        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+                        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+                        console.log(camera[0].getTransform().position[2])   
+                    console.log(camera[0])
+
+                
+                
             }
             });
     
     // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 
-    const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-    const globe = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
-    console.log("aa")
-    
-    if(transform.length != 0){
-        // console.log(globe[0].components.local_transform.position[1])
-        // console.log(await transform[0].getTransform())
-
-        // console.log(transform[0].getTransform().position[2])
-        const settings = {
-            speed: 1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0),
-            sensitivity: 1,
-            damping: 0.65,
-            angularDamping: 0.65
-            
-        }
-        
-        window.SDK3DVerse.updateControllerSetting(settings);
-        // if(transform[0].getTransform().position[2] < 3)    
-        // }
-    }
+   
 }
 
 
