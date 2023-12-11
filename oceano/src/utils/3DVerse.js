@@ -125,7 +125,7 @@ export async function Camera(props) {
             }
             });
 
-            showVisibleLabelsOnly();
+    showVisibleLabelsOnly();
 
     
     
@@ -251,6 +251,21 @@ async function getValuesSign(arr = [0., 0., 0.]) {
     return arrSigns
 }
 
+async function normalize(arr = [0., 0., 0.]) {
+    var normalizedArr = arr
+
+    var norm = Math.sqrt(arr[0] ** 2 + arr[1] ** 2 + arr[2] ** 2)
+    for (var k = 0; k < 3; k++)
+    {
+        normalizedArr[k] /=  norm
+    }
+    return normalizedArr
+}
+
+async function scalarProduct(arr1, arr2) {
+    return arr1[0] * arr2[0] + arr1[1] * arr2[1] + arr1[2] * arr2[2]
+}
+
 export async function showVisibleLabelsOnly() {
     const earth = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83')
 
@@ -258,14 +273,14 @@ export async function showVisibleLabelsOnly() {
 
     var labelElements = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
 
-    var cameraSigns = getValuesSign([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]])
+    var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]])
 
-    var labelSigns = ['', '', '']
+    var labelVector = [0., 0., 0.]
     
     for (var j = 0; j < labelElements.length; j++)
     {
-        let labelSigns = getValuesSign([labelElements[j].labelElement.position[0], labelElements[j].labelElement.position[1], labelElements[j].labelElement.position[2]])
-        if (compareArrays(cameraSigns, labelSigns) == true)
+        let labelVector = normalize([labelElements[j].labelElement.position[0], labelElements[j].labelElement.position[1], labelElements[j].labelElement.position[2]])
+        if (scalarProduct(cameraVector, labelVector) > 0)
         {
             labelElements[j].visible = true;
         }
@@ -274,6 +289,6 @@ export async function showVisibleLabelsOnly() {
             labelElements[j].visible = false;
         }
     }
-    console.log(labelElements)
+    console.log(labelElements[0])
 
 }
