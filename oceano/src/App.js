@@ -13,6 +13,8 @@ import { useFrameLoop } from "./utils/FrameLoop.js";
 import { Anim } from "./utils/3DVerse.js";
 import FirstPage from "./pages/firstPage.js";
 import LoadingScreen from "./pages/loadingScreen.js";
+import Signin from "./components/signin.js";
+import Signup from "./components/signup.js";
 
 
 
@@ -58,13 +60,19 @@ function App(props){
         <Route path ="/act">
           <Act/>
         </Route>
-        <Route exact path="/impact">
+        <Route path ="/signin">
+          <Signin/>
+        </Route>
+        <Route path ="/signup">
+          <Signup/>
+        </Route>
+        <Route path="/impact">
           <Impact /> 
         </Route>
-        <Route exact path="/pages/profil.js">
+        <Route path="/pages/profil.js">
           <Profile/>
         </Route>
-        <Route exact path="/community">
+        <Route path="/community">
           <Community /> 
         </Route>
         

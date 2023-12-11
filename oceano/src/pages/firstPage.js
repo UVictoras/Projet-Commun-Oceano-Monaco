@@ -11,7 +11,7 @@ export default function FirstPage() {
                 communautaire gratuite pour protéger les océans !
             </p>
             <div className="mt-8">
-                    <a href="act">
+                    <a href="signup">
                         <button class="w-2/3 text-[13px] bg-sky-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-sky-600 
                         hover:border-blue-500 rounded-lg  uppercaseText texet-12">
                             C'est Parti !
@@ -20,7 +20,7 @@ export default function FirstPage() {
                 
             </div>
             <div className=" pt-4">
-                <a href="loading"> 
+                <a href="signin">
                     <button class="w-2/3 text-[13px] hover:bg-gray-200 text-sky-500 font-bold py-2 px-4 border-b-4 border-blue-700 
                     hover:border-gray-300 rounded-lg border border-neutral-200 uppercaseText text-12">
                         J'ai déjà un compte

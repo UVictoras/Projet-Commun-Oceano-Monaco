@@ -1,5 +1,5 @@
 function Searchbar(props) {
-    return <div className="searchBar mt-5 relative w-screen flex items-center justify-center">
+    return <div className="searchBar mt-5 relative w-screen flex items-center justify-center z-10">
     <div className=" top-1/2 left-1/2 ">
         <form className="">
             <div class="relative">
