@@ -9,7 +9,7 @@ function Signup(props) {
           S'inscrire
         </button>
         <div>
-        <h1 className="text-center font-bold text-gray-900 text-xl mt-8 mb-6">Connexion</h1>
+        <h1 className="text-center font-bold text-gray-900 text-center mt-8 mb-6">Connexion</h1>
         <form className="max-w-sm mx-auto">
         <div className="mb-5">
           <input
@@ -44,12 +44,12 @@ function Signup(props) {
      {/* Boutons pour se connecter avec Google ou Facebook */}
      <div className="flex justify-center space-x-4">
           <button className="bg-white text-black border border-black px-4 py-2 rounded-lg flex items-center">
-            <img src="https://via.placeholder.com/20" alt="Google Logo" className="mr-2" />
-            Se connecter avec Google
+            <img src="/img/facebook_logo.svg" alt="Facebook Logo" className="mr-2" />
+            Facebook
           </button>
           <button className="bg-white text-black border border-black px-4 py-2 rounded-lg flex items-center">
-            <img src="https://via.placeholder.com/20" alt="Facebook Logo" className="mr-2" />
-            Se connecter avec Facebook
+            <img src="/img/Google_logo.svg" alt="Google Logo" className="mr-2" />
+            Google
           </button>
         </div>
     </div>
