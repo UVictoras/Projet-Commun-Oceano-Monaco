@@ -1,4 +1,3 @@
-
 const Modal = ({isVisible, onClose}) => {
 
     if (!isVisible) return null;
