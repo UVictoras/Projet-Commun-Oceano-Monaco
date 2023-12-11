@@ -13,8 +13,8 @@ import { useFrameLoop } from "./utils/FrameLoop.js";
 import { Anim } from "./utils/3DVerse.js";
 import FirstPage from "./pages/firstPage.js";
 import LoadingScreen from "./pages/loadingScreen.js";
-import Signin from "./components/signin.js";
-import Signup from "./components/signup.js";
+import Signin from "./pages/signin.js";
+import Signup from "./pages/signup.js";
 
 
 

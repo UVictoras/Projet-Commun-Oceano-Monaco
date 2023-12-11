@@ -1,4 +1,4 @@
-import Onedate from "./pickonedate";
+import Onedate from "../components/pickonedate";
 
 function Signup(props){
    
@@ -14,7 +14,7 @@ function Signup(props){
        
         </div>
         
-        <h1 class=" grid place-content-center h-48 text font-medium   text-gray-900  text-xl ">Créer ton profil</h1>
+        <h1 class=" grid place-content-center h-48 text font-medium blackNunito titleFont text-xl ">Créer ton profil</h1>
         <form class="max-w-sm mx-auto">
             <div class="mb-5">                
                 <Onedate/>

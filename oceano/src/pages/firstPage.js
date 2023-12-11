@@ -5,15 +5,15 @@ export default function FirstPage() {
             <img src="img/avatar.png" alt="Make a blue logo" className="w-16 h-16 lg:w-64 lg:h-64 md:w-32 md:h-32"></img>
         </div>
         <div className="w-full md:w-1/2 md:flex-col justify-center ml-4 blackNunito">
-            <p className="font-bold  size28 w-2/3 flex text-center text-gray-600">
+            <p className="font-bold  size28 w-2/3 text-center titleFont">
 
-                La plateforme<br />
-                communautaire gratuite pour protéger les océans !
+                Notre quête pour un monde<br />
+                plus bleu. Ensemble.
             </p>
             <div className="mt-8">
                     <a href="signup">
-                        <button class="w-2/3 text-[13px] bg-sky-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-sky-600 
-                        hover:border-blue-500 rounded-lg  uppercaseText texet-12">
+                        <button class="w-2/3 text-[13px] blueButton text-white font-bold py-2 px-4
+                        rounded-xl  uppercaseText texet-12 blackNunito">
                             C'est Parti !
                         </button>
                     </a>
@@ -21,8 +21,8 @@ export default function FirstPage() {
             </div>
             <div className=" pt-4">
                 <a href="signin">
-                    <button class="w-2/3 text-[13px] hover:bg-gray-200 text-sky-500 font-bold py-2 px-4 border-b-4 border-blue-700 
-                    hover:border-gray-300 rounded-lg border border-neutral-200 uppercaseText text-12">
+                    <button class="w-2/3 text-[13px] h-[50px] blueTextColor whiteButton font-bold py-2 px-4 border-b-4 
+                     rounded-xl border border-neutral-200 uppercaseText text-12 blackNunito">
                         J'ai déjà un compte
                     </button>
                 </a>           
