@@ -215,8 +215,15 @@ async function newElement(x,y,z) {
 
     entityTemplate.instantiateEntity()
 
-}
+    var newParagraph = document.createElement('p');
+    newParagraph.textContent = '342';
+    newParagraph.classList.add('label-text');
 
+    var referenceElement = document.getElementById('label');
+
+    referenceElement.parentNode.insertBefore(newParagraph, referenceElement);
+
+}
 
 export function OpenModal() {
 
@@ -252,43 +259,66 @@ async function getValuesSign(arr = [0., 0., 0.]) {
 }
 
 async function normalize(arr = [0., 0., 0.]) {
-    var normalizedArr = arr
+    var normalizedArr = arr.slice();
 
     var norm = Math.sqrt(arr[0] ** 2 + arr[1] ** 2 + arr[2] ** 2)
     for (var k = 0; k < 3; k++)
     {
-        normalizedArr[k] /=  norm
+        normalizedArr[k] /=  norm;
     }
-    return normalizedArr
+    return normalizedArr;
 }
 
 async function scalarProduct(arr1, arr2) {
-    return arr1[0] * arr2[0] + arr1[1] * arr2[1] + arr1[2] * arr2[2]
+    const scalar = await Promise.all([arr1, arr2]).then(([v1, v2]) => {
+        return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
+    });
+
+    return parseFloat(scalar);
 }
-
 export async function showVisibleLabelsOnly() {
-    const earth = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83')
 
-    let camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    let camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
 
-    var labelElements = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
+    var labelDisplay = window.SDK3DVerse.extensions.LabelDisplay;
 
-    var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]])
+    if (!labelDisplay || !labelDisplay.labelEntities) {
+        console.error("Label entities not available.");
+        return;
+    }
 
-    var labelVector = [0., 0., 0.]
-    
-    for (var j = 0; j < labelElements.length; j++)
-    {
-        let labelVector = normalize([labelElements[j].labelElement.position[0], labelElements[j].labelElement.position[1], labelElements[j].labelElement.position[2]])
-        if (scalarProduct(cameraVector, labelVector) > 0)
-        {
-            labelElements[j].visible = true;
+    const componentFilter = { mandatoryComponents : ['label'], forbiddenComponents : [] };
+    const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
+
+    var labelElements = await labelDisplay.labelEntities;
+
+    var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]]);
+
+    var labelVector = [0., 0., 0.];
+
+    var scalar;
+
+    for (var j = 0; j < labelElements.length; j++) {
+        if (!labelEntities[j] || !labelEntities[j].getComponents().local_transform.position) {
+            console.error("Label element or its position is undefined.");
+            continue;  // Skip to the next iteration if the label element or its position is undefined
         }
-        else 
-        {
-            labelElements[j].visible = false;
+
+        let labelVector = await normalize([
+            labelEntities[j].getComponents().local_transform.position[0],
+            labelEntities[j].getComponents().local_transform.position[1],
+            labelEntities[j].getComponents().local_transform.position[2]
+        ]);
+        scalar = await scalarProduct(cameraVector, labelVector);
+
+        console.log("Scalar:", scalar);
+
+        if (!isNaN(scalar) && scalar > 0.) {
+            labelEntities[j].setVisibility(true);
+        } else if (!isNaN(scalar) && scalar < 0.) {
+            labelEntities[j].setVisibility(false);
         }
     }
-    console.log(labelElements[0])
 
+    console.log(labelEntities);
 }

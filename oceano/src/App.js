@@ -35,8 +35,25 @@ function App(props){
     var labelElements = document.getElementsByClassName('label');
 
     // Check if the element is found before attempting to modify its style
-    for (var i = 0; i < labelElements.length; i++) {
+
+    if (labelElements[0])
+    {
+      for (var i = 0; i < labelElements.length; i++) 
+      {
         labelElements[i].style.backgroundImage = "url('img/avatar.png')";
+        labelElements[i].addEventListener('mouseenter', function() {
+          var newParagraph = document.createElement('p');
+          newParagraph.textContent = '342';
+          newParagraph.classList.add('label-text');
+
+          var referenceElement = document.getElementById('label');
+
+          referenceElement.parentNode.insertBefore(newParagraph, referenceElement);
+        })
+        labelElements[i].addEventListener('mouseleave'), function() {
+          return;
+        }
+      }
     }
 
     setTime(time);

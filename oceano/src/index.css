@@ -35,6 +35,7 @@
 .label-container .label:focus {
     color: rgba(190, 25, 25, 0.9);
     background-color: var(--color-accent);
+    transform: scale(1.33) rotateX(20deg) rotateZ(-45deg);
 }
 
 .label-container .label:hover+.label-title:not(:empty),
@@ -67,6 +68,7 @@
     -webkit-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
     -moz-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
     box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
+    transition: opacity 0.25s, transform 0.5s ease;
 }
 
 .label-title {
@@ -93,4 +95,13 @@
 
 .label-title:hover {
     z-index: 20 !important;
+}
+
+.actionModal {
+    display: none;
+    background-color: lightgreen;
+}
+
+.label:active + .actionModal {
+    display: block;
 }
