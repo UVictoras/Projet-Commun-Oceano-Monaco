@@ -47,7 +47,7 @@ function Profile(props) {
                         </div>
                         <div className=" pt-8">
                             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Date de naissance :</label>
-                            <Onedate value={user.birthday} readOnly={true}/>
+                            <Onedate value={user.Birthday}/>
                         </div>
                     </div>
                     <div className="grid grid-cols-3 ">
