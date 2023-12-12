@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap');
 
 
 .body {
@@ -9,60 +9,8 @@
   padding: 0 !important;
 }
 
-.test {
-  padding-right: 110px;
-}
-
-/********************* CSS Navbar **************************/
-.fontTarget {
-  color: #FA4A4E
-}
-
-.fontBell {
-  color: #FDC62E
-}
-
-.levelColor {
-  color: #B4B4B4
-}
-
-.profileImgNav {
-  width: 3.1rem;
-  height: 3.1rem;
-  border-radius: 50%;
-  background:
-    
-    conic-gradient(#D81F26 0% 20%,
-      #D9D9D9 20% 40%,
-      transparent 40% 60%,
-      #D81F26 60% 100%);
-}
-
-.whiteCircle{
-  width: 2.7rem;
-  height: 2.7rem;
-  border-radius: 50%;
-  background-color: white;
-}
-/********************* CSS Act *****************************/
-.bellButton{
-  filter: drop-shadow(0px 4px 0px #E5E5E5);
-}
-.bellButton:active{
-  transform: translateY(4px);
-}
-/********************* CSS Signin  *************************/
-.line:before, .line:after{
-  display: block;
-  position: absolute;
-  content: "" !important;
-  border-top-width: 1px !important;
-  top: 50%;
-  width: 46% !important;
-  border-color: #E5E5E5 !important;
-}
-.line:after{
-  left: 54%;
+#display-canvas {
+  height: calc(100vh - 4rem);
 }
 
 /********************* CSS Général *************************/
@@ -74,6 +22,11 @@
 .extraBoldNunito {
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
+}
+
+.extraBold800{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
 }
 
 .mediumNunito {
@@ -115,6 +68,113 @@
 .blueTextColor {
   color: #1CB0F6;
 }
+.fontColor3C{
+  color: #3C3C3C;
+}
+
+/********************* CSS Navbar **************************/
+.fontTarget {
+  color: #FA4A4E
+}
+
+.fontBell {
+  color: #FDC62E
+}
+
+.levelColor {
+  color: #B4B4B4
+}
+
+.profileImgNav {
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+  background:
+
+    conic-gradient(#D81F26 0% 20%,
+      #D9D9D9 20% 40%,
+      transparent 40% 60%,
+      #D81F26 60% 100%);
+}
+
+.whiteCircle {
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  background-color: white;
+}
+
+/********************* CSS Act *****************************/
+.bellButton {
+  filter: drop-shadow(0px 2px 0px #E5E5E5);
+}
+
+.bellButton:active {
+  transform: translateY(4px);
+}
+.bellButton:active > .changeBell{
+  content: url(../public/img/icon/bell/bell2.png);
+}
+.searchBarGlassColor {
+  color: #B3B3B3;
+}
+
+
+.likeButton {
+  filter: drop-shadow(0px 2px 0px #E5E5E5);
+}
+
+.likeButton:active {
+  transform: translateY(4px);
+  content: url(../public/img/icon/hearth/hearth.svg);
+}
+
+.locateButton {
+  filter: drop-shadow(0px 2px 0px #E5E5E5);
+}
+
+.locateButton:active {
+  transform: translateY(4px);
+}
+
+.filterButton {
+  filter: drop-shadow(0px 2px 0px #E5E5E5);
+}
+
+.filterButton:active {
+  transform: translateY(4px);
+}
+
+.filterButton:active>.rotateFilter {
+  transform: rotate(180deg);
+}
+
+.centerIcon {
+  transform: translate(-50%, 0) !important;
+}
+
+.progressBarObjectif{
+  background-color: #F6CA45;
+}
+.textColorProgressBarObjectif{
+  color: #C58430;;
+}
+/********************* CSS Signin  *************************/
+.line:before,
+.line:after {
+  display: block;
+  position: absolute;
+  content: "" !important;
+  border-top-width: 1px !important;
+  top: 50%;
+  width: 46% !important;
+  border-color: #E5E5E5 !important;
+}
+
+.line:after {
+  left: 54%;
+}
+
 
 /********************* CSS pour le loading screen **********/
 
@@ -187,15 +247,17 @@
 
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {
-  top: 64px !important;
-  height: 100vh !important;
-  width: 100vw !important;
+  top: 4rem !important;
+  height: calc(100vh - 4rem) !important;
+  width: 100% !important;
   vertical-align: middle !important;
 
 }
 
-.SDK3DVerse-viewport {
+.SDK3DVerse-viewport,
+.SDK3DVerse-viewport>div {
   border: 0px !important;
+  height: 100% !important;
 }
 
 .label-container>.active,
@@ -239,6 +301,7 @@
   line-height: 1rem;
   color: rgba(9, 11, 12, .6);
   position: absolute;
+
   left: 50%;
   top: 50%;
   margin: -2.2em 0 0 -1.3em;

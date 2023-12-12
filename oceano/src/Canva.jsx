@@ -57,9 +57,9 @@ export const Canvas = (props) => {
         <canvas
             id='display-canvas'
             style={{
-                height: '100vh',
-                width: '100vw',
-                verticalAlign: 'middle',
+                
+                width: '100%',
+                
             
             }}
             

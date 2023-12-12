@@ -1,20 +1,18 @@
 function Searchbar(props) {
-    return <div className="searchBar  relative w-screen flex items-center justify-center z-10  h-[73px]">
-    <div className=" top-1/2 left-1/2 ">
-        <form className="">
-            <div class="relative">
-                <input type="search" id="default-search" 
-                class="p-4 test pr-16  text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 h-[73px] w-[605px] " 
-                placeholder="Rechercher une action..." />
-                        <button type="submit" class="levelColor absolute end-2.5 bottom-2.5 font-medium rounded-lg text-sm px-4 py-2 flex items-center">
-                            <svg class="w-4 h-4 text-white-500 dark:text-grey-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                            </svg>
-                        </button>
-                </div>
-            </form>
-        </div>
+    return <div className="z-10 flex justify-center ">
 
+        <form className="">
+            <div class="">
+                <div class=" text-gray-600 z-20 flex items-center">
+                    <span class="absolute pl-2">
+                        <svg class="w-6 h-6 searchBarGlassColor ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </span>
+                    <input type="text" class=" pl-12 pr-4 p-4 text-sm border-2 border-gray-300 rounded-xl bg-gray-50 lg:w-[505px] w-[20px] extraBoldNunito " placeholder="Rechercher une action..." />
+                </div>
+            </div>
+        </form>
     </div>
 }
 export default Searchbar
