@@ -21,7 +21,12 @@ export async function Anim(props) {
     // }
 }
 
+// --------------------- Partie Modal ---------------------
 
+export function Open(){
+    
+    console.log("0")
+}
 
 // --------------------- Partie Camera ---------------------
 

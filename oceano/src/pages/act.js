@@ -23,7 +23,7 @@ function Act(props) {
           }}>
 
               <div className="ml-3">
-                  <p className="text-sm font-medium text-gray-900">aaa</p>
+                  <p className="text-sm font-medium text-gray-900">a</p>
                   <p className="text-sm text-gray-500">bizoabgazg</p>
               </div>
 
