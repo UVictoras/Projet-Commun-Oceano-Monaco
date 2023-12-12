@@ -44,6 +44,13 @@
   border-radius: 50%;
   background-color: white;
 }
+/********************* CSS Act *****************************/
+.bellButton{
+  filter: drop-shadow(0px 4px 0px #E5E5E5);
+}
+.bellButton:active{
+  transform: translateY(4px);
+}
 /********************* CSS Signin  *************************/
 .line:before, .line:after{
   display: block;
