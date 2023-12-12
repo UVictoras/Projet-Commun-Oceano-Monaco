@@ -44,7 +44,7 @@ export function speed(positionx, positiony, positionz ){
 
         const settings = {
             speed: 15,
-            sensitivity: 0.5,
+            sensitivity: 1.5,
             damping: 0.65,
             angularDamping: 0.65
             
@@ -59,7 +59,7 @@ export function speed(positionx, positiony, positionz ){
 
         const settings = {
             speed: 10,
-            sensitivity: 0.5,
+            sensitivity: 1.5,
             damping: 0.65,
             angularDamping: 0.65
             
@@ -74,7 +74,7 @@ export function speed(positionx, positiony, positionz ){
 
         const settings = {
             speed: 5,
-            sensitivity: 0.5,
+            sensitivity: 1,
             damping: 0.65,
             angularDamping: 0.65
             
@@ -89,7 +89,7 @@ export function speed(positionx, positiony, positionz ){
 
         const settings = {
             speed: 1,
-            sensitivity: 0.25,
+            sensitivity: 0.5,
             damping: 0.65,
             angularDamping: 0.65
             
