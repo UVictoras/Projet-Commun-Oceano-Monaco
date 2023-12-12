@@ -1,7 +1,6 @@
 import Act from "./pages/act.js"
 import Impact from "./pages/impact.js";
 import Community from "./pages/community.js";
-import Test from "./pages/test.js"
 import Profile from "./pages/profil.js";
 import React, {useState} from 'react'
 
@@ -12,7 +11,10 @@ import {
 } from "react-router-dom"
 import { useFrameLoop } from "./utils/FrameLoop.js";
 import { Anim } from "./utils/3DVerse.js";
-import Signup from "./components/signup.js";
+import FirstPage from "./pages/firstPage.js";
+import LoadingScreen from "./pages/loadingScreen.js";
+import Signin from "./pages/signin.js";
+import Signup from "./pages/signup.js";
 
 
 
@@ -49,24 +51,29 @@ function App(props){
 
   return <Router>
       <Switch>
-
         <Route exact path="/">
-          <Act /> 
+          <FirstPage /> 
         </Route>
-        <Route exact path="/impact">
-          <Impact /> 
+        {/* <Route exact path="/loading">
+          <LoadingScreen /> 
+        </Route> */}
+        <Route path ="/act">
+          <Act/>
         </Route>
-        <Route exact path="/pages/profil.js">
-          <Profile/>
-        </Route>
-        <Route exact path="/community">
-          <Community /> 
-        </Route>
-        <Route exact path="/test">
-          <Test /> 
+        <Route path ="/signin">
+          <Signin/>
         </Route>
         <Route path ="/signup">
           <Signup/>
+        </Route>
+        <Route path="/impact">
+          <Impact /> 
+        </Route>
+        <Route path="/pages/profil.js">
+          <Profile/>
+        </Route>
+        <Route path="/community">
+          <Community /> 
         </Route>
         
         
