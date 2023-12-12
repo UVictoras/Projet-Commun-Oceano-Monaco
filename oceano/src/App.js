@@ -26,15 +26,6 @@ function App(props){
 
   useFrameLoop((time, deltaTime)=>{
 
-    // if(Math.floor(time/1000)%10){
-    //   if(index){
-    //     Anim(index)
-    //     index +=1
-    //   }else{
-    //     Anim(index)
-    //     index -=1
-    //   }
-    // }
 
     var labelElements = document.getElementsByClassName('label');
 
@@ -69,7 +60,7 @@ function App(props){
         <Route path="/impact">
           <Impact /> 
         </Route>
-        <Route path="/pages/profil.js">
+        <Route path="/profil">
           <Profile/>
         </Route>
         <Route path="/community">
