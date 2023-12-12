@@ -20,7 +20,7 @@ function Signup(props){
                 <Onedate/>
             </div>
             <div class="mb-5">                
-                <label for="date" class="block mb-2 text-xs  ">Tu dois avoir au moins 13 ans pour utiliser Make it Blue. Pour en savoir plus, tu peux consulter notre<span class = "text-sky-500 "> Politique de confidentialité.</span></label>    
+                <label for="date" class="block mb-2 text-xs mediumNunito  ">Tu dois avoir au moins 13 ans pour utiliser Make it Blue. Pour en savoir plus, tu peux consulter notre<a href="#" className="font-bold text-sky-400 hover:underline"> Politique de confidentialité.</a></label>    
             </div>
             <div class="mb-5">               
                 <input type="text" class ="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 " placeholder="Nom d'utilisateur" name="first name" required></input>
@@ -57,7 +57,7 @@ function Signup(props){
                 
                 
             </div>
-            <p  class="block mb-2 text-xs  ">En te connectant à Make it Blue, tu acceptes nos Conditions d’utilisation et notre Politique de confidentialité.</p>    
+            <p  class="block mb-2 text-xs regularNunito ">En te connectant à Make it Blue, tu acceptes nos <a href="#" className=" extraBoldNunito hover:underline">Conditions d’utilisation</a> et notre <a href="#" className=" extraBoldNunito hover:underline">Politique de confidentialité</a>.</p>    
             
         </div> 
         

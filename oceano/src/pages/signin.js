@@ -49,7 +49,7 @@ function Signin(props) {
                 
                 
             </div>
-            <p  class="block mb-2 text-xs  ">En te connectant à Make it Blue, tu acceptes nos Conditions d’utilisation et notre Politique de confidentialité.</p>    
+            <p  class="block mb-2 text-xs regularNunito ">En te connectant à Make it Blue, tu acceptes nos <a href="#" className="extraBoldNunito hover:underline">Conditions d’utilisation</a> et notre <a href="#" className=" extraBoldNunito hover:underline">Politique de confidentialité</a>.</p>    
             
         </div>
         </div>
