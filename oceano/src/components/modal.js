@@ -1,7 +1,7 @@
 const Modal = ({isVisible, onClose}) => {
 
     if (!isVisible) return null;
-
+    
     return (
             <div className="modal">
                 <div class="relative p-4 w-full max-w-2xl max-h-full">

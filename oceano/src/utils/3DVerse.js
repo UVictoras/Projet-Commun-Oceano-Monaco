@@ -1,7 +1,9 @@
 import * as THREE from 'three';
+import Modal from'../components/modal.js'
+import Act from '../pages/test.js'
 //--------------------- Game Loop ---------------------
 
-
+let isVisible = false
 export async function Anim(props) {
 
     // const meshUUID = ['c77be900-43c3-4598-a6db-d67dd9a7585d', '6e8b13bd-cf97-4d39-b6f1-250cf134da54']
@@ -24,8 +26,18 @@ export async function Anim(props) {
 // --------------------- Partie Modal ---------------------
 
 export function Open(){
+    let label = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
+    console.log(window.SDK3DVerse.extensions.LabelDisplay.labelEntities)
+    window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked = function(label, viewport){
+        isVisible = true
+        console.log("5")
     
-    console.log("0")
+    }
+    const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    label.forEach(function(element){
+        window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked(element,camera[0])
+    })
+    
 }
 
 // --------------------- Partie Camera ---------------------
@@ -221,7 +233,7 @@ export function DisabledInput(){
 
 
 
-let isVisible = false
+
 export async function Click(props) {
 
     const twoDPos = [0, 0]

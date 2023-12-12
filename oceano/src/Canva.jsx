@@ -46,7 +46,7 @@ export const Canvas = () => {
             Camera();
             Anim();
             Click();
-            Open();
+            
             
             
         }

@@ -6,8 +6,8 @@ function Above(props){
 
     return <div className="Act absolute">
         <Searchbar />
-        {/* <Modal isVisible={() =>Click()} />
-         */}
+        <Modal isVisible={() =>OpenModal()} />
+         
     </div>
 }
 export default Above
