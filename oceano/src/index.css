@@ -58,10 +58,16 @@
 
 .blueButton:active {
   /* box-shadow: 0 5px #666; */
+  filter: drop-shadow(0px 0px 0px #1899D6);
   transform: translateY(4px);
 }
 
+.whiteButton{
+  
+  filter: drop-shadow(0px 4px 0px #e5e5e5);
+}
 .whiteButton:active {
+  filter: drop-shadow(0px 0px 0px #e5e5e5);
   transform: translateY(4px);
 }
 
@@ -72,6 +78,15 @@
   color: #3C3C3C;
 }
 
+.facebookColor{
+  color: #3C5A99;
+}
+.googleColor{
+  color:#4285F4;
+}
+input[type=text] ,input[type=email] ,input[type= password]{
+  background-color:#E5E5E5;
+}
 /********************* CSS Navbar **************************/
 .fontTarget {
   color: #FA4A4E
@@ -106,10 +121,13 @@
 
 /********************* CSS Act *****************************/
 .bellButton {
-  filter: drop-shadow(0px 2px 0px #E5E5E5);
+  border-color: #E5E5E5 !important;
+  border : solid;
+  border-width: 3px 3px 6px 3px;
 }
 
 .bellButton:active {
+  border: solid;
   transform: translateY(4px);
 }
 .bellButton:active > .changeBell{
@@ -121,27 +139,36 @@
 
 
 .likeButton {
-  filter: drop-shadow(0px 2px 0px #E5E5E5);
+  border-color: #E5E5E5 !important;
+  border : solid;
+  border-width: 3px 3px 6px 3px;
 }
 
 .likeButton:active {
+  border: solid;
   transform: translateY(4px);
   content: url(../public/img/icon/hearth/hearth.svg);
 }
 
 .locateButton {
-  filter: drop-shadow(0px 2px 0px #E5E5E5);
+  border-color: #E5E5E5 !important;
+  border : solid;
+  border-width: 3px 3px 6px 3px;
 }
 
 .locateButton:active {
+  border: solid;
   transform: translateY(4px);
 }
 
 .filterButton {
-  filter: drop-shadow(0px 2px 0px #E5E5E5);
+  border-color: #E5E5E5 !important;
+  border : solid;
+  border-width: 3px 3px 6px 3px;
 }
 
 .filterButton:active {
+  border: solid;
   transform: translateY(4px);
 }
 
@@ -158,6 +185,59 @@
 }
 .textColorProgressBarObjectif{
   color: #C58430;;
+}
+/********************* CSS pour les modal *****************/
+
+.modalOverlay {
+  /* Styles pour l'arrière-plan semi-transparent */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalRectangular {
+  /* Styles pour le pop-up rectangulaire */
+  background: #fff; /* Fond blanc */
+  border: 2px solid #E5E5E5; /* Bordure noire */
+  padding: 20px; /* Espace intérieur */
+  max-width: 400px; /* Largeur maximale */
+  width: 100%; /* Largeur pleine */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ombre légère */
+}
+
+.modalSize {
+  width: 518px;
+  height: 468px;
+  flex-shrink: 0;
+  margin-left: 20px; 
+  margin-top: 20px; 
+}
+
+.modalQuit {
+  width: 18.903px;
+  height: 18.903px;
+  flex-shrink: 0;
+}
+
+
+.loune:before, .loune:after {
+  display: block;
+  position: absolute;
+  content: "" !important;
+  border-top-width: 1px !important;
+  top: 50%;
+  width: 35% !important;
+  border-color: #E5E5E5 !important;
+}
+
+.loune:after {
+  left: 65%;
 }
 /********************* CSS Signin  *************************/
 .line:before,

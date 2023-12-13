@@ -39,13 +39,6 @@ export const Canvas = (props) => {
             removeOnUnmount: false,
         }
     );
-    const matrix = useScript(
-        `https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/3.4.1/gl-matrix-min.js`,
-
-        {
-            removeOnUnmount: false,
-        }
-    )
 
     const initApp = useCallback(async () => {
 
@@ -78,15 +71,15 @@ export const Canvas = (props) => {
 
         }
 
-    }, [status, label, dom,splineDisplay, three,matrix]);
+    }, [status, label, dom,splineDisplay, three]);
 
+    
     return <>
         <canvas
             id='display-canvas'
             style={{
 
                 width: '100%',
-
 
             }}
 

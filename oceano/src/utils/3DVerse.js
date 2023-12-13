@@ -1,4 +1,4 @@
-import TravelAnimation from "./travelAnimation";
+
 
 
 export async function Anim(props) {
@@ -113,7 +113,6 @@ export async function Click(props) {
     }, false);
 }
 
-
 //--------------------- Création d'élément ---------------------
 
 async function newElement(x,y,z) {
@@ -122,8 +121,9 @@ async function newElement(x,y,z) {
 
     const entityTemplate = new window.SDK3DVerse.EntityTemplate();
 
-    // window.SDK3DVerse.extensions.LabelDisplay.labelIndex = 200 a modifier par la variable qu on recuperera
+    //window.SDK3DVerse.extensions.LabelDisplay.labelIndex = 200 a modifier par la variable qu on recuperera
     entityTemplate.attachComponent('label')
+
 
     entityTemplate.entityTemplate.local_transform.position[0] = x
     entityTemplate.entityTemplate.local_transform.position[1] = y
@@ -131,15 +131,8 @@ async function newElement(x,y,z) {
 
     entityTemplate.instantiateEntity()
 
-
 }
 
-// export async function AnimationShip(){
-//     const boat = window.SDK3DVerse.engineAPI.findEntitiesByEUID('3ec1eb9e-d2f8-43da-9099-6d7845218656')
-//     await TravelAnimation.init();
-//     console.log('spline test debug ', TravelAnimation.splines[0]);
-//     window.TravelAnimation.gotoSplineAndTravel(boat[0], TravelAnimation.splines[0], 100);
-// }
 
 export function OpenModal() {
 

@@ -41,7 +41,7 @@ function classNames(...classes) {
 function Navbar() {
   return (
     <Disclosure as="nav" className="bg-neutral-50">
-      <div className="mx-auto px-2 sm:px-6  ">
+      <div className="mr-9">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
           </div>
@@ -98,15 +98,15 @@ function Navbar() {
                     <div className='profileImgNav mr-4 flex items-center justify-center'>
                       <div className='whiteCircle flex items-center justify-center'>
                         <img
-                          className="h-8 w-8 rounded-full absolute positionImage "
+                          className="h-10 w-10 rounded-full absolute positionImage "
                           src="/img/avatar.png"
                           alt="avatar make it blue"
                         />
                       </div></div>
 
                     <div className='my-auto'>
-                      <p className=' blackNunito text-[16px]'>Matéo C.</p>
-                      <p className=' semiBoldNunito flex flex-1 levelColor'>Niveau 4</p>
+                      <p className=' blackNunito text-[18px] text-left'>Matéo C.</p>
+                      <p className=' semiBoldNunito text-[14px] flex flex-1 levelColor'>Niveau 4</p>
                     </div>
 
                   </Menu.Button>
