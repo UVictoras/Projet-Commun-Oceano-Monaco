@@ -1,3 +1,7 @@
+import * as THREE from 'three';
+import Modal from'../components/modal.js'
+
+import { useState } from 'react';
 
 //--------------------- Game Loop ---------------------
 
@@ -21,123 +25,208 @@ export async function Anim(props) {
     // }
 }
 
+// --------------------- Partie Modal ---------------------
 
+
+export function Open(){
+    
+    
+    let label = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
+    console.log(window.SDK3DVerse.extensions.LabelDisplay.labelEntities)
+    window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked = function(label, viewport){
+        console.log("5")
+        
+        
+        
+    
+    }
+    const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+
+    label.forEach(function(element){
+        
+        window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked(element,camera[0])
+        
+    })
+    
+    
+}
 
 // --------------------- Partie Camera ---------------------
+
+export function speed(positionx, positiony, positionz ){
+    let positionabsolutex = positionx
+    let positionabsolutey = positiony
+    let positionabsolutez = positionz
+    let speedcamera = 0
+    if(positionx < 0){
+        positionabsolutex = -positionx
+    }
+    if(positiony < 0){
+        positionabsolutey = -positiony
+    }
+    if(positionz < 0){
+        positionabsolutez = -positionz
+    }
+    let positionmax = Math.max(positionabsolutex, positionabsolutey, positionabsolutez);
+    if (positionmax >= 4){
+
+        const settings = {
+            speed: 15,
+            sensitivity: 1.5,
+            damping: 0.65,
+            angularDamping: 0.65
+            
+        }
+        console.log(settings["speed"])
+        window.SDK3DVerse.updateControllerSetting(settings);
+        return speedcamera = settings["speed"]
+        
+
+    }
+    else if (positionmax >= 3 ){
+
+        const settings = {
+            speed: 10,
+            sensitivity: 1.5,
+            damping: 0.65,
+            angularDamping: 0.65
+            
+        }
+        console.log(settings["speed"])
+        window.SDK3DVerse.updateControllerSetting(settings);
+        return speedcamera = settings["speed"]
+
+    }
+
+    else if(positionmax >= 2 ){
+
+        const settings = {
+            speed: 5,
+            sensitivity: 1,
+            damping: 0.65,
+            angularDamping: 0.65
+            
+        }
+        console.log(settings["speed"])
+        window.SDK3DVerse.updateControllerSetting(settings);
+        return speedcamera = settings["speed"]
+
+    }
+
+    else if(positionmax >= 1 ){
+
+        const settings = {
+            speed: 1,
+            sensitivity: 0.5,
+            damping: 0.65,
+            angularDamping: 0.65
+            
+        }
+        console.log(settings["speed"])
+        window.SDK3DVerse.updateControllerSetting(settings);
+        return speedcamera = settings["speed"]
+    }
+
+    else{
+
+        const settings = {
+            speed: 0.5,
+            sensitivity: 0.1,
+            damping: 0.65,
+            angularDamping: 0.65
+            
+        }
+        console.log(settings["speed"])
+        window.SDK3DVerse.updateControllerSetting(settings);
+        return speedcamera = settings["speed"]
+
+    } 
+}
+
+export function distancecamera(positionx, positiony, positionz){
+    let positionabsolutex = positionx
+    let positionabsolutey = positiony
+    let positionabsolutez = positionz
+    
+    if(positionx < 0){
+        positionabsolutex = -positionx
+    }
+    if(positiony < 0){
+        positionabsolutey = -positiony
+    }
+    if(positionz < 0){
+        positionabsolutez = -positionz
+    }
+    let positionmax = Math.max(positionabsolutex, positionabsolutey, positionabsolutez);
+    return positionmax
+    
+    
+}
 
 
 
 export async function Camera(props) {
-    console.log("0")
+    
     const canvas = document.getElementById('display-canvas')
-    console.log("1")
-
+    
+    
         canvas.addEventListener('wheel', async(event) => {
-
-            console.log("2")
+            
+           
             const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-
+            console.log(camera[0])
         //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-
+        
         // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
             const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
-
+            
             if(camera.length != 0){
                 console.log(await camera[0].getTransform())
-                let speed = 0
-
-                if (camera[0].getTransform().position[2] >= 1.5){
-
-                    const settings = {
-                        speed: 10,
-                        sensitivity: 1,
-                        damping: 0.65,
-                        angularDamping: 0.65
-
+                
+               
+                                  
+                    let molette = 0 
+                    let speedcamera = speed(camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2])
+                    let limit = distancecamera(camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2])
+                    
+                    const vector1 = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
+                    const vector2 = new THREE.Vector3(0, 0, 0);
+                    const distanceToSphere = vector1.distanceTo(vector2);
+                    if(event.deltaY < 0)
+                    {
+                        if (distanceToSphere > 0.8 ){
+                            molette = - 0.2
+                            
+                        }
+                        else{
+                            molette = 0
+                        }
+                                         
                     }
-                    console.log(settings["speed"])
-                    window.SDK3DVerse.updateControllerSetting(settings);
-                    speed = settings["speed"]
+    
+                    else if(event.deltaY > 0)
+                    {
+                        molette =  0.2
+                    }              
+                    window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
+                        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+                        , speedcamera, 
+                        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+                        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+                        console.log(camera[0].getTransform().position[0])
+                        console.log(camera[0].getTransform().position[1])
+                        console.log(camera[0].getTransform().position[2])   
+                    
 
-                }
-
-                else if(camera[0].getTransform().position[2] >= 1){
-
-                    const settings = {
-                        speed: 5,
-                        sensitivity: 1,
-                        damping: 0.65,
-                        angularDamping: 0.65
-
-                    }
-                    console.log(settings["speed"])
-                    window.SDK3DVerse.updateControllerSetting(settings);
-                    speed = settings["speed"]
-
-                }
-
-                else if(camera[0].getTransform().position[2] >= 0.5){
-
-                    const settings = {
-                        speed: 1,
-                        sensitivity: 1,
-                        damping: 0.65,
-                        angularDamping: 0.65
-
-                    }
-                    console.log(settings["speed"])
-                    window.SDK3DVerse.updateControllerSetting(settings);
-                    speed = settings["speed"]
-                }
-
-                else{
-
-                    const settings = {
-                        speed: 0.5,
-                        sensitivity: 1,
-                        damping: 0.65,
-                        angularDamping: 0.65
-
-                    }
-                    console.log(settings["speed"])
-                    window.SDK3DVerse.updateControllerSetting(settings);
-                    speed = settings["speed"]
-
-                }               
-                let molette = 0 
-
-                if(event.deltaY < 0)
-                {
-                    molette = - 0.1                  
-                }
-
-                else if(event.deltaY > 0)
-                {
-                    molette =  0.1
-                }              
-                window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
-                    ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-                    , speed, 
-                    [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
-                    [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
-                    console.log(camera[0].getTransform().position[2])   
-                console.log(camera[0])
+                
+                
             }
             });
+            showVisibleLabelsOnly();
+    
+    // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 
-    showVisibleLabelsOnly();
-
-    
-    
-    
-    
-    //if (viewports != []){
-        // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
-        //     console.log("aa")
-        // }
-    //};
-    
-    // window.SDK3DVerse.updateControllerSetting(settings);
+   
 }
 
 
