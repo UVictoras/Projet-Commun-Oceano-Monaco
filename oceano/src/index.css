@@ -33,9 +33,9 @@
 .label-container.active .label,
 .label-container .label:hover,
 .label-container .label:focus {
-    width: 70px;
-    color: rgba(190, 25, 25, 0.9);
-    background-color: rgba(190, 25, 25, 0.9);
+    width: 80px;
+    height: 40px;
+    background-color: white;
     transform: translate(-50, -100%);
     transition: width 0.1s ease;
 }
@@ -60,7 +60,7 @@
     padding: 0 3px 3px 0;
     width: 30px;
     height: 30px;
-    background: rgba(190, 25, 25, 0.9);
+    background: white;
     background-size: contain;
     font-size: 0.75rem;
     line-height: 1rem;
@@ -83,7 +83,7 @@
     margin-left: -5px; /* Adjust the positioning of the triangle */
     border-width: 5px;
     border-style: solid;
-    border-color: rgba(190, 25, 25, 0.9) transparent transparent transparent;
+    border-color: white transparent transparent transparent;
   }
 
 .label-title {
@@ -139,35 +139,33 @@
     position: absolute;
     display: none;
     margin-top: 5px;
-    width: 45%;
-    height: 40%;
+    width: 0%;
+    height: 0%;
     color: black;
     text-align: center;
+    opacity: 1;
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.5s ease;
 }
 
 .attendees {
-    top: -5px;
+    top: 3px;
     left: 30px;
     font-weight: bold;
+    font-size: 22px;
 }
 
 .attendees-txt {
-    font-size: 0px; /* Initial font size */
-    left: -15px;
-    transform: scale(0.5); /* Initial scale */
-    opacity: 0;
-    transition: left 0.2s ease-in-out, font-size 0.5s ease-in-out, transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transition properties */
-    transition-delay: 2s; /* Transition delay after defining transition properties */
+    text-align: left !important;
+    font-size: 8px; /* Initial font size */
+    top: 16px;
+    left: 28.5px;
 }
 
-.label-container:hover .label .attendees,
-.label-container:hover .label .attendees-txt {
+.label-container.active .label .attendees,
+.label-container.active .label .attendees-txt,
+.label-container .label:hover .attendees,
+.label-container .label:hover .attendees-txt, 
+.label-container .label:focus .attendees,
+.label-container .label:focus .attendees-txt{
     display: block;
-}
-
-.label-container:hover .label .attendees-txt {
-    font-size: 8px; /* Font size on hover */
-    left: 26.5px;
-    opacity: 1;
-    transform: scale(1); /* Scale on hover */
 }
