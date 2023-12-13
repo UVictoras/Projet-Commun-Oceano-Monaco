@@ -215,14 +215,6 @@ async function newElement(x,y,z) {
 
     entityTemplate.instantiateEntity()
 
-    var newParagraph = document.createElement('p');
-    newParagraph.textContent = '342';
-    newParagraph.classList.add('label-text');
-
-    var referenceElement = document.getElementById('label');
-
-    referenceElement.parentNode.insertBefore(newParagraph, referenceElement);
-
 }
 
 export function OpenModal() {
@@ -230,33 +222,49 @@ export function OpenModal() {
     return isVisible
 }
 
-async function compareArrays(arr1 = ['', '', ''], arr2 = ['', '', '']) {
-    if (arr1[0] == arr2[0] && arr1[1] == arr2[1] && arr1[2] && arr2[2])
+export function createImgTag() {
+    var labelDivs = document.getElementsByClassName('label');
+
+    if (labelDivs.length > 0)
     {
-        return true
+        for (var k = 0; k < labelDivs.length; k++)
+        {
+            if (labelDivs[k].children.length == 0)
+            {
+                // Create a new img element
+                var newImg = document.createElement('img');
+
+                // Set the source and alt attributes for the img
+                newImg.src = '/img/bottle.svg';
+                newImg.alt = 'Description of the image';
+
+                // Add a class to the img
+                newImg.classList.add('collect');
+                labelDivs[k].appendChild(newImg);
+
+                var newParagraph = document.createElement('p');
+
+                // Set the text content of the paragraph
+                newParagraph.textContent = '128';
+
+                // Optionally, add a class to the paragraph
+                newParagraph.classList.add('attendees');
+
+                var newParagraphAtt = document.createElement('p');
+
+                // Set the text content of the paragraph
+                newParagraphAtt.textContent = 'participants';
+
+                // Optionally, add a class to the paragraph
+                newParagraphAtt.classList.add('attendees-txt');
+
+                labelDivs[k].appendChild(newParagraph);
+                labelDivs[k].appendChild(newParagraphAtt);
+            }
+        }
     }
-    else
-    {
-        return false
-    }
-    
 }
 
-async function getValuesSign(arr = [0., 0., 0.]) {
-    let arrSigns = ['', '', '']
-    for (var i = 0; i < arr.length; i++)
-    {
-        if (arr[i] < 0)
-        {
-            arrSigns[i] = 'Minus'
-        }
-        else
-        {
-            arrSigns[i] = 'Plus'
-        }
-    }
-    return arrSigns
-}
 
 async function normalize(arr = [0., 0., 0.]) {
     var normalizedArr = arr.slice();
@@ -276,6 +284,7 @@ async function scalarProduct(arr1, arr2) {
 
     return parseFloat(scalar);
 }
+
 export async function showVisibleLabelsOnly() {
 
     let camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
@@ -291,6 +300,8 @@ export async function showVisibleLabelsOnly() {
     const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
 
     var labelElements = await labelDisplay.labelEntities;
+
+    var labelDivs = document.getElementsByClassName('label');
 
     var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]]);
 
@@ -313,12 +324,10 @@ export async function showVisibleLabelsOnly() {
 
         console.log("Scalar:", scalar);
 
-        if (!isNaN(scalar) && scalar > 0.) {
-            labelEntities[j].setVisibility(true);
-        } else if (!isNaN(scalar) && scalar < 0.) {
-            labelEntities[j].setVisibility(false);
+        if (!isNaN(scalar) && scalar > 0. && labelEntities.length == labelDivs.length) {
+            labelDivs[j].style.display = "flex";
+        } else if (!isNaN(scalar) && scalar < 0. && labelEntities.length == labelDivs.length) {
+            labelDivs[j].style.display = "hidden";
         }
     }
-
-    console.log(labelEntities);
 }

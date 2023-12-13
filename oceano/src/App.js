@@ -11,6 +11,7 @@ import {
 } from "react-router-dom"
 import { useFrameLoop } from "./utils/FrameLoop.js";
 import { Anim } from "./utils/3DVerse.js";
+import { createImgTag } from "./utils/3DVerse.js";
 
 
 
@@ -40,7 +41,8 @@ function App(props){
     {
       for (var i = 0; i < labelElements.length; i++) 
       {
-        labelElements[i].style.backgroundImage = "url('img/avatar.png')";
+        //labelElements[i].style.backgroundImage = "url('img/avatar.png')";
+        /*
         labelElements[i].addEventListener('mouseenter', function() {
           var newParagraph = document.createElement('p');
           newParagraph.textContent = '342';
@@ -52,9 +54,11 @@ function App(props){
         })
         labelElements[i].addEventListener('mouseleave'), function() {
           return;
-        }
+        }*/
+        labelElements[i].innerHTML = '';
       }
     }
+    createImgTag();
 
     setTime(time);
     setDeltaTime(deltaTime)
