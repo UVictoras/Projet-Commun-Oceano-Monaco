@@ -48,27 +48,27 @@ app.post("/user", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
   const body = req.body;
   dbConnect
-          .query("SELECT  u.ID                                , \
-                          u.Last_name                         , \
-                          u.First_name                        , \
-                          u.Pseudo                            , \
-                          u.Birthday                          , \
-                          u.Country                           , \
-                          u.Email                             , \
-                          u.Password                          , \
-                          pp.Image AS Picture                 , \
-                          u.X                                 , \
-                          u.Y                                 , \
-                          u.Z                                 , \
-                          u.Type                              , \
-                          l.Number                            , \
-                          u.Money                             , \
-                          u.XP                                , \
-                          ROUND((u.XP / l.XP) * 100) AS PctXP , \
-                          u.Streak                            , \
-                          u.Streak_progress                   , \
-                          b.Image AS Banner                   , \
-                          t.Image AS Title                      \
+          .query("SELECT  u.ID                                                                       , \
+                          u.Last_name                                                                , \
+                          u.First_name                                                               , \
+                          CONCAT(UCASE(SUBSTRING(u.Pseudo, 1, 1)), SUBSTRING(u.Pseudo, 2)) AS Pseudo , \
+                          u.Birthday                                                                 , \
+                          u.Country                                                                  , \
+                          u.Email                                                                    , \
+                          u.Password                                                                 , \
+                          pp.Image AS Picture                                                        , \
+                          u.X                                                                        , \
+                          u.Y                                                                        , \
+                          u.Z                                                                        , \
+                          u.Type                                                                     , \
+                          l.Number                                                                   , \
+                          u.Money                                                                    , \
+                          u.XP                                                                       , \
+                          ROUND((u.XP / l.XP) * 100) AS PctXP                                        , \
+                          u.Streak                                                                   , \
+                          u.Streak_progress                                                          , \
+                          b.Image AS Banner                                                          , \
+                          t.Image AS Title                                                             \
                   FROM user u INNER JOIN level l ON u.Level = l.ID               \
                               INNER JOIN Banner b ON u.Banner = b.ID             \
                               INNER JOIN Title t ON u.Title = t.ID               \

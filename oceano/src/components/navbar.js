@@ -51,7 +51,7 @@ function Navbar() {
   },[]);
 
   useEffect(() => {
-    console.log(user.PctXP)
+    console.log(user)
     const progressBar = document.getElementById('progressBar');
     if (progressBar) {
       let pctXP = (user.PctXP * 80) / 100
@@ -131,7 +131,7 @@ function Navbar() {
                       </div></div>
 
                     <div className='my-auto'>
-                      <p className='text-left blackNunito text-[16px]'>{user.First_name} {user.Last_name}</p>
+                      <p className='text-left blackNunito text-[16px]'>{user.Pseudo}</p>
                       <p className=' semiBoldNunito flex flex-1 levelColor'>Niveau {user.Number}</p>
                     </div>
 
