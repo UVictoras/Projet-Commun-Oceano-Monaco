@@ -25,20 +25,20 @@ export const Canvas = (props) => {
             removeOnUnmount: false,
         }
     );
-    const three = useScript(
-        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ThreeJS_Ext.js`,
+    // const three = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ThreeJS_Ext.js`,
 
-        {
-            removeOnUnmount: false,
-        }
-    );
-    const splineDisplay = useScript(
-        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_SplineDisplay_Ext.js`,
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
+    // const splineDisplay = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_SplineDisplay_Ext.js`,
 
-        {
-            removeOnUnmount: false,
-        }
-    );
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
 
     const initApp = useCallback(async () => {
 
@@ -52,8 +52,8 @@ export const Canvas = (props) => {
         });
         await window.SDK3DVerse.installExtension(SDK3DVerse_ViewportDomOverlay_Ext);
         await window.SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
-        await window.SDK3DVerse.installExtension(SDK3DVerse_ThreeJS_Ext);
-        await window.SDK3DVerse.installExtension(SDK3DVerse_SplineDisplay_Ext);
+        // await window.SDK3DVerse.installExtension(SDK3DVerse_ThreeJS_Ext);
+        // await window.SDK3DVerse.installExtension(SDK3DVerse_SplineDisplay_Ext);
 
         if (props.onChange) {
             props.onChange(true);
@@ -71,8 +71,8 @@ export const Canvas = (props) => {
 
         }
 
-    }, [status, label, dom,splineDisplay, three]);
-
+    }, [status, label, dom]);
+    // ,splineDisplay, three
     
     return <>
         <canvas

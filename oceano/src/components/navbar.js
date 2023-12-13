@@ -88,7 +88,7 @@ function Navbar() {
               className="relative rounded-full text-gray-400 p-4 flex items-center"
             >
               <img src='img/icon/coin.png' className='h-7 absolute' alt="coin make it blue" />
-              <p className='ml-8 extraBoldNunito fontBell'>152</p>
+              <a href='/shop' className='ml-8 extraBoldNunito fontBell'>152</a>
 
             </button>
             <Menu as="div" className="relative ml-3">

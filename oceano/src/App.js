@@ -15,6 +15,7 @@ import FirstPage from "./pages/firstPage.js";
 import LoadingScreen from "./pages/loadingScreen.js";
 import Signin from "./pages/signin.js";
 import Signup from "./pages/signup.js";
+import Shop from "./pages/shop.js";
 
 
 
@@ -56,6 +57,9 @@ function App(props){
         </Route>
         <Route path ="/signup">
           <Signup/>
+        </Route>
+        <Route path ="/shop">
+          <Shop/>
         </Route>
         <Route path="/impact">
           <Impact /> 
