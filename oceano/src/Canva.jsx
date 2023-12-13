@@ -71,7 +71,7 @@ export const Canvas = (props) => {
 
         }
 
-    }, [status, label, dom]);
+    }, [status]);
     // ,splineDisplay, three
     
     return <>

@@ -91,6 +91,10 @@
 input[type=text] ,input[type=email] ,input[type= password]{
   background-color:#E5E5E5;
 }
+
+.backD9{
+  background-color: #D9D9D9;
+}
 /********************* CSS Navbar **************************/
 .fontTarget {
   color: #FA4A4E
