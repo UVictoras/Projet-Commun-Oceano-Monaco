@@ -25,6 +25,5 @@ export const getUserSession = async () => {
         }
     )
     const user = await response.json();
-    console.log(user);
     return user;
 }
