@@ -4,6 +4,7 @@ import { useScript } from '@uidotdev/usehooks';
 
 
 export const Canvas = () => {
+    
     const status = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js`,
 
@@ -54,7 +55,7 @@ export const Canvas = () => {
 
     return (
         <>
-            <canvas
+            <canvas 
                 id='display-canvas'
                 style={{
                     height: '80vh',
@@ -63,6 +64,7 @@ export const Canvas = () => {
                     
                 }}
             ></canvas>
+            
         </>
     );
 };

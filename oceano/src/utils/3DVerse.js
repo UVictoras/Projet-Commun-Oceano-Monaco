@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import Modal from'../components/modal.js'
 import Act from '../pages/test.js'
+
+import { useState } from 'react';
 //--------------------- Game Loop ---------------------
 
 let isVisible = false
@@ -25,18 +27,27 @@ export async function Anim(props) {
 
 // --------------------- Partie Modal ---------------------
 
+
 export function Open(){
+    
+    
     let label = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
     console.log(window.SDK3DVerse.extensions.LabelDisplay.labelEntities)
     window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked = function(label, viewport){
-        isVisible = true
         console.log("5")
+        
+        
+        
     
     }
     const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+
     label.forEach(function(element){
+        
         window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked(element,camera[0])
+        
     })
+    
     
 }
 
@@ -163,7 +174,7 @@ export async function Camera(props) {
             
            
             const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-            
+            console.log(camera[0])
         //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
         
         // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
@@ -295,7 +306,3 @@ async function newElement(x,y,z) {
 }
 
 
-export function OpenModal() {
-
-    return isVisible
-}
