@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Click, OpenModal } from "../utils/3DVerse";
-import React, { useState } from 'react';
+import { React } from 'react';
 import Modal from './modal';
 import Searchbar from "./searchbar";
 
