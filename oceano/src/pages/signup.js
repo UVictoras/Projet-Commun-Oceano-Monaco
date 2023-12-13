@@ -5,11 +5,13 @@ function Signup(props){
     return <div>
         <div class="mb-5 grid grid-cols-10">
             <div class="col-start-10">
-                <button  class="whiteButton border border-gray-300 border-b-4 border-gray-300 font-medium rounded-lg text-sm  p-2.5 text-sky-500 mt-6 ">
-                    <a href="signin">
+            <a href="signin">
+                <button  class="whiteButton absolute h-[50px] w-[120px] top-5 right-5 blueTextColor px-3 py-1 border-b-4 
+                     rounded-2xl border border-neutral-200 rounded-lg blackNunito uppercase text-[13px]">
                         Connexion
-                    </a>
-                </button>
+                </button>        
+            </a>
+                
             </div>
        
         </div>
