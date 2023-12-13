@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Click, OpenModal } from "../utils/3DVerse";
 import React, { useState } from 'react';
 import Modal from './modal';
@@ -14,7 +15,6 @@ function Above(props) {
       setModalOpen(false);
     };
     return <div className="Act ">
-
 
         <div className="searchAndBell flex absolute ">
             <div className=" mt-10 ml-10">
@@ -69,6 +69,7 @@ function Above(props) {
             <div className="mt-[38px] flex ml-[32px] mr-[30px] flex items-start" >
                 <img src="img/icon/lightning.svg" alt="eclair make it blue" />
                 <div className="ml-7">
+
                     <p className="extraBoldNunito fontColor3C mb-[17px]">Participer à 4 actions</p>
                     <div className="w-[243px] h-[20px] bg-neutral-200 rounded-l-lg">
                         <div className="w-[183px] h-[20px] progressBarObjectif rounded-l-lg flex items-center">
@@ -77,6 +78,7 @@ function Above(props) {
                     </div>
                 </div>
                 <img src="img/icon/chest.svg" alt="chest make it blue" className="ml-4 mt-[26px] mb-[50px]" />
+
 
             </div>
 
@@ -89,11 +91,13 @@ function Above(props) {
                 <img src="img/icon/hearth/hearthGrey.svg" alt="coeur Make it blue" />
             </button>
             <button className="w-[60px] h-[60px] p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center filterButton z-20 ">
+
                 <img src="img/icon/filter.svg" className="rotateFilter" />
             </button>
         </div>
 
         <div className="network absolute bottom-12 right-11 space-y-6">
+
             <img src="img/icon/network/twitter.svg" alt="twitter make it blue"/>
 
             <img src="img/icon/network/instagram.svg" alt="instagram make it blue" />

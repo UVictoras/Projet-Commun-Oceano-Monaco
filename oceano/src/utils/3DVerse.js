@@ -31,21 +31,21 @@ export async function Camera(props) {
     console.log("0")
     const canvas = document.getElementById('display-canvas')
     console.log("1")
-    
+
         canvas.addEventListener('wheel', async(event) => {
-            
+
             console.log("2")
             const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-            
+
         //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-        
+
         // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
             const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
-            
+
             if(camera.length != 0){
                 console.log(await camera[0].getTransform())
                 let speed = 0
-                
+
                 if (camera[0].getTransform().position[2] >= 1.5){
 
                     const settings = {
@@ -53,12 +53,12 @@ export async function Camera(props) {
                         sensitivity: 1,
                         damping: 0.65,
                         angularDamping: 0.65
-                        
+
                     }
                     console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
                     speed = settings["speed"]
-            
+
                 }
 
                 else if(camera[0].getTransform().position[2] >= 1){
@@ -68,12 +68,12 @@ export async function Camera(props) {
                         sensitivity: 1,
                         damping: 0.65,
                         angularDamping: 0.65
-                        
+
                     }
                     console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
                     speed = settings["speed"]
-            
+
                 }
 
                 else if(camera[0].getTransform().position[2] >= 0.5){
@@ -83,7 +83,7 @@ export async function Camera(props) {
                         sensitivity: 1,
                         damping: 0.65,
                         angularDamping: 0.65
-                        
+
                     }
                     console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
@@ -97,15 +97,15 @@ export async function Camera(props) {
                         sensitivity: 1,
                         damping: 0.65,
                         angularDamping: 0.65
-                        
+
                     }
                     console.log(settings["speed"])
                     window.SDK3DVerse.updateControllerSetting(settings);
                     speed = settings["speed"]
-            
+
                 }               
                 let molette = 0 
-                
+
                 if(event.deltaY < 0)
                 {
                     molette = - 0.1                  
@@ -124,30 +124,20 @@ export async function Camera(props) {
                 console.log(camera[0])
             }
             });
-    
-    // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 
-    const transform = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-    const globe = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('fb850887-d5c9-46af-9b74-a78e52f51c83');
-    console.log("aa")
-    
-    if(transform.length != 0){
-        // console.log(globe[0].components.local_transform.position[1])
-        // console.log(await transform[0].getTransform())
+    showVisibleLabelsOnly();
 
-        // console.log(transform[0].getTransform().position[2])
-        const settings = {
-            speed: 1 / Math.log((transform[0].getTransform().position[1] - globe[0].components.local_transform.position[1]) + 0, 0),
-            sensitivity: 1,
-            damping: 0.65,
-            angularDamping: 0.65
-            
-        }
-        
-        window.SDK3DVerse.updateControllerSetting(settings);
-        // if(transform[0].getTransform().position[2] < 3)    
+    
+    
+    
+    
+    //if (viewports != []){
+        // if(test[0].cameraEntity.components.local_transform.position[2] <= 400){
+        //     console.log("aa")
         // }
-    }
+    //};
+    
+    // window.SDK3DVerse.updateControllerSetting(settings);
 }
 
 
@@ -227,8 +217,117 @@ async function newElement(x,y,z) {
 
 }
 
-
 export function OpenModal() {
 
     return isVisible
+}
+
+export function createImgTag() {
+    var labelDivs = document.getElementsByClassName('label');
+
+    if (labelDivs.length > 0)
+    {
+        for (var k = 0; k < labelDivs.length; k++)
+        {
+            if (labelDivs[k].children.length == 0)
+            {
+                // Create a new img element
+                var newImg = document.createElement('img');
+
+                // Set the source and alt attributes for the img
+                newImg.src = '/img/bottle.svg';
+                newImg.alt = 'Description of the image';
+
+                // Add a class to the img
+                newImg.classList.add('collect');
+                labelDivs[k].appendChild(newImg);
+
+                var newParagraph = document.createElement('p');
+
+                // Set the text content of the paragraph
+                newParagraph.textContent = '128';
+
+                // Optionally, add a class to the paragraph
+                newParagraph.classList.add('attendees');
+
+                var newParagraphAtt = document.createElement('p');
+
+                // Set the text content of the paragraph
+                newParagraphAtt.textContent = 'participants';
+
+                // Optionally, add a class to the paragraph
+                newParagraphAtt.classList.add('attendees-txt');
+
+                labelDivs[k].appendChild(newParagraph);
+                labelDivs[k].appendChild(newParagraphAtt);
+            }
+        }
+    }
+}
+
+
+async function normalize(arr = [0., 0., 0.]) {
+    var normalizedArr = arr.slice();
+
+    var norm = Math.sqrt(arr[0] ** 2 + arr[1] ** 2 + arr[2] ** 2)
+    for (var k = 0; k < 3; k++)
+    {
+        normalizedArr[k] /=  norm;
+    }
+    return normalizedArr;
+}
+
+async function scalarProduct(arr1, arr2) {
+    const scalar = await Promise.all([arr1, arr2]).then(([v1, v2]) => {
+        return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
+    });
+
+    return parseFloat(scalar);
+}
+
+export async function showVisibleLabelsOnly() {
+
+    let camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
+
+    var labelDisplay = window.SDK3DVerse.extensions.LabelDisplay;
+
+    if (!labelDisplay || !labelDisplay.labelEntities) {
+        console.error("Label entities not available.");
+        return;
+    }
+
+    const componentFilter = { mandatoryComponents : ['label'], forbiddenComponents : [] };
+    const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
+
+    var labelElements = await labelDisplay.labelEntities;
+
+    var labelDivs = document.getElementsByClassName('label');
+
+    var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]]);
+
+    var labelVector = [0., 0., 0.];
+
+    var scalar;
+
+    for (var j = 0; j < labelElements.length; j++) {
+        if (!labelEntities[j] || !labelEntities[j].getComponents().local_transform.position) {
+            console.error("Label element or its position is undefined.");
+            continue;  // Skip to the next iteration if the label element or its position is undefined
+        }
+
+        let labelVector = await normalize([
+            labelEntities[j].getComponents().local_transform.position[0],
+            labelEntities[j].getComponents().local_transform.position[1],
+            labelEntities[j].getComponents().local_transform.position[2]
+        ]);
+        scalar = await scalarProduct(cameraVector, labelVector);
+
+        console.log("Scalar:", scalar);
+
+        if (!isNaN(scalar) && scalar > 0. && labelEntities.length == labelDivs.length) {
+            labelDivs[j].style.display = "flex";
+        } else if (!isNaN(scalar) && scalar < 0. && labelEntities.length == labelDivs.length) {
+            labelDivs[j].style.display = "hidden";
+        }
+    }
 }

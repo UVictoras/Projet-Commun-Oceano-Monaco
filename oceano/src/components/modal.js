@@ -1,6 +1,7 @@
 // Modal.js
 import React from 'react';
 
+
 const Modal = ({ isOpen, onClose }) => {
   return (
     <>
@@ -15,5 +16,3 @@ const Modal = ({ isOpen, onClose }) => {
     </>
   );
 };
-
-export default Modal;

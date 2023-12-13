@@ -11,6 +11,12 @@ import {
 } from "react-router-dom"
 import { useFrameLoop } from "./utils/FrameLoop.js";
 import { Anim } from "./utils/3DVerse.js";
+import { createImgTag } from "./utils/3DVerse.js";
+import FirstPage from "./pages/firstPage.js";
+import LoadingScreen from "./pages/loadingScreen.js";
+import Signin from "./pages/signin.js";
+import Signup from "./pages/signup.js";
+import Shop from "./pages/shop.js";
 
 
 
@@ -35,9 +41,29 @@ function App(props){
     var labelElements = document.getElementsByClassName('label');
 
     // Check if the element is found before attempting to modify its style
-    for (var i = 0; i < labelElements.length; i++) {
-        labelElements[i].style.backgroundImage = "url('img/avatar.png')";
+
+    if (labelElements[0])
+    {
+      for (var i = 0; i < labelElements.length; i++) 
+      {
+        //labelElements[i].style.backgroundImage = "url('img/avatar.png')";
+        /*
+        labelElements[i].addEventListener('mouseenter', function() {
+          var newParagraph = document.createElement('p');
+          newParagraph.textContent = '342';
+          newParagraph.classList.add('label-text');
+
+          var referenceElement = document.getElementById('label');
+
+          referenceElement.parentNode.insertBefore(newParagraph, referenceElement);
+        })
+        labelElements[i].addEventListener('mouseleave'), function() {
+          return;
+        }*/
+        labelElements[i].innerHTML = '';
+      }
     }
+    createImgTag();
 
     setTime(time);
     setDeltaTime(deltaTime)
@@ -47,17 +73,31 @@ function App(props){
 
   return <Router>
       <Switch>
-
         <Route exact path="/">
-          <Act /> 
+          <FirstPage /> 
         </Route>
-        <Route exact path="/impact">
+        {/* <Route exact path="/loading">
+          <LoadingScreen /> 
+        </Route> */}
+        <Route path ="/act">
+          <Act/>
+        </Route>
+        <Route path ="/signin">
+          <Signin/>
+        </Route>
+        <Route path ="/signup">
+          <Signup/>
+        </Route>
+        <Route path ="/shop">
+          <Shop/>
+        </Route>
+        <Route path="/impact">
           <Impact /> 
         </Route>
-        <Route exact path="/pages/profil.js">
+        <Route path="/profil">
           <Profile/>
         </Route>
-        <Route exact path="/community">
+        <Route path="/community">
           <Community /> 
         </Route>
         
