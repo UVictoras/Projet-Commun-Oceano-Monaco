@@ -1,9 +1,9 @@
-import { Anim, Camera, Click, DisabledInput } from './utils/3DVerse';
-import { useCallback, useEffect } from 'react';
+import {AnimationShip, Camera, Click } from './utils/3DVerse';
+import { useCallback, useEffect, useState } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 
 
-export const Canvas = () => {
+export const Canvas = (props) => {
     const status = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js`,
 
@@ -25,8 +25,23 @@ export const Canvas = () => {
             removeOnUnmount: false,
         }
     );
-    
+    // const three = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ThreeJS_Ext.js`,
+
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
+    // const splineDisplay = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_SplineDisplay_Ext.js`,
+
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
+
     const initApp = useCallback(async () => {
+
         await SDK3DVerse.joinOrStartSession({
             userToken: 'public_0rtYmFmJfCyVxB7-',
             sceneUUID: '33ed765f-9a1c-4f8c-933c-077eeb5503e0',
@@ -37,31 +52,37 @@ export const Canvas = () => {
         });
         await window.SDK3DVerse.installExtension(SDK3DVerse_ViewportDomOverlay_Ext);
         await window.SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
+        // await window.SDK3DVerse.installExtension(SDK3DVerse_ThreeJS_Ext);
+        // await window.SDK3DVerse.installExtension(SDK3DVerse_SplineDisplay_Ext);
+
+        if (props.onChange) {
+            props.onChange(true);
+        }
     }, []);
 
     useEffect(() => {
-        if (status === 'ready' && dom === 'ready' && label === 'ready') {
-            
-            initApp();
-            Camera();
-            Anim();
-            Click();
-            
-            
-        }
-    }, [status]);
 
-    return (
-        <>
-            <canvas
-                id='display-canvas'
-                style={{
-                    height: '100vh',
-                    width: '100vw',
-                    verticalAlign: 'middle',
-                    
-                }}
-            ></canvas>
-        </>
-    );
+        if (status === 'ready') {
+
+            initApp();
+            Click();
+            Camera();
+            //AnimationShip();
+
+        }
+
+    }, [status, label, dom]);
+    // ,splineDisplay, three
+    
+    return <>
+        <canvas
+            id='display-canvas'
+            style={{
+
+                width: '100%',
+
+            }}
+
+        ></canvas>
+    </>
 };

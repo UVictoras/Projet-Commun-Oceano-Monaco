@@ -12,6 +12,11 @@ import {
 import { useFrameLoop } from "./utils/FrameLoop.js";
 import { Anim } from "./utils/3DVerse.js";
 import { createImgTag } from "./utils/3DVerse.js";
+import FirstPage from "./pages/firstPage.js";
+import LoadingScreen from "./pages/loadingScreen.js";
+import Signin from "./pages/signin.js";
+import Signup from "./pages/signup.js";
+import Shop from "./pages/shop.js";
 
 
 
@@ -68,17 +73,31 @@ function App(props){
 
   return <Router>
       <Switch>
-
         <Route exact path="/">
-          <Act /> 
+          <FirstPage /> 
         </Route>
-        <Route exact path="/impact">
+        {/* <Route exact path="/loading">
+          <LoadingScreen /> 
+        </Route> */}
+        <Route path ="/act">
+          <Act/>
+        </Route>
+        <Route path ="/signin">
+          <Signin/>
+        </Route>
+        <Route path ="/signup">
+          <Signup/>
+        </Route>
+        <Route path ="/shop">
+          <Shop/>
+        </Route>
+        <Route path="/impact">
           <Impact /> 
         </Route>
-        <Route exact path="/pages/profil.js">
+        <Route path="/profil">
           <Profile/>
         </Route>
-        <Route exact path="/community">
+        <Route path="/community">
           <Community /> 
         </Route>
         
