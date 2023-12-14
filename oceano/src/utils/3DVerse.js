@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import Modal from'../components/modal.js'
 
 import { useState } from 'react';
 
