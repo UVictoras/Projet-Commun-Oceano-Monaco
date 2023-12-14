@@ -10,7 +10,7 @@ import {
   Route 
 } from "react-router-dom"
 import { useFrameLoop } from "./utils/FrameLoop.js";
-import { Anim } from "./utils/3DVerse.js";
+import { Anim, showVisibleLabelsOnly } from "./utils/3DVerse.js";
 import { createImgTag } from "./utils/3DVerse.js";
 import FirstPage from "./pages/firstPage.js";
 import LoadingScreen from "./pages/loadingScreen.js";

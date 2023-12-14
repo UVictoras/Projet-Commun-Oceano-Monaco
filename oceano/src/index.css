@@ -456,57 +456,77 @@ input[type=text] ,input[type=email] ,input[type= password]{
 /********************* CSS Act *****************************/
 .bellButton {
   filter: drop-shadow(0px 2px 0px #E5E5E5);
+  z-index: 11 !important;
 }
 
 .bellButton:active {
   transform: translateY(4px);
-}
-.bellButton:active > .changeBell{
-  content: url(../public/img/icon/bell/bell2.png);
-}
-.searchBarGlassColor {
-  color: #B3B3B3;
+  z-index: 11 !important;
 }
 
+.bellButton:active > .changeBell{
+  content: url(../public/img/icon/bell/bell2.png);
+  z-index: 11 !important;
+}
+
+.searchBarGlassColor {
+  color: #B3B3B3;
+  z-index: 11 !important;
+}
 
 .likeButton {
   filter: drop-shadow(0px 2px 0px #E5E5E5);
+  z-index: 11 !important;
 }
 
 .likeButton:active {
   transform: translateY(4px);
   content: url(../public/img/icon/hearth/hearth.svg);
+  z-index: 11 !important;
 }
 
 .locateButton {
   filter: drop-shadow(0px 2px 0px #E5E5E5);
+  z-index: 11 !important;
 }
 
 .locateButton:active {
   transform: translateY(4px);
+  z-index: 11 !important;
 }
 
 .filterButton {
   filter: drop-shadow(0px 2px 0px #E5E5E5);
+  z-index: 11 !important;
 }
 
 .filterButton:active {
   transform: translateY(4px);
+  z-index: 11 !important;
 }
 
 .filterButton:active>.rotateFilter {
   transform: rotate(180deg);
+  z-index: 11 !important;
 }
 
 .centerIcon {
   transform: translate(-50%, 0) !important;
+  z-index: 11 !important;
 }
 
 .progressBarObjectif{
   background-color: #F6CA45;
+  z-index: 11 !important;
 }
+
 .textColorProgressBarObjectif{
-  color: #C58430;;
+  color: #C58430;
+  z-index: 11 !important;
+}
+
+.objectiv {
+    z-index: 11 !important;
 }
 /********************* CSS Signin  *************************/
 .line:before,
@@ -698,7 +718,7 @@ input[type=text] ,input[type=email] ,input[type= password]{
 }
 
 .label-title:hover {
-    z-index: 20 !important;
+  z-index: 10 !important;
 }
 
 .actionModal {
@@ -707,7 +727,7 @@ input[type=text] ,input[type=email] ,input[type= password]{
 }
 
 .collect {
-    z-index: 30 !important;
+    z-index: 10 !important;
     margin-top: 2.5px;
     margin-left: 2.5px;
     width: 80%;

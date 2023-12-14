@@ -77,7 +77,6 @@ export function speed(positionx, positiony, positionz ){
             angularDamping: 0.65
             
         }
-        console.log(settings["speed"])
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
         
@@ -92,7 +91,6 @@ export function speed(positionx, positiony, positionz ){
             angularDamping: 0.65
             
         }
-        console.log(settings["speed"])
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
 
@@ -107,7 +105,6 @@ export function speed(positionx, positiony, positionz ){
             angularDamping: 0.65
             
         }
-        console.log(settings["speed"])
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
 
@@ -122,7 +119,6 @@ export function speed(positionx, positiony, positionz ){
             angularDamping: 0.65
             
         }
-        console.log(settings["speed"])
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
     }
@@ -136,7 +132,6 @@ export function speed(positionx, positiony, positionz ){
             angularDamping: 0.65
             
         }
-        console.log(settings["speed"])
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
 
@@ -169,64 +164,53 @@ export async function Camera(props) {
     
     const canvas = document.getElementById('display-canvas')
     
-    
-        canvas.addEventListener('wheel', async(event) => {
-            
-           
-            const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-            console.log(camera[0])
+    canvas.addEventListener('wheel', async(event) => {
+
+        const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
         //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-        
         // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
-            const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be")
+        const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be");
+        
+        if(camera.length != 0){
+                                
+            let molette = 0 ;
+            let speedcamera = speed(camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]);
+            let limit = distancecamera(camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]);
             
-            if(camera.length != 0){
-                console.log(await camera[0].getTransform())
-                
-               
-                                  
-                    let molette = 0 
-                    let speedcamera = speed(camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2])
-                    let limit = distancecamera(camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2])
-                    
-                    const vector1 = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
-                    const vector2 = new THREE.Vector3(0, 0, 0);
-                    const distanceToSphere = vector1.distanceTo(vector2);
-                    if(event.deltaY < 0)
-                    {
-                        if (distanceToSphere > 0.8 ){
-                            molette = - 0.2
-                            
-                        }
-                        else{
-                            molette = 0
-                        }
-                                         
-                    }
-    
-                    else if(event.deltaY > 0)
-                    {
-                        molette =  0.2
-                    }              
-                    window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
-                        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-                        , speedcamera, 
-                        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
-                        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
-                        console.log(camera[0].getTransform().position[0])
-                        console.log(camera[0].getTransform().position[1])
-                        console.log(camera[0].getTransform().position[2])   
-                    
-
-                
-                
+            const vector1 = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
+            const vector2 = new THREE.Vector3(0, 0, 0);
+            const distanceToSphere = vector1.distanceTo(vector2);
+            console.log(distanceToSphere);
+            if(event.deltaY < 0)
+            {
+                if (distanceToSphere > 0.8 ){
+                    molette = - 0.2;   
+                } else {
+                    molette = 0;
+                }
             }
-            });
-            showVisibleLabelsOnly();
-    
-    // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 
-   
+            else if(event.deltaY > 0)
+            {
+                if (distanceToSphere < 2. ){
+                    molette = 0.2;  
+                } else {
+                    molette = 0;
+                }
+            }              
+            window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
+                ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+                , speedcamera, 
+                [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+                [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]);
+                console.log(camera[0].getTransform().position[0]);
+                console.log(camera[0].getTransform().position[1]);
+                console.log(camera[0].getTransform().position[2]); 
+        }
+    });
+    
+            
+    // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 }
 
 
@@ -354,7 +338,7 @@ export function createImgTag() {
     }
 }
 
-
+//--------------------- Fonctions labels ---------------------
 async function normalize(arr = [0., 0., 0.]) {
     var normalizedArr = arr.slice();
 
@@ -375,30 +359,22 @@ async function scalarProduct(arr1, arr2) {
 }
 
 export async function showVisibleLabelsOnly() {
-
     let camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
-
-    var labelDisplay = window.SDK3DVerse.extensions.LabelDisplay;
-
-    if (!labelDisplay || !labelDisplay.labelEntities) {
-        console.error("Label entities not available.");
-        return;
-    }
 
     const componentFilter = { mandatoryComponents : ['label'], forbiddenComponents : [] };
     const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
 
-    var labelElements = await labelDisplay.labelEntities;
-
-    var labelDivs = document.getElementsByClassName('label');
+    var labelDivs = document.getElementsByClassName('label-container');
 
     var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]]);
 
     var labelVector = [0., 0., 0.];
 
-    var scalar;
+    var scalar = 0.;
 
-    for (var j = 0; j < labelElements.length; j++) {
+    console.log(labelEntities);
+
+    for (var j = 0; j < labelEntities.length; j++) {
         if (!labelEntities[j] || !labelEntities[j].getComponents().local_transform.position) {
             console.error("Label element or its position is undefined.");
             continue;  // Skip to the next iteration if the label element or its position is undefined
@@ -413,10 +389,12 @@ export async function showVisibleLabelsOnly() {
 
         console.log("Scalar:", scalar);
 
-        if (!isNaN(scalar) && scalar > 0. && labelEntities.length == labelDivs.length) {
-            labelDivs[j].style.display = "flex";
-        } else if (!isNaN(scalar) && scalar < 0. && labelEntities.length == labelDivs.length) {
-            labelDivs[j].style.display = "hidden";
+        if (scalar > 0.) {
+            labelDivs[j].style.visibility = "visible";
+            console.log("positive");
+        } else if (scalar < 0.) {
+            labelDivs[j].style.visibility = "hidden";
+            console.log("negative");
         }
     }
 }

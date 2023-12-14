@@ -10,7 +10,7 @@ function Profile(props) {
                         <div className="picture flex justify-self-end pr-10">
                             <img
                                 className="h-20 w-20 rounded-full justify-items-end"
-                                src="../img/avatar.png" 
+                                src="../img/victor.png" 
                                 alt=""
                             />
                         </div>
