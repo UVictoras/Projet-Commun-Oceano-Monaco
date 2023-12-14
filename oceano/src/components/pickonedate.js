@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 
-const Onedate = () => {
+const Onedate = (contentPlaceHolder) => {
     const [value, setValue] = useState({
         startDate: null,
         endDate: null
@@ -14,7 +14,7 @@ const Onedate = () => {
 
     return (
         <Datepicker
-            placeholder={"Date de naissance"} 
+            placeholder={contentPlaceHolder} 
             asSingle={true}
             value={value}
             onChange={handleValueChange}

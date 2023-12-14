@@ -61,7 +61,7 @@ export default function Tab() {
                 }
             </div>
         
-            <div className="flex mx-10 overflow-y-scroll w-full customScrollbar">
+            <div className="flex mx-10 h-[200px] overflow-y-scroll w-full customScrollbar">
                 {Menu.map(item => (
                     <div
                         key={item.id}
