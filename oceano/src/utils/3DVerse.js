@@ -26,6 +26,103 @@ export async function Anim(props) {
     // }
 }
 
+
+
+// --------------------- Partie Mouvement camera ---------------------
+
+export function norme(vector){
+    let carre = vector.x ** 2 + vector.y ** 2 + vector.z ** 2
+    let racine = Math.sqrt(carre);
+    const vectornorme = new THREE.Vector3(vector.x / racine, vector.y / racine, vector.z / racine);
+    return vectornorme
+}
+
+export function calculnorme(vector){
+    let carre = vector.x ** 2 + vector.y ** 2 + vector.z ** 2
+    let norme = Math.sqrt(carre);
+    return norme
+}
+export function multiplication(vector, matrice){
+    const math = require('mathjs');
+    let para1 = vector.x *  math.subset(matrice, math.index(0, 0))+ vector.y *  math.subset(matrice, math.index(1, 0))+ vector.z * math.subset(matrice, math.index(2, 0))
+    let para2 = vector.x *  math.subset(matrice, math.index(0, 1))+ vector.y *  math.subset(matrice, math.index(1, 1))+ vector.z * math.subset(matrice, math.index(2, 1))
+    let para3 = vector.x *  math.subset(matrice, math.index(0, 2))+ vector.y *  math.subset(matrice, math.index(1, 2))+ vector.z * math.subset(matrice, math.index(2, 2))
+    
+    var newvector = (para1, para2, para3)
+    return newvector
+}
+
+
+export function Mouvcamera(){
+    const canvas = document.getElementById('display-canvas')
+    
+    
+    canvas.addEventListener('mouseup', async(event) => {
+        const math = require('mathjs');
+        let labellist = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
+        console.log("5")
+        const componentFilter = { mandatoryComponents : ['label'], forbiddenComponents : [] };
+        const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
+    
+        const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+        console.log("3")
+        labellist.forEach(function(element){
+            console.log(labelEntities[0].getComponents().local_transform.position[0])
+            console.log(labelEntities[0].getComponents().local_transform.position[1])
+            console.log(labelEntities[0].getComponents().local_transform.position[2])
+            const vectorlabel = new THREE.Vector3(labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]);
+            const vectorcamera = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
+            const vectornormecamera = norme(vectorcamera)
+            console.log("2")
+            const vectorV = new THREE.Vector3(vectornormecamera.x + 1, vectornormecamera.y, vectornormecamera.z);
+            var vectore2 = new THREE.Vector3();
+            vectore2.crossVectors(vectornormecamera, vectorV);
+            
+            const vectore2norme = norme(vectore2)
+            
+            var vectore3 = new THREE.Vector3();
+            vectore3.crossVectors(vectornormecamera, vectore2norme);
+            
+            var matrice = math.matrix([[vectornormecamera.x, vectornormecamera.y, vectornormecamera.z], [vectore2norme.x, vectore2norme.y, vectore2norme.z], [vectore3.x,vectore3.y,vectore3.z]]);
+            
+            
+            var vectorlabelmatrice = multiplication(vectorlabel,  matrice);
+            
+            console.log("1")
+            console.log(vectorlabelmatrice)
+            var vectorcameramatrice = new THREE.Vector3();
+            vectorcameramatrice = math.multiply(matrice, vectorcamera);
+            var vectorlabelmatricenorme = new THREE.Vector3();
+            vectorlabelmatricenorme = norme(vectorlabelmatrice)           
+            let normecameramatrice = calculnorme(vectorcameramatrice)
+            //var vectorcameraprime = new THREE.Vector3();
+            //vectorcameraprime = math.multiply(vectorlabelmatricenorme, normecameramatrice);
+            //var resultatintermediaire1 = 2(vectorcameramatrice.x**2)+ 2(vectorcameramatrice.y**2)+2(vectorcameramatrice.z**2) - 
+                                            //(vectorcameramatrice.x * vectorcameraprime.x) - (vectorcameramatrice.y * vectorcameraprime.y) - (vectorcameramatrice.z * vectorcameraprime.z);
+            //var resultatintermediaire2 = 2(vectorcameramatrice.x**2)+ 2(vectorcameramatrice.y**2)+2(vectorcameramatrice.z**2)
+            //let anglefinale = resultatintermediaire1 /resultatintermediaire2
+            //var matrice0x = math.matrix([[1, 0, 0], [0, Math.cos(anglefinale), Math.sin(anglefinale)], [0, -Math.sin(anglefinale), Math.cos(anglefinale)]]);
+            //let resultat = new THREE.Vector3();
+            //resultat = math.multiply(matrice0x, vectorcameramatrice);
+            //let position = new THREE.Vector3();
+            //position = math.multiply(matrice, resultat);
+
+
+        
+        
+        })
+
+    })
+    
+        
+        
+        
+    
+    
+
+}
+
+
 // --------------------- Partie Modal ---------------------
 
 

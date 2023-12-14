@@ -1,9 +1,9 @@
-import { Anim, Camera, Click, DisabledInput } from './utils/3DVerse';
+import { Anim, Camera, Click, DisabledInput, Mouvcamera } from './utils/3DVerse';
 import { useCallback, useEffect } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 
 
-export const Canvas = () => {
+export const Canvas = (props) => {
     const status = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js`,
 
@@ -26,7 +26,7 @@ export const Canvas = () => {
         }
     );
     
-    const initApp = useCallback(async () => {
+    async function initApp () {
         await SDK3DVerse.joinOrStartSession({
             userToken: 'public_0rtYmFmJfCyVxB7-',
             sceneUUID: '33ed765f-9a1c-4f8c-933c-077eeb5503e0',
@@ -37,13 +37,17 @@ export const Canvas = () => {
         });
         await window.SDK3DVerse.installExtension(SDK3DVerse_ViewportDomOverlay_Ext);
         await window.SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
-    }, []);
+        if (props.onChange) {
+            props.onChange(true);
+        }
+    }
 
     useEffect(() => {
 
         if (status === 'ready') {
 
             initApp();
+            Mouvcamera();
             Click();
             Camera();
             Anim();
@@ -55,12 +59,12 @@ export const Canvas = () => {
 
     return (
         <>
-            <canvas
+            <canvas 
                 id='display-canvas'
                 style={{
-                    height: '100vh',
-                    width: '100vw',
-                    verticalAlign: 'middle',
+                    
+                    width: '100%',
+                    
                     
                 }}
             ></canvas>
