@@ -1,4 +1,4 @@
-import { Anim, Camera, Click, DisabledInput } from './utils/3DVerse';
+import {AnimationShip, Camera, Click } from './utils/3DVerse';
 import { useCallback, useEffect, useState } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 
@@ -25,6 +25,21 @@ export const Canvas = (props) => {
             removeOnUnmount: false,
         }
     );
+    // const three = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ThreeJS_Ext.js`,
+
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
+    // const splineDisplay = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_SplineDisplay_Ext.js`,
+
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
+
     const initApp = useCallback(async () => {
 
         await SDK3DVerse.joinOrStartSession({
@@ -37,6 +52,9 @@ export const Canvas = (props) => {
         });
         await window.SDK3DVerse.installExtension(SDK3DVerse_ViewportDomOverlay_Ext);
         await window.SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
+        // await window.SDK3DVerse.installExtension(SDK3DVerse_ThreeJS_Ext);
+        // await window.SDK3DVerse.installExtension(SDK3DVerse_SplineDisplay_Ext);
+
         if (props.onChange) {
             props.onChange(true);
         }
@@ -44,25 +62,27 @@ export const Canvas = (props) => {
 
     useEffect(() => {
 
-        if (status === 'ready' && dom === 'ready' && label === 'ready') {
+        if (status === 'ready') {
 
             initApp();
             Click();
             Camera();
+            //AnimationShip();
+
         }
 
-    }, [status, dom, label]);
-
+    }, [status]);
+    // ,splineDisplay, three
+    
     return <>
         <canvas
             id='display-canvas'
             style={{
-                height: '100vh',
-                width: '100vw',
-                verticalAlign: 'middle',
-            
+
+                width: '100%',
+
             }}
-            
+
         ></canvas>
     </>
 };

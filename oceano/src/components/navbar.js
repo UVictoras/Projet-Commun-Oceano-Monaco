@@ -67,7 +67,7 @@ function Navbar() {
 
   return (
     <Disclosure as="nav" className="bg-neutral-50">
-      <div className="mx-auto px-2 sm:px-6  ">
+      <div className="mr-9">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
           </div>
@@ -106,7 +106,7 @@ function Navbar() {
               className="relative rounded-full text-gray-400 flex items-center"
             >
               <img src='img/icon/target.png' className='h-7 absolute' alt='target make it blue'/>
-              <p className='ml-10 extraBoldNunito fontTarget '>152</p>
+              <p className='ml-10 extraBoldNunito fontTarget '>3</p>
 
             </button>
             <button
@@ -114,25 +114,25 @@ function Navbar() {
               className="relative rounded-full text-gray-400 p-4 flex items-center"
             >
               <img src='img/icon/coin.png' className='h-7 absolute' alt="coin make it blue" />
-              <p className='ml-8 extraBoldNunito fontBell'>{user.Money}</p>
+              <a href='/shop' className='ml-8 extraBoldNunito fontBell'>{user.Money}</a>
 
             </button>
             <Menu as="div" className="relative ml-3">
               <div>
                 <a href='/profil'>
                   <Menu.Button className="relative flex rounded-full text-sm p-4" >
-                    <div id="progressBar" className='profileImgNav mr-4 flex items-center justify-center'>
+                    <div className='profileImgNav mr-4 flex items-center justify-center'>
                       <div className='whiteCircle flex items-center justify-center'>
                         <img
-                          className="h-8 w-8 rounded-full absolute positionImage "
+                          className="h-10 w-10 rounded-full absolute positionImage "
                           src="/img/avatar.png"
                           alt="avatar make it blue"
                         />
                       </div></div>
 
                     <div className='my-auto'>
-                      <p className='text-left blackNunito text-[16px]'>{user.Pseudo}</p>
-                      <p className=' semiBoldNunito flex flex-1 levelColor'>Niveau {user.Number}</p>
+                      <p className=' blackNunito text-[18px] text-left'>{user.Pseudo}</p>
+                      <p className=' semiBoldNunito text-[14px] flex flex-1 levelColor'>Niveau {user.Number}</p>
                     </div>
 
                   </Menu.Button>

@@ -62,7 +62,7 @@ function Profile(props) {
                             <input type="text" id="first_name" class=" flex justify-content-center border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required></input>
                         </div>
                         <div className=" pt-8">
-                            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Pays :</label>
+                            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Langue :</label>
                             <input type="text" id="first_name" class=" border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value={user.Country} required></input>
                         </div>
                     </div>
