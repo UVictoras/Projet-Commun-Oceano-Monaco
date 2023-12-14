@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/navbar";
-import ModalEvent from "../components/modal";
+import ModalEvent from "../components/modalEvent";
 
 function Impact(props){
     const [isModalOpen, setModalOpen] = useState(false);

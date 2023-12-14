@@ -35,9 +35,9 @@ export default function Tab() {
             linkImage: "",
             linkText: "Oceanic Conservation",
             phoneImage: "img/event/phone.png",
-            phoneText: "06.26.89.27.95",
+            phoneText: "06.50.41.92.25",
             mailImage:"img/event/mail.png",
-            mailText:"lorisrpauwels@gmail.com",
+            mailText:"vMartinant@gaming.tech",
         }
     ];
 
@@ -47,7 +47,7 @@ export default function Tab() {
 
 
     return <>
-        <div className="mt-6 flex flex-col space-y-4">
+        <div className="mt-6 flex flex-col space-y-4 ">
             {/* Tab list*/}
             <div className="border-b border-b-neutral-200 border-b-2">
                 {Menu.map(item =>
@@ -60,7 +60,8 @@ export default function Tab() {
                 </button>))
                 }
             </div>
-            <div className="flex mx-10">
+        
+            <div className="flex mx-10 overflow-y-scroll w-full customScrollbar">
                 {Menu.map(item => (
                     <div
                         key={item.id}
@@ -104,7 +105,7 @@ export default function Tab() {
 
                         </div> : ""
                         }
-                        <p className="text-left">{item.content}<span className="blueTextColor">
+                        <p className="text-left mr-16">{item.content}<span className="blueTextColor">
                             {item.span}
                         </span></p>
 
@@ -133,14 +134,7 @@ export default function Tab() {
                             <h2>Dernières actions</h2>
                         </div>
                         }
-                        <div className="flex mt-[43px]">
-                            <boutton className="w-[460px] h-11 blueButton rounded-2xl blackNunito text-white flex items-center justify-center ">{item.participer}</boutton>
-                            <boutton className="ml-2.5 w-16 flex items-center justify-center border border-neutral-200 bg-white rounded-2xl whiteButton">
-                                <img
-                                    src={item.logoShare}
-                                ></img>
-                            </boutton>
-                        </div>
+
 
                     </div>))
                 }
