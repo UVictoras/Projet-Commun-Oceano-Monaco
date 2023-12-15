@@ -38,14 +38,14 @@ function Profile(props) {
                     </div>
                 </div>
                 <div className="mt-24">
-                    <div className="w-5/6 h-4  ml-16 colorE5 rounded-full">
-                        <div className="w-4/6  h-4 levelBarColor rounded-full"></div>
+                    <div className="w-5/6 h-4 ml-16 colorE5 rounded-full">
+                        <div className="w-4/6 h-4 levelBarColor rounded-full"></div>
                     </div>
                     <p className="text-center mt-2.5 extraBoldNunito text-xl textProfilColorRed">132 XP / 200</p>
                 </div>
-                <div className="achievement mt-6">
+                <div className="achievement mt-12">
                     <h2 className="fontColor3C text-3xl blackNunito">Hauts faits</h2>
-                    <div className="achievementCard mt-3.5 space-y-5 h-80 overflow-y-scroll customScrollbar ">
+                    <div className="achievementCard mt-3.5 space-y-5 h-72 overflow-y-scroll customScrollbar ">
                         <div className="space-x-3.5 flex">
                             <Achievement />
                             <Achievement />
@@ -86,7 +86,6 @@ function Profile(props) {
                             <LastAction/>
                             <LastAction/>
                             <LastAction/>
-
                         </div>
                     </div>
 

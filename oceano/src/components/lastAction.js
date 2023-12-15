@@ -5,7 +5,7 @@ export default function LastAction() {
         </div>
         <div className="mt-3 space-y-2">
             <h3 className="fontColor3C extraBold800 text-base">Sauvons la baleine franche de la mer Baltique</h3>
-            <div className='donation w-24 h-8 rounded-2xl flex items-center justify-center space-x-2'>
+            <div className='donation w-24 p-2 rounded-2xl flex items-center justify-center space-x-2'>
                 <img src='img/icon/coin.png' alt='coin make it blue' className='w-4' />
                 <p className='text-xs extraBoldNunito'>Donation</p>
             </div>
