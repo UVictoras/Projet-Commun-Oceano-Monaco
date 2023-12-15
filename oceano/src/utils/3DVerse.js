@@ -80,7 +80,7 @@ export function Mouvcamera(){
         console.log("3")
         
             
-            const vectorlabel = new THREE.Vector3(labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]);
+            const vectorlabel = new THREE.Vector3(labelEntities[2].getComponents().local_transform.position[0], labelEntities[2].getComponents().local_transform.position[1], labelEntities[2].getComponents().local_transform.position[2]);
             
             const vectorcamera = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
             
