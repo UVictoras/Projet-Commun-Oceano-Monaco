@@ -62,7 +62,7 @@ function Profile(props) {
                     </div>
                 </div>
             </div>
-            <div class="absolute left-1/2 h-5/6 bg-neutral-00 w-1"></div>
+            {/* <div class="absolute right-0 h-5/6 bg-neutral-200 w-1"></div> */}
             <div className="w-1/3 space-y-9 ml-8">
                 <div className="action border-2 border-neutral-200 rounded-2xl">
                     <div className="mx-8 my-8">
