@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-export default function Tab() {
+export default function Tab(props) {
     const Menu = [
         {
             id: 1,
             title: "PRÉSENTATION",
-            content: "Nous demandons au gouvernement islandais d'interdire la chasse à la baleine une fois pour toutes. Selon un rapport de l'autorité alimentaire et vétérinaire islandaise, les baleines ont mis jusqu'à deux heures pour mourir lors des chasses islandaises. J’ai créé cet évènement dans l’objectif de sauver tout ces anima... ",
+            content: props.event.Description,
             span: "Voir plus",
             imgDatePicker: "img/event/calendar.png",
-            textDatePicker: "Du   au 8 Juin",
+            textDatePicker: "Du " + props.event.Start_date + " au " + props.event.End_date,
             imgLocate: "img/event/locate.png",
             textLocate: "En ligne",
             imgLink: "img/event/link.png",
@@ -27,17 +27,17 @@ export default function Tab() {
             span: "Voir plus",
             color: "fontColor3C",
             imgProfile: "img/victor.jpg",
-            name: "Victor M.",
-            titleLevel: "Héros des Grecs",
-            level: "Niveau 4",
+            name: props.event.Last_name + props.event.First_name,
+            titleLevel: props.event.TitleName,
+            level: "Niveau " + props.event.Number,
             participer: "Participer",
             logoShare: "img/event/share.png",
             linkImage: "",
             linkText: "Oceanic Conservation",
             phoneImage: "img/event/phone.png",
             phoneText: "06.50.41.92.25",
-            mailImage:"img/event/mail.png",
-            mailText:"vMartinant@gaming.tech",
+            mailImage: "img/event/mail.png",
+            mailText: props.event.Email,
         }
     ];
 

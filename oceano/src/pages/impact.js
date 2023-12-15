@@ -12,6 +12,7 @@ function Impact(props){
     const closeModal = () => {
       setModalOpen(false);
     };
+    
     return <div className="impact">
         <Navbar/>
         <Modal isOpen={isModalOpen} closeModal={closeModal}/>
