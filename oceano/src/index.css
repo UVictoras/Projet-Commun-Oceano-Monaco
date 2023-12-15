@@ -836,3 +836,64 @@ input[type=text] ,input[type=email] ,input[type= password]{
   background-color: #9D9D9D; 
   border-radius: 20px;      
 }
+
+/********************* CSS pour le shop  *****************/
+
+.custom-shop-item {
+  width: 215px;
+  height: 300px;
+  border: 2px solid #E5E5E5;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+  border-radius: 18.814px
+}
+
+.top-section {
+  width: 213.31px;
+  height: 46.997px;
+  flex-shrink: 0;
+  border-radius: 18.814px 18.814px 0px 0px;
+  background: #3CB532;
+}
+
+.center-section {
+  height: 100%;
+  position: relative; /* Ajout de position relative */
+}
+
+.center-image {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: -20px; /* Ajustez cette valeur pour la superposition */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopButton{
+  width: 203.778px;
+  height: 47.051px;
+  flex-shrink: 0;
+  border-radius: 18.814px;
+  border: 2.258px solid #1CB0F6;
+  background: #1CB0F6;
+  filter: drop-shadow(0px 4px 0px #e5e5e5);
+}
+
+.shopButton:active {
+    filter: drop-shadow(0px 0px 0px #e5e5e5);
+    transform: translateY(4px);
+}
+  
+
+.shopText{
+  color: #FDC62E
+}
