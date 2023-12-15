@@ -1,8 +1,12 @@
 import Tab from './tabsEvent';
 
-export default function ModalEvent() {
+export default function ModalEvent(props) {
     return <>
         <img src='img/event/whale.svg' alt='Whale make it blue' />
+        <button onClick={props.closeModal}>
+            <img src='img/icon/exitWhite.svg' alt='croix make it blue' className='absolute top-7 right-10' />
+        </button>
+
         <div className='mx-10 mt-5'>
             <h2 class="text-[28px] extraBold800">Sauvons la baleine franche de la mer Baltique</h2>
             <p className='greyText'>Lancé par <span className='blueTextColor semiBoldNunito'>Loris P.</span></p>

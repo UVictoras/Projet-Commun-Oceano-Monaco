@@ -61,13 +61,14 @@ export default function Tab() {
                 }
             </div>
         
-            <div className="flex mx-10 h-[200px] overflow-y-scroll w-full customScrollbar">
+            <div className="flex mx-10 w-full ">
                 {Menu.map(item => (
                     <div
                         key={item.id}
-                        className={`${item.color} panel flex  ${checkActive(item.id, "active flex nunito400")}`}
+                        
+                        className={`${item.color} panel flex ${(item.id===2)? "h-80 overflow-y-scroll customScrollbar" : ""} ${checkActive(item.id, "active flex nunito400")}`}
                     >
-                        {item.id === 2 ? <div className="grid grid-cols-2">
+                        {item.id === 2 ? <div className="grid grid-cols-2   customScrollbar ">
 
                             <div className="profile ">
                                 <div className="grid grid-cols-2">
@@ -92,11 +93,11 @@ export default function Tab() {
                                     <img src={item.linkImage}/>
                                     <p>{item.linkText}</p>
                                 </div>
-                                <div className="flex items-center  space-x-4">
+                                <div className="flex items-center space-x-4">
                                     <img src={item.phoneImage}/>
                                     <p>{item.phoneText}</p>
                                 </div>
-                                <div className="flex items-center  space-x-4">
+                                <div className="flex items-center space-x-4">
                                     <img src={item.mailImage}/>
                                     <p>{item.mailText}</p>
                                 </div>
@@ -109,7 +110,7 @@ export default function Tab() {
                             {item.span}
                         </span></p>
 
-                        {item.id === 1 ? <div className="mt-7 text-left space-y-6">
+                        {item.id === 1 ? <div className="mt-7 text-left space-y-4">
                             <div className="flex semiBoldNunito">
                                 <img src={item.imgDatePicker} alt="a" className="w-8" />
                                 <p>{item.textDatePicker}</p>

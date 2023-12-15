@@ -103,7 +103,15 @@ input[type=email],
 input[type=password] {
   background-color: #E5E5E5;
 }
-
+.badgeColor{
+  background-color: #D9D9D9;
+}
+.colorE5{
+  background-color: #E5E5E5;;
+}
+.colorD3{
+  color:#D3D3D3;
+}
 /********************* CSS Navbar **************************/
 .fontTarget {
   color: #FA4A4E
@@ -135,6 +143,22 @@ input[type=password] {
   background-color: white;
 }
 
+/********************* CSS Profil **************************/
+.levelBarColor{
+  background-color: #D81F26;
+}
+.textProfilColorRed{
+  color: #D81F26;
+}
+.imgBanner{
+  background-image: url(../public/img/profil/allActionBanner.svg);
+}
+.myActionYellowColor{
+  background-color: #FFD600;
+}
+.myActionGreyColor{
+  background-color: #D1D1D1;
+}
 /********************* CSS Act *****************************/
 .bellButton {
   border-color: #E5E5E5 !important;
@@ -154,6 +178,7 @@ input[type=password] {
 .searchBarGlassColor {
   color: #B3B3B3;
 }
+
 
 .likeButton {
   border-color: #E5E5E5 !important;
@@ -191,6 +216,16 @@ input[type=password] {
 
 .filterButton:active>.rotateFilter {
   transform: rotate(180deg);
+}
+.plus{
+  border-color: #d1d5db !important;
+  border: solid;
+  border-width: 3px 3px 6px 3px;
+}
+
+.plus:active {
+  border: solid;
+  transform: translateY(4px);
 }
 
 .centerIcon {
@@ -290,7 +325,6 @@ input[type=password] {
 }
 
 .customScrollbar {
-
   overflow-y: auto !important;
   scrollbar-width: thin !important;
   scrollbar-color: #4a5568 #cbd5e0 !important;
@@ -405,12 +439,11 @@ input[type=password] {
   border-width: 2px 2px 2px 2px;
 }
 
-.donationFiltre:active {
+.changedYellow{
   background-color: #FFF8D6;
   border:  solid ;
   border-width: 2px #FFE68B;
 }
-
 
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {

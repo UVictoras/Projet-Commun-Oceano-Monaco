@@ -1,7 +1,7 @@
 import EventLike from './eventLike';
 import Tab from './tabsEvent';
 
-export default function ModalLike(closeModal) {
+export default function ModalLike(props) {
     return <div className='mx-9 '>
         <div className='mt-9 flex space-x-[388px]' >
             <div className='text flex space-x-4 items-center'>
@@ -9,7 +9,7 @@ export default function ModalLike(closeModal) {
                 <p className='greyText nunito500'>32</p>
             </div>
             <div className='flex items-center justify-end'>
-                <button onClick={closeModal}>
+                <button onClick={props.closeModal}>
                     <img src='img/icon/exit.png' alt='exit make it blue' />
                 </button>
 

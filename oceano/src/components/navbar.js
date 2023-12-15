@@ -40,7 +40,7 @@ function classNames(...classes) {
 
 function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-neutral-50">
+    <Disclosure as="nav" className="bg-white">
       <div className="mr-9">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">

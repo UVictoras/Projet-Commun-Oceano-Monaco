@@ -1,5 +1,5 @@
 export default function EventLike() {
-    return <div className="border-2 w-[551px] h-[176px] rounded-2xl flex space-x-7">
+    return <div className="border-2 w-full h-[176px] rounded-2xl flex space-x-7">
         <div className="w-1/3">
             <img src="img/event/dolphin.svg" alt="dolphin make it blue" className="h-44 w-44" />
         </div>

@@ -1,21 +1,23 @@
+import { changerFond } from "../utils/function";
 import Calendar from "./calendar";
 import Onedate from "./pickonedate";
 
-export default function ModalFilter(closeModal) {
+export default function ModalFilter(props) {
+    
     return <div className='mx-9 '>
         <div className='mt-9 flex space-x-[445px]' >
             <div className='text flex space-x-4 items-center'>
                 <h1 className='fontColor3C extraBold800 text-[27px]'>Filtres</h1>
             </div>
             <div className='flex items-center justify-end'>
-                <button onClick={closeModal}>
+                <button onClick={props.closeModal}>
                     <img src='img/icon/exit.png' alt='exit make it blue' />
                 </button>
             </div>
         </div>
         <div className="act mt-9">
             <h2 className="fontColor3C text-xl extraBold800 ">Actions</h2>
-            <div className="filter flex space-x-3.5 mt-5">
+            <div className="filter flex space-x-5 mt-5">
                 <div className="w-1/2 space-y-4">
                     <div className=''>
                         <button className="donationFiltre w-72 h-20 rounded-2xl flex items-center space-x-2 ">
@@ -29,7 +31,6 @@ export default function ModalFilter(closeModal) {
                             </div>
                         </button>
                     </div>
-
                     <div className=''>
                         <button className="waste bg-white border-2 border-neutral-200 w-72 h-20 rounded-2xl flex items-center  space-x-2">
                             <div className="ml-5 mr-3.5">
@@ -94,13 +95,14 @@ export default function ModalFilter(closeModal) {
         <div className="date mt-9">
             <h2 className="fontColor3C extraBold800 text-xl">Date</h2>
             <div className="flex space-x-7 items-center mt-[18px]">
-                <Onedate contentPlaceHolder={'test'} />
+                <Onedate contentPlaceHolder={"Date de début"} />
                 <p>-</p>
-                <Onedate />
+                <Onedate contentPlaceHolder={"Date de fin"}/>
             </div>
         </div>
         <div className="numbreParticipant">
             <h2 className="fontColor3C extraBold800 text-xl mt-11">Nombre de participants</h2>
+            <p className="mt-3 greyText semiBoldNunito text-sm">Le nombre de participants moyen par action est de 136.</p>
 
         </div>
     </div>
