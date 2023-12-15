@@ -94,7 +94,7 @@ export default function ModalFilter(props) {
         </div>
         <div className="date mt-9">
             <h2 className="fontColor3C extraBold800 text-xl">Date</h2>
-            <div className="flex space-x-7 items-center mt-[18px]">
+            <div className="flex space-x-7 items-center mt-4">
                 <Onedate contentPlaceHolder={"Date de début"} />
                 <p>-</p>
                 <Onedate contentPlaceHolder={"Date de fin"}/>
