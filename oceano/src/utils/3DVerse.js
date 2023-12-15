@@ -77,10 +77,10 @@ export function Mouvcamera(){
         const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
     
         const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-        console.log("3")
+        console.log(labelEntities[2])
         
             
-            const vectorlabel = new THREE.Vector3(labelEntities[2].getComponents().local_transform.position[0], labelEntities[2].getComponents().local_transform.position[1], labelEntities[2].getComponents().local_transform.position[2]);
+            const vectorlabel = new THREE.Vector3(labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]);
             
             const vectorcamera = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
             
@@ -134,7 +134,9 @@ export function Mouvcamera(){
             resultat = multiplication(vectorcameramatrice, matrice0x);
             
             let position = new THREE.Vector3();
-            position = multiplication(resultat, matrice);
+            var matricetransposé = math.matrix([[vectornormecamera.x, vectore2norme.x, vectore3.x], [vectornormecamera.y, vectore2norme.y, vectore3.y], [vectornormecamera.z,vectore2norme.z,vectore3.z]]);
+
+            position = multiplication(resultat, matricetransposé);
             console.log(position)
             window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [position.x , position.y, position.z ]
                         ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
