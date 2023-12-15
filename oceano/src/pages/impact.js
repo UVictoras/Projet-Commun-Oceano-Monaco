@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Modal from "../components/modal";
+import { getEvent } from "../api/event";
 
 function Impact(props){
     const [isModalOpen, setModalOpen] = useState(false);
@@ -12,10 +13,19 @@ function Impact(props){
     const closeModal = () => {
       setModalOpen(false);
     };
+
+    const [ event, setEvent ] = useState([]);
+
+    useEffect(() => {
+        const eventFetched = getEvent({id: 1});
+        eventFetched
+        .then(result => setEvent(result))
+        .catch(error=>console.error("Error :",error.message))
+    },[]);
     
     return <div className="impact">
         <Navbar/>
-        <Modal isOpen={isModalOpen} closeModal={closeModal}/>
+        {isModalOpen ? <Modal closeModal={closeModal} event={event[0]}/> : ""}
         <div class="grid place-content-center h-48 ...">
             <div><h1>Ensemble nous avons fait ceci cela</h1></div>    
         </div>

@@ -202,26 +202,28 @@ app.post("/event", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
   const body = req.body;
   dbConnect
-          .query("SELECT  e.Title, \
-                          e.Description, \
-                          e.Start_date, \
-                          e.End_date, \
-                          t.Name, \
-                          t.Color, \
-                          e.Image AS ImageEvent, \
-                          u.Pseudo, \
-                          u.Last_name, \
-                          u.First_name, \
-                          u.Email, \
-                          l.Number, \
-                          tt.Name AS TitleName, \
-                          pp.Image AS ImageProfil, \
-                          (SELECT COUNT(*) FROM users_in_event WHERE ID_Event = " + body.id + ") AS NbUsers \
-                  FROM event e  INNER JOIN user u ON e.Organizator = u.ID \
-                                INNER JOIN type_event t ON e.Type = t.ID \
-                                INNER JOIN level l ON u.Level = l.ID \
-                                INNER JOIN profil_picture pp ON u.Picture = pp.ID \
-                                INNER JOIN title tt ON l.Title = tt.ID \
+          .query("SELECT  e.Title                                                                           , \
+                          e.Description                                                                     , \
+                          e.Start_date                                                                      , \
+                          e.End_date                                                                        , \
+                          e.Link                                                                            , \
+                          t.Name                                                                            , \
+                          t.Color                                                                           , \
+                          t.Logo                                                                            , \
+                          e.Image AS ImageEvent                                                             , \
+                          u.Pseudo                                                                          , \
+                          u.Last_name                                                                       , \
+                          u.First_name                                                                      , \
+                          u.Email                                                                           , \
+                          l.Number                                                                          , \
+                          tt.Name AS TitleName                                                              , \
+                          pp.Image AS ImageProfil                                                           , \
+                          (SELECT COUNT(*) FROM users_in_event WHERE ID_Event = " + body.id + ") AS NbUsers   \
+                  FROM event e  INNER JOIN user u ON e.Organizator = u.ID           \
+                                INNER JOIN type_event t ON e.Type = t.ID            \
+                                INNER JOIN level l ON u.Level = l.ID                \
+                                INNER JOIN profil_picture pp ON u.Picture = pp.ID   \
+                                INNER JOIN title tt ON l.Title = tt.ID              \
                   WHERE e.ID = " + body.id, 
           
           function (err, result) {
