@@ -6,7 +6,7 @@ import Navbar from "../components/navbar";
 function Profile(props) {
     return <div className="profile">
         <Navbar />
-        <div className="mx-16 my-12 flex space-x-32">
+        <div className="mx-16 my-2.5 flex space-x-32">
             <div className="w-2/3">
                 <div className="bannier">
                     <img src="img/profil/banier.svg" alt="banier make it blue" />
@@ -43,7 +43,7 @@ function Profile(props) {
                     </div>
                     <p className="text-center mt-2.5 extraBoldNunito text-xl textProfilColorRed">132 XP / 200</p>
                 </div>
-                <div className="achievement mt-12">
+                <div className="achievement mt-4">
                     <h2 className="fontColor3C text-3xl blackNunito">Hauts faits</h2>
                     <div className="achievementCard mt-3.5 space-y-5 h-72 overflow-y-scroll customScrollbar ">
                         <div className="space-x-3.5 flex">
@@ -73,6 +73,7 @@ function Profile(props) {
                             <MyAction />
                             <MyAction />
                             <MyAction />
+                            
                         </div>
                         <button className="blueButton rounded-2xl text-white blackNunito text-lg flex items-center justify-center w-2/3 ml-40">Voir toutes mes actions</button>
 
