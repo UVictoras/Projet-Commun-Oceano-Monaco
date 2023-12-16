@@ -48,20 +48,31 @@ export function multiplication(vector, matrice){
     let para1 = vector.x *  math.subset(matrice, math.index(0, 0))+ vector.y *  math.subset(matrice, math.index(1, 0))+ vector.z * math.subset(matrice, math.index(2, 0))
     let para2 = vector.x *  math.subset(matrice, math.index(0, 1))+ vector.y *  math.subset(matrice, math.index(1, 1))+ vector.z * math.subset(matrice, math.index(2, 1))
     let para3 = vector.x *  math.subset(matrice, math.index(0, 2))+ vector.y *  math.subset(matrice, math.index(1, 2))+ vector.z * math.subset(matrice, math.index(2, 2))
-    console.log(para1)
-    console.log(para2)
-    console.log(para3)
-    console.log("limit")
+    
     var newvector = new THREE.Vector3(para1, para2, para3);  
     return newvector
 }
 
 export function multiplicationVectorNorme(vector, scalaire){
-    let vectorx = vector.x * scalaire 
-    let vectory = vector.y * scalaire 
-    let vectorz = vector.z * scalaire
-    var newvector = new THREE.Vector3(vectorx, vectory, vectorz);  
+    let vectorx1 = vector.x * scalaire 
+    let vectory2 = vector.y * scalaire 
+    let vectorz3 = vector.z * scalaire
+    var newvector = new THREE.Vector3(vectorx1, vectory2, vectorz3);  
     return newvector 
+}
+
+export function produitScalaire(vecteur1, vecteur2) {
+    let resultat = vecteur1.x * vecteur2.x + vecteur1.y * vecteur2.y + vecteur1.z * vecteur2.z 
+    
+    return resultat;
+}
+
+export function produitVectorielle(vecteur1, vecteur2){
+    let vectorx1 = vecteur1.x *  vecteur2.y - vecteur1.y *vecteur2.x
+    let vectory2 = vecteur1.y *  vecteur2.z - vecteur1.z *vecteur2.y
+    let vectorz3 = vecteur1.z *  vecteur2.x - vecteur1.x *vecteur2.z
+    var newvector = new THREE.Vector3(vectorx1, vectory2, vectorz3);  
+    return newvector
 }
 
 
@@ -80,70 +91,45 @@ export function Mouvcamera(){
         console.log(labelEntities[2])
         
             
-            const vectorlabel = new THREE.Vector3(labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]);
+            const vectorlabel = new THREE.Vector3(labelEntities[1].getComponents().local_transform.position[0], labelEntities[1].getComponents().local_transform.position[1], labelEntities[1].getComponents().local_transform.position[2]);
             
             const vectorcamera = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
+            var vector0x = new THREE.Vector3(1,0,0);
             
-            const vectornormecamera = norme(vectorcamera)
-            
-            console.log("2")
-            const vectorV = new THREE.Vector3(vectornormecamera.x + 1, vectornormecamera.y, vectornormecamera.z);
-            
-            var vectore2 = new THREE.Vector3();
-            vectore2.crossVectors(vectornormecamera, vectorV);
-            
-            
-            const vectore2norme = norme(vectore2)
-            
-            var vectore3 = new THREE.Vector3();
-            vectore3.crossVectors(vectornormecamera, vectore2norme);
-            
-            
-            var matrice = math.matrix([[vectornormecamera.x, vectornormecamera.y, vectornormecamera.z], [vectore2norme.x, vectore2norme.y, vectore2norme.z], [vectore3.x,vectore3.y,vectore3.z]]);
-            
-            var vectorlabelmatrice = new THREE.Vector3();
-            vectorlabelmatrice = multiplication(vectorlabel,  matrice);
-            
-            
-            
-            
-            var vectorcameramatrice = new THREE.Vector3();
-            vectorcameramatrice = multiplication(vectorcamera,  matrice);
-            
-            var vectorlabelmatricenorme = new THREE.Vector3();
-            vectorlabelmatricenorme = norme(vectorlabelmatrice)
-                      
-            let normecameramatrice = calculnorme(vectorcameramatrice)
-            
-            var vectorcameraprime = new THREE.Vector3();
-            
-            
-            vectorcameraprime = multiplicationVectorNorme(vectorlabelmatricenorme, normecameramatrice)
-            console.log(vectorcameraprime)
-
+            var vectorV = new THREE.Vector3();
+           
 
 
             
-            var resultatintermediaire1 = 2*(vectorcameramatrice.x**2)+ 2*(vectorcameramatrice.y**2)+2*(vectorcameramatrice.z**2) - 
-                                            (vectorcameramatrice.x * vectorcameraprime.x) - (vectorcameramatrice.y * vectorcameraprime.y) - (vectorcameramatrice.z * vectorcameraprime.z);
-            var resultatintermediaire2 = 2*(vectorcameramatrice.x**2)+ 2*(vectorcameramatrice.y**2)+2*(vectorcameramatrice.z**2)
-            let anglefinale = resultatintermediaire1 /resultatintermediaire2
-            var matrice0x = math.matrix([[1, 0, 0], [0, Math.cos(anglefinale), Math.sin(anglefinale)], [0, -Math.sin(anglefinale), Math.cos(anglefinale)]]);
-            let resultat = new THREE.Vector3();
-            console.log("1")
-            resultat = multiplication(vectorcameramatrice, matrice0x);
+            vectorV = produitVectorielle(vector0x,vectorcamera)
             
-            let position = new THREE.Vector3();
-            var matricetransposé = math.matrix([[vectornormecamera.x, vectore2norme.x, vectore3.x], [vectornormecamera.y, vectore2norme.y, vectore3.y], [vectornormecamera.z,vectore2norme.z,vectore3.z]]);
+            var vectorVnorme = new THREE.Vector3();
+            vectorVnorme = norme(vectorV)
+            
+            
 
-            position = multiplication(resultat, matricetransposé);
-            console.log(position)
-            window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [position.x , position.y, position.z ]
-                        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-                        , 1, 
-                        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
-                        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
-        
+            
+            let scalaire = produitScalaire(vectorVnorme, vector0x)
+            
+            // on en est là
+            let test = (calculnorme(vectorV)* calculnorme(vector0x)) / scalaire
+            console.log(test)
+            let angle1 = Math.acos(test)
+            console.log(angle1)
+            let para1 = Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2
+            
+            
+            
+            var matrice = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2 ,(1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.x ) + Math.sin(angle1) * vectorVnorme.z,  (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.x ) - Math.sin(angle1) * vectorVnorme.y]
+                                    ,[(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.y ) - Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.y)**2  , (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.y ) + Math.sin(angle1) * vectorVnorme.x],
+                                    [(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.z ) + Math.sin(angle1) * vectorVnorme.y, (1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.z ) - Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.z)**2]]);
+           
+            var vectorlabelprime = new THREE.Vector3(); 
+            var vectorlabelprime = multiplication(vectorlabel, matrice)
+            var vectorcameraprime = new THREE.Vector3(); 
+            var vectorcameraprime = multiplication(vectorcamera, matrice)
+
+           
         
         
 
