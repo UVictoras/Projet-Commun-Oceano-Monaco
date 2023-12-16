@@ -1,15 +1,16 @@
 import { changerFond } from "../utils/function";
+import ActionFilter from "./actionFilter";
 import Calendar from "./calendar";
 import Onedate from "./pickonedate";
 
 export default function ModalFilter(props) {
-    
+
     return <div className='mx-9 '>
-        <div className='mt-9 flex space-x-[445px]' >
-            <div className='text flex space-x-4 items-center'>
+        <div className='mt-9 flex' >
+            <div className='text flex space-x-4 items-center w-2/3'>
                 <h1 className='fontColor3C extraBold800 text-[27px]'>Filtres</h1>
             </div>
-            <div className='flex items-center justify-end'>
+            <div className='flex w-1/3 items-center justify-end'>
                 <button onClick={props.closeModal}>
                     <img src='img/icon/exit.png' alt='exit make it blue' />
                 </button>
@@ -18,76 +19,14 @@ export default function ModalFilter(props) {
         <div className="act mt-9">
             <h2 className="fontColor3C text-xl extraBold800 ">Actions</h2>
             <div className="filter flex space-x-5 mt-5">
-                <div className="w-1/2 space-y-4">
-                    <div className=''>
-                        <button className="donationFiltre w-72 h-20 rounded-2xl flex items-center space-x-2 ">
-                            <div className="ml-5 mr-3.5">
-                                <img src='img/icon/coin.png' alt='coin make it blue' className='w-10' />
-                            </div>
-
-                            <div className="text-start">
-                                <h3 className='text-sm extraBoldNunito '>Donations</h3>
-                                <p className="semiBoldNunito greyText text-xs">Donnez une petite somme d’argent pour une cause qui compte pour vous.</p>
-                            </div>
-                        </button>
+                <div className="space-y-4">
+                    <div className="flex space-x-2">
+                        <ActionFilter />
+                        <ActionFilter />
                     </div>
-                    <div className=''>
-                        <button className="waste bg-white border-2 border-neutral-200 w-72 h-20 rounded-2xl flex items-center  space-x-2">
-                            <div className="ml-5 mr-3.5">
-                                <img src='img/bottle.svg' alt='bottle make it blue' className='w-10' />
-                            </div>
-                            <div className="text-start">
-                                <h3 className='text-sm extraBoldNunito'>Collecte de déchets</h3>
-                                <p className="semiBoldNunito greyText text-xs">Rejoignez d’autres personnes pour nettoyer un lieu le temps d’une journée..</p>
-                            </div>
-                        </button>
-                    </div>
-
-                    <div className=''>
-                        <button className="waste bg-white border-2 border-neutral-200 w-72 h-20 rounded-2xl flex items-center  space-x-2">
-                            <div className="ml-5 mr-3.5">
-                                <img src='img/icon/coin.png' alt='coin make it blue' className='w-10' />
-                            </div>
-                            <div className="text-start">
-                                <h3 className='text-sm extraBoldNunito'>Education & sensibilisation</h3>
-                                <p className="semiBoldNunito greyText text-xs">La sensibilisation et l’éducation sont aussi impactants que les autres actions.</p>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                <div className="w-1/2 space-y-4">
-                    <div className=''>
-                        <button className="waste bg-white border-2 border-neutral-200 w-72 h-20 rounded-2xl flex items-center  space-x-2">
-                            <div className="ml-5 mr-3.5">
-                                <img src='img/bottle.svg' alt='bottle make it blue' className='w-10' />
-                            </div>
-                            <div className="text-start">
-                                <h3 className='text-sm extraBoldNunito'>Collecte de déchets</h3>
-                                <p className="semiBoldNunito greyText text-xs">Des instituts scientifiques et centres de recherche ont besoin de vous !</p>
-                            </div>
-                        </button>
-                    </div>
-                    <div className=''>
-                        <button className="waste bg-white border-2 border-neutral-200 w-72 h-20 rounded-2xl flex items-center  space-x-2">
-                            <div className="ml-5 mr-3.5">
-                                <img src='img/petition.svg' alt='bottle make it blue' className='w-10' />
-                            </div>
-                            <div className="text-start">
-                                <h3 className='text-sm extraBoldNunito'>Collecte de déchets</h3>
-                                <p className="semiBoldNunito greyText text-xs">Des instituts scientifiques et centres de recherche ont besoin de vous !</p>
-                            </div>
-                        </button>
-                    </div>
-                    <div className=''>
-                        <button className="waste bg-white border-2 border-neutral-200 w-72 h-20 rounded-2xl flex items-center  space-x-2">
-                            <div className="ml-5 mr-3.5">
-                                <img src='img/petition.svg' alt='bottle make it blue' className='w-10' />
-                            </div>
-                            <div className="text-start">
-                                <h3 className='text-sm extraBoldNunito'>Collecte de déchets</h3>
-                                <p className="semiBoldNunito greyText text-xs">Des instituts scientifiques et centres de recherche ont besoin de vous !</p>
-                            </div>
-                        </button>
+                    <div className="flex space-x-2">
+                        <ActionFilter />
+                        <ActionFilter />
                     </div>
                 </div>
             </div>
@@ -97,7 +36,7 @@ export default function ModalFilter(props) {
             <div className="flex space-x-7 items-center mt-4">
                 <Onedate contentPlaceHolder={"Date de début"} />
                 <p>-</p>
-                <Onedate contentPlaceHolder={"Date de fin"}/>
+                <Onedate contentPlaceHolder={"Date de fin"} />
             </div>
         </div>
         <div className="numbreParticipant">
@@ -105,5 +44,5 @@ export default function ModalFilter(props) {
             <p className="mt-3 greyText semiBoldNunito text-sm">Le nombre de participants moyen par action est de 136.</p>
 
         </div>
-    </div>
+    </div >
 }

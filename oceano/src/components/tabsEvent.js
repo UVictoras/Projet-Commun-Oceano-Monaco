@@ -110,7 +110,7 @@ export default function Tab() {
                             {item.span}
                         </span></p>
 
-                        {item.id === 1 ? <div className="mt-7 text-left space-y-4">
+                        {item.id === 1 ? <div className="mt-7 text-left space-y-2">
                             <div className="flex semiBoldNunito">
                                 <img src={item.imgDatePicker} alt="a" className="w-8" />
                                 <p>{item.textDatePicker}</p>
