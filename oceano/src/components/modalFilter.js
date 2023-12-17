@@ -21,12 +21,12 @@ export default function ModalFilter(props) {
             <div className="filter flex space-x-5 mt-5">
                 <div className="space-y-4">
                     <div className="flex space-x-2">
-                        <ActionFilter />
-                        <ActionFilter />
+                        <ActionFilter id={"donation"} index={"changedYellow"}/>
+                        <ActionFilter id={"donnee"} index={"changedBlue"}/>
                     </div>
                     <div className="flex space-x-2">
-                        <ActionFilter />
-                        <ActionFilter />
+                        <ActionFilter id={"dechet"} />
+                        <ActionFilter id={"petition"} index={"changedGreen"}/>
                     </div>
                 </div>
             </div>

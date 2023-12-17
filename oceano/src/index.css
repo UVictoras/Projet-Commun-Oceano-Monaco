@@ -397,9 +397,20 @@ body
 
 .changedYellow{
   background-color: #FFF8D6;
-  border:  solid ;
-  border-width: 2px #FFE68B;
+  border:  solid  #FFE68B !important;
+  border-width: 2px !important;
 }
+.changedGreen{
+  background-color: #E9FFEF;
+  border:  solid  #45D42E !important;
+  border-width: 2px !important;
+}
+.changedBlue{
+  background-color: #E9EEFF;
+  border:  solid  #7593FF !important;
+  border-width: 2px !important; 
+}
+
 
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {

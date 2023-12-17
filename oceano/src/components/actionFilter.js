@@ -1,6 +1,8 @@
-export default function ActionFilter() {
+import { isSelected } from "../utils/webFunction";
+
+export default function ActionFilter(props) {
     return <div className=''>
-        <button className="donationFiltre rounded-2xl flex items-center space-x-2">
+        <button className="donationFiltre rounded-2xl flex items-center space-x-2" id={props.id} onClick={()=>isSelected(props.id,props.index)}>
             <div className="ml-2 mr-2">
                 <img src='img/icon/coin.png' alt='coin make it blue' className='w-12' />
             </div>
