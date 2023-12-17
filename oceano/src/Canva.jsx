@@ -1,4 +1,4 @@
-import {AnimationShip, Camera, Click } from './utils/3DVerse';
+import { AnimationShip, Camera, Click } from './utils/3DVerse';
 import { useCallback, useEffect, useState } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 
@@ -44,7 +44,7 @@ export const Canvas = (props) => {
 
         await SDK3DVerse.joinOrStartSession({
             userToken: 'public_0rtYmFmJfCyVxB7-',
-            sceneUUID: '33ed765f-9a1c-4f8c-933c-077eeb5503e0',
+            sceneUUID: 'dc9b301a-c560-42d5-b702-565e386d5f8e',
             canvas: document.getElementById('display-canvas'),
             viewportProperties: {
                 defaultControllerType: SDK3DVerse.controller_type.orbit,
@@ -73,14 +73,14 @@ export const Canvas = (props) => {
 
     }, [status]);
     // ,splineDisplay, three
-    
+
     return <>
         <canvas
             id='display-canvas'
             style={{
 
                 width: '100%',
-
+                verticalAlign: 'middle',
             }}
 
         ></canvas>

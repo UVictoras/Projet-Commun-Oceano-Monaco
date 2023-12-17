@@ -279,9 +279,9 @@ input[type=password] {
 .tabsActiveBorder {
   border-bottom: solid #1CB0F6;
 }
-body
+
 .customScrollbar {
-  overflow-y: auto !important;
+  
   scrollbar-width: thin !important;
   scrollbar-color: #4a5568 #cbd5e0 !important;
 }
@@ -318,75 +318,28 @@ body
 
 /********************* CSS pour le loading screen **********/
 
-.lds-ellipsis {
-  display: inline-block;
-  position: relative;
+.loader {
+  --r1: 154%;
+  --r2: 68.5%;
   width: 80px;
-  height: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%; 
+  background:
+    radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#269af2 80%),
+    radial-gradient(var(--r1) var(--r2) at bottom,#269af2 79.5%,#0000 80%),
+    radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#269af2 80%),
+    #ccc;
+  background-size: 50.5% 220%;
+  background-position: -100% 0%,0% 0%,100% 0%;
+  background-repeat:no-repeat;
+  animation: l9 4s infinite linear;
+}
+@keyframes l9 {
+    33%  {background-position:    0% 33% ,100% 33% ,200% 33% }
+    66%  {background-position: -100%  66%,0%   66% ,100% 66% }
+    100% {background-position:    0% 100%,100% 100%,200% 100%}
 }
 
-.lds-ellipsis div {
-  position: absolute;
-  top: 33px;
-  width: 13px;
-  border-radius: 50%;
-  background: #fafafa;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-
-.lds-ellipsis div:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(3) {
-  left: 22px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(4) {
-  left: 46px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0);
-  }
-}
-
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  100% {
-    transform: translate(14px, 0);
-  }
-}
-
-#display-canvas {
-  height: calc(100vh - 4rem);
-}
 
 /********************* CSS pour les filtres ****************/
 .donationFiltre {

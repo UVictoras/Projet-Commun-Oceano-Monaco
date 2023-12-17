@@ -264,7 +264,7 @@ export async function Click(props) {
             position[0] = pickedPosition[0]
             position[1] = pickedPosition[1]
             position[2] = pickedPosition[2]
-            if (entity.getName() === "Globe" || entity.getName() == "Extract3" ) {
+            if (entity.getName() === "continents" || entity.getName() == "seas" ) {
                 newElement.apply(null,position);
                 isVisible = false
 
