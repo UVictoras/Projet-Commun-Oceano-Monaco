@@ -75,6 +75,22 @@ export function produitVectorielle(vecteur1, vecteur2){
     return newvector
 }
 
+export function calculVector(vecteur1, vecteur2){
+    let vectorx1 = vecteur2.x - vecteur1.x 
+    let vectory2 = vecteur2.y - vecteur1.y
+    let vectorz3 = vecteur2.z - vecteur1.z
+    var newvector = new THREE.Vector3(vectorx1, vectory2, vectorz3);  
+    return newvector
+}
+
+export function multiplicationVector(vecteur1, vecteur2){
+    let vectorx1 = vecteur2.x * vecteur1.x 
+    let vectory2 = vecteur2.y * vecteur1.y
+    let vectorz3 = vecteur2.z * vecteur1.z
+    var newvector = new THREE.Vector3(vectorx1, vectory2, vectorz3);  
+    return newvector
+}
+
 
 export function Mouvcamera(){
     const canvas = document.getElementById('display-canvas')
@@ -113,8 +129,10 @@ export function Mouvcamera(){
             
             // on en est là
             let test = (calculnorme(vectorV)* calculnorme(vector0x)) / scalaire
-            console.log(test)
-            let angle1 = Math.acos(test)
+            console.log(test);
+            test = ((test - 1) % 2 + 2) % 2 - 1;
+            console.log(test);
+            var angle1 = Math.acos(test);
             console.log(angle1)
             let para1 = Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2
             
@@ -123,17 +141,46 @@ export function Mouvcamera(){
             var matrice = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2 ,(1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.x ) + Math.sin(angle1) * vectorVnorme.z,  (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.x ) - Math.sin(angle1) * vectorVnorme.y]
                                     ,[(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.y ) - Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.y)**2  , (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.y ) + Math.sin(angle1) * vectorVnorme.x],
                                     [(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.z ) + Math.sin(angle1) * vectorVnorme.y, (1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.z ) - Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.z)**2]]);
-           
+            
             var vectorlabelprime = new THREE.Vector3(); 
             var vectorlabelprime = multiplication(vectorlabel, matrice)
+            
             var vectorcameraprime = new THREE.Vector3(); 
             var vectorcameraprime = multiplication(vectorcamera, matrice)
-
+            
+            var vectorlabelprimenorme = new THREE.Vector3();
+            vectorlabelprimenorme = norme(vectorlabelprime) 
            
-        
-        
+            var vectorcamera2prime = new THREE.Vector3();
+            let normecamera = calculnorme(vectorcameraprime)
+            vectorcamera2prime = multiplicationVectorNorme(vectorlabelprimenorme, normecamera)
+            
 
-    })
+            var vectorcamerafullprime = new THREE.Vector3();
+            vectorcamerafullprime = calculVector(vectorcameraprime, vectorcamera2prime )
+            var etape1 = new THREE.Vector3();
+            etape1 = multiplicationVectorNorme (vectorcameraprime, 2)
+            
+            var etape2 = new THREE.Vector3();
+            etape2 =  multiplicationVector(etape1, vectorcamera2prime )
+            
+            // 2 * vectorcameraprime *  vectorcamera2prime
+            var etape3 = ((calculnorme(vectorcameraprime)**2) + (calculnorme(vectorcamera2prime)**2) - (calculnorme(vectorcamerafullprime)**2)) 
+            console.log(etape3)
+            var etape4 = etape3 / etape2  
+            var angle2 = Math.acos(etape4);
+            var matriceOx = math.matrix([[1,0,0]
+                                    ,[0, Math.cos(angle2) , Math.sin(angle2) ],
+                                    [0, - Math.sin(angle2), Math.cos(angle2)]]);
+
+            let resultat = multiplication(vectorcameraprime, matriceOx)
+            var matricetransposé = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2 ,(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.y ) - Math.sin(angle1) * vectorVnorme.z,  (1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.z ) + Math.sin(angle1) * vectorVnorme.y]
+                                                ,[(1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.x ) + Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.y)**2  , (1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.z ) - Math.sin(angle1) * vectorVnorme.x],
+                                                [(1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.x ) - Math.sin(angle1) * vectorVnorme.y, (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.y ) + Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.z)**2]]);
+            let position = multiplication(resultat, matricetransposé)
+            
+            
+    })      
     
         
         
