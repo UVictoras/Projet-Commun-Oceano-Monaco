@@ -1,18 +1,29 @@
 // Modal.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ModalEvent from './modalEvent'
+import ModalLike from './modalLike';
+import ModalFilter from './modalFilter';
 
 
-const Modal = ({ isOpen, onClose }) => {
+export function Modal(props) {
+
+  const [activeModal, setActiveModal] = useState();
+  useEffect(() => {
+    if (props.isClicked === "like") {
+      setActiveModal(<ModalLike closeModal={props.closeModal}/>)
+    } else if (props.isClicked === "filter") {
+      setActiveModal(<ModalFilter closeModal={props.closeModal}/>)
+    } else if (props.isClicked === "event"){
+      setActiveModal(<ModalEvent closeModal={props.closeModal}/>)
+    };
+  }, [props.isClicked])
+
   return (
     <>
-      {isOpen && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <p>Contenu du modal</p>
-            <button onClick={onClose}>Fermer</button>
-          </div>
-        </div>
-      )}
+      <div id="modal" class="moddal fixed z-50 bg-white h-screen w-1/3 right-0 rounded-l-3xl">
+        {activeModal}
+      </div>
+
     </>
   );
 };
