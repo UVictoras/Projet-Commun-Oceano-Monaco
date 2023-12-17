@@ -128,7 +128,10 @@ export function Mouvcamera(){
             let scalaire = produitScalaire(vectorVnorme, vector0x)
             
             // on en est là
-            let test = (calculnorme(vectorV)* calculnorme(vector0x)) / scalaire
+            let test =   scalaire / (calculnorme(vectorVnorme)* calculnorme(vector0x))
+            console.log(calculnorme(vectorVnorme));
+            console.log(calculnorme(vector0x));
+            console.log(scalaire);
             console.log(test);
             test = ((test - 1) % 2 + 2) % 2 - 1;
             console.log(test);
@@ -166,14 +169,17 @@ export function Mouvcamera(){
             
             // 2 * vectorcameraprime *  vectorcamera2prime
             var etape3 = ((calculnorme(vectorcameraprime)**2) + (calculnorme(vectorcamera2prime)**2) - (calculnorme(vectorcamerafullprime)**2)) 
-            console.log(etape3)
-            var etape4 = etape3 / etape2  
+            
+            var etape4 = etape3 / etape2 
+            console.log(etape4)
             var angle2 = Math.acos(etape4);
+            
             var matriceOx = math.matrix([[1,0,0]
                                     ,[0, Math.cos(angle2) , Math.sin(angle2) ],
                                     [0, - Math.sin(angle2), Math.cos(angle2)]]);
-
-            let resultat = multiplication(vectorcameraprime, matriceOx)
+            var resultat = new THREE.Vector3();
+            resultat = multiplication(vectorcameraprime, matriceOx)
+            
             var matricetransposé = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2 ,(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.y ) - Math.sin(angle1) * vectorVnorme.z,  (1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.z ) + Math.sin(angle1) * vectorVnorme.y]
                                                 ,[(1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.x ) + Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.y)**2  , (1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.z ) - Math.sin(angle1) * vectorVnorme.x],
                                                 [(1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.x ) - Math.sin(angle1) * vectorVnorme.y, (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.y ) + Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.z)**2]]);
