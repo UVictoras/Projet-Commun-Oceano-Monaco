@@ -40,10 +40,16 @@ function Above(props) {
             <Searchbar />
         </div>
         <div className="objectiv absolute bg-white border-2 border-normal-200 rounded-lg bottom-12 left-12 w-[435px]">
-            <div className="flex mt-4 items-center space-x-[190px] extraBold800 ml-[32px] mr-[30px]">
-                <h1 className="ml-3 text-[21px]">Objectifs</h1>
-                <a href="" className=" blueTextColor text-sm flex text-end uppercaseText text-[14px] hover:underline">tout voir</a>
+            <div className="flex items-end">
+                <div className="flex mt-4 items-center extraBold800 ml-[32px] mr-[30px] w-2/3">
+                    <h1 className="ml-3 text-[21px]">Objectifs</h1>
+
+                </div>
+                <div className="mt-2 w-1/3 flex justify-end mr-5 mb-1">
+                    <a href="" className=" blueTextColor text-sm flex extraBold800 text-end uppercaseText text-[14px] hover:underline">tout voir</a>
+                </div>
             </div>
+
             <div className="mt-[38px] flex ml-[32px] mr-[30px] flex items-start" >
                 <img src="img/icon/lightning.svg" alt="eclair make it blue" />
                 <div className="ml-7">

@@ -1,4 +1,5 @@
 import { changerFond } from "../utils/function";
+import { isSelected } from "../utils/webFunction";
 import ActionFilter from "./actionFilter";
 import Calendar from "./calendar";
 import Onedate from "./pickonedate";
@@ -16,23 +17,61 @@ export default function ModalFilter(props) {
                 </button>
             </div>
         </div>
-        <div className="h-40vh overflow-y-scroll customScrollbar">
-            <div className="act mt-9">
+        {/* h-40vh overflow-y-scroll customScrollbar */}
+        <div className="">
+            <div className="act mt-9 mx-2">
                 <h2 className="fontColor3C text-xl extraBold800 ">Actions</h2>
                 <div className="filter flex space-x-5 mt-5">
                     <div className="space-y-4">
                         <div className="flex space-x-2">
-                            <ActionFilter id={"donation"} index={"changedYellow"} />
-                            <ActionFilter id={"donnee"} index={"changedBlue"} />
+                            <div className="w-1/2">
+                                <ActionFilter id={"donation"} index={"changedYellow"} />
+                            </div>
+                            <div className="w-1/2">
+                                <button className="donationFiltre p-1 rounded-2xl flex items-center hover:bg-neutral-200 space-x-2" id={"donnee"} onClick={() => isSelected("donnee", "changedBlue")}>
+                                    <div className="ml-2 mr-2">
+                                        <img src='img/bottle.svg' alt='coin make it blue' className='w-12 p-1' />
+                                    </div>
+
+                                    <div className="text-start py-2 pr-2">
+                                        <h3 className='text-sm extraBoldNunito'>Collecte de données</h3>
+                                        <p className="semiBoldNunito greyText text-xs">Des instituts scientifiques et centres de recherche ont besoin de vous !</p>
+                                    </div>
+                                </button>
+                            </div>
+
                         </div>
                         <div className="flex space-x-2">
-                            <ActionFilter id={"dechet"} />
-                            <ActionFilter id={"petition"} index={"changedGreen"} />
+                            <div className="w-1/2">
+                                <button className="donationFiltre p-1  rounded-2xl flex items-center hover:bg-neutral-200 space-x-2" id={"dechet"} onClick={() => isSelected("dechet", "changedBlue")}>
+                                    <div className="ml-2 mr-2">
+                                        <img src='img/bottle.svg' alt='coin make it blue' className='w-12 p-1' />
+                                    </div>
+
+                                    <div className="text-start py-2 pr-2">
+                                        <h3 className='text-sm extraBoldNunito'>Collecte de déchets</h3>
+                                        <p className="semiBoldNunito greyText text-xs">Rejoignez d’autres personnes pour nettoyer un lieu le temps d’une journée.</p>
+                                    </div>
+                                </button>
+                            </div>
+                            <div className="w-1/2">
+                                <button className="donationFiltre p-1  rounded-2xl flex items-center hover:bg-neutral-200 space-x-2" id={"petition"} onClick={() => isSelected("petition", "changedGreen")}>
+                                    <div className="ml-2 mr-2">
+                                        <img src='img/petition.svg' alt='coin make it blue' className='w-12 ' />
+                                    </div>
+
+                                    <div className="text-start py-2 pr-2">
+                                        <h3 className='text-sm extraBoldNunito'>Pétitions</h3>
+                                        <p className="semiBoldNunito greyText text-xs">Votre voix compte, donc manifestez-vous pour soutenir des projets qui comptent.</p>
+                                    </div>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="date mt-6">
+            <div className="date mt-6 mx-2">
                 <h2 className="fontColor3C extraBold800 text-xl">Date</h2>
                 <div className="flex space-x-7 items-center mt-4">
                     <Onedate contentPlaceHolder={"Date de début"} />
@@ -72,23 +111,35 @@ export default function ModalFilter(props) {
                     </div>
                 </div>
             </div>
-            <div className="creator">
+            <div className="creator mt-11 mx-2">
                 <h2 className="extraBold800 fontColor3C text-xl">Créateur</h2>
-                <div className="w-1/2">
-                    <button className="donationFiltre rounded-2xl flex items-center hover:bg-neutral-200 space-x-2 w-full">
-                        <div className="ml-2 mr-2">
-                            <img src='img/icon/coin.png' alt='coin make it blue' className='w-12' />
-                        </div>
-
-                        <div className="text-start py-2 pr-2">
-                            <h3 className='text-sm extraBoldNunito'>Donations</h3>
-                            <p className="semiBoldNunito greyText text-xs">Donnez une petite somme d’argent pour une cause qui compte pour vous.</p>
-                        </div>
-                    </button>
+                <div className="flex space-x-4">
+                    <div className="w-1/2 mt-5">
+                        <button className="donationFiltre rounded-2xl flex items-center hover:bg-neutral-200 space-x-2 w-full p-2" id={"association"} onClick={()=> isSelected("association", "changedCreator")}>
+                            <div className="ml-2 mr-2">
+                                <img src='img/filter/defender.svg' alt='defender make it blue' className='w-16' />
+                            </div>
+                            <div className="text-start py-2 pr-2 space-y-1">
+                                <h3 className='text-sm extraBoldNunito'>Associations</h3>
+                                <p className="semiBoldNunito greyText text-xs">Donnez une petite somme d’argent pour une cause qui compte pour vous.</p>
+                            </div>
+                        </button>
+                    </div>
+                    <div className="w-1/2 mt-5">
+                        <button className="donationFiltre rounded-2xl flex items-center hover:bg-neutral-200 space-x-2 w-full p-2" id={"particular"} onClick={()=> isSelected("particular", "changedCreator")}>
+                            <div className="ml-2 mr-2">
+                                <img src='img/notif/girl.svg' alt='defender make it blue' className='w-18' />
+                            </div>
+                            <div className="text-start py-2 pr-2 space-y-1">
+                                <h3 className='text-sm extraBoldNunito'>Associations</h3>
+                                <p className="semiBoldNunito greyText text-xs">Donnez une petite somme d’argent pour une cause qui compte pour vous.</p>
+                            </div>
+                        </button>
+                    </div>
                 </div>
 
             </div>
-            
+
         </div>
 
     </div >

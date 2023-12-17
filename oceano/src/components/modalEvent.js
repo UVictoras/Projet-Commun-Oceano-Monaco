@@ -33,7 +33,7 @@ export default function ModalEvent(props) {
             </div>
             <div class="text-sm font-medium text-center text-gray-500">
                 <Tab />
-                <div className="flex h-1/8 mx-10 justify-center">
+                <div className="flex h-1/8 mx-10 justify-center absolute w-2/3 bottom-28">
                     <boutton className="w-full h-11 blueButton rounded-2xl blackNunito text-white flex items-center justify-center ">Participer</boutton>
                     <boutton className="ml-2.5 w-16 flex items-center justify-center border border-neutral-200 bg-white rounded-2xl whiteButton">
                         <img

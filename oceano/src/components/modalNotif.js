@@ -15,7 +15,7 @@ export default function ModalNotif(props) {
         <div className="pb-4 w-full mx-auto">
             <p className="text-center loune relative extraBoldNunito ">Aujourd’hui</p>
         </div>
-        <div className="flex flex-col items-center overflow-y-scroll customScrollbar h-2/3 ">
+        <div className="flex flex-col items-center overflow-y-scroll customScrollbar h-3/4 ">
             <div className="mx-2">
                 <News />
                 <News />

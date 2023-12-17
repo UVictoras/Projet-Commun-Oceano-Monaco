@@ -13,7 +13,7 @@ export default function Tab() {
             textLocate: "En ligne",
             imgLink: "img/event/link.png",
             textLink: "Oceanic Conservation",
-            imgGoal: "img/event/goal.png",
+            imgGoal: "img/event/goal.svg",
             textGoal: "14 152€ sur 30 000€ collectés",
             color: "fontColor3C",
             participer: "Participer",
@@ -26,14 +26,12 @@ export default function Tab() {
             content: "Hello je m’appelle Loris P., j’ai 19 ans et depuis toujours je kiffe les poissons, je les préfère en sauce LOL, non en vrai je suis passionné des océans et membre de beaucoup d’associations dans ma région, si jamais vous aussi vous êtes passionné n’hésitez pas à me contacter pour discuter...",
             span: "Voir plus",
             color: "fontColor3C",
-            imgProfile: "img/victor.jpg",
+            imgProfile: "img/avatar1.png",
             name: "Victor M.",
             titleLevel: "Héros des Grecs",
             level: "Niveau 4",
             participer: "Participer",
             logoShare: "img/event/share.png",
-            linkImage: "",
-            linkText: "Oceanic Conservation",
             phoneImage: "img/event/phone.png",
             phoneText: "06.50.41.92.25",
             mailImage:"img/event/mail.png",
@@ -90,10 +88,6 @@ export default function Tab() {
                             </div>
                             <div className="contact space-y-5 mt-4">
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.linkImage}/>
-                                    <p>{item.linkText}</p>
-                                </div>
-                                <div className="flex items-center space-x-4">
                                     <img src={item.phoneImage}/>
                                     <p>{item.phoneText}</p>
                                 </div>
@@ -110,20 +104,20 @@ export default function Tab() {
                             {item.span}
                         </span></p>
 
-                        {item.id === 1 ? <div className="mt-7 text-left space-y-2">
-                            <div className="flex semiBoldNunito">
+                        {item.id === 1 ? <div className="mt-7 text-left space-y-4">
+                            <div className="flex semiBoldNunito items-center space-x-2">
                                 <img src={item.imgDatePicker} alt="a" className="w-8" />
                                 <p>{item.textDatePicker}</p>
                             </div>
-                            <div className="flex semiBoldNunito">
+                            <div className="flex semiBoldNunito items-center space-x-2">
                                 <img src={item.imgLocate} alt="a" />
                                 <p>{item.textLocate}</p>
                             </div>
-                            <div className="flex semiBoldNunito">
+                            <div className="flex semiBoldNunito items-center space-x-1">
                                 <img src={item.imgLink} />
                                 <a href className="underline blueTextColor">{item.textLink}</a>
                             </div>
-                            <div className="flex extraBold800">
+                            <div className="flex extraBold800 items-center space-x-2">
                                 <img src={item.imgGoal} />
                                 <p >{item.textGoal}</p>
                             </div>
