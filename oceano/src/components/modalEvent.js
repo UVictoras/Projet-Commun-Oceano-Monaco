@@ -2,18 +2,16 @@ import Tab from './tabsEvent';
 
 export default function ModalEvent(props) {
     return <>
-        <div className='h-[200px] mb-8'>
-            <div className='h-1/2'>
-                <img src='img/event/whale.svg' alt='Whale make it blue' />
-                <button onClick={props.closeModal} className='absolute top-7 right-10'>
-                    <img src='img/icon/exitWhite.svg' alt='croix make it blue' />
-                </button>
-            </div>
-            <div className='flex items-end justify-end mx-6 h-1/2 '>
-                <button className='absolute border-2 bg-white border-neutral-200 rounded-full p-4 '>
-                    <img src='img/icon/hearth/hearth.svg' alt='hearth make it blue' className='w-6' />
-                </button>
-            </div>
+        <div className='h-1/4'>
+
+            <img src='img/event/whale.svg' alt='Whale make it blue' />
+            <button onClick={props.closeModal} className='absolute top-7 right-10'>
+                <img src='img/icon/exitWhite.svg' alt='croix make it blue' />
+            </button>
+            <button className='relative border-2 bg-white border-neutral-200 rounded-full p-4 heartPlace'>
+                <img src='img/icon/hearth/hearth.svg' alt='hearth make it blue' className='w-6 re' />
+            </button>
+
 
         </div>
 

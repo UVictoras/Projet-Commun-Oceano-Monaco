@@ -5,7 +5,7 @@ export default function Tab() {
         {
             id: 1,
             title: "PRÉSENTATION",
-            content: "Nous demandons au gouvernement islandais d'interdire la chasse à la baleine une fois pour toutes. Selon un rapport de l'autorité alimentaire et vétérinaire islandaise, les baleines ont mis jusqu'à deux heures pour mourir lors des chasses islandaises. J’ai créé cet évènement dans l’objectif de sauver tout ces anima... ",
+            content: "Nous demandons au gouvernement islandais d'interdire la chasse à la baleine une fois pour toutes. Selon un rapport de l'autorité alimentaire et vétérinaire islandaise, les baleines ont mis jusqu'à deux heures pour mourir lors... ",
             span: "Voir plus",
             imgDatePicker: "img/event/calendar.png",
             textDatePicker: "Du 14 Mai au 8 Juin",

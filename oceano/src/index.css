@@ -161,6 +161,8 @@ input[type=password] {
 /********************* CSS Profil **************************/
 .levelBarColor{
   background-color: #D81F26;
+  width: 50% !important;
+  height: 16px !important;
 }
 .textProfilColorRed{
   color: #D81F26;
@@ -180,6 +182,17 @@ input[type=password] {
   top: -80px !important;
   right: -40px !important;
 }
+.resizeImage{
+  width: 100px !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.test2{
+  width: 100% !important;
+  height: 99% !important;
+  object-fit: cover !important;
+}
+
 /********************* CSS Act *****************************/
 .bellButton {
   border-color: #E5E5E5 !important;
@@ -305,6 +318,10 @@ input[type=password] {
   border-radius: 20px;
 }
 
+.heartPlace{
+  top: -66px  !important;
+  right: -450px !important;
+}
 /********************* CSS Signin  *************************/
 .line:before,
 .line:after {
