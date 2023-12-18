@@ -51,7 +51,6 @@ function Navbar() {
   },[]);
 
   useEffect(() => {
-    console.log(user)
     const progressBar = document.getElementById('progressBar');
     if (progressBar) {
       let pctXP = (user.PctXP * 80) / 100
@@ -121,7 +120,7 @@ function Navbar() {
               <div>
                 <a href='/profil'>
                   <Menu.Button className="relative flex rounded-full text-sm p-4" >
-                    <div className='profileImgNav mr-4 flex items-center justify-center'>
+                    <div id="progressBar" className='profileImgNav mr-4 flex items-center justify-center'>
                       <div className='whiteCircle flex items-center justify-center'>
                         <img
                           className="h-10 w-10 rounded-full absolute positionImage "

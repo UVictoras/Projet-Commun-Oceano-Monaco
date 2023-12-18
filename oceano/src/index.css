@@ -182,11 +182,6 @@ input[type=password] {
   width: 3.1rem;
   height: 3.1rem;
   border-radius: 50%;
-  background:
-    conic-gradient(#D81F26 0% 20%,
-      #D9D9D9 20% 40%,
-      transparent 40% 60%,
-      #D81F26 60% 100%);
 }
 
 .whiteCircle {
@@ -199,7 +194,9 @@ input[type=password] {
 /********************* CSS Profil **************************/
 .levelBarColor{
   background-color: #D81F26;
+  height: 16px !important;
 }
+
 .textProfilColorRed{
   color: #D81F26;
 }

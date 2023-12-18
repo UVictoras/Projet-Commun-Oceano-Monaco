@@ -1,12 +1,22 @@
 import EventLike from './eventLike';
-import Tab from './tabsEvent';
+import { getFavoriteEvent } from "../api/event";
+import { useEffect, useState } from "react";
 
 export default function ModalLike(props) {
+    const [ favoriteEvent, setfavoriteEvent ] = useState([]);
+
+    useEffect(() => {
+        const favoriteEventFetched = getFavoriteEvent({id: 1});
+        favoriteEventFetched
+        .then(result => setfavoriteEvent(result))
+        .catch(error=>console.error("Error :",error.message))
+    },[])
+
     return <div className='mx-9 '>
         <div className='mt-9 flex space-x-[388px]' >
             <div className='text flex space-x-4 items-center'>
                 <h1 className='fontColor3C extraBold800 text-[27px]'>Favoris</h1>
-                <p className='greyText nunito500'>32</p>
+                <p className='greyText nunito500'>{favoriteEvent.length}</p>
             </div>
             <div className='flex items-center justify-end'>
                 <button onClick={props.closeModal}>
@@ -37,10 +47,13 @@ export default function ModalLike(props) {
             </div>
         </div>
         <div className='space-y-4 h-[700px] customScrollbar overflow-y-scroll'>
+            {favoriteEvent.map((led) => {
+                return <EventLike event={led}/>
+            })}
+            {/* <EventLike />
             <EventLike />
             <EventLike />
-            <EventLike />
-            <EventLike />
+            <EventLike /> */}
         </div>
 
     </div>

@@ -235,3 +235,75 @@ app.post("/event", jsonParser, function (req, res) {
             console.log(result);     
           })
 });
+
+/*------------- GET LAST EVENT --------------*/
+app.post("/last/event", jsonParser, function (req, res) {
+  const dbConnect = dbo.getDb();
+  const body = req.body;
+  dbConnect
+          .query("SELECT  e.Image   , \
+                          e.Title   , \
+                          te.Name   , \
+                          te.Logo   , \
+                          te.Color    \
+                  FROM users_in_event ue  INNER JOIN event e ON e.ID = ue.ID_Event    \
+                                          INNER JOIN type_event te ON te.ID = e.Type  \
+                  WHERE ue.ID_User = " + body.id, 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET FAVORITE EVENT --------------*/
+app.post("/favorite/event", jsonParser, function (req, res) {
+  const dbConnect = dbo.getDb();
+  const body = req.body;
+  dbConnect
+          .query("SELECT  e.ID                                                             , \
+                          e.Title                                                          , \
+                          CONCAT(SUBSTRING(e.Description, 1, 100), \"...\") AS Description , \
+                          e.End_date                                                       , \
+                          te.Name                                                          , \
+                          te.Color                                                         , \
+                          te.Logo                                                          , \
+                          e.Image                                                            \
+                  FROM favorite f INNER JOIN event e ON f.ID_Event = e.ID     \
+                                  INNER JOIN type_event te ON e.Type = te.ID  \
+                  WHERE ID_User = " + body.id, 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET TYPE EVENT BY USER --------------*/
+app.post("/type/event/user", jsonParser, function (req, res) {
+  const dbConnect = dbo.getDb();
+  const body = req.body;
+  dbConnect
+          .query("SELECT  Name                                                              , \
+                          Color                                                             , \
+                          Logo                                                              , \
+                          (SELECT COUNT(*)                                                    \
+                          FROM users_in_event ue INNER JOIN event e ON ue.ID_Event = e.ID     \
+                                                 INNER JOIN type_event ty ON e.Type = ty.ID   \
+                          WHERE ID_User = " + body.id + ") AS NbEvents                        \
+                  FROM type_event", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});

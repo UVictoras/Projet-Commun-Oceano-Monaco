@@ -4,9 +4,12 @@ import MyAction from "../components/myAction";
 import Navbar from "../components/navbar";
 import { useEffect, useState } from "react";
 import { getUserSession } from "../api/session";
+import { getLastEvent, getTypeEventUser } from "../api/event";
 
 function Profile(props) {
     const [ user, setUser ] = useState([]);
+    const [ lastEvent, setlastEvent ] = useState([]);
+    const [ typeEventUser, settypeEventUser ] = useState([]);
 
     useEffect(() => {
         const userFetched = getUserSession();
@@ -14,6 +17,25 @@ function Profile(props) {
         .then(result => setUser(result))
         .catch(error=>console.error("Error :",error.message))
     },[]);
+
+    useEffect(() => {
+        if (user.ID){
+            const lastEventFetched = getLastEvent({id: user.ID});
+            lastEventFetched
+            .then(result => setlastEvent(result))
+            .catch(error=>console.error("Error :",error.message))
+
+            const typeEventUserFetched = getTypeEventUser({id: user.ID});
+            typeEventUserFetched
+            .then(result => settypeEventUser(result))
+            .catch(error=>console.error("Error :",error.message))
+        }
+    
+        const progressBar = document.getElementById('progressBarProfil');
+        if (progressBar) {
+            progressBar.style.width = `${user.PctXP}%`;
+        }
+    }, [user]);
 
     return <div className="profile">
         <Navbar />
@@ -50,7 +72,7 @@ function Profile(props) {
                 </div>
                 <div className="mt-24">
                     <div className="w-5/6 h-4 ml-16 colorE5 rounded-full">
-                        <div className="w-4/6 h-4 levelBarColor rounded-full"></div>
+                        <div id="progressBarProfil" className="levelBarColor rounded-full"></div>
                     </div>
                     <p className="text-center mt-2.5 extraBoldNunito text-xl textProfilColorRed">{user.XP} XP / {user.XPLevel}</p>
                 </div>
@@ -78,12 +100,15 @@ function Profile(props) {
                 <div className="action border-2 border-neutral-200 rounded-2xl">
                     <div className="mx-8 my-8">
                         <div className="imgBanner h-28 rounded-xl flex items-center">
-                            <p className="extraBold800 text-white text-4xl ml-20">31</p>
+                            <p className="extraBold800 text-white text-4xl ml-20">{lastEvent.length}</p>
                         </div>
                         <div className="myAction my-6 space-y-2.5 ">
+                            {typeEventUser.map((type) => {
+                                return <MyAction type={type} nbEvents={lastEvent.length}/>
+                            })}
+                            {/* <MyAction />
                             <MyAction />
-                            <MyAction />
-                            <MyAction />
+                            <MyAction /> */}
                             
                         </div>
                         <button className="blueButton rounded-2xl text-white blackNunito text-lg flex items-center justify-center w-2/3 ml-40">Voir toutes mes actions</button>
@@ -94,10 +119,9 @@ function Profile(props) {
                     <div className="mx-8 my-8">
                         <h1 className="blackNunito fontColor3C text-3xl">Dernière actions</h1>
                         <div className="h-60 overflow-y-scroll customScrollbar mt-6 space-y-3.5">
-                            <LastAction/>
-                            <LastAction/>
-                            <LastAction/>
-                            <LastAction/>
+                            {lastEvent.map((event) => {
+                                return <LastAction event={event}/>
+                            })}
                         </div>
                     </div>
 
