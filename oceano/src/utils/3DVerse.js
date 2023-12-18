@@ -98,7 +98,7 @@ export function Mouvcamera(){
     
     canvas.addEventListener('mouseup', async(event) => {
         const math = require('mathjs');
-        let labellist = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
+        
         console.log("5")
         const componentFilter = { mandatoryComponents : ['label'], forbiddenComponents : [] };
         const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
@@ -107,7 +107,7 @@ export function Mouvcamera(){
         console.log(labelEntities[2])
         
             
-            const vectorlabel = new THREE.Vector3(labelEntities[1].getComponents().local_transform.position[0], labelEntities[1].getComponents().local_transform.position[1], labelEntities[1].getComponents().local_transform.position[2]);
+            const vectorlabel = new THREE.Vector3(labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]);
             
             const vectorcamera = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
             var vector0x = new THREE.Vector3(1,0,0);
@@ -127,24 +127,19 @@ export function Mouvcamera(){
             
             let scalaire = produitScalaire(vectorVnorme, vector0x)
             
-            // on en est là
+            
             let test =   scalaire / (calculnorme(vectorVnorme)* calculnorme(vector0x))
-            console.log(calculnorme(vectorVnorme));
-            console.log(calculnorme(vector0x));
-            console.log(scalaire);
-            console.log(test);
-            test = ((test - 1) % 2 + 2) % 2 - 1;
-            console.log(test);
+            
             var angle1 = Math.acos(test);
-            console.log(angle1)
-            let para1 = Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2
+            
+            
             
             
             
             var matrice = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2 ,(1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.x ) + Math.sin(angle1) * vectorVnorme.z,  (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.x ) - Math.sin(angle1) * vectorVnorme.y]
                                     ,[(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.y ) - Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.y)**2  , (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.y ) + Math.sin(angle1) * vectorVnorme.x],
                                     [(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.z ) + Math.sin(angle1) * vectorVnorme.y, (1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.z ) - Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.z)**2]]);
-            
+           
             var vectorlabelprime = new THREE.Vector3(); 
             var vectorlabelprime = multiplication(vectorlabel, matrice)
             
@@ -161,29 +156,42 @@ export function Mouvcamera(){
 
             var vectorcamerafullprime = new THREE.Vector3();
             vectorcamerafullprime = calculVector(vectorcameraprime, vectorcamera2prime )
-            var etape1 = new THREE.Vector3();
-            etape1 = multiplicationVectorNorme (vectorcameraprime, 2)
+
+
+
             
-            var etape2 = new THREE.Vector3();
-            etape2 =  multiplicationVector(etape1, vectorcamera2prime )
+            let etape1 = 2 * calculnorme(vectorcameraprime) * calculnorme(vectorcamera2prime)
             
-            // 2 * vectorcameraprime *  vectorcamera2prime
-            var etape3 = ((calculnorme(vectorcameraprime)**2) + (calculnorme(vectorcamera2prime)**2) - (calculnorme(vectorcamerafullprime)**2)) 
+           
             
-            var etape4 = etape3 / etape2 
-            console.log(etape4)
+            
+            var etape2 = ((calculnorme(vectorcameraprime)**2) + (calculnorme(vectorcamera2prime)**2) - (calculnorme(vectorcamerafullprime)**2)) 
+           
+            var etape4 = etape2 / etape1 
+            
             var angle2 = Math.acos(etape4);
+            
             
             var matriceOx = math.matrix([[1,0,0]
                                     ,[0, Math.cos(angle2) , Math.sin(angle2) ],
                                     [0, - Math.sin(angle2), Math.cos(angle2)]]);
+            
             var resultat = new THREE.Vector3();
             resultat = multiplication(vectorcameraprime, matriceOx)
             
-            var matricetransposé = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2 ,(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.y ) - Math.sin(angle1) * vectorVnorme.z,  (1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.z ) + Math.sin(angle1) * vectorVnorme.y]
+            
+            var matricetranspose = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.x)**2 ,(1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.y ) - Math.sin(angle1) * vectorVnorme.z,  (1 - Math.cos(angle1))*(vectorVnorme.x * vectorVnorme.z ) + Math.sin(angle1) * vectorVnorme.y]
                                                 ,[(1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.x ) + Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.y)**2  , (1 - Math.cos(angle1))*(vectorVnorme.y * vectorVnorme.z ) - Math.sin(angle1) * vectorVnorme.x],
                                                 [(1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.x ) - Math.sin(angle1) * vectorVnorme.y, (1 - Math.cos(angle1))*(vectorVnorme.z * vectorVnorme.y ) + Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1))*(vectorVnorme.z)**2]]);
-            let position = multiplication(resultat, matricetransposé)
+            
+            var position = new THREE.Vector3();
+            position = multiplication(resultat, matricetranspose)
+            window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [position.x, position.y,position.z]
+                        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+                        , 1, 
+                        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+                        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+            
             
             
     })      
