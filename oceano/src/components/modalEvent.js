@@ -8,11 +8,11 @@ export default function ModalEvent(props) {
             <button onClick={props.closeModal} className='absolute top-7 right-10'>
                 <img src='img/icon/exitWhite.svg' alt='croix make it blue' />
             </button>
-            <button className='relative border-2 bg-white border-neutral-200 rounded-full p-4 heartPlace'>
-                <img src='img/icon/hearth/hearth.svg' alt='hearth make it blue' className='w-6 re' />
-            </button>
-
-
+            <div className='flex justify-end pr-5'>
+                <button className='relative border-2 bg-white border-neutral-200 rounded-full p-4 heartPlace'>
+                    <img src='img/icon/hearth/hearth.svg' alt='hearth make it blue' className='w-6 re' />
+                </button>
+            </div>
         </div>
 
         <div className='mx-10 '>
@@ -38,9 +38,9 @@ export default function ModalEvent(props) {
             </div>
             <div class="text-sm font-medium text-center text-gray-500">
                 <Tab />
-                <div className="flex h-1/8 mx-10 justify-center absolute w-2/3 bottom-">
+                <div className="flex mx-10 justify-center absolute w-2/3 buttonPlace items-center">
                     <boutton className="w-full h-11 blueButton rounded-2xl blackNunito text-white flex items-center justify-center ">Participer</boutton>
-                    <boutton className="ml-2.5 w-16 flex items-center justify-center border border-neutral-200 bg-white rounded-2xl whiteButton">
+                    <boutton className="ml-2.5 w-16 p-3 flex items-center justify-center border border-neutral-200 bg-white rounded-2xl whiteButton">
                         <img
                             src="img/event/share.png"
                             alt='share make it blue'
@@ -48,6 +48,7 @@ export default function ModalEvent(props) {
                     </boutton>
                 </div>
             </div>
+
         </div>
     </>
 

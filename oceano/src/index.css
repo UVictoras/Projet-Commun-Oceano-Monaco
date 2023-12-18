@@ -320,7 +320,9 @@ input[type=password] {
 
 .heartPlace{
   top: -66px  !important;
-  right: -450px !important;
+}
+.buttonPlace{
+  bottom: 80px !important;
 }
 /********************* CSS Signin  *************************/
 .line:before,
