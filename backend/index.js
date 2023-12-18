@@ -64,11 +64,12 @@ app.post("/user", jsonParser, function (req, res) {
                           l.Number                                                                   , \
                           u.Money                                                                    , \
                           u.XP                                                                       , \
+                          l.XP AS XPLevel                                                            , \
                           ROUND((u.XP / l.XP) * 100) AS PctXP                                        , \
                           u.Streak                                                                   , \
                           u.Streak_progress                                                          , \
                           b.Image AS Banner                                                          , \
-                          t.Image AS Title                                                             \
+                          t.Name AS Title                                                             \
                   FROM user u INNER JOIN level l ON u.Level = l.ID               \
                               INNER JOIN Banner b ON u.Banner = b.ID             \
                               INNER JOIN Title t ON u.Title = t.ID               \

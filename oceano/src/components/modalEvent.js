@@ -1,16 +1,6 @@
 import Tab from './tabsEvent';
-import { useState, useEffect } from "react";
-import { getEvent } from "../api/event";
 
 export default function ModalEvent(props) {
-    // const [ event, setEvent ] = useState([]);
-
-    // useEffect(() => {
-    //     const eventFetched = getEvent({id: 1});
-    //     eventFetched
-    //     .then(result => setEvent(result[0]))
-    //     .catch(error=>console.error("Error :",error.message))
-    // },[])
 
     return <>
         <img src='img/event/whale.svg' alt='Whale make it blue' />

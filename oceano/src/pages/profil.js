@@ -20,13 +20,13 @@ function Profile(props) {
         <div className="mx-16 my-2.5 flex space-x-32">
             <div className="w-2/3">
                 <div className="bannier">
-                    <img src="img/profil/banier.svg" alt="banier make it blue" />
+                    <img src={user.Banner} alt="banier make it blue" />
                 </div>
 
                 <div className="border-2 border-neutral-200 bg-white rounded-2xl absolute top-1/3 left-32">
                     <div className="mx-6 flex">
                         <div className="profilPicture">
-                            <img src="img/avatar.png" alt="profile picture make it blue" className="rounded-full h-28 w-28 my-4" />
+                            <img src={user.Picture} alt="profile picture make it blue" className="rounded-full h-28 w-28 my-4" />
                         </div>
                         <div className="name mt-6 ml-8 space-y-2">
                             <h1 className="text-left blackNunito fontColor3C text-4xl">{user.First_name}</h1>
@@ -52,7 +52,7 @@ function Profile(props) {
                     <div className="w-5/6 h-4 ml-16 colorE5 rounded-full">
                         <div className="w-4/6 h-4 levelBarColor rounded-full"></div>
                     </div>
-                    <p className="text-center mt-2.5 extraBoldNunito text-xl textProfilColorRed">132 XP / 200</p>
+                    <p className="text-center mt-2.5 extraBoldNunito text-xl textProfilColorRed">{user.XP} XP / {user.XPLevel}</p>
                 </div>
                 <div className="achievement mt-4">
                     <h2 className="fontColor3C text-3xl blackNunito">Hauts faits</h2>
