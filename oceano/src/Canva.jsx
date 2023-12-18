@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 
 
-export const Canvas = (props) => {
+export function Canvas (props) {
     const status = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js`,
 

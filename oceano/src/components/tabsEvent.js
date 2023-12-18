@@ -62,18 +62,19 @@ export default function Tab(props) {
                 }
             </div>
         
-            <div className="flex mx-10 overflow-y-scroll w-full customScrollbar">
+            <div className="flex mx-10 w-full ">
                 {Menu.map(item => (
                     <div
                         key={item.id}
-                        className={`${item.color} panel flex  ${checkActive(item.id, "active flex nunito400")}`}
+                        
+                        className={`${item.color} panel flex ${(item.id===2)? "h-80 overflow-y-scroll customScrollbar" : ""} ${checkActive(item.id, "active flex nunito400")}`}
                     >
-                        {item.id === 2 ? <div className="grid grid-cols-2">
+                        {item.id === 2 ? <div className="grid grid-cols-2   customScrollbar ">
 
                             <div className="profile ">
                                 <div className="grid grid-cols-2">
                                     <div className="flex justify-center">
-                                        <img src={item.imgProfile} alt="profile picture Make it blue" className="w-28 h-28 rounded-full" />
+                                        <img src={item.imgProfile} alt="profile Make it blue" className="w-28 h-28 rounded-full" />
                                     </div>
                                     <div className="mt-4">
                                         <p className="blackNunito text-start">{item.name}</p>
@@ -90,15 +91,15 @@ export default function Tab(props) {
                             </div>
                             <div className="contact space-y-5 mt-4">
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.linkImage}/>
+                                    <img src={item.linkImage} alt="Make it blue"/>
                                     <p>{item.linkText}</p>
                                 </div>
-                                <div className="flex items-center  space-x-4">
-                                    <img src={item.phoneImage}/>
+                                <div className="flex items-center space-x-4">
+                                    <img src={item.phoneImage} alt="Make it blue"/>
                                     <p>{item.phoneText}</p>
                                 </div>
-                                <div className="flex items-center  space-x-4">
-                                    <img src={item.mailImage}/>
+                                <div className="flex items-center space-x-4">
+                                    <img src={item.mailImage} alt="Make it blue"/>
                                     <p>{item.mailText}</p>
                                 </div>
                             </div>
@@ -110,21 +111,21 @@ export default function Tab(props) {
                             {item.span}
                         </span></p>
 
-                        {item.id === 1 ? <div className="mt-7 text-left space-y-6">
+                        {item.id === 1 ? <div className="mt-7 text-left space-y-4">
                             <div className="flex semiBoldNunito">
-                                <img src={item.imgDatePicker} alt="a" className="w-8" />
+                                <img src={item.imgDatePicker} alt="Make it blue" className="w-8" />
                                 <p>{item.textDatePicker}</p>
                             </div>
                             <div className="flex semiBoldNunito">
-                                <img src={item.imgLocate} alt="a" />
+                                <img src={item.imgLocate} alt="Make it blue" />
                                 <p>{item.textLocate}</p>
                             </div>
                             <div className="flex semiBoldNunito">
-                                <img src={item.imgLink} />
-                                <a href={item.textLink} className="underline blueTextColor">{item.textLink}</a>
+                                <img src={item.imgLink} alt="Make it blue"/>
+                                <a href className="underline blueTextColor">{item.textLink}</a>
                             </div>
                             <div className="flex extraBold800">
-                                <img src={item.imgGoal} />
+                                <img src={item.imgGoal} alt="Make it blue"/>
                                 <p >{item.textGoal}</p>
                             </div>
                             <div className="w-[425px] h-[14px] bg-neutral-200 rounded-l-lg">

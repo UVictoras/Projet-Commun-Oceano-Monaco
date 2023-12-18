@@ -16,7 +16,7 @@ function Onedate(props) {
 
     return (
         <Datepicker
-            placeholder={"Date de naissance"} 
+            placeholder={props.contentPlaceHolder} 
             asSingle={true}
             value={value}
             onChange={handleValueChange}
