@@ -1,6 +1,6 @@
 function ShopItems(props) {
     return (
-      <div className="col-start-2">
+      
         <div className="custom-shop-item">
           <div className="top-section"></div>
           <div className="center-section">
@@ -14,7 +14,7 @@ function ShopItems(props) {
             </button>
           </div>
         </div>
-      </div>
+     
     );
   }
   

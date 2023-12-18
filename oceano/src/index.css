@@ -840,8 +840,8 @@ input[type=text] ,input[type=email] ,input[type= password]{
 /********************* CSS pour le shop  *****************/
 
 .custom-shop-item {
-  width: 215px;
-  height: 300px;
+  width: 235px;
+  height: 345px;
   border: 2px solid #E5E5E5;
   padding: 0;
   display: flex;
@@ -851,8 +851,8 @@ input[type=text] ,input[type=email] ,input[type= password]{
 }
 
 .top-section {
-  width: 213.31px;
-  height: 46.997px;
+  width:232.31px;
+  height: 44.997px;
   flex-shrink: 0;
   border-radius: 18.814px 18.814px 0px 0px;
   background: #3CB532;
@@ -896,4 +896,19 @@ input[type=text] ,input[type=email] ,input[type= password]{
 
 .shopText{
   color: #FDC62E
+}
+
+
+.louna:before, .louna:after{ 
+  display: block;
+  position: absolute;
+  content: "" !important;
+  border-top-width: 1px !important;
+  top: 50%;
+  width: 35% !important;
+  border-color: #E5E5E5 !important;
+}
+
+.louna:after {
+  left: 65%;
 }
