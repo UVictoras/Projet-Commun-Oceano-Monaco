@@ -40,11 +40,10 @@ export const Canvas = (props) => {
     //     }
     // );
 
-    const initApp = useCallback(async () => {
-
+    async function initApp () {
         await SDK3DVerse.joinOrStartSession({
             userToken: 'public_0rtYmFmJfCyVxB7-',
-            sceneUUID: 'dc9b301a-c560-42d5-b702-565e386d5f8e',
+            sceneUUID: '33ed765f-9a1c-4f8c-933c-077eeb5503e0',
             canvas: document.getElementById('display-canvas'),
             viewportProperties: {
                 defaultControllerType: SDK3DVerse.controller_type.orbit,
@@ -52,13 +51,10 @@ export const Canvas = (props) => {
         });
         await window.SDK3DVerse.installExtension(SDK3DVerse_ViewportDomOverlay_Ext);
         await window.SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
-        // await window.SDK3DVerse.installExtension(SDK3DVerse_ThreeJS_Ext);
-        // await window.SDK3DVerse.installExtension(SDK3DVerse_SplineDisplay_Ext);
-
         if (props.onChange) {
             props.onChange(true);
         }
-    }, []);
+    }
 
     useEffect(() => {
 

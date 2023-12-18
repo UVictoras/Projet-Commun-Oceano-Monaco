@@ -2,15 +2,22 @@ import Tab from './tabsEvent';
 
 export default function ModalEvent(props) {
     return <>
-        <img src='img/event/whale.svg' alt='Whale make it blue' />
-        <button onClick={props.closeModal} className='absolute top-7 right-10'>
-            <img src='img/icon/exitWhite.svg' alt='croix make it blue'  />
-        </button>
-        <button className='absolute border-2 bg-white border-neutral-200 rounded-full p-4 absolute top-28 right-5'>
-            <img src='img/icon/hearth/hearth.svg' alt='hearth make it blue' className='w-6'/>
-        </button>
+        <div className='h-[200px] mb-8'>
+            <div className='h-1/2'>
+                <img src='img/event/whale.svg' alt='Whale make it blue' />
+                <button onClick={props.closeModal} className='absolute top-7 right-10'>
+                    <img src='img/icon/exitWhite.svg' alt='croix make it blue' />
+                </button>
+            </div>
+            <div className='flex items-end justify-end mx-6 h-1/2 '>
+                <button className='absolute border-2 bg-white border-neutral-200 rounded-full p-4 '>
+                    <img src='img/icon/hearth/hearth.svg' alt='hearth make it blue' className='w-6' />
+                </button>
+            </div>
 
-        <div className='mx-10 mt-2.5 h-1/4'>
+        </div>
+
+        <div className='mx-10 '>
             <h2 class="text-[28px] extraBold800">Sauvons la baleine franche de la mer Baltique</h2>
             <p className='greyText'>Lancé par <span className='blueTextColor semiBoldNunito'>Loris P.</span></p>
             <div className='mt-5 flex'>
@@ -33,11 +40,12 @@ export default function ModalEvent(props) {
             </div>
             <div class="text-sm font-medium text-center text-gray-500">
                 <Tab />
-                <div className="flex h-1/8 mx-10 justify-center absolute w-2/3 bottom-28">
+                <div className="flex h-1/8 mx-10 justify-center absolute w-2/3 bottom-">
                     <boutton className="w-full h-11 blueButton rounded-2xl blackNunito text-white flex items-center justify-center ">Participer</boutton>
                     <boutton className="ml-2.5 w-16 flex items-center justify-center border border-neutral-200 bg-white rounded-2xl whiteButton">
                         <img
                             src="img/event/share.png"
+                            alt='share make it blue'
                         ></img>
                     </boutton>
                 </div>

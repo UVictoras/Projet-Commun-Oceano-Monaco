@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Click, OpenModal } from "../utils/3DVerse";
 import { React } from 'react';
 import Searchbar from "./searchbar";
 import Modal from "./modal";
@@ -30,7 +29,7 @@ function Above(props) {
 
         <div className="searchAndBell flex absolute left-12 mt-10">
             <button className="w-[60px] h-[60px] p-3 rounded-2xl bg-white flex items-center bellButton" onClick={openNotif}>
-                <img src="img/icon/bell/bell.png" className="changeBell" />
+                <img src="img/icon/bell/bell.png" className="changeBell" alt="make it blue" />
             </button>
         </div>
         {isNotifOpen ? <ModalNotif closeNotif={closeNotif} /> : ""}
@@ -46,7 +45,7 @@ function Above(props) {
 
                 </div>
                 <div className="mt-2 w-1/3 flex justify-end mr-5 mb-1">
-                    <a href="" className=" blueTextColor text-sm flex extraBold800 text-end uppercaseText text-[14px] hover:underline">tout voir</a>
+                    <a href="#jaime mon lead" className=" blueTextColor text-sm flex extraBold800 text-end uppercaseText text-[14px] hover:underline">tout voir</a>
                 </div>
             </div>
 
@@ -78,7 +77,7 @@ function Above(props) {
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center filterButton z-20 " onClick={() => openModal("filter")}>
 
-                <img src="img/icon/filter.svg" className="rotateFilter" />
+                <img src="img/icon/filter.svg" className="rotateFilter" alt="filter make it blue"/>
             </button>
         </div>
 

@@ -8,7 +8,7 @@ export default function Tab() {
             content: "Nous demandons au gouvernement islandais d'interdire la chasse à la baleine une fois pour toutes. Selon un rapport de l'autorité alimentaire et vétérinaire islandaise, les baleines ont mis jusqu'à deux heures pour mourir lors des chasses islandaises. J’ai créé cet évènement dans l’objectif de sauver tout ces anima... ",
             span: "Voir plus",
             imgDatePicker: "img/event/calendar.png",
-            textDatePicker: "Du   au 8 Juin",
+            textDatePicker: "Du 14 Mai au 8 Juin",
             imgLocate: "img/event/locate.png",
             textLocate: "En ligne",
             imgLink: "img/event/link.png",
@@ -71,7 +71,7 @@ export default function Tab() {
                             <div className="profile ">
                                 <div className="grid grid-cols-2">
                                     <div className="flex justify-center">
-                                        <img src={item.imgProfile} alt="profile picture Make it blue" className="w-28 h-28 rounded-full" />
+                                        <img src={item.imgProfile} alt="profile Make it blue" className="w-28 h-28 rounded-full" />
                                     </div>
                                     <div className="mt-4">
                                         <p className="blackNunito text-start">{item.name}</p>
@@ -88,11 +88,11 @@ export default function Tab() {
                             </div>
                             <div className="contact space-y-5 mt-4">
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.phoneImage}/>
+                                    <img src={item.phoneImage} alt="phone make it blue"/>
                                     <p>{item.phoneText}</p>
                                 </div>
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.mailImage}/>
+                                    <img src={item.mailImage} alt="mail make it blue"/>
                                     <p>{item.mailText}</p>
                                 </div>
                             </div>
@@ -104,21 +104,21 @@ export default function Tab() {
                             {item.span}
                         </span></p>
 
-                        {item.id === 1 ? <div className="mt-7 text-left space-y-4">
+                        {item.id === 1 ? <div className="mt-4 text-left space-y-4">
                             <div className="flex semiBoldNunito items-center space-x-2">
-                                <img src={item.imgDatePicker} alt="a" className="w-8" />
+                                <img src={item.imgDatePicker} alt="date picker make it blue" className="w-8" />
                                 <p>{item.textDatePicker}</p>
                             </div>
                             <div className="flex semiBoldNunito items-center space-x-2">
-                                <img src={item.imgLocate} alt="a" />
+                                <img src={item.imgLocate} alt="locate make it blue" />
                                 <p>{item.textLocate}</p>
                             </div>
                             <div className="flex semiBoldNunito items-center space-x-1">
-                                <img src={item.imgLink} />
+                                <img src={item.imgLink} alt="link make it blue"/>
                                 <a href className="underline blueTextColor">{item.textLink}</a>
                             </div>
                             <div className="flex extraBold800 items-center space-x-2">
-                                <img src={item.imgGoal} />
+                                <img src={item.imgGoal} alt="goal make it blue"/>
                                 <p >{item.textGoal}</p>
                             </div>
                             <div className="w-[425px] h-[14px] bg-neutral-200 rounded-l-lg">

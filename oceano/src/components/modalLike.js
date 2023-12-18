@@ -1,5 +1,4 @@
 import EventLike from './eventLike';
-import Tab from './tabsEvent';
 
 export default function ModalLike(props) {
     return <div className='mx-9 '>

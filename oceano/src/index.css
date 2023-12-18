@@ -168,13 +168,17 @@ input[type=password] {
 .imgBanner{
   background-image: url(../public/img/profil/allActionBanner.svg);
   background-repeat: no-repeat;
-  background-size:100% ;
+  background-size:100%;
 }
 .myActionYellowColor{
   background-color: #FFD600;
 }
 .myActionGreyColor{
   background-color: #D1D1D1;
+}
+.profilPosition{
+  top: -80px !important;
+  right: -40px !important;
 }
 /********************* CSS Act *****************************/
 .bellButton {
@@ -356,7 +360,7 @@ input[type=password] {
 }
 .changedGreen{
   background-color: #E9FFEF;
-  border:  solid  #45D42E !important;
+  border:  solid  #65B77C !important;
   border-width: 2px !important;
 }
 .changedBlue{

@@ -20,7 +20,7 @@ function Impact(props){
         </div>
         <div className="searchAndBell absolute mt-10 ml-10">
             <button className="w-[60px] h-[60px] p-3 rounded-2xl bg-neutral-50 flex items-center bellButton" onClick={openModal}>
-                <img src="img/icon/bell/bell.png" className="changeBell" />
+                <img src="img/icon/bell/bell.png" className="changeBell" alt="bell make it blue"/>
             </button>
         </div>
         <div class="grid grid-cols-3 gap-4 place-content-center h-48 ...">
