@@ -3,30 +3,40 @@ import Navbar from "../components/navbar";
 import ModalEvent from "../components/modal";
 
 function Impact(props){
-    const [isModalOpen, setModalOpen] = useState(false);
-  
-    const openModal = () => {
-      setModalOpen(true);
-    };
-  
-    const closeModal = () => {
-      setModalOpen(false);
-    };
+    
     return <div className="impact">
         <Navbar/>
-        <ModalEvent isOpen={isModalOpen} closeModal={closeModal}/>
+        
         <div class="grid place-content-center h-48 ...">
-            <div><h1>Ensemble nous avons fait ceci cela</h1></div>    
+            <div><h1 class="blackNunito text-2xl">Ensemble nous avons fait ceci cela</h1></div>    
         </div>
-        <div className="searchAndBell absolute mt-10 ml-10">
-            <button className="w-[60px] h-[60px] p-3 rounded-2xl bg-neutral-50 flex items-center bellButton" onClick={openModal}>
-                <img src="img/icon/bell/bell.png" className="changeBell" />
-            </button>
+        <div className="grid grid-cols-10  ">
+            <div class ="col-start-5 col-span-2 ">
+                <p class="blackNunito  text-7xl  text-center">32 607 t</p>
+
+            </div>
+            <div class ="col-start-7 items-end py-6">
+                <p class="blackNunito ">de plastique</p>
+                <p class="blackNunito ">des océans</p>
+
+            </div>
+            
+            
         </div>
         <div class="grid grid-cols-3 gap-4 place-content-center h-48 ...">
-            <div><p className ="grid place-content-center ">01</p></div>
-            <div><p className ="grid place-content-center ">02</p></div>
-            <div><p className ="grid place-content-center ">03</p></div>    
+            <div>
+                <p className ="grid place-content-center mediumNunito">231 </p>
+                <p className ="grid place-content-center mediumNunito">animaux réahibilités</p>
+            </div>
+            <div>
+                <p className ="grid place-content-center mediumNunito">4821 </p>
+                <p className ="grid place-content-center mediumNunito">hectares protégés</p>
+            </div>
+            <div>
+                <p className ="grid place-content-center mediumNunito">92 </p>
+                <p className ="grid place-content-center mediumNunito">plages nettoyées</p>
+            </div>
+               
         </div>
     </div>
 }

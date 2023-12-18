@@ -186,11 +186,11 @@ export function Mouvcamera(){
             
             var position = new THREE.Vector3();
             position = multiplication(resultat, matricetranspose)
-            window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [position.x, position.y,position.z]
-                        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-                        , 1, 
-                        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
-                        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+            //window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [position.x, position.y,position.z]
+                        //,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+                        //, 1, 
+                        //[camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+                        //[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
             
             
             
@@ -202,6 +202,36 @@ export function Mouvcamera(){
     
     
 
+}
+
+// --------------------- Desactivé les touche ---------------------
+export function desactiveKey(){
+    var boutonGaucheEnfonce = false;
+    var boutonDroitEnfonce = false;
+    const canvas = document.getElementById('display-canvas')
+    canvas.addEventListener('mousedown', async(event) => {
+        const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+        if (event.button === 0) {
+            boutonGaucheEnfonce = true;
+          } else if (event.button === 2) {
+            boutonDroitEnfonce = true;
+          }
+    
+          // Vérifiez si les deux boutons sont enfoncés
+          if (boutonGaucheEnfonce && boutonDroitEnfonce) {
+            console.log("cliquenefoncé")
+            console.log(window.SDK3DVerse.actionMap.values)
+            window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] , camera[0].getTransform().position[1] ,camera[0].getTransform().position[2]]
+                        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+                        , 1, 
+                        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+                        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+                        console.log(camera[0].getTransform().position[0])
+            
+          }
+    });
+
+    
 }
 
 
@@ -251,8 +281,8 @@ export function speed(positionx, positiony, positionz ){
     if (positionmax >= 4){
 
         const settings = {
-            speed: 15,
-            sensitivity: 1.5,
+            speed: 3,
+            sensitivity: 1,
             damping: 0.65,
             angularDamping: 0.65
             
@@ -266,8 +296,8 @@ export function speed(positionx, positiony, positionz ){
     else if (positionmax >= 3 ){
 
         const settings = {
-            speed: 10,
-            sensitivity: 1.5,
+            speed: 3,
+            sensitivity: 0.8,
             damping: 0.65,
             angularDamping: 0.65
             
@@ -281,8 +311,8 @@ export function speed(positionx, positiony, positionz ){
     else if(positionmax >= 2 ){
 
         const settings = {
-            speed: 5,
-            sensitivity: 1,
+            speed: 1,
+            sensitivity: 0.4,
             damping: 0.65,
             angularDamping: 0.65
             
@@ -297,7 +327,7 @@ export function speed(positionx, positiony, positionz ){
 
         const settings = {
             speed: 1,
-            sensitivity: 0.5,
+            sensitivity: 0.2,
             damping: 0.65,
             angularDamping: 0.65
             
@@ -310,7 +340,7 @@ export function speed(positionx, positiony, positionz ){
     else{
 
         const settings = {
-            speed: 0.5,
+            speed: 1,
             sensitivity: 0.1,
             damping: 0.65,
             angularDamping: 0.65
@@ -388,26 +418,100 @@ export async function Camera(props) {
                     {
                         molette =  0.2
                     }              
-                    window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
-                        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-                        , speedcamera, 
-                        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
-                        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
-                        console.log(camera[0].getTransform().position[0])
-                        console.log(camera[0].getTransform().position[1])
-                        console.log(camera[0].getTransform().position[2])   
+                    await window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
+                         ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+                          , speedcamera, 
+                          [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+                         [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+                         
                     
 
                 
                 
             }
-            });
-            showVisibleLabelsOnly();
+        });
+        showVisibleLabelsOnly();
+
+        
+        
     
     // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 
    
 }
+
+export function myTravel  (viewport, destinationPosition, destinationOrientation, speed, startPosition, startOrientation)  {
+    const glm = require('gl-matrix');
+    const myTravelRebinded = window.SDK3DVerse.engineAPI.cameraAPI
+    myTravelRebinded.streamer.inputRelay.suspendInputs();
+
+    const intervalFrequency = 30;
+
+    const currentCameraTransform =
+    {
+        position    : glm.vec3.fromValues(...(startPosition || viewport.getTransform().position)),
+        orientation : glm.quat.fromValues(...(startOrientation || viewport.getTransform().orientation))
+    };
+
+    const destinationTransform =
+    {
+        position    : glm.vec3.fromValues(...destinationPosition),
+        orientation : glm.quat.fromValues(...destinationOrientation)
+    };
+
+    const distance          = glm.vec3.distance(currentCameraTransform.position, destinationTransform.position);
+    const travelingDuration = distance > 0.001 ? (distance / speed) : 0.5;
+    const stepCount         = travelingDuration * intervalFrequency;
+    const stepInterval      = 1 / stepCount;
+
+    let step                = 0.0;
+    let currentPosition     = glm.vec3.create();
+    let currentOrientation  = glm.quat.create();
+
+    if(myTravelRebinded.interval)
+    {
+        clearInterval(myTravelRebinded.interval);
+    }
+    
+    return new Promise(resolve =>
+    {
+        myTravelRebinded.interval = setInterval(
+            () =>
+            {
+                step        += stepInterval;
+                const alpha = Math.min(myTravelRebinded.smoothStep(step), 1.0);
+
+                glm.vec3.lerp(currentPosition, currentCameraTransform.position, destinationTransform.position, alpha);
+                glm.quat.slerp(currentOrientation, currentCameraTransform.orientation, destinationTransform.orientation, alpha);
+
+                viewport.setGlobalTransform(
+                {
+                    position    : Array.from(currentPosition),
+                    orientation : Array.from(currentOrientation)
+                });
+
+                if(alpha >= 1.0)
+                {
+                    myTravelRebinded.stopTravel();
+                    resolve();
+
+                    // Dirty fix to reset the orbit controller distance with the look at point.
+                    const controllerType = myTravelRebinded.getControllerType(viewport.id);
+                    
+
+                    setTimeout(() =>
+                    {
+                        myTravelRebinded.setControllerType(viewport.id, controllerType);
+                    }, 100);
+                }
+            },
+            1000 / intervalFrequency
+        );
+    });
+    
+};
+
+
 
 
 export function DisabledInput(){
@@ -435,32 +539,35 @@ export async function Click(props) {
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
         
-        const selectEntity = true;
-        const keepOldSelection = e.ctrlKey;
+    const selectEntity = true;
+    const keepOldSelection = e.ctrlKey;
 
-        const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, keepOldSelection);
+    const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, keepOldSelection);
 
-        if (entity) {
-            console.log('Selected entity', entity.getName())
-            console.log(27)
-            position[0] = pickedPosition[0]
-            position[1] = pickedPosition[1]
-            position[2] = pickedPosition[2]
-            if (entity.getName() === "Globe" || entity.getName() == "Extract3" ) {
-                newElement.apply(null,position);
-                isVisible = false
-
-            } else if (entity.getName() === "SM_Cube") {
-                isVisible = true
-
-            }
-
-        } else {
-            console.log('No entity selected');
+    if (entity) {
+        console.log('Selected entity', entity.getName())
+        console.log(27)
+        position[0] = pickedPosition[0]
+        position[1] = pickedPosition[1]
+        position[2] = pickedPosition[2]
+        if (entity.getName() === "Globe" || entity.getName() == "Extract3" ) {
+            newElement.apply(null,position);
             isVisible = false
+
+        } else if (entity.getName() === "SM_Cube") {
+            isVisible = true
+
         }
-        twoDPos[0] = e.clientX
-        twoDPos[1] = e.clientY
+
+    } else {
+        console.log('No entity selected');
+        isVisible = false
+    }
+    twoDPos[0] = e.clientX
+    twoDPos[1] = e.clientY
+
+        
+        
 
         
     }, false);
