@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 import { useState } from 'react';
-
+import { SDK3DVerse_LabelDisplay as labelDisplay } from '../sdk_extension/LabelDisplay'
 
 
 export async function Anim(props) {
@@ -227,11 +227,11 @@ export function DisabledInput(){
 
 
 
-let isVisible = false
+let isVisible = false;
 export async function Click(props) {
 
-    const twoDPos = [0, 0]
-    const position = [0, 0, 0]
+    const twoDPos = [0, 0];
+    const position = [0, 0, 0];
 
 
     const canvas = document.getElementById('display-canvas')
@@ -240,29 +240,31 @@ export async function Click(props) {
         const selectEntity = true;
         const keepOldSelection = e.ctrlKey;
 
-        const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(e.clientX, e.clientY, keepOldSelection);
-
+        const x = e.clientX + (canvas.width - canvas.clientWidth) / 2;
+        const y = e.clientY + (canvas.height - canvas.clientHeight) / 2;
+        const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(x, y, keepOldSelection);
+        
+        console.log(e);
         if (entity) {
-            console.log('Selected entity', entity.getName())
-            console.log(27)
-            position[0] = pickedPosition[0]
-            position[1] = pickedPosition[1]
-            position[2] = pickedPosition[2]
+            
+            position[0] = pickedPosition[0];
+            position[1] = pickedPosition[1];
+            position[2] = pickedPosition[2];
             if (entity.getName() === "continents" || entity.getName() == "seas" ) {
                 newElement.apply(null,position);
-                isVisible = false
+                isVisible = false;
 
             } else if (entity.getName() === "SM_Cube") {
-                isVisible = true
+                isVisible = true;
 
             }
 
         } else {
             console.log('No entity selected');
-            isVisible = false
+            isVisible = false;
         }
-        twoDPos[0] = e.clientX
-        twoDPos[1] = e.clientY
+        twoDPos[0] = e.clientX;
+        twoDPos[1] = e.clientY;
 
         
     }, false);
@@ -277,20 +279,20 @@ async function newElement(x,y,z) {
     const entityTemplate = new window.SDK3DVerse.EntityTemplate();
 
     //window.SDK3DVerse.extensions.LabelDisplay.labelIndex = 200 a modifier par la variable qu on recuperera
-    entityTemplate.attachComponent('label')
+    entityTemplate.attachComponent('label');
 
 
-    entityTemplate.entityTemplate.local_transform.position[0] = x
-    entityTemplate.entityTemplate.local_transform.position[1] = y
-    entityTemplate.entityTemplate.local_transform.position[2] = z
+    entityTemplate.entityTemplate.local_transform.position[0] = x;
+    entityTemplate.entityTemplate.local_transform.position[1] = y;
+    entityTemplate.entityTemplate.local_transform.position[2] = z;
 
-    entityTemplate.instantiateEntity()
+    entityTemplate.instantiateEntity();
 
 }
 
 export function OpenModal() {
 
-    return isVisible
+    return isVisible;
 }
 
 export function createImgTag() {
@@ -357,12 +359,7 @@ async function scalarProduct(arr1, arr2) {
 }
 
 export async function showVisibleLabelsOnly() {
-    let camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
-
-    const componentFilter = { mandatoryComponents : ['label'], forbiddenComponents : [] };
-    const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
-
-    var labelDivs = document.getElementsByClassName('label-container');
+    let camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
 
     var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]]);
 
@@ -370,28 +367,26 @@ export async function showVisibleLabelsOnly() {
 
     var scalar = 0.;
 
-    console.log(labelEntities);
-
-    for (var j = 0; j < labelEntities.length; j++) {
-        if (!labelEntities[j] || !labelEntities[j].getComponents().local_transform.position) {
+    for (var j = 0; j < labelDisplay.labelEntities.length; j++) {
+        if (!labelDisplay.labelEntities[j] || !labelDisplay.labelEntities[j].getComponents().local_transform.position) {
             console.error("Label element or its position is undefined.");
             continue;  // Skip to the next iteration if the label element or its position is undefined
         }
 
         let labelVector = await normalize([
-            labelEntities[j].getComponents().local_transform.position[0],
-            labelEntities[j].getComponents().local_transform.position[1],
-            labelEntities[j].getComponents().local_transform.position[2]
+            labelDisplay.abelEntities[j].getComponents().local_transform.position[0],
+            labelDisplay.labelEntities[j].getComponents().local_transform.position[1],
+            labelDisplay.labelEntities[j].getComponents().local_transform.position[2]
         ]);
         scalar = await scalarProduct(cameraVector, labelVector);
 
         console.log("Scalar:", scalar);
 
         if (scalar > 0.) {
-            labelDivs[j].style.visibility = "visible";
+            //labelDivs[j].style.visibility = "visible";
             console.log("positive");
         } else if (scalar < 0.) {
-            labelDivs[j].style.visibility = "hidden";
+            //labelDivs[j].style.visibility = "hidden";
             console.log("negative");
         }
     }
