@@ -20,7 +20,7 @@ function Signup(props) {
         <form class="max-w-sm mx-auto mt-10">
             <div class="mb-5">
                 <div className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl ">
-                    <Onedate />
+                    <Onedate contentPlaceHolder={"Date de naissance"} />
                 </div>
 
             </div>

@@ -8,7 +8,9 @@ module.exports = {
     "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
   ],
   theme: {
-    
+    container: {
+      center: true,
+    },
     extend: {},
   },
   plugins: [],
