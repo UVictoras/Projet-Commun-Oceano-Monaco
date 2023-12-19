@@ -24,12 +24,17 @@ function Threadcontent(props){
                         <p class =" mediumNunito">Le message de l'utilisateur dskljfsfjpouqopfqj sdjfomlsjd qs!lnjfl qsklmjdosm* nlkdfhjpsdpgvdj os uprgupt</p>
                     </div>
                 </div>
-                
-                
-
             </div>
-                       
-        </div>
+                <form class="max-w-sm mx-auto">
+                    <div class="space-y-3">
+                        <label for="message" class="mediumNunito">Ton message</label>
+                        <textarea id="message" rows="4" class="block p-2.5  mediumNunito w-full border  bg-neutral-200 rounded " placeholder="Envoyer un message..."></textarea>
+                        <div class="">
+                            <button type="submit" class="text-white blueButton  blackNunito rounded-xl text-sm w-[375px]  text-center h-[46px] ">Envoyer</button>
+                        </div>
+                    </div>     
+                </form>                          
+            </div>
     </div>
     
 }
