@@ -278,40 +278,12 @@ export function speed(positionx, positiony, positionz ){
         positionabsolutez = -positionz
     }
     let positionmax = Math.max(positionabsolutex, positionabsolutey, positionabsolutez);
-    if (positionmax >= 4){
+    
+
+    if(positionmax >= 2 ){
 
         const settings = {
-            speed: 5,
-            sensitivity: 1,
-            damping: 0.65,
-            angularDamping: 0.65
-            
-        }
-        console.log(settings["speed"])
-        window.SDK3DVerse.updateControllerSetting(settings);
-        return speedcamera = settings["speed"]
-        
-
-    }
-    else if (positionmax >= 3 ){
-
-        const settings = {
-            speed: 3,
-            sensitivity: 0.8,
-            damping: 0.65,
-            angularDamping: 0.65
-            
-        }
-        console.log(settings["speed"])
-        window.SDK3DVerse.updateControllerSetting(settings);
-        return speedcamera = settings["speed"]
-
-    }
-
-    else if(positionmax >= 2 ){
-
-        const settings = {
-            speed: 1,
+            speed: 1.5,
             sensitivity: 0.4,
             damping: 0.65,
             angularDamping: 0.65
@@ -336,11 +308,24 @@ export function speed(positionx, positiony, positionz ){
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
     }
+    else if(positionmax >= 0.8 ){
+
+        const settings = {
+            speed: 0.8,
+            sensitivity: 0.15,
+            damping: 0.65,
+            angularDamping: 0.65
+            
+        }
+        console.log(settings["speed"])
+        window.SDK3DVerse.updateControllerSetting(settings);
+        return speedcamera = settings["speed"]
+    }
 
     else{
 
         const settings = {
-            speed: 1,
+            speed: 0.5,
             sensitivity: 0.1,
             damping: 0.65,
             angularDamping: 0.65
@@ -416,7 +401,14 @@ export async function Camera(props) {
     
                     else if(event.deltaY > 0)
                     {
-                        molette =  0.2
+                        if (distanceToSphere < 2 ){
+                            molette = 0.2
+                            
+                        }
+                        else{
+                            molette = 0
+                        }
+                        
                     }              
                     await window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [camera[0].getTransform().position[0] + molette * (camera[0].getTransform().position[0]), camera[0].getTransform().position[1] + molette * (camera[0].getTransform().position[1]),camera[0].getTransform().position[2] + molette *(camera[0].getTransform().position[2])]
                          ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
@@ -424,7 +416,9 @@ export async function Camera(props) {
                           [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
                          [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
                          
-                    
+                    console.log(camera[0].getTransform().position[0])
+                    console.log(camera[0].getTransform().position[1])
+                    console.log(camera[0].getTransform().position[2])
 
                 
                 

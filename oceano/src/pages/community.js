@@ -4,9 +4,11 @@ import Navbar from "../components/navbar"
 import Thread from "../components/thread"
 
 function Community(props){
-    const [showModal, setShowModal] = useState(false);
+    
     return <div className="Commmunity">
     <Navbar/>
+    <Thread/>
+    <Thread/>
 </div>
 }
 export default Community

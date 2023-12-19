@@ -18,6 +18,7 @@ import LoadingScreen from "./pages/loadingScreen.js";
 import Signin from "./pages/signin.js";
 import Signup from "./pages/signup.js";
 import Shop from "./pages/shop.js";
+import Threadcontent from "./components/threadcontent.js";
 
 
 
@@ -103,6 +104,9 @@ function App(props){
         </Route>
         <Route exact path="/test">
           <Test /> 
+        </Route>
+        <Route exact path="/threadcontent">
+          <Threadcontent /> 
         </Route>
         
         
