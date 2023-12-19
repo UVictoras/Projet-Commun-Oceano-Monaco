@@ -290,14 +290,29 @@ app.post("/type/event/user", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
   const body = req.body;
   dbConnect
-          .query("SELECT  Name                                                              , \
-                          Color                                                             , \
-                          Logo                                                              , \
-                          (SELECT COUNT(*)                                                    \
-                          FROM users_in_event ue INNER JOIN event e ON ue.ID_Event = e.ID     \
-                                                 INNER JOIN type_event ty ON e.Type = ty.ID   \
-                          WHERE ID_User = " + body.id + ") AS NbEvents                        \
-                  FROM type_event", 
+          .query("SELECT  t.Name                  , \
+                          t.Color                 , \
+                          t.Logo                  , \
+                          COUNT(e.ID) AS NbEvents   \
+                  FROM type_event t LEFT JOIN event e ON t.ID = e.Type                                                  \
+                                    LEFT JOIN users_in_event ue ON e.ID = ue.ID_Event AND ue.ID_User = " + body.id + "  \
+                  GROUP BY t.Name \
+                  ORDER BY NbEvents DESC", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET TYPE EVENT --------------*/
+app.get("/type/event", jsonParser, function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM type_event", 
           
           function (err, result) {
             if (err){

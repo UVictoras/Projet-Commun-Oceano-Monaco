@@ -10,6 +10,8 @@ function Profile(props) {
     const [ user, setUser ] = useState([]);
     const [ lastEvent, setlastEvent ] = useState([]);
     const [ typeEventUser, settypeEventUser ] = useState([]);
+    const [ moreAction, setmoreAction ] = useState(false);
+    const [ TextAction, setTextAction ] = useState("Voir toutes mes actions");
 
     useEffect(() => {
         const userFetched = getUserSession();
@@ -27,7 +29,7 @@ function Profile(props) {
 
             const typeEventUserFetched = getTypeEventUser({id: user.ID});
             typeEventUserFetched
-            .then(result => settypeEventUser(result))
+            .then(result => settypeEventUser(moreAction ? result : result.slice(0, 3)))
             .catch(error=>console.error("Error :",error.message))
         }
     
@@ -35,7 +37,18 @@ function Profile(props) {
         if (progressBar) {
             progressBar.style.width = `${user.PctXP}%`;
         }
-    }, [user]);
+    }, [user, moreAction]);
+
+    const handleClick = () => {
+        if(!moreAction){
+            setmoreAction(true)
+            setTextAction("Voir moins")
+        }else{
+            setmoreAction(false)
+            setTextAction("Voir toutes mes actions")
+        }
+      };
+
 
     return <div className="profile">
         <Navbar />
@@ -106,12 +119,9 @@ function Profile(props) {
                             {typeEventUser.map((type) => {
                                 return <MyAction type={type} nbEvents={lastEvent.length}/>
                             })}
-                            {/* <MyAction />
-                            <MyAction />
-                            <MyAction /> */}
                             
                         </div>
-                        <button className="blueButton rounded-2xl text-white blackNunito text-lg flex items-center justify-center w-2/3 ml-40">Voir toutes mes actions</button>
+                        <button className="blueButton rounded-2xl text-white blackNunito text-lg flex items-center justify-center w-2/3 ml-40" onClick={handleClick}>{TextAction}</button>
 
                     </div>
                 </div>

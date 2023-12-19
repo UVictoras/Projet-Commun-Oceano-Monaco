@@ -57,3 +57,17 @@ export const getTypeEventUser = async (id) => {
     const favoriteEvent = await response.json();
     return favoriteEvent;
 }
+
+export const getTypeEvent = async () => {
+    const response = await fetch(
+        'http://localhost:4444/type/event', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            },
+        }
+    )
+    const typeEvent = await response.json();
+    return typeEvent;
+}

@@ -1,16 +1,40 @@
 import EventLike from './eventLike';
-import { getFavoriteEvent } from "../api/event";
+import { getFavoriteEvent, getTypeEvent } from "../api/event";
 import { useEffect, useState } from "react";
 
 export default function ModalLike(props) {
     const [ favoriteEvent, setfavoriteEvent ] = useState([]);
+    const [ EventShow, setEventShow ] = useState([]);
+    const [ typeEvent, settypeEvent ] = useState([]);
+    const [ triTypes, settriTypes ] = useState("all");
 
     useEffect(() => {
         const favoriteEventFetched = getFavoriteEvent({id: 1});
         favoriteEventFetched
         .then(result => setfavoriteEvent(result))
         .catch(error=>console.error("Error :",error.message))
+
+        const typeEventFetched = getTypeEvent();
+        typeEventFetched
+        .then(result => settypeEvent(result))
+        .catch(error=>console.error("Error :",error.message))
     },[])
+
+    useEffect(() => {
+        if(triTypes==="all"){
+            setEventShow(favoriteEvent)
+        }else{
+            setEventShow(favoriteEvent.filter(fav => fav.Name === triTypes))
+        }
+    },[triTypes, favoriteEvent])
+
+    const handleClick = (typeName) => {
+        if(typeName === triTypes){
+            settriTypes("all")
+        }else{
+            settriTypes(typeName)
+        }
+    };
 
     return <div className='mx-9 '>
         <div className='mt-9 flex space-x-[388px]' >
@@ -28,32 +52,18 @@ export default function ModalLike(props) {
         </div>
         <div className='filter '>
             <div className='filter flex space-x-2.5 my-3.5 mb-7'>
-                <div className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center space-x-2'>
-                    <img src='img/icon/petition.svg' alt='petition make it blue' className='w-3' />
-                    <p className='text-sm extraBoldNunito'>Pétition</p>
-                </div>
-                <div className='donation p-1 rounded-xl flex items-center justify-center space-x-2 '>
-                    <img src='img/icon/coin.png' alt='coin make it blue' className='w-3' />
-                    <p className='text-sm extraBoldNunito'>Donation</p>
-                </div>
-                <div className="date p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center space-x-2 ">
-                    <img src='img/event/date.svg' alt='date make it blue' className='w-4' />
-                    <p className='text-sm extraBoldNunito'>8 Juin</p>
-                </div>
-                <div className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center space-x-2'>
-                    <img src='img/bottle.svg' alt='bottle make it blue' className='w-2' />
-                    <p className='text-sm extraBoldNunito'>Collecte de déchets</p>
-                </div>
+                {typeEvent.map((type) =>{
+                    return  <button onClick={() => handleClick(type.Name)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center space-x-2'>
+                                <img src={type.Logo} alt='petition make it blue' className='w-3' />
+                                <p className='text-sm extraBoldNunito'>{type.Name}</p>
+                            </button>
+                })}
             </div>
         </div>
         <div className='space-y-4 h-[700px] customScrollbar overflow-y-scroll'>
-            {favoriteEvent.map((led) => {
-                return <EventLike event={led}/>
+            {EventShow.map((fav) => {
+                return <EventLike event={fav}/>
             })}
-            {/* <EventLike />
-            <EventLike />
-            <EventLike />
-            <EventLike /> */}
         </div>
 
     </div>
