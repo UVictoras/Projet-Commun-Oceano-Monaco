@@ -1,5 +1,5 @@
 function Searchbar(props) {
-    return <div className="z-10 flex justify-center space-x-2.5 ">
+    return <div className="z-15 flex justify-center space-x-2.5 ">
         <div>
             <form className="">
                 <div class="">

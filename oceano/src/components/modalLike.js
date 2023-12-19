@@ -16,19 +16,38 @@ export default function ModalLike(props) {
 
         </div>
         <div className='filter '>
-            <div className='filter flex space-x-2.5 my-3.5 mb-7'>
-                <button className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center'>
-                    <img src='img/icon/petition.svg' alt='petition make it blue' className='w-3' />
-                    <p className='text-sm extraBoldNunito px-3'>Pétition</p>
-                </button>
-                <button className='donation p-1 rounded-xl flex items-center justify-center'>
-                    <img src='img/icon/coin.png' alt='coin make it blue' className='w-3' />
-                    <p className='text-sm extraBoldNunito px-3 py-1'>Donation</p>
-                </button>
-                <button className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
-                    <img src='img/bottle.svg' alt='bottle make it blue' className='w-2 ' />
-                    <p className='text-sm extraBoldNunito px-3'>Collecte de déchets</p>
-                </button>
+            <div className='filter overflow-x-scroll horizontalScrollbar  whitespace-nowrap '>
+                <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
+                    <button className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
+                        <img src='img/icon/petition.svg' alt='petition make it blue' className='w-3 ml-2' />
+                        <p className='text-sm extraBoldNunito px-3'>Pétition</p>
+                    </button>
+                    <button className='donation p-1 rounded-xl flex items-center justify-center inline'>
+                        <img src='img/icon/coin.png' alt='coin make it blue' className='w-3 ml-2' />
+                        <p className='text-sm extraBoldNunito px-3 py-1'>Donation</p>
+                    </button>
+                    <button className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
+                        <img src='img/bottle.svg' alt='bottle make it blue' className='w-2 ml-2' />
+                        <p className='text-sm extraBoldNunito px-3'>Collecte de déchets</p>
+                    </button>
+                    <button className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center  '>
+                        <img src='img/bottle.svg' alt='bottle make it blue' className='w-2 ml-2' />
+                        <p className='text-sm extraBoldNunito px-3'>Collecte de déchets</p>
+                    </button>
+                    <button className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
+                        <img src='img/bottle.svg' alt='bottle make it blue' className='w-2 ml-2' />
+                        <p className='text-sm extraBoldNunito px-3'>Collecte de déchets</p>
+                    </button>
+                    <button className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
+                        <img src='img/bottle.svg' alt='bottle make it blue' className='w-2 ml-2' />
+                        <p className='text-sm extraBoldNunito px-3'>Collecte de déchets</p>
+                    </button>
+                    <button className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center '>
+                        <img src='img/bottle.svg' alt='bottle make it blue' className='w-2 ml-2' />
+                        <p className='text-sm extraBoldNunito px-3'>Collecte de déchets</p>
+                    </button>
+                </div>
+
             </div>
         </div>
         <div className='space-y-4 h-[700px] customScrollbar overflow-y-scroll'>

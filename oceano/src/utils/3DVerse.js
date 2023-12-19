@@ -420,8 +420,10 @@ export async function showVisibleLabelsOnly() {
 }
 
 export async function moveShip(){
+    const test = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('e1c4242f-a184-43f5-bb91-f47bfc937aca')
+    test[0].setVisibility(false)
     const boat = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('0d6a5ec3-974c-40f5-88af-f336e3e8074e')
     const anim = new TravelAnimation();
     await anim.init();
-    anim.gotoSplineAndTravel(boat[0], anim.splines[0]);
+    anim.gotoSplineAndTravel(boat[0],0.1, anim.splines[0]);
 }

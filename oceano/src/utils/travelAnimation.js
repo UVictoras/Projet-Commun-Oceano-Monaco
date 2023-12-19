@@ -133,7 +133,7 @@ export default class TravelAnimation
     };
 
     //--------------------------------------------------------------------------
-    gotoSplineAndTravel = async (entity, spline, speed = 0.1, waitBeforeStart = 4 ) =>
+    gotoSplineAndTravel = async (entity, spline, speed = 20, waitBeforeStart = 4 ) =>
     {
         this.isStopped          = false;
 

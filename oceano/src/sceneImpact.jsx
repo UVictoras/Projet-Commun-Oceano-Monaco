@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 
 
-export const Canvas = (props) => {
+export const SceneImpact = (props) => {
     const status = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js`,
 
@@ -25,51 +25,25 @@ export const Canvas = (props) => {
             removeOnUnmount: false,
         }
     );
-    const three = useScript(
-        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ThreeJS_Ext.js`,
-
-        {
-            removeOnUnmount: false,
-        }
-    );
-    const spline = useScript(
-        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_Spline_Ext.js`,
-
-        {
-            removeOnUnmount: false,
-        }
-    ); 
-    const splineDisplay = useScript(
-        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_SplineDisplay_Ext.js`,
-
-        {
-            removeOnUnmount: false,
-        }
-    ); 
 
     const initApp = useCallback(async () => {
 
         await window.SDK3DVerse.joinOrStartSession({
             userToken: 'public_0rtYmFmJfCyVxB7-',
-            sceneUUID: '33ed765f-9a1c-4f8c-933c-077eeb5503e0',
+            sceneUUID: '34462644-db76-4ed3-9420-8605b7fdb553',
             canvas: document.getElementById('display-canvas'),
             viewportProperties: {
-                defaultControllerType: window.SDK3DVerse.controller_type.orbit,
+                defaultControllerType: window.SDK3DVerse.controller_type.none,
             },
         });
+        window.SDK3DVerse.engineAPI.playAnimationSequence('ca66572e-9533-491d-b346-fd7fc91c7019');
         await window.SDK3DVerse.installExtension(window.SDK3DVerse_ViewportDomOverlay_Ext);
         await window.SDK3DVerse.installExtension(window.SDK3DVerse_LabelDisplay_Ext);
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_ThreeJS_Ext);
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_SplineDisplay_Ext)
+
 
 
         if (props.onChange) {
-            Camera();
-            Modalll();
-            Click();
-            moveShip();
             props.onChange(true);
-
         }
     }, []);
 
@@ -78,6 +52,7 @@ export const Canvas = (props) => {
         if (status === 'ready') {
 
             initApp();
+
         }
 
     }, [status]);
@@ -86,6 +61,7 @@ export const Canvas = (props) => {
         <canvas
             id='display-canvas'
             style={{
+
                 width: '100%',
                 verticalAlign: 'middle',
             }}

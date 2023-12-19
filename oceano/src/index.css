@@ -298,6 +298,9 @@ input[type=password] {
   border-bottom: solid #1CB0F6;
 }
 
+.horizontalScrollbar::-webkit-scrollbar {
+  display: none;
+}
 .customScrollbar {
   
   scrollbar-width: thin !important;
@@ -393,7 +396,10 @@ input[type=password] {
   border-width: 2px !important; 
 }
 
-
+/********************* CSS pour la page Impact *************/
+.bottomImpact{
+  bottom: 10% !important;
+}
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {
   top: 4rem !important;
