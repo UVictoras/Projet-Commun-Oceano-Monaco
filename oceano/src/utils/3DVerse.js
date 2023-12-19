@@ -281,7 +281,7 @@ export function speed(positionx, positiony, positionz ){
     if (positionmax >= 4){
 
         const settings = {
-            speed: 3,
+            speed: 5,
             sensitivity: 1,
             damping: 0.65,
             angularDamping: 0.65
@@ -495,8 +495,13 @@ export function myTravel  (viewport, destinationPosition, destinationOrientation
                     myTravelRebinded.stopTravel();
                     resolve();
 
+
                     // Dirty fix to reset the orbit controller distance with the look at point.
                     const controllerType = myTravelRebinded.getControllerType(viewport.id);
+                    if(controllerType !== myTravelRebinded.controller_type.orbit)
+                    {
+                        return;
+                    }
                     
 
                     setTimeout(() =>
