@@ -1,8 +1,7 @@
 import * as THREE from 'three';
-
 import { useState } from 'react';
-import { SDK3DVerse_LabelDisplay as labelDisplay } from '../sdk_extension/LabelDisplay'
 
+let labelDisplay = null;
 
 export async function Anim(props) {
 
@@ -28,24 +27,16 @@ export async function Anim(props) {
 
 export function Open(){
     
-    
     let label = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
     console.log(window.SDK3DVerse.extensions.LabelDisplay.labelEntities)
     window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked = function(label, viewport){
-        console.log("5")
-        
-        
-        
-    
     }
     const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
 
     label.forEach(function(element){
-        
+   
         window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked(element,camera[0])
-        
     })
-    
     
 }
 
@@ -158,7 +149,7 @@ export function distancecamera(positionx, positiony, positionz){
 
 
 
-export async function Camera(props) {
+export function Camera(props) {
     
     const canvas = document.getElementById('display-canvas')
     
@@ -167,13 +158,11 @@ export async function Camera(props) {
         const camera = await window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
         //const viewports = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
         // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
-        const test = window.SDK3DVerse.engineAPI.findEntitiesByEUID("3632abc5-1ff2-4f2f-9b9f-672d3bde66be");
         
-        if(camera.length != 0){
+        if(camera.length !== 0){
                                 
             let molette = 0 ;
             let speedcamera = speed(camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]);
-            let limit = distancecamera(camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]);
             
             const vector1 = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
             const vector2 = new THREE.Vector3(0, 0, 0);
@@ -206,9 +195,7 @@ export async function Camera(props) {
                 console.log(camera[0].getTransform().position[2]); 
         }
     });
-    
-            
-    // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
+       // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getCamera()
 }
 
 
@@ -219,9 +206,6 @@ export function DisabledInput(){
     window.SDK3DVerse.actionMap.values["DISPLACE_RIGHT"] = []
     window.SDK3DVerse.actionMap.values["DISPLACE_UP"] = []
     window.SDK3DVerse.actionMap.propagate();
-
-
-
 }
 //--------------------- Récupération des Positions ---------------------
 
@@ -237,7 +221,6 @@ export async function Click(props) {
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
         
-        const selectEntity = true;
         const keepOldSelection = e.ctrlKey;
 
         const x = e.clientX + (canvas.width - canvas.clientWidth) / 2;
@@ -250,7 +233,7 @@ export async function Click(props) {
             position[0] = pickedPosition[0];
             position[1] = pickedPosition[1];
             position[2] = pickedPosition[2];
-            if (entity.getName() === "continents" || entity.getName() == "seas" ) {
+            if (entity.getName() === "continents" || entity.getName() === "seas" ) {
                 newElement.apply(null,position);
                 isVisible = false;
 
@@ -268,6 +251,7 @@ export async function Click(props) {
 
         
     }, false);
+    console.log(labelDisplay);
 }
 
 //--------------------- Création d'élément ---------------------
@@ -296,13 +280,13 @@ export function OpenModal() {
 }
 
 export function createImgTag() {
-    var labelDivs = document.getElementsByClassName('label');
+    let labelDisplay = window.SDK3DVerse.extensions.LabelDisplay;
 
-    if (labelDivs.length > 0)
+    if (labelDisplay.labelEntities.length > 0)
     {
-        for (var k = 0; k < labelDivs.length; k++)
+        for (var k = 0; k < labelDisplay.labelEntities.length; k++)
         {
-            if (labelDivs[k].children.length == 0)
+            if (labelDisplay.labelEntities[k].children.length === 0)
             {
                 // Create a new img element
                 var newImg = document.createElement('img');
@@ -313,7 +297,7 @@ export function createImgTag() {
 
                 // Add a class to the img
                 newImg.classList.add('collect');
-                labelDivs[k].appendChild(newImg);
+                labelDisplay.labelEntities[k].labelElement.appendChild(newImg);
 
                 var newParagraph = document.createElement('p');
 
@@ -331,15 +315,15 @@ export function createImgTag() {
                 // Optionally, add a class to the paragraph
                 newParagraphAtt.classList.add('attendees-txt');
 
-                labelDivs[k].appendChild(newParagraph);
-                labelDivs[k].appendChild(newParagraphAtt);
+                labelDisplay.labelEntities[k].labelElement.appendChild(newParagraph);
+                labelDisplay.labelEntities[k].labelElement.appendChild(newParagraphAtt);
             }
         }
     }
 }
 
 //--------------------- Fonctions labels ---------------------
-async function normalize(arr = [0., 0., 0.]) {
+function normalize(arr = [0., 0., 0.]) {
     var normalizedArr = arr.slice();
 
     var norm = Math.sqrt(arr[0] ** 2 + arr[1] ** 2 + arr[2] ** 2)
@@ -350,44 +334,46 @@ async function normalize(arr = [0., 0., 0.]) {
     return normalizedArr;
 }
 
-async function scalarProduct(arr1, arr2) {
-    const scalar = await Promise.all([arr1, arr2]).then(([v1, v2]) => {
-        return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
-    });
-
-    return parseFloat(scalar);
+function scalarProduct(v1, v2) {
+    return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
 }
 
-export async function showVisibleLabelsOnly() {
+export function showVisibleLabelsOnly() {
     let camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
 
-    var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]]);
+    labelDisplay = window.SDK3DVerse.extensions.LabelDisplay;
 
+    var cameraVector = normalize([camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]]);
     var labelVector = [0., 0., 0.];
 
     var scalar = 0.;
 
-    for (var j = 0; j < labelDisplay.labelEntities.length; j++) {
-        if (!labelDisplay.labelEntities[j] || !labelDisplay.labelEntities[j].getComponents().local_transform.position) {
-            console.error("Label element or its position is undefined.");
+    if(!labelDisplay.labelEntities.length) {
+        return;
+    }
+
+   
+    for (const entity of labelDisplay.labelEntities) {
+        if (!entity || !entity.isAttached('local_transform') || !entity.labelElement) {
+            console.error("Label element or its position is undefined.", entity);
             continue;  // Skip to the next iteration if the label element or its position is undefined
         }
 
-        let labelVector = await normalize([
-            labelDisplay.abelEntities[j].getComponents().local_transform.position[0],
-            labelDisplay.labelEntities[j].getComponents().local_transform.position[1],
-            labelDisplay.labelEntities[j].getComponents().local_transform.position[2]
-        ]);
-        scalar = await scalarProduct(cameraVector, labelVector);
+        const { position } = entity.getComponent('local_transform');
+        //let labelVector = normalize([position[0], position[1], position[2]]);
+        let labelVector = normalize([...position]);
+        scalar = scalarProduct(cameraVector, labelVector);
 
-        console.log("Scalar:", scalar);
+        //console.log("Scalar:", scalar);
 
-        if (scalar > 0.) {
+        if (scalar > 0.0) {
             //labelDivs[j].style.visibility = "visible";
-            console.log("positive");
+            entity.labelElement.domElement.style.visibility = "visible";
+            //entity.setVisibility(true);
         } else if (scalar < 0.) {
             //labelDivs[j].style.visibility = "hidden";
-            console.log("negative");
+            entity.labelElement.domElement.style.visibility = "hidden";
+            //entity.setVisibility(false);
         }
     }
 }

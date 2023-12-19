@@ -19,6 +19,25 @@ export const useFrameLoop = (callback) => {
     useEffect(()=>{
         requestID.current = requestAnimationFrame(loop);
 
-        return ()=> cancelAnimationFrame(requestID.current)
+        return ()=> cancelAnimationFrame(requestID.current);
     }, [])
+}
+
+export const frameLoop = (callback) => {
+    
+    let requestID;
+    let previousTime;
+
+    const loop = async time => {
+        
+        if(previousTime !== undefined){
+            const deltaTime = time - previousTime;
+            await callback(time, deltaTime);
+        }
+
+        previousTime = time;
+        requestID = requestAnimationFrame(loop);
+    }
+
+    requestID = requestAnimationFrame(loop);
 }

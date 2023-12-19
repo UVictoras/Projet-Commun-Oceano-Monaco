@@ -159,18 +159,18 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
         let updateLocalTransform = false;
         for(const euid in updatedComponentByEUIDs)
         {
-            const labels            = this.labelEntities.filter(e => e.getEUID() == euid);
+            const labels            = this.labelEntities.filter(e => e.getEUID() === euid);
 
             const componentList     = updatedComponentByEUIDs[euid];
             updateLocalTransform    |= componentList.includes('local_transform');
 
-            if(labels.length == 0)
+            if(labels.length === 0)
             {
                 // No entity match with this updated euid, check if maybe a supported
                 // component has been attached.
                 if(componentList.includes('label'))
                 {
-                    const updatedEntities = entities.filter(e => e.getEUID() == euid);
+                    const updatedEntities = entities.filter(e => e.getEUID() === euid);
                     for(const entity of updatedEntities)
                     {
                         this.createLabel(entity);
@@ -211,7 +211,7 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
             return;
         }
 
-        const titleElement          = labelElement.domElement.children[1];
+const titleElement          = labelElement.domElement.children[1];
         titleElement.innerText      = labelComponent.title;
 
         labelElement.renderedTitle  = labelComponent.title;
@@ -234,14 +234,14 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
                 for(const i in updatedEntities)
                 {
                     const entity = updatedEntities[i];
-                    if(currentEntity.getID() == entity.getID())
+                    if(currentEntity.getID() === entity.getID())
                     {
                         this.onGlobalTransformUpdated(label);
                         break;
                     }
                 }
             }
-            while(currentEntity = currentEntity.getParent());
+            while(currentEntity === currentEntity.getParent());
         }
     }
 
@@ -258,10 +258,10 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
         {
             const indexFound = this.labelEntities.findIndex((e)=>
             {
-                return e.getID() == deletedEntityRTIDs[i];
+                return e.getID() === deletedEntityRTIDs[i];
             });
 
-            if(indexFound != -1)
+            if(indexFound !== -1)
             {
                 const label = this.labelEntities[indexFound];
                 if(this.sdk.webAPI.deletePointOfInterestThumbnail)
@@ -277,7 +277,7 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
                 this.labelEntities.splice(indexFound, 1);
             }
 
-            if(this.currentSelectedLabel && this.currentSelectedLabel.getID() == deletedEntityRTIDs[i])
+            if(this.currentSelectedLabel && this.currentSelectedLabel.getID() === deletedEntityRTIDs[i])
             {
                 this.onLabelSelected(null);
                 this.currentSelectedLabel = null;
@@ -322,7 +322,7 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
 
         const ancestors = label.getAncestors();
 
-        return ancestors.some(ancestors => ancestors.getID() == entityRTID);
+        return ancestors.some(ancestors => ancestors.getID() === entityRTID);
     }
 
     //--------------------------------------------------------------------------
@@ -342,7 +342,7 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
             const aExternalValue = a.isRuntime() ? 1 : 0;
             const bExternalValue = b.isRuntime() ? 1 : 0;
 
-            if(aExternalValue != bExternalValue)
+            if(aExternalValue !== bExternalValue)
             {
                 return aExternalValue - bExternalValue;
             }
@@ -386,29 +386,33 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
         labelElement.className      = 'label';
         labelElement.innerText      = '';
 
+        containerElement.appendChild(labelElement);
+
         var newImg = document.createElement('img');
-        newImg.src = '/img/bottle.svg';
+        newImg.src = './img/bottle.svg';
         newImg.alt = 'Description of the image';
         newImg.classList.add('collect');
+
+        containerElement.appendChild(newImg);
 
         var newParagraph = document.createElement('p');
         newParagraph.textContent = '128';
         newParagraph.classList.add('attendees');
 
+        containerElement.appendChild(newParagraph);
+
         var newParagraphAtt = document.createElement('p');
         newParagraphAtt.textContent = 'participants';
         newParagraphAtt.classList.add('attendees-txt');
 
+        containerElement.appendChild(newParagraphAtt);
+
         var titleElement            = document.createElement('div');
         titleElement.className      = 'label-title';
         titleElement.innerText      = labelComponent.title;
-
-        containerElement.appendChild(labelElement);
-        labelElement.appendChild(newImg);
-        labelElement.appendChild(newParagraph);
-        labelElement.appendChild(newParagraphAtt);
+        
         containerElement.appendChild(titleElement);
-
+        
         containerElement.onmousedown    = (e, viewport) => this.onLabelClicked(entity, viewport);
 
         const domElement                = this.domRenderer.createDomElement(containerElement);
@@ -437,7 +441,7 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
         }
 
         var index = this.labelEntities.indexOf(this.currentSelectedLabel);
-        if(--index == -1)
+        if(--index === -1)
         {
             index = this.labelEntities.length-1;
         }
@@ -454,7 +458,7 @@ export default class SDK3DVerse_LabelDisplay extends SDK3DVerse_ExtensionInterfa
         }
 
         var index = this.labelEntities.indexOf(this.currentSelectedLabel);
-        if(++index == this.labelEntities.length)
+        if(++index === this.labelEntities.length)
         {
             index = 0;
         }

@@ -380,19 +380,20 @@ input[type=password] {
   height: 100% !important;
 }
 
+.label-container {
+  transform-origin: 50% 50%;
+  width: 30px;
+  height: 30px;
+}
+
 .label-container>.active,
 .label-container> :hover {
   z-index: 10 !important;
 }
 
-.label-container.active,
-.label-container:hover {
-  z-index: 10 !important;
-}
-
 .label-container.active .label,
-.label-container .label:hover,
-.label-container .label:focus {
+.label-container:hover .label,
+.label-container:focus .label{
   width: 80px;
   height: 40px;
   background-color: white;
@@ -480,8 +481,8 @@ input[type=password] {
 
 .collect {
   z-index: 30 !important;
-  margin-top: 2.5px;
-  margin-left: 2.5px;
+  margin-top: -37.5px;
+  margin-left: -13px;
   width: 80%;
   height: 80%;
   transform: rotate(45deg);
@@ -491,9 +492,10 @@ input[type=password] {
 
 .label-container:hover .collect {
   position: absolute;
-  left: 2.5px;
-  width: 24px;
-  height: 24px;
+  top: -7.5px;
+  left: -25px;
+  width: 26px;
+  height: 26px;
 }
 
 .attendees,
@@ -510,25 +512,27 @@ input[type=password] {
 }
 
 .attendees {
-  top: 3px;
-  left: 30px;
+  top: -60px;
+  left: -12.5px;
   font-weight: bold;
   font-size: 22px;
+  z-index: 15 !important;
 }
 
 .attendees-txt {
   text-align: left !important;
   font-size: 8px;
   /* Initial font size */
-  top: 16px;
-  left: 28.5px;
+  top: -35px;
+  left: -12.5px;
+  z-index: 15 !important;
 }
 
-.label-container.active .label .attendees,
-.label-container.active .label .attendees-txt,
-.label-container .label:hover .attendees,
-.label-container .label:hover .attendees-txt,
-.label-container .label:focus .attendees,
-.label-container .label:focus .attendees-txt {
+.label-container.active .attendees,
+.label-container.active .attendees-txt,
+.label-container:hover .attendees,
+.label-container:hover .attendees-txt,
+.label-container:focus .attendees,
+.label-container:focus .attendees-txt {
   display: block;
 }
