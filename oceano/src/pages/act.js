@@ -1,9 +1,7 @@
 import Navbar from "../components/navbar";
 import Above from "../components/above.js";
-import Searchbar from "../components/searchbar";
 import { Canvas } from "../Canva.jsx";
 import { useState } from "react";
-import Modal from "../components/modal.js";
 import LoadingScreen from "./loadingScreen.js";
 import { Mouvcamera } from "../utils/3DVerse.js";
 

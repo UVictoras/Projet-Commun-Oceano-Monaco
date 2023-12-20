@@ -7,10 +7,7 @@ function Thread(props){
                 <p className="extraBoldNunito">Titre de l'évenement</p>
             </a>
             <p className="mediumNunito">Description du l'évenement</p>
-
         </div>
-        
-        
     </div>
 }
 export default Thread

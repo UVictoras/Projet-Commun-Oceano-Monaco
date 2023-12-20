@@ -1,10 +1,25 @@
 import { useState } from "react";
 import Navbar from "../components/navbar";
-import ModalEvent from "../components/modal";
+
+import AboveImpact from "../components/aboveImpact";
+import LoadingScreen from "./loadingScreen";
+import { SceneImpact } from "../sceneImpact";
 
 function Impact(props){
+    const [ load, setLoad ] = useState(false);
+
+    const handleCanvaChange = (isLoaded) => {
+        setLoad(isLoaded);
+    };
     
     return <div className="impact">
+        {!load ? 
+            (
+                <LoadingScreen/>
+            ) : (
+                null
+            )
+        }
         <Navbar/>
         
         <div class="grid place-content-center h-48 ...">
@@ -20,8 +35,7 @@ function Impact(props){
                 <p class="blackNunito ">des océans</p>
 
             </div>
-            
-            
+                    
         </div>
         <div class="grid grid-cols-3 gap-4 place-content-center h-48 ...">
             <div>
@@ -38,6 +52,9 @@ function Impact(props){
             </div>
                
         </div>
+        <AboveImpact/>
+        <SceneImpact onChange={handleCanvaChange}/>
+
     </div>
 }
 export default Impact;
