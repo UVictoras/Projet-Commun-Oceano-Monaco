@@ -1,4 +1,4 @@
-import { AnimationShip, Camera, Click, OpenModal, Modalll, BougePutinDeBateauDeMerde, moveShip, DisabledInput, Mouvcamera, desactiveKey, showVisibleLabelsOnly } from './utils/3DVerse';
+import { moveShip, Camera, Click, OpenModal, Modalll, BougePutinDeBateauDeMerde, DisabledInput, Mouvcamera, desactiveKey, showVisibleLabelsOnly } from './utils/3DVerse';
 import { useCallback, useEffect, useState } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 import SDK3DVerse_LabelDisplay_Ext from './sdk_extension/LabelDisplay'
@@ -32,13 +32,33 @@ export const Canvas = (props) => {
         {
             removeOnUnmount: false,
         }
-    ); 
+    );
     // const label = useScript(
     //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_LabelDisplay_Ext.js`,
+
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
+    // const three = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ThreeJS_Ext.js`,
+
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
+    // const splineDisplay = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_SplineDisplay_Ext.js`,
+
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
 
     const [sessionReady, setSessionReady] = useState(false);
     const [time, setTime] = useState(0);
     const [deltaTime, setDeltaTime] = useState(0);
+
     const initApp = useCallback(async () => {
         const SDK3DVerse = window.SDK3DVerse;
         await SDK3DVerse.joinOrStartSession({
@@ -46,39 +66,53 @@ export const Canvas = (props) => {
             sceneUUID: '33ed765f-9a1c-4f8c-933c-077eeb5503e0',
             canvas: document.getElementById('display-canvas'),
             viewportProperties: {
-                defaultControllerType: window.SDK3DVerse.controller_type.orbit,
+                defaultControllerType: SDK3DVerse.controller_type.orbit,
             },
         });
+        console.log("************* Session joined");
         await SDK3DVerse.installExtension(window.SDK3DVerse_ViewportDomOverlay_Ext);
         const labelExt = await SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_ThreeJS_Ext);
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_SplineDisplay_Ext);
+        // await window.SDK3DVerse.installExtension(SDK3DVerse_ThreeJS_Ext);
+        // await window.SDK3DVerse.installExtension(SDK3DVerse_SplineDisplay_Ext);     
 
         if (props.onChange) {
-            //moveShip();
             props.onChange(true);
         }
 
+        console.log("************* Session ready");
         setSessionReady(true);
-    });
+    }, []);
 
     useEffect(() => {
+
         if (status === 'ready') {
+
             initApp();
-            //Mouvcamera();
+            //Click();
             Camera();
-            Click();
-            desactiveKey()
+            //moveShip();
+            
         }
+
     }, [status]);
+    // ,splineDisplay, three
 
     frameLoop((time, deltaTime) => {
-
-        if (!sessionReady) {
+        
+        if(!sessionReady) {
             return;
         }
+        var labelElements = document.getElementsByClassName('label');
 
         // Check if the element is found before attempting to modify its style
+
+        if (labelElements[0])
+        {
+            for (var i = 0; i < labelElements.length; i++) 
+            {
+                labelElements[i].innerHTML = '';
+            }
+        }
 
         showVisibleLabelsOnly();
 
@@ -86,18 +120,15 @@ export const Canvas = (props) => {
         setDeltaTime(deltaTime);
     });
 
-    return (
-        <>
-            <canvas
-                id='display-canvas'
-                style={{
+    return <>
+        <canvas
+            id='display-canvas'
+            style={{
 
-                    width: '100%',
+                width: '100%',
+                verticalAlign: 'middle',
+            }}
 
-
-                }}
-            ></canvas>
-        </>
-    );
-    //AnimationShip();
-}
+        ></canvas>
+    </>
+};

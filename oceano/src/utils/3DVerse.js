@@ -360,7 +360,7 @@ export function Camera(props) {
                 console.log(camera[0].getTransform().position[1])
                 console.log(camera[0].getTransform().position[2])
             }
-        } 
+        }
     })
 }
 
@@ -482,7 +482,7 @@ export async function Click(props) {
             position[1] = pickedPosition[1];
             position[2] = pickedPosition[2];
             if (entity.getName() === "continents" || entity.getName() === "seas") {
-                newElement.apply(null, position);
+                //newElement.apply(null, position);
                 isVisible = false;
             } else if (entity.getName() === "SM_Cube") {
                 isVisible = true;
@@ -609,11 +609,13 @@ export function showVisibleLabelsOnly() {
 
         if (scalar > 0.0) {
             //labelDivs[j].style.visibility = "visible";
-            entity.labelElement.domElement.style.visibility = "visible";
+            entity.labelElement.domElement.children[0].classList.remove("hidden");
+            entity.labelElement.domElement.children[1].classList.remove("hidden");
             //entity.setVisibility(true);
         } else if (scalar < 0.) {
             //labelDivs[j].style.visibility = "hidden";
-            entity.labelElement.domElement.style.visibility = "hidden";
+            entity.labelElement.domElement.children[0].classList.add("hidden");
+            entity.labelElement.domElement.children[1].classList.add("hidden");
             //entity.setVisibility(false);
         }
     }
