@@ -14,7 +14,7 @@ export function Modal(props) {
     } else if (props.isClicked === "filter") {
       setActiveModal(<ModalFilter closeModal={props.closeModal}/>)
     } else if (props.isClicked === "event"){
-      setActiveModal(<ModalEvent closeModal={props.closeModal}/>)
+      setActiveModal(<ModalEvent closeModal={props.closeModal} event={props.event}/>)
     };
   }, [props.isClicked])
 

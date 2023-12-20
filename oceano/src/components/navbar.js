@@ -1,4 +1,6 @@
 import { Disclosure, Menu } from '@headlessui/react'
+import { useEffect, useState } from "react";
+import { getUserSession } from "../api/session";
 
 const earthSelected = <img src='img/icon/earth/earth.png' className=' w-6 ' alt='earth make it blue'/>
 const earth = <img src='img/icon/earth/greyEarth.png' className='w-6 ' alt='earth make it blue' />
@@ -39,6 +41,28 @@ function classNames(...classes) {
 }
 
 function Navbar() {
+  const [ user, setUser ] = useState([]);
+
+  useEffect(() => {
+    const userFetched = getUserSession();
+    userFetched
+    .then(result => setUser(result))
+    .catch(error=>console.error("Error :",error.message))
+  },[]);
+
+  useEffect(() => {
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+      let pctXP = (user.PctXP * 80) / 100
+      if(pctXP <= 40){
+        let pctChelou = pctXP + 60
+        progressBar.style.background = `conic-gradient(#D9D9D9 0% 40%, transparent 40% 60%, #D81F26 60% ${pctChelou}%, #D9D9D9 ${pctChelou}% 100%)`;
+      }else{
+        let pctChelou = pctXP - 40
+        progressBar.style.background = `conic-gradient(#D81F26 0% ${pctChelou}%, #D9D9D9 ${pctChelou}% 40%, transparent 40% 60%, #D81F26 60% 100%)`;
+      }
+    }
+  }, [user]);
   return (
     <Disclosure as="nav" className="bg-white border-b-2 border-neutral-200">
       <div className="mr-9">
@@ -88,14 +112,15 @@ function Navbar() {
               className="relative rounded-full text-gray-400 p-4 flex items-center"
             >
               <img src='img/icon/coin.png' className='h-7 absolute' alt="coin make it blue" />
-              <a href='/shop' className='ml-8 extraBoldNunito fontBell'>152</a>
+              <a href='/shop' className='ml-8 extraBoldNunito fontBell'>{user.Money}</a>
 
             </button>
             <Menu as="div" className="relative ml-3">
               <div>
                 <a href='/profil'>
                   <Menu.Button className="relative flex rounded-full text-sm p-4" >
-                    <div className='profileImgNav mr-4 flex items-center justify-center'>
+
+                    <div id="progressBar" className='profileImgNav mr-4 flex items-center justify-center'>
                       <div className='whiteCircle flex items-center justify-center'>
                         <img
                           className="h-10 w-10 rounded-full absolute positionImage "
@@ -105,8 +130,8 @@ function Navbar() {
                       </div></div>
 
                     <div className='my-auto'>
-                      <p className=' blackNunito text-[18px] text-left'>Matéo C.</p>
-                      <p className=' semiBoldNunito text-[14px] flex flex-1 levelColor'>Niveau 4</p>
+                      <p className=' blackNunito text-[18px] text-left'>{user.Pseudo}</p>
+                      <p className=' semiBoldNunito text-[14px] flex flex-1 levelColor'>Niveau {user.Number}</p>
                     </div>
 
                   </Menu.Button>

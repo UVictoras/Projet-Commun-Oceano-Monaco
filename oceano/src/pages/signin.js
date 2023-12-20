@@ -1,5 +1,43 @@
+import { useEffect, useState} from "react";
+import { getUsers, getUser } from "../api/user";
+import { setUserSession } from "../api/session";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
+
+var sha1 = require('sha1');
 
 function Signin(props) {
+  let history = useHistory();
+
+  const { register, handleSubmit } = useForm();
+  const [ users, setUsers ] = useState([]);
+  const [ user, setUser ] = useState([]);
+
+  useEffect(() => {
+      const usersFetched = getUsers();
+      usersFetched
+      .then(result => setUsers(result))
+      .catch(error=>console.error("Error :",error.message))
+  },[]);
+
+  useEffect(() => {
+      if(user.length != 0){
+          setUserSession(user[0]);
+          history.push("/act");
+      }
+  },[user])
+
+
+  const onSubmit = (data) => {
+      users.map((userMap) => {
+          if((userMap.Pseudo == data.pseudo || userMap.Email == data.pseudo) && userMap.Password == sha1(data.password)){
+              const usersFetched = getUser({id: userMap.ID});
+              usersFetched
+              .then(result => setUser(result))
+              .catch(error=>console.error("Error :",error.message))
+          }
+      })
+  }
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center absolute top-0 z-20 bg-neutral-50">
       <a href="signup">
@@ -13,12 +51,12 @@ function Signin(props) {
         <h1 class=" grid place-content-center text font-medium blackNunito titleFont text-[26px] ">Connexion</h1>
       </div>
       <div className="text h-2/3 mt-9">
-        <form class="max-w-sm mx-auto">
+        <form class="max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
           <div class="mb-5">
-            <input type="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl block w-full p-2.5" placeholder="Nom d'utilisateur ou E-mail" name="email" required></input>
+            <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl block w-full p-2.5" placeholder="Nom d'utilisateur ou E-mail" name="email" {...register("pseudo")} required></input>
           </div>
           <div class="mb-5">
-            <input type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl block w-full p-2.5" placeholder="Mot de passe" name="password" required></input>
+            <input type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl block w-full p-2.5" placeholder="Mot de passe" name="password" {...register("password")} required></input>
           </div>
           <div class="mb-5 h-[46px]">
             <button type="submit" class="text-white blueButton  blackNunito rounded-xl text-sm w-[375px]  text-center h-[46px] ">SE CONNECTER</button>

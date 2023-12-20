@@ -1,18 +1,19 @@
 import { useState } from "react";
 
-export default function Tab() {
+export default function Tab(props) {
     const Menu = [
         {
             id: 1,
             title: "PRÉSENTATION",
-            content: "Nous demandons au gouvernement islandais d'interdire la chasse à la baleine une fois pour toutes. Selon un rapport de l'autorité alimentaire et vétérinaire islandaise, les baleines ont mis jusqu'à deux heures pour mourir lors... ",
+            content: props.event.Description,
             span: "Voir plus",
             imgDatePicker: "img/event/calendar.png",
-            textDatePicker: "Du 14 Mai au 8 Juin",
+            textDatePicker: "Du " + new Intl.DateTimeFormat("fr-FR", {month: "long", day: "numeric"}).format(new Date(props.event.Start_date)) + 
+                            " au " + new Intl.DateTimeFormat("fr-FR", {month: "long", day: "numeric"}).format(new Date(props.event.End_date)),
             imgLocate: "img/event/locate.png",
             textLocate: "En ligne",
             imgLink: "img/event/link.png",
-            textLink: "Oceanic Conservation",
+            textLink: props.event.Link,
             imgGoal: "img/event/goal.svg",
             textGoal: "14 152€ sur 30 000€ collectés",
             color: "fontColor3C",
@@ -26,16 +27,16 @@ export default function Tab() {
             content: "Hello je m’appelle Loris P., j’ai 19 ans et depuis toujours je kiffe les poissons, je les préfère en sauce LOL, non en vrai je suis passionné des océans et membre de beaucoup d’associations dans ma région, si jamais vous aussi vous êtes passionné n’hésitez pas à me contacter pour discuter...",
             span: "Voir plus",
             color: "fontColor3C",
-            imgProfile: "img/avatar1.png",
-            name: "Victor M.",
-            titleLevel: "Héros des Grecs",
-            level: "Niveau 4",
+            imgProfile: props.event.ImageProfil,
+            name: props.event.First_name + " " + props.event.Last_name,
+            titleLevel: props.event.TitleName,
+            level: "Niveau " + props.event.Number,
             participer: "Participer",
             logoShare: "img/event/share.png",
             phoneImage: "img/event/phone.png",
             phoneText: "06.50.41.92.25",
             mailImage:"img/event/mail.png",
-            mailText:"vMartinant@gaming.tech",
+            mailText: props.event.Email,
         }
     ];
 
