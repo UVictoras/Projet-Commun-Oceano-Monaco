@@ -5,15 +5,15 @@ export default function Tab() {
         {
             id: 1,
             title: "PRÉSENTATION",
-            content: "Nous demandons au gouvernement islandais d'interdire la chasse à la baleine une fois pour toutes. Selon un rapport de l'autorité alimentaire et vétérinaire islandaise, les baleines ont mis jusqu'à deux heures pour mourir lors des chasses islandaises. J’ai créé cet évènement dans l’objectif de sauver tout ces anima... ",
+            content: "Nous demandons au gouvernement islandais d'interdire la chasse à la baleine une fois pour toutes. Selon un rapport de l'autorité alimentaire et vétérinaire islandaise, les baleines ont mis jusqu'à deux heures pour mourir lors... ",
             span: "Voir plus",
             imgDatePicker: "img/event/calendar.png",
-            textDatePicker: "Du   au 8 Juin",
+            textDatePicker: "Du 14 Mai au 8 Juin",
             imgLocate: "img/event/locate.png",
             textLocate: "En ligne",
             imgLink: "img/event/link.png",
             textLink: "Oceanic Conservation",
-            imgGoal: "img/event/goal.png",
+            imgGoal: "img/event/goal.svg",
             textGoal: "14 152€ sur 30 000€ collectés",
             color: "fontColor3C",
             participer: "Participer",
@@ -26,14 +26,12 @@ export default function Tab() {
             content: "Hello je m’appelle Loris P., j’ai 19 ans et depuis toujours je kiffe les poissons, je les préfère en sauce LOL, non en vrai je suis passionné des océans et membre de beaucoup d’associations dans ma région, si jamais vous aussi vous êtes passionné n’hésitez pas à me contacter pour discuter...",
             span: "Voir plus",
             color: "fontColor3C",
-            imgProfile: "img/victor.jpg",
+            imgProfile: "img/avatar1.png",
             name: "Victor M.",
             titleLevel: "Héros des Grecs",
             level: "Niveau 4",
             participer: "Participer",
             logoShare: "img/event/share.png",
-            linkImage: "",
-            linkText: "Oceanic Conservation",
             phoneImage: "img/event/phone.png",
             phoneText: "06.50.41.92.25",
             mailImage:"img/event/mail.png",
@@ -73,7 +71,7 @@ export default function Tab() {
                             <div className="profile ">
                                 <div className="grid grid-cols-2">
                                     <div className="flex justify-center">
-                                        <img src={item.imgProfile} alt="profile picture Make it blue" className="w-28 h-28 rounded-full" />
+                                        <img src={item.imgProfile} alt="profile Make it blue" className="w-28 h-28 rounded-full" />
                                     </div>
                                     <div className="mt-4">
                                         <p className="blackNunito text-start">{item.name}</p>
@@ -90,15 +88,11 @@ export default function Tab() {
                             </div>
                             <div className="contact space-y-5 mt-4">
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.linkImage}/>
-                                    <p>{item.linkText}</p>
-                                </div>
-                                <div className="flex items-center space-x-4">
-                                    <img src={item.phoneImage}/>
+                                    <img src={item.phoneImage} alt="phone make it blue"/>
                                     <p>{item.phoneText}</p>
                                 </div>
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.mailImage}/>
+                                    <img src={item.mailImage} alt="mail make it blue"/>
                                     <p>{item.mailText}</p>
                                 </div>
                             </div>
@@ -110,21 +104,21 @@ export default function Tab() {
                             {item.span}
                         </span></p>
 
-                        {item.id === 1 ? <div className="mt-7 text-left space-y-2">
-                            <div className="flex semiBoldNunito">
-                                <img src={item.imgDatePicker} alt="a" className="w-8" />
+                        {item.id === 1 ? <div className="mt-4 text-left space-y-4">
+                            <div className="flex semiBoldNunito items-center space-x-2">
+                                <img src={item.imgDatePicker} alt="date picker make it blue" className="w-8" />
                                 <p>{item.textDatePicker}</p>
                             </div>
-                            <div className="flex semiBoldNunito">
-                                <img src={item.imgLocate} alt="a" />
+                            <div className="flex semiBoldNunito items-center space-x-2">
+                                <img src={item.imgLocate} alt="locate make it blue" />
                                 <p>{item.textLocate}</p>
                             </div>
-                            <div className="flex semiBoldNunito">
-                                <img src={item.imgLink} />
+                            <div className="flex semiBoldNunito items-center space-x-1">
+                                <img src={item.imgLink} alt="link make it blue"/>
                                 <a href className="underline blueTextColor">{item.textLink}</a>
                             </div>
-                            <div className="flex extraBold800">
-                                <img src={item.imgGoal} />
+                            <div className="flex extraBold800 items-center space-x-2">
+                                <img src={item.imgGoal} alt="goal make it blue"/>
                                 <p >{item.textGoal}</p>
                             </div>
                             <div className="w-[425px] h-[14px] bg-neutral-200 rounded-l-lg">

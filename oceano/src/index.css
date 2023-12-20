@@ -10,7 +10,8 @@
 }
 
 #display-canvas {
-  height: calc(100vh - 4rem);
+  height: calc(100vh - (4rem + 2px));
+  vertical-align: middle !important;
 }
 
 /********************* CSS Général *************************/
@@ -160,6 +161,8 @@ input[type=password] {
 /********************* CSS Profil **************************/
 .levelBarColor{
   background-color: #D81F26;
+  width: 50% !important;
+  height: 16px !important;
 }
 .textProfilColorRed{
   color: #D81F26;
@@ -167,7 +170,7 @@ input[type=password] {
 .imgBanner{
   background-image: url(../public/img/profil/allActionBanner.svg);
   background-repeat: no-repeat;
-  background-size:100% ;
+  background-size:100%;
 }
 .myActionYellowColor{
   background-color: #FFD600;
@@ -175,6 +178,21 @@ input[type=password] {
 .myActionGreyColor{
   background-color: #D1D1D1;
 }
+.profilPosition{
+  top: -80px !important;
+  right: -40px !important;
+}
+.resizeImage{
+  width: 100px !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.test2{
+  width: 100% !important;
+  height: 99% !important;
+  object-fit: cover !important;
+}
+
 /********************* CSS Act *****************************/
 .bellButton {
   border-color: #E5E5E5 !important;
@@ -280,6 +298,9 @@ input[type=password] {
   border-bottom: solid #1CB0F6;
 }
 
+.horizontalScrollbar::-webkit-scrollbar {
+  display: none;
+}
 .customScrollbar {
   
   scrollbar-width: thin !important;
@@ -300,6 +321,12 @@ input[type=password] {
   border-radius: 20px;
 }
 
+.heartPlace{
+  top: -66px  !important;
+}
+.buttonPlace{
+  bottom: 80px !important;
+}
 /********************* CSS Signin  *************************/
 .line:before,
 .line:after {
@@ -355,7 +382,7 @@ input[type=password] {
 }
 .changedGreen{
   background-color: #E9FFEF;
-  border:  solid  #45D42E !important;
+  border:  solid  #65B77C !important;
   border-width: 2px !important;
 }
 .changedBlue{
@@ -363,15 +390,22 @@ input[type=password] {
   border:  solid  #7593FF !important;
   border-width: 2px !important; 
 }
+.changedCreator{
+  background-color: #E2EEF4;
+  border:  solid  #1CB0F6 !important;
+  border-width: 2px !important; 
+}
 
-
+/********************* CSS pour la page Impact *************/
+.bottomImpact{
+  bottom: 10% !important;
+}
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {
   top: 4rem !important;
-  height: calc(100vh - 4rem) !important;
+  height: calc(100vh - (4rem + 2px)) !important;
   width: 100% !important;
   vertical-align: middle !important;
-
 }
 
 .SDK3DVerse-viewport,
@@ -380,19 +414,20 @@ input[type=password] {
   height: 100% !important;
 }
 
+.label-container {
+  transform-origin: 50% 50%;
+  width: 30px;
+  height: 30px;
+}
+
 .label-container>.active,
 .label-container> :hover {
   z-index: 10 !important;
 }
 
-.label-container.active,
-.label-container:hover {
-  z-index: 10 !important;
-}
-
 .label-container.active .label,
-.label-container .label:hover,
-.label-container .label:focus {
+.label-container:hover .label,
+.label-container:focus .label{
   width: 80px;
   height: 40px;
   background-color: white;
@@ -480,8 +515,8 @@ input[type=password] {
 
 .collect {
   z-index: 30 !important;
-  margin-top: 2.5px;
-  margin-left: 2.5px;
+  margin-top: -37.5px;
+  margin-left: -13px;
   width: 80%;
   height: 80%;
   transform: rotate(45deg);
@@ -491,9 +526,10 @@ input[type=password] {
 
 .label-container:hover .collect {
   position: absolute;
-  left: 2.5px;
-  width: 24px;
-  height: 24px;
+  top: -7.5px;
+  left: -25px;
+  width: 26px;
+  height: 26px;
 }
 
 .attendees,
@@ -510,25 +546,27 @@ input[type=password] {
 }
 
 .attendees {
-  top: 3px;
-  left: 30px;
+  top: -60px;
+  left: -12.5px;
   font-weight: bold;
   font-size: 22px;
+  z-index: 15 !important;
 }
 
 .attendees-txt {
   text-align: left !important;
   font-size: 8px;
   /* Initial font size */
-  top: 16px;
-  left: 28.5px;
+  top: -35px;
+  left: -12.5px;
+  z-index: 15 !important;
 }
 
-.label-container.active .label .attendees,
-.label-container.active .label .attendees-txt,
-.label-container .label:hover .attendees,
-.label-container .label:hover .attendees-txt,
-.label-container .label:focus .attendees,
-.label-container .label:focus .attendees-txt {
+.label-container.active .attendees,
+.label-container.active .attendees-txt,
+.label-container:hover .attendees,
+.label-container:hover .attendees-txt,
+.label-container:focus .attendees,
+.label-container:focus .attendees-txt {
   display: block;
 }
