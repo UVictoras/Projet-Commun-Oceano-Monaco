@@ -1,6 +1,37 @@
 import Onedate from "../components/pickonedate";
+import { addUser } from "../api/user";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { setUserSession } from "../api/session";
 
 function Signup(props) {
+    let history = useHistory();
+    
+    const { register, handleSubmit } = useForm();
+    const [ birthday, setBirthday ] = useState("");
+
+    const handleOnedateChange = (newValue) => {
+        setBirthday(newValue.startDate);
+    };
+
+    const onSubmit = (data) => {
+        console.log(data);
+        data.first_name = "";
+        data.last_name = "";
+        data.birthday = birthday;
+        data.country = "France";
+        data.type = "Particulier"
+        data.picture = 1;
+        data.x = 15.6;
+        data.y = 19.1;
+        data.z = 17.2;
+        data.banner = 1;
+        data.title = 1;
+        addUser(data);
+        setUserSession(data);
+        history.push("/act");
+    }
 
     return <div>
         <div class="mb-5 grid grid-cols-10">
@@ -17,10 +48,10 @@ function Signup(props) {
         </div>
 
         <h1 class=" flex items-end justify-center h-48 text font-medium blackNunito titleFont text-xl ">Créer ton profil</h1>
-        <form class="max-w-sm mx-auto mt-10">
+        <form class="max-w-sm mx-auto mt-10" onSubmit={handleSubmit(onSubmit)}>
             <div class="mb-5">
                 <div className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl ">
-                    <Onedate contentPlaceHolder={"Date de naissance"} />
+                    <Onedate contentPlaceHolder={"Date de naissance"} onChange={handleOnedateChange} />
                 </div>
 
             </div>
@@ -29,13 +60,13 @@ function Signup(props) {
                 <a href="lien vers la politique de confidentialité" className="font-bold text-sky-400 hover:underline"> Politique de confidentialité.</a></label>
             </div>
             <div class="mb-5">
-                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full p-2.5 " placeholder="Nom d'utilisateur" name="first name" required></input>
+                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full p-2.5 " placeholder="Nom d'utilisateur" name="first name" {...register("pseudo")} required></input>
             </div>
             <div class="mb-5">
-                <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full p-2.5 " placeholder="E-mail" name="email" required></input>
+                <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full p-2.5 " placeholder="E-mail" name="email" {...register("email")} required></input>
             </div>
             <div class="mb-5">
-                <input type="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full p-2.5" placeholder="Mot de passe" name="password" required></input>
+                <input type="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full p-2.5" placeholder="Mot de passe" name="password" {...register("password")} required></input>
             </div>
             <div class="mb-5">
                 <button type="submit" class="text-white blueButton  font-medium rounded-xl text-sm w-full p-2.5  text-center ">CREER MON COMPTE</button>

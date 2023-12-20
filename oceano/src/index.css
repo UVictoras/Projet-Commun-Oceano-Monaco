@@ -161,7 +161,7 @@ input[type=password] {
 /********************* CSS Profil **************************/
 .levelBarColor{
   background-color: #D81F26;
-  width: 50% !important;
+  /* width: 50% !important; */
   height: 16px !important;
 }
 .textProfilColorRed{
