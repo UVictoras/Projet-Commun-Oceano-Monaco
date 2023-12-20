@@ -1,7 +1,9 @@
 import { AnimationShip, Camera, Click, OpenModal, Modalll, BougePutinDeBateauDeMerde, moveShip } from './utils/3DVerse';
 import { useCallback, useEffect, useState } from 'react';
 import { useScript } from '@uidotdev/usehooks';
-
+import SDK3DVerse_LabelDisplay_Ext from './sdk_extension/LabelDisplay'
+import { useFrameLoop, frameLoop } from "./utils/FrameLoop.js";
+import { showVisibleLabelsOnly } from "./utils/3DVerse.js";
 
 export const Canvas = (props) => {
     const status = useScript(
@@ -18,16 +20,14 @@ export const Canvas = (props) => {
             removeOnUnmount: false,
         }
     );
-    const label = useScript(
-        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_LabelDisplay_Ext.js`,
-
+    // const label = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_LabelDisplay_Ext.js`,
         {
             removeOnUnmount: false,
         }
     );
     const three = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ThreeJS_Ext.js`,
-
         {
             removeOnUnmount: false,
         }
@@ -47,9 +47,12 @@ export const Canvas = (props) => {
         }
     ); 
 
+    const [sessionReady, setSessionReady] = useState(false);
+    const [time, setTime] = useState(0);
+    const [deltaTime, setDeltaTime] = useState(0);
     const initApp = useCallback(async () => {
-
-        await window.SDK3DVerse.joinOrStartSession({
+        const SDK3DVerse = window.SDK3DVerse;
+        await SDK3DVerse.joinOrStartSession({
             userToken: 'public_0rtYmFmJfCyVxB7-',
             sceneUUID: '33ed765f-9a1c-4f8c-933c-077eeb5503e0',
             canvas: document.getElementById('display-canvas'),
@@ -57,11 +60,12 @@ export const Canvas = (props) => {
                 defaultControllerType: window.SDK3DVerse.controller_type.orbit,
             },
         });
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_ViewportDomOverlay_Ext);
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_LabelDisplay_Ext);
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_ThreeJS_Ext);
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_SplineDisplay_Ext)
 
+        console.log("************* Session joined");
+        await SDK3DVerse.installExtension(window.SDK3DVerse_ViewportDomOverlay_Ext);
+        const labelExt = await SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
+        await window.SDK3DVerse.installExtension(SDK3DVerse_ThreeJS_Ext);
+        await window.SDK3DVerse.installExtension(SDK3DVerse_SplineDisplay_Ext);     
 
         if (props.onChange) {
             Camera();
@@ -71,6 +75,9 @@ export const Canvas = (props) => {
             props.onChange(true);
 
         }
+
+        console.log("************* Session ready, nb labels:", labelExt.labelEntities.length);
+        setSessionReady(true);
     }, []);
 
     useEffect(() => {
@@ -78,9 +85,35 @@ export const Canvas = (props) => {
         if (status === 'ready') {
 
             initApp();
+            Click();
+            Camera();
+            //AnimationShip();
         }
 
     }, [status]);
+
+    frameLoop((time, deltaTime) => {
+        
+        if(!sessionReady) {
+            return;
+        }
+        var labelElements = document.getElementsByClassName('label');
+
+        // Check if the element is found before attempting to modify its style
+
+        if (labelElements[0])
+        {
+            for (var i = 0; i < labelElements.length; i++) 
+            {
+                labelElements[i].innerHTML = '';
+            }
+        }
+
+        showVisibleLabelsOnly();
+
+        setTime(time);
+        setDeltaTime(deltaTime);
+    });
 
     return <>
         <canvas
