@@ -33,7 +33,6 @@ function Above(props) {
         .then(result => setEvent(result))
         .catch(error=>console.error("Error :",error.message))
     },[])
-
     return <div className="Act ">
 
         <div className="searchAndBell flex absolute left-12 mt-10">
@@ -76,6 +75,7 @@ function Above(props) {
 
         </div>
         {isModalOpen ? <Modal closeModal={closeModal} isClicked={isClicked} event={event[0]}/>: ""}
+
         <div className="bottomIcon flex items-end absolute bottom-8 left-1/2 centerIcon space-x-3 ">
 
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center locateButton  z-20" onClick={() => openModal("event")}>

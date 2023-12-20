@@ -38,7 +38,6 @@ function Signin(props) {
           }
       })
   }
-
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center absolute top-0 z-20 bg-neutral-50">
       <a href="signup">

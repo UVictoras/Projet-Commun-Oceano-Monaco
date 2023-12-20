@@ -2,6 +2,7 @@ import Achievement from "../components/achievement";
 import LastAction from "../components/lastAction";
 import MyAction from "../components/myAction";
 import Navbar from "../components/navbar";
+
 import { useEffect, useState } from "react";
 import { getUserSession } from "../api/session";
 import { getLastEvent, getTypeEventUser } from "../api/event";
@@ -48,6 +49,7 @@ function Profile(props) {
             setTextAction("Voir toutes mes actions")
         }
       };
+
 
     return <div className="profile">
         <Navbar />
@@ -148,7 +150,6 @@ function Profile(props) {
                         </div>
                         <div className="flex justify-end">
                             <button className="blueButton rounded-2xl text-white blackNunito text-lg flex items-center justify-center w-2/3" onClick={handleClick}>{TextAction}</button>
-
                         </div>
 
                     </div>

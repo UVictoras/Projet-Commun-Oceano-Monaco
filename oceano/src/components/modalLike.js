@@ -35,7 +35,6 @@ export default function ModalLike(props) {
             settriTypes(typeName)
         }
     };
-
     return <div className='mx-9 '>
         <div className='mt-9 flex' >
             <div className='text flex space-x-4 items-end w-2/3'>
@@ -60,7 +59,6 @@ export default function ModalLike(props) {
                                 </button>
                     })}
                 </div>
-
             </div>
         </div>
         <div className='space-y-4 h-[700px] customScrollbar overflow-y-scroll'>
@@ -68,8 +66,5 @@ export default function ModalLike(props) {
                 return <EventLike event={fav}/>
             })}
         </div>
-
     </div>
-
 }
-

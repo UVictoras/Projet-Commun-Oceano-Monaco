@@ -63,7 +63,6 @@ function Navbar() {
       }
     }
   }, [user]);
-
   return (
     <Disclosure as="nav" className="bg-white border-b-2 border-neutral-200">
       <div className="mr-9">
@@ -120,6 +119,7 @@ function Navbar() {
               <div>
                 <a href='/profil'>
                   <Menu.Button className="relative flex rounded-full text-sm p-4" >
+
                     <div id="progressBar" className='profileImgNav mr-4 flex items-center justify-center'>
                       <div className='whiteCircle flex items-center justify-center'>
                         <img

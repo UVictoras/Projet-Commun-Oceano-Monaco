@@ -21,12 +21,6 @@ export default function MyAction(props) {
                     <p className="text-white extraBoldNunito text-xl">{props.type.NbEvents}</p>
                 </div>
             </div>
-            
-
-
         </div>
-
-
-
     </div>
 }
