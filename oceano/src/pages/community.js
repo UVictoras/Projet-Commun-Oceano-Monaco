@@ -1,4 +1,4 @@
-
+import Thread from "../components/thread"
 import Navbar from "../components/navbar"
 
 

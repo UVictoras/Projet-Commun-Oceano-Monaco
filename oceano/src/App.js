@@ -11,7 +11,7 @@ import {
   Route 
 } from "react-router-dom"
 
-import { Anim, createImgTag, showVisibleLabelsOnly } from "./utils/3DVerse.js";
+import { Anim, createImgTag } from "./utils/3DVerse.js";
 import FirstPage from "./pages/firstPage.js";
 import LoadingScreen from "./pages/loadingScreen.js";
 import Signin from "./pages/signin.js";

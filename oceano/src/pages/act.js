@@ -24,12 +24,7 @@ function Act(props) {
         }
         <Navbar />
         <Above/>
-        <Canvas onChange={handleCanvaChange}
-                />
-        
-
-
-
+        <Canvas onChange={handleCanvaChange}/>
         {/* {console.log(OpenModal())} */}
         
     </>
