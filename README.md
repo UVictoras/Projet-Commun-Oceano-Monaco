@@ -2,11 +2,11 @@
 
 To start : 
 
-Download the BDD on the Drive
+Download the DataBase from the Drive
 
-Import the BDD on Uwamp 
+Import the DateBase on Uwamp 
 
-open 2 terminal on VSCode
+Open 2 terminals on VSCode
 
 In the first :
 
