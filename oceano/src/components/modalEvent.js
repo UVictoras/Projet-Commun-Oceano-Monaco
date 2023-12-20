@@ -16,28 +16,28 @@ export default function ModalEvent(props) {
         </div>
 
         <div className='mx-10 '>
-            <h2 class="text-[28px] extraBold800">Sauvons la baleine franche de la mer Baltique</h2>
-            <p className='greyText'>Lancé par <span className='blueTextColor semiBoldNunito'>Loris P.</span></p>
+            <h2 class="text-[28px] extraBold800">{props.event.Title}</h2>
+            <p className='greyText'>Lancé par <span className='blueTextColor semiBoldNunito'>{props.event.Pseudo}</span></p>
             <div className='mt-5 flex'>
                 <div className='donationDate w-2/3 flex space-x-2.5'>
                     <div className='donation px-4 rounded-2xl flex items-center justify-center space-x-2 '>
-                        <img src='img/icon/coin.png' alt='coin make it blue' className='w-4' />
-                        <p className='text-sm extraBoldNunito'>Donation</p>
+                        <img src={props.event.Logo} alt='coin make it blue' className='w-4' />
+                        <p className='text-sm extraBoldNunito'>{props.event.Name}</p>
                     </div>
                     <div className="date bg-white border-2 px-4 border-neutral-200 rounded-2xl flex items-center justify-center space-x-2 whitespace-nowrap">
                         <img src='img/event/date.svg' alt='date make it blue' className='w-4' />
-                        <p className='text-sm extraBoldNunito flex'>8 Juin</p>
+                        <p className='text-sm extraBoldNunito flex'>{new Intl.DateTimeFormat("fr-FR", {month: "long", day: "numeric"}).format(new Date(props.event.End_date))}</p>
                     </div>
                 </div>
                 <div className='people w-1/3 flex justify-end'>
                     <div className="date p-2.5 bg-white flex items-center justify-center space-x-2 ">
                         <img src='img/event/people.svg' alt='people make it blue' className='w-4' />
-                        <p className='text-sm extraBold800'>1.2K</p>
+                        <p className='text-sm extraBold800'>{props.event.NbUsers}</p>
                     </div>
                 </div>
             </div>
             <div class="text-sm font-medium text-center text-gray-500">
-                <Tab />
+                <Tab event={props.event}/>
                 <div className="flex mx-10 justify-center absolute w-2/3 buttonPlace items-center">
                     <boutton className="w-full h-11 blueButton rounded-2xl blackNunito text-white flex items-center justify-center ">Participer</boutton>
                     <boutton className="ml-2.5 w-16 p-3 flex items-center justify-center border border-neutral-200 bg-white rounded-2xl whiteButton">

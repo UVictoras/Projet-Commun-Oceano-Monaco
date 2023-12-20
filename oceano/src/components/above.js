@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { React } from 'react';
 import Searchbar from "./searchbar";
 import Modal from "./modal";
 import ModalNotif from "./modalNotif";
+import { getEvent } from "../api/event";
 
 function Above(props) {
     const [isModalOpen, setModalOpen] = useState(false);
     const [isClicked, setClicked] = useState();
     const [isNotifOpen, setNotifOpen] = useState(false);
+    const [ event, setEvent ] = useState([]);
 
     const openNotif = () => {
         setNotifOpen(true);
@@ -25,6 +27,12 @@ function Above(props) {
         setModalOpen(false);
     };
 
+    useEffect(() => {
+        const eventFetched = getEvent({id: 1});
+        eventFetched
+        .then(result => setEvent(result))
+        .catch(error=>console.error("Error :",error.message))
+    },[])
     return <div className="Act ">
 
         <div className="searchAndBell flex absolute left-12 mt-10">
@@ -66,7 +74,8 @@ function Above(props) {
             </div>
 
         </div>
-        {isModalOpen ? <Modal closeModal={closeModal} isClicked={isClicked} /> : ""}
+        {isModalOpen ? <Modal closeModal={closeModal} isClicked={isClicked} event={event[0]}/>: ""}
+
         <div className="bottomIcon flex items-end absolute bottom-8 left-1/2 centerIcon space-x-3 ">
 
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center locateButton  z-20" onClick={() => openModal("event")}>

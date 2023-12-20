@@ -9,8 +9,10 @@ function Onedate(props){
 
 
     const handleValueChange = (newValue) => {
-        console.log("newValue:", newValue);
         setValue(newValue);
+        if (props.onChange) {
+            props.onChange(newValue);
+        }
     }
 
     return (
