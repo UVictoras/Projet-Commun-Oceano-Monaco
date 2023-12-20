@@ -65,7 +65,7 @@ function Navbar() {
   }, [user]);
 
   return (
-    <Disclosure as="nav" className="bg-neutral-50">
+    <Disclosure as="nav" className="bg-white border-b-2 border-neutral-200">
       <div className="mr-9">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -124,7 +124,7 @@ function Navbar() {
                       <div className='whiteCircle flex items-center justify-center'>
                         <img
                           className="h-10 w-10 rounded-full absolute positionImage "
-                          src="/img/avatar.png"
+                          src="/img/avatar1.png"
                           alt="avatar make it blue"
                         />
                       </div></div>

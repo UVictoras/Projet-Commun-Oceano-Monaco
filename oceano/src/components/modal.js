@@ -6,8 +6,8 @@ import ModalFilter from './modalFilter';
 
 
 export function Modal(props) {
-  const [activeModal, setActiveModal] = useState();
 
+  const [activeModal, setActiveModal] = useState();
   useEffect(() => {
     if (props.isClicked === "like") {
       setActiveModal(<ModalLike closeModal={props.closeModal}/>)

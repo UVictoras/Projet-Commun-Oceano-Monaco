@@ -51,12 +51,13 @@ function Signup(props) {
         <form class="max-w-sm mx-auto mt-10" onSubmit={handleSubmit(onSubmit)}>
             <div class="mb-5">
                 <div className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl ">
-                    <Onedate onChange={handleOnedateChange}/>
+                    <Onedate contentPlaceHolder={"Date de naissance"} onChange={handleOnedateChange} />
                 </div>
 
             </div>
             <div class="mb-5">
-                <label for="date" class="block mb-2 text-xs mediumNunito  ">Tu dois avoir au moins 13 ans pour utiliser Make it Blue. Pour en savoir plus, tu peux consulter notre<a href="#" className="font-bold text-sky-400 hover:underline"> Politique de confidentialité.</a></label>
+                <label for="date" class="block mb-2 text-xs mediumNunito  ">Tu dois avoir au moins 13 ans pour utiliser Make it Blue. Pour en savoir plus, tu peux consulter notre
+                <a href="lien vers la politique de confidentialité" className="font-bold text-sky-400 hover:underline"> Politique de confidentialité.</a></label>
             </div>
             <div class="mb-5">
                 <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full p-2.5 " placeholder="Nom d'utilisateur" name="first name" {...register("pseudo")} required></input>
@@ -93,7 +94,9 @@ function Signup(props) {
 
 
             </div>
-            <p class="block mb-2 text-xs regularNunito ">En te connectant à Make it Blue, tu acceptes nos <a href="#" className=" extraBoldNunito hover:underline">Conditions d’utilisation</a> et notre <a href="#" className=" extraBoldNunito hover:underline">Politique de confidentialité</a>.</p>
+            <p class="block mb-2 text-xs regularNunito ">En te connectant à Make it Blue, tu acceptes nos 
+            <a href="#lien vers les conditions d'utilisation" className=" extraBoldNunito hover:underline">Conditions d’utilisation</a> et notre 
+            <a href="#lien vers la politique de confidentialités" className=" extraBoldNunito hover:underline">Politique de confidentialité</a>.</p>
 
         </div>
 

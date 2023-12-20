@@ -10,7 +10,8 @@
 }
 
 #display-canvas {
-  height: calc(100vh - 4rem);
+  height: calc(100vh - (4rem + 2px));
+  vertical-align: middle !important;
 }
 
 /********************* CSS Général *************************/
@@ -29,7 +30,7 @@
   font-weight: 600;
 }
 
-.extraBoldNunito {
+.extraBoldNunito{
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
 }
@@ -73,7 +74,6 @@
 }
 
 .whiteButton {
-
   filter: drop-shadow(0px 4px 0px #e5e5e5);
 }
 
@@ -113,44 +113,6 @@ input[type=password] {
   color:#D3D3D3;
 }
 /********************* CSS pour les modal *****************/
-
-.modalOverlay {
-  /* Styles pour l'arrière-plan semi-transparent */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modalRectangular {
-  /* Styles pour le pop-up rectangulaire */
-  background: #fff; /* Fond blanc */
-  border: 2px solid #E5E5E5; /* Bordure noire */
-  padding: 20px; /* Espace intérieur */
-  max-width: 400px; /* Largeur maximale */
-  width: 100%; /* Largeur pleine */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ombre légère */
-}
-
-.modalSize {
-  width: 518px;
-  height: 468px;
-  flex-shrink: 0;
-  margin-left: 20px; 
-  margin-top: 20px; 
-}
-
-.modalQuit {
-  width: 18.903px;
-  height: 18.903px;
-  flex-shrink: 0;
-}
-
 
 .loune:before, .loune:after {
   display: block;
@@ -194,16 +156,16 @@ input[type=password] {
 /********************* CSS Profil **************************/
 .levelBarColor{
   background-color: #D81F26;
+  /* width: 50% !important; */
   height: 16px !important;
 }
-
 .textProfilColorRed{
   color: #D81F26;
 }
 .imgBanner{
   background-image: url(../public/img/profil/allActionBanner.svg);
   background-repeat: no-repeat;
-  background-size:100% ;
+  background-size:100%;
 }
 .myActionYellowColor{
   background-color: #FFD600;
@@ -211,6 +173,21 @@ input[type=password] {
 .myActionGreyColor{
   background-color: #D1D1D1;
 }
+.profilPosition{
+  top: -80px !important;
+  right: -40px !important;
+}
+.resizeImage{
+  width: 100px !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.test2{
+  width: 100% !important;
+  height: 99% !important;
+  object-fit: cover !important;
+}
+
 /********************* CSS Act *****************************/
 .bellButton {
   border-color: #E5E5E5 !important;
@@ -293,66 +270,6 @@ input[type=password] {
   ;
 }
 
-/********************* CSS pour les modal *****************/
-
-.modalOverlay {
-  /* Styles pour l'arrière-plan semi-transparent */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modalRectangular {
-  /* Styles pour le pop-up rectangulaire */
-  background: #fff;
-  /* Fond blanc */
-  border: 2px solid #E5E5E5;
-  /* Bordure noire */
-  padding: 20px;
-  /* Espace intérieur */
-  max-width: 400px;
-  /* Largeur maximale */
-  width: 100%;
-  /* Largeur pleine */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  /* Ombre légère */
-}
-
-.modalSize {
-  width: 518px;
-  height: 468px;
-  flex-shrink: 0;
-  margin-left: 20px;
-  margin-top: 20px;
-}
-
-.modalQuit {
-  width: 18.903px;
-  height: 18.903px;
-  flex-shrink: 0;
-}
-
-
-.loune:before,
-.loune:after {
-  display: block;
-  position: absolute;
-  content: "" !important;
-  border-top-width: 1px !important;
-  top: 50%;
-  width: 35% !important;
-  border-color: #E5E5E5 !important;
-}
-
-.loune:after {
-  left: 65%;
-}
 
 /********************* CSS pour le modal event *************/
 .greyText {
@@ -376,26 +293,35 @@ input[type=password] {
   border-bottom: solid #1CB0F6;
 }
 
+.horizontalScrollbar::-webkit-scrollbar {
+  display: none;
+}
 .customScrollbar {
-  overflow-y: auto !important;
+  
   scrollbar-width: thin !important;
   scrollbar-color: #4a5568 #cbd5e0 !important;
 }
 
-.customScrollbar::-webkit-scrollbar {
+.customScrollbar::-webkit-scrollbar, ::-webkit-scrollbar{
   width: 6px;
 }
 
-.customScrollbar::-webkit-scrollbar-track {
+.customScrollbar::-webkit-scrollbar-track, ::-webkit-scrollbar-track{
   background: #E5E5E5;
   border-radius: 20px;
 }
 
-.customScrollbar::-webkit-scrollbar-thumb {
+.customScrollbar::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb{
   background-color: #9D9D9D;
   border-radius: 20px;
 }
 
+.heartPlace{
+  top: -66px  !important;
+}
+.buttonPlace{
+  bottom: 80px !important;
+}
 /********************* CSS Signin  *************************/
 .line:before,
 .line:after {
@@ -414,75 +340,28 @@ input[type=password] {
 
 /********************* CSS pour le loading screen **********/
 
-.lds-ellipsis {
-  display: inline-block;
-  position: relative;
+.loader {
+  --r1: 154%;
+  --r2: 68.5%;
   width: 80px;
-  height: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%; 
+  background:
+    radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#269af2 80%),
+    radial-gradient(var(--r1) var(--r2) at bottom,#269af2 79.5%,#0000 80%),
+    radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#269af2 80%),
+    #ccc;
+  background-size: 50.5% 220%;
+  background-position: -100% 0%,0% 0%,100% 0%;
+  background-repeat:no-repeat;
+  animation: l9 4s infinite linear;
+}
+@keyframes l9 {
+    33%  {background-position:    0% 33% ,100% 33% ,200% 33% }
+    66%  {background-position: -100%  66%,0%   66% ,100% 66% }
+    100% {background-position:    0% 100%,100% 100%,200% 100%}
 }
 
-.lds-ellipsis div {
-  position: absolute;
-  top: 33px;
-  width: 13px;
-  border-radius: 50%;
-  background: #fafafa;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-
-.lds-ellipsis div:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(3) {
-  left: 22px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(4) {
-  left: 46px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0);
-  }
-}
-
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  100% {
-    transform: translate(14px, 0);
-  }
-}
-
-#display-canvas {
-  height: calc(100vh - 4rem);
-}
 
 /********************* CSS pour les filtres ****************/
 .donationFiltre {
@@ -493,17 +372,35 @@ input[type=password] {
 
 .changedYellow{
   background-color: #FFF8D6;
-  border:  solid ;
-  border-width: 2px #FFE68B;
+  border:  solid  #FFE68B !important;
+  border-width: 2px !important;
+}
+.changedGreen{
+  background-color: #E9FFEF;
+  border:  solid  #65B77C !important;
+  border-width: 2px !important;
+}
+.changedBlue{
+  background-color: #E9EEFF;
+  border:  solid  #7593FF !important;
+  border-width: 2px !important; 
+}
+.changedCreator{
+  background-color: #E2EEF4;
+  border:  solid  #1CB0F6 !important;
+  border-width: 2px !important; 
 }
 
+/********************* CSS pour la page Impact *************/
+.bottomImpact{
+  bottom: 10% !important;
+}
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {
   top: 4rem !important;
-  height: calc(100vh - 4rem) !important;
+  height: calc(100vh - (4rem + 2px)) !important;
   width: 100% !important;
   vertical-align: middle !important;
-
 }
 
 .SDK3DVerse-viewport,
@@ -512,19 +409,20 @@ input[type=password] {
   height: 100% !important;
 }
 
+.label-container {
+  transform-origin: 50% 50%;
+  width: 30px;
+  height: 30px;
+}
+
 .label-container>.active,
 .label-container> :hover {
   z-index: 10 !important;
 }
 
-.label-container.active,
-.label-container:hover {
-  z-index: 10 !important;
-}
-
 .label-container.active .label,
-.label-container .label:hover,
-.label-container .label:focus {
+.label-container:hover .label,
+.label-container:focus .label{
   width: 80px;
   height: 40px;
   background-color: white;
@@ -612,8 +510,8 @@ input[type=password] {
 
 .collect {
   z-index: 30 !important;
-  margin-top: 2.5px;
-  margin-left: 2.5px;
+  margin-top: -37.5px;
+  margin-left: -13px;
   width: 80%;
   height: 80%;
   transform: rotate(45deg);
@@ -623,9 +521,10 @@ input[type=password] {
 
 .label-container:hover .collect {
   position: absolute;
-  left: 2.5px;
-  width: 24px;
-  height: 24px;
+  top: -7.5px;
+  left: -25px;
+  width: 26px;
+  height: 26px;
 }
 
 .attendees,
@@ -642,25 +541,27 @@ input[type=password] {
 }
 
 .attendees {
-  top: 3px;
-  left: 30px;
+  top: -60px;
+  left: -12.5px;
   font-weight: bold;
   font-size: 22px;
+  z-index: 15 !important;
 }
 
 .attendees-txt {
   text-align: left !important;
   font-size: 8px;
   /* Initial font size */
-  top: 16px;
-  left: 28.5px;
+  top: -35px;
+  left: -12.5px;
+  z-index: 15 !important;
 }
 
-.label-container.active .label .attendees,
-.label-container.active .label .attendees-txt,
-.label-container .label:hover .attendees,
-.label-container .label:hover .attendees-txt,
-.label-container .label:focus .attendees,
-.label-container .label:focus .attendees-txt {
+.label-container.active .attendees,
+.label-container.active .attendees-txt,
+.label-container:hover .attendees,
+.label-container:hover .attendees-txt,
+.label-container:focus .attendees,
+.label-container:focus .attendees-txt {
   display: block;
 }

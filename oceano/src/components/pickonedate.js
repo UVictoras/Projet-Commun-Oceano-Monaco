@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 
-function Onedate(props) {
+function Onedate(props){
     const [value, setValue] = useState({
-        startDate: new Date(props.value), 
-        endDate: new Date(props.value)
+        startDate: null,
+        endDate: null
     });
+
 
     const handleValueChange = (newValue) => {
         setValue(newValue);

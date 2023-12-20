@@ -14,7 +14,7 @@ export default function Tab(props) {
             textLocate: "En ligne",
             imgLink: "img/event/link.png",
             textLink: props.event.Link,
-            imgGoal: "img/event/goal.png",
+            imgGoal: "img/event/goal.svg",
             textGoal: "14 152€ sur 30 000€ collectés",
             color: "fontColor3C",
             participer: "Participer",
@@ -33,11 +33,9 @@ export default function Tab(props) {
             level: "Niveau " + props.event.Number,
             participer: "Participer",
             logoShare: "img/event/share.png",
-            linkImage: "",
-            linkText: props.event.Link,
             phoneImage: "img/event/phone.png",
             phoneText: "06.50.41.92.25",
-            mailImage: "img/event/mail.png",
+            mailImage:"img/event/mail.png",
             mailText: props.event.Email,
         }
     ];
@@ -91,15 +89,11 @@ export default function Tab(props) {
                             </div>
                             <div className="contact space-y-5 mt-4">
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.linkImage} alt="Make it blue"/>
-                                    <p>{item.linkText}</p>
-                                </div>
-                                <div className="flex items-center space-x-4">
-                                    <img src={item.phoneImage} alt="Make it blue"/>
+                                    <img src={item.phoneImage} alt="phone make it blue"/>
                                     <p>{item.phoneText}</p>
                                 </div>
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.mailImage} alt="Make it blue"/>
+                                    <img src={item.mailImage} alt="mail make it blue"/>
                                     <p>{item.mailText}</p>
                                 </div>
                             </div>
@@ -111,21 +105,21 @@ export default function Tab(props) {
                             {item.span}
                         </span></p>
 
-                        {item.id === 1 ? <div className="mt-7 text-left space-y-4">
-                            <div className="flex semiBoldNunito">
-                                <img src={item.imgDatePicker} alt="Make it blue" className="w-8" />
+                        {item.id === 1 ? <div className="mt-4 text-left space-y-4">
+                            <div className="flex semiBoldNunito items-center space-x-2">
+                                <img src={item.imgDatePicker} alt="date picker make it blue" className="w-8" />
                                 <p>{item.textDatePicker}</p>
                             </div>
-                            <div className="flex semiBoldNunito">
-                                <img src={item.imgLocate} alt="Make it blue" />
+                            <div className="flex semiBoldNunito items-center space-x-2">
+                                <img src={item.imgLocate} alt="locate make it blue" />
                                 <p>{item.textLocate}</p>
                             </div>
-                            <div className="flex semiBoldNunito">
-                                <img src={item.imgLink} alt="Make it blue"/>
+                            <div className="flex semiBoldNunito items-center space-x-1">
+                                <img src={item.imgLink} alt="link make it blue"/>
                                 <a href className="underline blueTextColor">{item.textLink}</a>
                             </div>
-                            <div className="flex extraBold800">
-                                <img src={item.imgGoal} alt="Make it blue"/>
+                            <div className="flex extraBold800 items-center space-x-2">
+                                <img src={item.imgGoal} alt="goal make it blue"/>
                                 <p >{item.textGoal}</p>
                             </div>
                             <div className="w-[425px] h-[14px] bg-neutral-200 rounded-l-lg">

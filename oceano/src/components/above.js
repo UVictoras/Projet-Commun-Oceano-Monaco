@@ -1,8 +1,8 @@
+import { useState, useEffect } from "react";
 import { React } from 'react';
 import Searchbar from "./searchbar";
 import Modal from "./modal";
 import ModalNotif from "./modalNotif";
-import { useState, useEffect } from "react";
 import { getEvent } from "../api/event";
 
 function Above(props) {
@@ -10,13 +10,6 @@ function Above(props) {
     const [isClicked, setClicked] = useState();
     const [isNotifOpen, setNotifOpen] = useState(false);
     const [ event, setEvent ] = useState([]);
-
-    useEffect(() => {
-        const eventFetched = getEvent({id: 1});
-        eventFetched
-        .then(result => setEvent(result))
-        .catch(error=>console.error("Error :",error.message))
-    },[])
 
     const openNotif = () => {
         setNotifOpen(true);
@@ -34,26 +27,37 @@ function Above(props) {
         setModalOpen(false);
     };
 
+    useEffect(() => {
+        const eventFetched = getEvent({id: 1});
+        eventFetched
+        .then(result => setEvent(result))
+        .catch(error=>console.error("Error :",error.message))
+    },[])
+
     return <div className="Act ">
 
-        <div className="searchAndBell flex absolute ">
-            <div className=" mt-10 ml-10">
-                <button className="w-[60px] h-[60px] p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center bellButton" onClick={openNotif}>
-                    <img src="img/icon/bell/bell.png" className="changeBell" />
-                </button>
-            </div>
+        <div className="searchAndBell flex absolute left-12 mt-10">
+            <button className="w-[60px] h-[60px] p-3 rounded-2xl bg-white flex items-center bellButton" onClick={openNotif}>
+                <img src="img/icon/bell/bell.png" className="changeBell" alt="make it blue" />
+            </button>
         </div>
-        {isNotifOpen ? <ModalNotif closeNotif={closeNotif}/> : ""}
-        
+        {isNotifOpen ? <ModalNotif closeNotif={closeNotif} /> : ""}
+
 
         <div className="mt-10 flex left-1/2 centerIcon justify-center absolute ">
             <Searchbar />
         </div>
-        <div className="objectiv absolute bg-white rounded-lg bottom-12 left-12 w-[435px]">
-            <div className="flex mt-4 items-center space-x-[190px] extraBold800 ml-[32px] mr-[30px]">
-                <h1 className="ml-3 text-[21px]">Objectifs</h1>
-                <a href="" className=" blueTextColor text-sm flex text-end uppercaseText text-[14px] hover:underline">tout voir</a>
+        <div className="objectiv absolute bg-white border-2 border-normal-200 rounded-lg bottom-12 left-12 w-[435px]">
+            <div className="flex items-end">
+                <div className="flex mt-4 items-center extraBold800 ml-[32px] mr-[30px] w-2/3">
+                    <h1 className="ml-3 text-[21px]">Objectifs</h1>
+
+                </div>
+                <div className="mt-2 w-1/3 flex justify-end mr-5 mb-1">
+                    <a href="#jaime mon lead" className=" blueTextColor text-sm flex extraBold800 text-end uppercaseText text-[14px] hover:underline">tout voir</a>
+                </div>
             </div>
+
             <div className="mt-[38px] flex ml-[32px] mr-[30px] flex items-start" >
                 <img src="img/icon/lightning.svg" alt="eclair make it blue" />
                 <div className="ml-7">
@@ -74,15 +78,15 @@ function Above(props) {
         {isModalOpen ? <Modal closeModal={closeModal} isClicked={isClicked} event={event[0]}/>: ""}
         <div className="bottomIcon flex items-end absolute bottom-8 left-1/2 centerIcon space-x-3 ">
 
-            <button className="w-[60px] h-[60px] p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center locateButton  z-20" onClick={() =>openModal("event")}>
+            <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center locateButton  z-20" onClick={() => openModal("event")}>
                 <img src="img/icon/locate.svg" alt="locate make it blue" />
             </button>
-            <button className="w-[60px] h-[60px] p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center likeButton z-20" onClick={() => openModal("like")}>
+            <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center likeButton z-20" onClick={() => openModal("like")}>
                 <img src="img/icon/hearth/hearthGrey.svg" alt="coeur Make it blue" />
             </button>
-            <button className="w-[60px] h-[60px] p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center filterButton z-20 "  onClick={() =>openModal("filter")}>
+            <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center filterButton z-20 " onClick={() => openModal("filter")}>
 
-                <img src="img/icon/filter.svg" className="rotateFilter" />
+                <img src="img/icon/filter.svg" className="rotateFilter" alt="filter make it blue"/>
             </button>
         </div>
 
