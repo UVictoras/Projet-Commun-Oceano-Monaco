@@ -609,13 +609,11 @@ export function showVisibleLabelsOnly() {
 
         if (scalar > 0.0) {
             //labelDivs[j].style.visibility = "visible";
-            entity.labelElement.domElement.children[0].classList.remove("hidden");
-            entity.labelElement.domElement.children[1].classList.remove("hidden");
+            entity.labelElement.clonedNodes.get(0).style.visibility = "visible";
             //entity.setVisibility(true);
         } else if (scalar < 0.) {
             //labelDivs[j].style.visibility = "hidden";
-            entity.labelElement.domElement.children[0].classList.add("hidden");
-            entity.labelElement.domElement.children[1].classList.add("hidden");
+            entity.labelElement.clonedNodes.get(0).style.visibility = "hidden";
             //entity.setVisibility(false);
         }
     }
