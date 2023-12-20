@@ -1,4 +1,4 @@
-import { AnimationShip, Camera, Click, OpenModal, Modalll, BougePutinDeBateauDeMerde, moveShip } from './utils/3DVerse';
+import { AnimationShip, Camera, Click, OpenModal, Modalll, BougePutinDeBateauDeMerde,moveShip, DisabledInput, Mouvcamera, desactiveKey } from './utils/3DVerse';
 import { useCallback, useEffect, useState } from 'react';
 import { useScript } from '@uidotdev/usehooks';
 import SDK3DVerse_LabelDisplay_Ext from './sdk_extension/LabelDisplay'
@@ -26,6 +26,10 @@ export const Canvas = (props) => {
             removeOnUnmount: false,
         }
     );
+    
+    async function initApp () {
+        await window.SDK3DVerse.joinOrStartSession({
+
     const three = useScript(
         `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_ThreeJS_Ext.js`,
         {
@@ -60,7 +64,6 @@ export const Canvas = (props) => {
                 defaultControllerType: window.SDK3DVerse.controller_type.orbit,
             },
         });
-
         console.log("************* Session joined");
         await SDK3DVerse.installExtension(window.SDK3DVerse_ViewportDomOverlay_Ext);
         const labelExt = await SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
@@ -75,18 +78,40 @@ export const Canvas = (props) => {
             props.onChange(true);
 
         }
-
+    }
         console.log("************* Session ready, nb labels:", labelExt.labelEntities.length);
         setSessionReady(true);
     }, []);
+
 
     useEffect(() => {
 
         if (status === 'ready') {
 
             initApp();
-            Click();
+            //Mouvcamera();
             Camera();
+            Anim();
+            Click();
+            //desactiveKey()
+            
+            
+        }
+    }, [status]);
+
+    return (
+        <>
+            <canvas 
+                id='display-canvas'
+                style={{
+                    
+                    width: '100%',
+                    
+                    
+                }}
+            ></canvas>
+        </>
+    );
             //AnimationShip();
         }
 

@@ -3,6 +3,7 @@ import Above from "../components/above.js";
 import { Canvas } from "../Canva.jsx";
 import { useState } from "react";
 import LoadingScreen from "./loadingScreen.js";
+import { Mouvcamera } from "../utils/3DVerse.js";
 
 
 function Act(props) {
@@ -21,9 +22,10 @@ function Act(props) {
                 null
             )
         }
-        <Navbar/>
+        <Navbar />
         <Above/>
-        <Canvas onChange={handleCanvaChange}/>
+        <Canvas onChange={handleCanvaChange}
+                />
         
 
 
@@ -32,4 +34,5 @@ function Act(props) {
         
     </>
 }
+
 export default Act;
