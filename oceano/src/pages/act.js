@@ -1,6 +1,5 @@
 import Navbar from "../components/navbar";
 import Above from "../components/above.js";
-import Searchbar from "../components/searchbar";
 import { Canvas } from "../Canva.jsx";
 import { useState } from "react";
 import LoadingScreen from "./loadingScreen.js";

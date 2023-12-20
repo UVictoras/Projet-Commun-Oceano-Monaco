@@ -1,5 +1,5 @@
 function Searchbar(props) {
-    return <div className="z-10 flex justify-center space-x-2.5 ">
+    return <div className="z-15 flex justify-center space-x-2.5 ">
         <div>
             <form className="">
                 <div class="">
@@ -16,7 +16,7 @@ function Searchbar(props) {
         </div>
         <div className="flex ">
             <button className="bg-white flex items-center justify-center filterButton rounded-xl w-[60px] h-[60px]">
-                <img src="img/icon/plus.svg" />
+                <img src="img/icon/plus.svg" alt="add make it blue"/>
             </button>
 
         </div>

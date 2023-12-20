@@ -1,9 +1,9 @@
 export default function EventLike() {
     return <button className="border-2 w-full  rounded-2xl flex space-x-7 hover:bg-neutral-200">
         <div className="w-1/3">
-            <img src="img/event/dolphin.svg" alt="dolphin make it blue" className="h-44 w-44" />
+            <img src="img/event/dolphin.svg" alt="dolphin make it blue" className="" />
         </div>
-        <div className="w-2/3 p-4">
+        <div className="w-2/3 pt-4">
             <div className="flex justify-start">
                 <h2 className="extraBold800 text-base fontColor3C text-start">Sauvons la baleine franche de la mer Baltique</h2>
                 <button className="w-[37px] h-[37px] p-2 mr-3 rounded-full bg-white border-solid border-2 border-neutral-200">

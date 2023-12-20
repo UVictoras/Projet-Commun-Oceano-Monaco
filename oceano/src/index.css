@@ -10,7 +10,8 @@
 }
 
 #display-canvas {
-  height: calc(100vh - 4rem);
+  height: calc(100vh - (4rem + 2px));
+  vertical-align: middle !important;
 }
 
 /********************* CSS Général *************************/
@@ -160,6 +161,8 @@ input[type=password] {
 /********************* CSS Profil **************************/
 .levelBarColor{
   background-color: #D81F26;
+  width: 50% !important;
+  height: 16px !important;
 }
 .textProfilColorRed{
   color: #D81F26;
@@ -167,7 +170,7 @@ input[type=password] {
 .imgBanner{
   background-image: url(../public/img/profil/allActionBanner.svg);
   background-repeat: no-repeat;
-  background-size:100% ;
+  background-size:100%;
 }
 .myActionYellowColor{
   background-color: #FFD600;
@@ -175,6 +178,21 @@ input[type=password] {
 .myActionGreyColor{
   background-color: #D1D1D1;
 }
+.profilPosition{
+  top: -80px !important;
+  right: -40px !important;
+}
+.resizeImage{
+  width: 100px !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+.test2{
+  width: 100% !important;
+  height: 99% !important;
+  object-fit: cover !important;
+}
+
 /********************* CSS Act *****************************/
 .bellButton {
   border-color: #E5E5E5 !important;
@@ -280,6 +298,9 @@ input[type=password] {
   border-bottom: solid #1CB0F6;
 }
 
+.horizontalScrollbar::-webkit-scrollbar {
+  display: none;
+}
 .customScrollbar {
   
   scrollbar-width: thin !important;
@@ -300,6 +321,12 @@ input[type=password] {
   border-radius: 20px;
 }
 
+.heartPlace{
+  top: -66px  !important;
+}
+.buttonPlace{
+  bottom: 80px !important;
+}
 /********************* CSS Signin  *************************/
 .line:before,
 .line:after {
@@ -355,7 +382,7 @@ input[type=password] {
 }
 .changedGreen{
   background-color: #E9FFEF;
-  border:  solid  #45D42E !important;
+  border:  solid  #65B77C !important;
   border-width: 2px !important;
 }
 .changedBlue{
@@ -363,15 +390,22 @@ input[type=password] {
   border:  solid  #7593FF !important;
   border-width: 2px !important; 
 }
+.changedCreator{
+  background-color: #E2EEF4;
+  border:  solid  #1CB0F6 !important;
+  border-width: 2px !important; 
+}
 
-
+/********************* CSS pour la page Impact *************/
+.bottomImpact{
+  bottom: 10% !important;
+}
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {
   top: 4rem !important;
-  height: calc(100vh - 4rem) !important;
+  height: calc(100vh - (4rem + 2px)) !important;
   width: 100% !important;
   vertical-align: middle !important;
-
 }
 
 .SDK3DVerse-viewport,

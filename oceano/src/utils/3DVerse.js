@@ -1,6 +1,7 @@
-import * as THREE from 'three';
-import { useState } from 'react';
 
+import { useState } from 'react';
+import * as THREE from 'three';
+import TravelAnimation from './travelAnimation';
 let labelDisplay = null;
 
 export async function Anim(props) {
@@ -24,7 +25,6 @@ export async function Anim(props) {
 
 // --------------------- Partie Modal ---------------------
 
-
 export function Open(){
     
     let label = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
@@ -37,117 +37,114 @@ export function Open(){
    
         window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked(element,camera[0])
     })
-    
 }
 
 // --------------------- Partie Camera ---------------------
 
-export function speed(positionx, positiony, positionz ){
+export function speed(positionx, positiony, positionz) {
     let positionabsolutex = positionx
     let positionabsolutey = positiony
     let positionabsolutez = positionz
     let speedcamera = 0
-    if(positionx < 0){
+    if (positionx < 0) {
         positionabsolutex = -positionx
     }
-    if(positiony < 0){
+    if (positiony < 0) {
         positionabsolutey = -positiony
     }
-    if(positionz < 0){
+    if (positionz < 0) {
         positionabsolutez = -positionz
     }
     let positionmax = Math.max(positionabsolutex, positionabsolutey, positionabsolutez);
-    if (positionmax >= 4){
+    if (positionmax >= 4) {
 
         const settings = {
             speed: 15,
             sensitivity: 1.5,
             damping: 0.65,
             angularDamping: 0.65
-            
+
         }
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
-        
+
 
     }
-    else if (positionmax >= 3 ){
+    else if (positionmax >= 3) {
 
         const settings = {
             speed: 10,
             sensitivity: 1.5,
             damping: 0.65,
             angularDamping: 0.65
-            
+
         }
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
 
     }
 
-    else if(positionmax >= 2 ){
+    else if (positionmax >= 2) {
 
         const settings = {
             speed: 5,
             sensitivity: 1,
             damping: 0.65,
             angularDamping: 0.65
-            
+
         }
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
 
     }
 
-    else if(positionmax >= 1 ){
+    else if (positionmax >= 1) {
 
         const settings = {
             speed: 1,
             sensitivity: 0.5,
             damping: 0.65,
             angularDamping: 0.65
-            
+
         }
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
     }
 
-    else{
+    else {
 
         const settings = {
             speed: 0.5,
             sensitivity: 0.1,
             damping: 0.65,
             angularDamping: 0.65
-            
+
         }
         window.SDK3DVerse.updateControllerSetting(settings);
         return speedcamera = settings["speed"]
 
-    } 
+    }
 }
 
-export function distancecamera(positionx, positiony, positionz){
+export function distancecamera(positionx, positiony, positionz) {
     let positionabsolutex = positionx
     let positionabsolutey = positiony
     let positionabsolutez = positionz
-    
-    if(positionx < 0){
+
+    if (positionx < 0) {
         positionabsolutex = -positionx
     }
-    if(positiony < 0){
+    if (positiony < 0) {
         positionabsolutey = -positiony
     }
-    if(positionz < 0){
+    if (positionz < 0) {
         positionabsolutez = -positionz
     }
     let positionmax = Math.max(positionabsolutex, positionabsolutey, positionabsolutez);
     return positionmax
-    
-    
+
+
 }
-
-
 
 export function Camera(props) {
     
@@ -199,7 +196,7 @@ export function Camera(props) {
 }
 
 
-export function DisabledInput(){
+export function DisabledInput() {
     // console.log(window.SDK3DVerse.actionMap.values)
     window.SDK3DVerse.actionMap.values["DISPLACE_DOWN"] = []
     window.SDK3DVerse.actionMap.values["DISPLACE_LEFT"] = []
@@ -209,7 +206,20 @@ export function DisabledInput(){
 }
 //--------------------- Récupération des Positions ---------------------
 
+export function Modalll(props) {
+    const canvas = document.getElementById('display-canvas')
 
+    window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked = function OpenModal(label, viewport) {
+        console.log(label)
+        console.log("a")
+    }
+}
+
+// export function Test(){
+//     window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked = function OpenModal() {
+//         console.log("aa")
+//     }
+// }
 
 let isVisible = false;
 export async function Click(props) {
@@ -220,7 +230,6 @@ export async function Click(props) {
 
     const canvas = document.getElementById('display-canvas')
     canvas.addEventListener('mouseup', async (e) => {
-        
         const keepOldSelection = e.ctrlKey;
 
         const x = e.clientX + (canvas.width - canvas.clientWidth) / 2;
@@ -240,6 +249,7 @@ export async function Click(props) {
             } else if (entity.getName() === "SM_Cube") {
                 isVisible = true;
 
+
             }
 
         } else {
@@ -249,14 +259,14 @@ export async function Click(props) {
         twoDPos[0] = e.clientX;
         twoDPos[1] = e.clientY;
 
-        
+
     }, false);
     console.log(labelDisplay);
 }
 
 //--------------------- Création d'élément ---------------------
 
-async function newElement(x,y,z) {
+async function newElement(x, y, z) {
 
     // let labelEntities = window.SDK3DVerse.extensions.LabelDisplay.labelEntities un tableau avec tout les labels
 
@@ -281,7 +291,6 @@ export function OpenModal() {
 
 export function createImgTag() {
     let labelDisplay = window.SDK3DVerse.extensions.LabelDisplay;
-
     if (labelDisplay.labelEntities.length > 0)
     {
         for (var k = 0; k < labelDisplay.labelEntities.length; k++)
@@ -327,9 +336,8 @@ function normalize(arr = [0., 0., 0.]) {
     var normalizedArr = arr.slice();
 
     var norm = Math.sqrt(arr[0] ** 2 + arr[1] ** 2 + arr[2] ** 2)
-    for (var k = 0; k < 3; k++)
-    {
-        normalizedArr[k] /=  norm;
+    for (var k = 0; k < 3; k++) {
+        normalizedArr[k] /= norm;
     }
     return normalizedArr;
 }
@@ -376,4 +384,11 @@ export function showVisibleLabelsOnly() {
             //entity.setVisibility(false);
         }
     }
+}
+
+export async function moveShip(){
+    const boat = await window.SDK3DVerse.engineAPI.findEntitiesByEUID('0d6a5ec3-974c-40f5-88af-f336e3e8074e')
+    const anim = new TravelAnimation();
+    await anim.init();
+    anim.gotoSplineAndTravel(boat[0], anim.splines[0],0.1);
 }

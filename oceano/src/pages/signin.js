@@ -1,5 +1,3 @@
-import Onedate from "../components/pickonedate";
-
 
 function Signin(props) {
   return (
@@ -46,7 +44,11 @@ function Signin(props) {
               </button>
             </div>
           </div>
-          <p class="block mb-2 text-xs regularNunito ">En te connectant à Make it Blue, tu acceptes nos <a href="#" className="extraBoldNunito hover:underline">Conditions d’utilisation</a> et notre <a href="#" className=" extraBoldNunito hover:underline">Politique de confidentialité</a>.</p>
+          <p class="block mb-2 text-xs regularNunito ">
+            En te connectant à Make it Blue, tu acceptes nos
+            <a href="#viveLilian" className="extraBoldNunito hover:underline">Conditions d’utilisation</a>
+            et notre
+            <a href="#viveLoan" className=" extraBoldNunito hover:underline">Politique de confidentialité</a>.</p>
 
         </div>
       </div>
