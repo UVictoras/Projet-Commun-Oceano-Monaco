@@ -608,13 +608,9 @@ export function showVisibleLabelsOnly() {
         //console.log("Scalar:", scalar);
 
         if (scalar > 0.0) {
-            //labelDivs[j].style.visibility = "visible";
-            entity.labelElement.domElement.style.visibility = "visible";
-            //entity.setVisibility(true);
+            entity.labelElement.clonedNodes.get(0).style.visibility = "visible";
         } else if (scalar < 0.) {
-            //labelDivs[j].style.visibility = "hidden";
-            entity.labelElement.domElement.style.visibility = "hidden";
-            //entity.setVisibility(false);
+            entity.labelElement.clonedNodes.get(0).style.visibility = "hidden";
         }
     }
 }
