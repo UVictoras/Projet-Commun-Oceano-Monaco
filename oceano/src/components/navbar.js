@@ -18,7 +18,7 @@ const noSelected = [
 ]
 
 const navigation = [
-  { name: 'AGIR', href: '/act', svg: earthSelected, current: true },
+  { name: 'AGIR', href: '/act', svg: earthSelected, current: false },
   { name: 'NOTRE IMPACT', href: '/impact', svg: waterDropSelected, current: false },
   { name: 'COMMUNAUTE', href: '/community', svg: chatSelected, current: false },
 ]

@@ -1,7 +1,7 @@
 export default function EventLike(props) {
     return <button className="border-2 w-full  rounded-2xl flex space-x-7 hover:bg-neutral-200">
         <div className="w-1/3">
-            <img src={props.event.Image} alt="dolphin make it blue" className="" />
+            <img src={props.event.Image} alt="dolphin make it blue" className="h-[196px] w-[196px] rounded-2xl object-cover " />
         </div>
         <div className="w-2/3 pt-4">
             <div className="flex justify-start">
