@@ -1,5 +1,5 @@
 //--------------------- Game Loop ---------------------
-import { useState } from 'react';
+
 import * as THREE from 'three';
 import TravelAnimation from './travelAnimation';
 let labelDisplay = null;
@@ -27,9 +27,9 @@ export async function Anim(props) {
 // --------------------- Partie Mouvement camera ---------------------
 
 export function norme(vector) {
-    let carre = vector.x ** 2 + vector.y ** 2 + vector.z ** 2;
+    let carre = vector[0] ** 2 + vector[1] ** 2 + vector[2] ** 2;
     let racine = Math.sqrt(carre);
-    const vectornorme = new THREE.Vector3(vector.x / racine, vector.y / racine, vector.z / racine);
+    const vectornorme = [vector[0] / racine, vector[1] / racine, vector[2] / racine]
     return vectornorme;
 }
 
@@ -49,6 +49,8 @@ export function multiplication(vector, matrice) {
     return newvector;
 }
 
+
+
 export function multiplicationVectorNorme(vector, scalaire) {
     let vectorx1 = vector.x * scalaire;
     let vectory2 = vector.y * scalaire;
@@ -58,16 +60,16 @@ export function multiplicationVectorNorme(vector, scalaire) {
 }
 
 export function produitScalaire(vecteur1, vecteur2) {
-    let resultat = vecteur1.x * vecteur2.x + vecteur1.y * vecteur2.y + vecteur1.z * vecteur2.z;
+    let resultat = vecteur1[0] * vecteur2[0] + vecteur1[1] * vecteur2[1] + vecteur1[2] * vecteur2[2];
 
     return resultat;
 }
 
 export function produitVectorielle(vecteur1, vecteur2) {
-    let vectorx1 = vecteur1.x * vecteur2.y - vecteur1.y * vecteur2.x;
-    let vectory2 = vecteur1.y * vecteur2.z - vecteur1.z * vecteur2.y;
-    let vectorz3 = vecteur1.z * vecteur2.x - vecteur1.x * vecteur2.z;
-    var newvector = new THREE.Vector3(vectorx1, vectory2, vectorz3);
+    let vectorx3 = vecteur1.x * vecteur2.y - vecteur1.y * vecteur2.x;
+    let vectory1 = vecteur1.y * vecteur2.z - vecteur1.z * vecteur2.y;
+    let vectorz2 = vecteur1.z * vecteur2.x - vecteur1.x * vecteur2.z;
+    var newvector = new THREE.Vector3(vectory1, vectorz2, vectorx3);
     return newvector
 }
 
@@ -95,6 +97,8 @@ export function Mouvcamera() {
     canvas.addEventListener('mouseup', async (event) => {
         const math = require('mathjs');
 
+
+
         console.log("5")
         const componentFilter = { mandatoryComponents: ['label'], forbiddenComponents: [] };
         const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
@@ -102,72 +106,48 @@ export function Mouvcamera() {
         const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
         console.log(labelEntities[2])
 
-        const vectorlabel = new THREE.Vector3(labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]);
+        const vectorlabel = [labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]];
 
-        const vectorcamera = new THREE.Vector3(camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]);
-        var vector0x = new THREE.Vector3(1, 0, 0);
+        const vectorcamera = [camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]];
+        console.log(vectorcamera)
 
-        var vectorV = new THREE.Vector3();
+        
+        const vectorcameranorme = norme(vectorcamera);
 
-        vectorV = produitVectorielle(vector0x, vectorcamera)
+        console.log(vectorcameranorme)
+        var vectorlabelanorme = norme(vectorlabel)
+        console.log(vectorlabelanorme)
+        
 
-        var vectorVnorme = new THREE.Vector3();
-        vectorVnorme = norme(vectorV)
+        var vectore1 = math.cross(vectorcameranorme, vectorlabelanorme)
+        console.log(vectore1)
+        let scalaire = math.dot(vectorcameranorme,vectorlabelanorme)
+        let sin = Math.asin(scalaire);
+        let scalaire2 = math.dot(vectorlabelanorme, vectorcameranorme )
+        let angle = Math.acos(scalaire2);
+        if (sin < 0){
+            angle*= -1
+            
+        }
+        console.log(angle)
+        var matriceMBT = math.matrix([[vectore1[0],vectore1[1],vectore1[2]],[vectorcameranorme[0],vectorcameranorme[1],vectorcameranorme[2]],[vectorlabelanorme[0],vectorlabelanorme[1],vectorlabelanorme[2]]])
+        var matriceMB = math.matrix([[vectore1[0],vectorcameranorme[0],vectorlabelanorme[0]],[vectore1[1],vectorcameranorme[1],vectorlabelanorme[1]],[vectore1[2],vectorcameranorme[2],vectorlabelanorme[2]]])
 
-        let scalaire = produitScalaire(vectorVnorme, vector0x)
+        var matrice = math.matrix([[1,0,0],[0,Math.cos(angle),Math.sin(angle)],[0,-Math.sin(angle),Math.cos(angle)]])
+        var matriceFinale = math.multiply(matriceMB,matrice,matriceMBT )
+        console.log(matriceFinale)
+        
+        var vectorcameraprim = math.multiply(math.matrix([vectorcamera[0], vectorcamera[1], vectorcamera[2]]) , matriceFinale)
+        console.log(vectorcameraprim)
+        console.log(math.subset(vectorcameraprim, math.index(0)))
 
-
-        let test = scalaire / (calculnorme(vectorVnorme) * calculnorme(vector0x))
-
-        var angle1 = Math.acos(test);
-
-        var matrice = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1)) * (vectorVnorme.x) ** 2, (1 - Math.cos(angle1)) * (vectorVnorme.y * vectorVnorme.x) + Math.sin(angle1) * vectorVnorme.z, (1 - Math.cos(angle1)) * (vectorVnorme.z * vectorVnorme.x) - Math.sin(angle1) * vectorVnorme.y]
-            , [(1 - Math.cos(angle1)) * (vectorVnorme.x * vectorVnorme.y) - Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1)) * (vectorVnorme.y) ** 2, (1 - Math.cos(angle1)) * (vectorVnorme.z * vectorVnorme.y) + Math.sin(angle1) * vectorVnorme.x],
-        [(1 - Math.cos(angle1)) * (vectorVnorme.x * vectorVnorme.z) + Math.sin(angle1) * vectorVnorme.y, (1 - Math.cos(angle1)) * (vectorVnorme.y * vectorVnorme.z) - Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1)) * (vectorVnorme.z) ** 2]]);
-
-        var vectorlabelprime = new THREE.Vector3();
-        var vectorlabelprime = multiplication(vectorlabel, matrice)
-
-        var vectorcameraprime = new THREE.Vector3();
-        var vectorcameraprime = multiplication(vectorcamera, matrice)
-
-        var vectorlabelprimenorme = new THREE.Vector3();
-        vectorlabelprimenorme = norme(vectorlabelprime)
-
-        var vectorcamera2prime = new THREE.Vector3();
-        let normecamera = calculnorme(vectorcameraprime)
-        vectorcamera2prime = multiplicationVectorNorme(vectorlabelprimenorme, normecamera)
-
-
-        var vectorcamerafullprime = new THREE.Vector3();
-        vectorcamerafullprime = calculVector(vectorcameraprime, vectorcamera2prime)
-
-        let etape1 = 2 * calculnorme(vectorcameraprime) * calculnorme(vectorcamera2prime)
-
-        var etape2 = ((calculnorme(vectorcameraprime) ** 2) + (calculnorme(vectorcamera2prime) ** 2) - (calculnorme(vectorcamerafullprime) ** 2))
-
-        var etape4 = etape2 / etape1
-
-        var angle2 = Math.acos(etape4);
-
-        var matriceOx = math.matrix([[1, 0, 0]
-            , [0, Math.cos(angle2), Math.sin(angle2)],
-        [0, - Math.sin(angle2), Math.cos(angle2)]]);
-
-        var resultat = new THREE.Vector3();
-        resultat = multiplication(vectorcameraprime, matriceOx)
-
-        var matricetranspose = math.matrix([[Math.cos(angle1) + (1 - Math.cos(angle1)) * (vectorVnorme.x) ** 2, (1 - Math.cos(angle1)) * (vectorVnorme.x * vectorVnorme.y) - Math.sin(angle1) * vectorVnorme.z, (1 - Math.cos(angle1)) * (vectorVnorme.x * vectorVnorme.z) + Math.sin(angle1) * vectorVnorme.y]
-            , [(1 - Math.cos(angle1)) * (vectorVnorme.y * vectorVnorme.x) + Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1)) * (vectorVnorme.y) ** 2, (1 - Math.cos(angle1)) * (vectorVnorme.y * vectorVnorme.z) - Math.sin(angle1) * vectorVnorme.x],
-        [(1 - Math.cos(angle1)) * (vectorVnorme.z * vectorVnorme.x) - Math.sin(angle1) * vectorVnorme.y, (1 - Math.cos(angle1)) * (vectorVnorme.z * vectorVnorme.y) + Math.sin(angle1) * vectorVnorme.z, Math.cos(angle1) + (1 - Math.cos(angle1)) * (vectorVnorme.z) ** 2]]);
-
-        var position = new THREE.Vector3();
-        position = multiplication(resultat, matricetranspose)
-        //window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [position.x, position.y,position.z]
-        //,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-        //, 1, 
-        //[camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
-        //[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+       
+        
+        window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [math.subset(vectorcameraprim, math.index(0)), math.subset(vectorcameraprim, math.index(1)),math.subset(vectorcameraprim, math.index(2))]
+        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+        , 1, 
+        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
+        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
     })
 }
 
@@ -257,7 +237,7 @@ export function speed(positionx, positiony, positionz) {
     else if (positionmax >= 2) {
 
         const settings = {
-            speed: 1,
+            speed: 1.2,
             sensitivity: 0.2,
             damping: 0.65,
             angularDamping: 0.65
@@ -268,7 +248,7 @@ export function speed(positionx, positiony, positionz) {
 
     else if (positionmax >= 1) {
         const settings = {
-            speed: 0.8,
+            speed: 1.1,
             sensitivity: 0.15,
             damping: 0.65,
             angularDamping: 0.65
@@ -279,7 +259,7 @@ export function speed(positionx, positiony, positionz) {
 
     else {
         const settings = {
-            speed: 0.5,
+            speed: 1,
             sensitivity: 0.1,
             damping: 0.65,
             angularDamping: 0.65

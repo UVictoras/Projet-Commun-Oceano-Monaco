@@ -67,6 +67,7 @@ export const Canvas = (props) => {
             initApp();
             //Mouvcamera();
             Camera();
+            Mouvcamera();
             Click();
             desactiveKey()
         }
