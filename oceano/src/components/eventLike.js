@@ -13,7 +13,7 @@ export default function EventLike(props) {
             <p className="nunito400 fontColor3C text-sm  text-start p-2">{props.event.Description}</p>
             <div className='donationDate flex space-x-2.5 my-1.5'>
                 <div className='donation p-2 rounded-2xl flex items-center justify-center space-x-2 '>
-                    <img src={props.event.Logo} alt='coin make it blue' className='w-4' />
+                    <img src={props.event.Logo} alt='coin make it blue' className='w-5' />
                     <p className='text-sm extraBoldNunito'>{props.event.Name}</p>
                 </div>
                 <div className="date p-2 bg-white border-2 border-neutral-200 rounded-2xl flex items-center justify-center space-x-2 ">

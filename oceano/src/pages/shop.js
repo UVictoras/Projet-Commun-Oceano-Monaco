@@ -13,7 +13,7 @@ export default function Shop() {
                     <div className="h-2/3 ">
                         <div className="h-3/4 flex items-center justify-center ">
                             <div className="images">
-                                <img src="img/avatar1.png" className="w-96" />
+                                <img src="img/profil/loutre.png" className="w-96" />
                             </div>
                         </div>
                         <div className=" flex justify-end mr-11">

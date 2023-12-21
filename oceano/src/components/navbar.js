@@ -124,7 +124,7 @@ function Navbar() {
                       <div className='whiteCircle flex items-center justify-center'>
                         <img
                           className="h-10 w-10 rounded-full absolute positionImage "
-                          src="/img/avatar1.png"
+                          src="/img/profil/loutre.png"
                           alt="avatar make it blue"
                         />
                       </div></div>

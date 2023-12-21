@@ -389,7 +389,7 @@ const titleElement          = labelElement.domElement.children[1];
         containerElement.appendChild(labelElement);
 
         var newImg = document.createElement('img');
-        newImg.src = './img/bottle.svg';
+        newImg.src = './img/icon/waste.png';
         newImg.alt = 'Description of the image';
         newImg.classList.add('collect');
 

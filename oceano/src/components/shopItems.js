@@ -4,7 +4,7 @@ function ShopItems(props) {
         <div className="custom-shop-item">
           <div className="top-section w-full h-1/3"></div>
           <div className="center-section">
-            <img src="img/avatar1.png" alt="Objet à acheter" className="center-image h-full" />
+            <img src="img/shop/glasses.png" alt="Objet à acheter" className="center-image h-full" />
           </div>
           <div className="bottom-section flex flex-col items-center mb-4 ">
             <h1 className="extraBold800 text-center mt-4 mb-4">Lunettes de soleil</h1>

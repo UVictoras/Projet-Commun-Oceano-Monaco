@@ -52,6 +52,8 @@ export const Canvas = (props) => {
         await SDK3DVerse.installExtension(window.SDK3DVerse_ViewportDomOverlay_Ext);
         const labelExt = await SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
         await window.SDK3DVerse.installExtension(window.SDK3DVerse_ThreeJS_Ext);
+        window.SDK3DVerse.engineAPI.playAnimationSequence('e0b8e825-1f98-41f8-95ba-edd6c3e1a5e9',{playbackSpeed : 0.3});
+    
         // await window.SDK3DVerse.installExtension(window.SDK3DVerse_SplineDisplay_Ext);
 
         if (props.onChange) {
