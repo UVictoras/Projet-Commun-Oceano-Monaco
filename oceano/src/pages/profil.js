@@ -68,7 +68,7 @@ function Profile(props) {
                                             <img src={user.Picture} alt="profile make it blue" className="rounded-full h-28 w-28 my-4" />
                                         </div>
                                         <div className="name mt-6 ml-8 space-y-3">
-                                            <h1 className="text-left blackNunito fontColor3C text-4xl">{user.First_name}</h1>
+                                            <h1 className="text-left blackNunito fontColor3C text-4xl">{user.Pseudo}</h1>
                                             <p className="text-left semiBoldNunito levelColor text-2xl ">{user.Title}</p>
                                         </div>
                                     </div>

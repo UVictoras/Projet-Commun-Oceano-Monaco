@@ -6,7 +6,7 @@ import News from "./news";
 // margin-top: 20px;
 export default function ModalNotif(props) {
 
-    return <div id="sticky" className="absolute left-12 mt-10 w-[438px] h-1/2 bg-white border-2 border-solid border-normal-200 rounded-2xl p-4">
+    return <div id="sticky" className="absolute left-12 mt-10 w-[438px] h-1/2 bg-white border-2 border-solid border-normal-200 rounded-2xl p-4 z-20">
         <button className="text-gray-500 text-2xl  absolute top-5 left-6" onClick={props.closeNotif}>
             <img src="img/icon/exit.png" alt="exit make it blue" />
         </button>

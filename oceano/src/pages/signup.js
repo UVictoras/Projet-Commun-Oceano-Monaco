@@ -30,7 +30,7 @@ function Signup(props) {
         data.title = 1;
         addUser(data);
         setUserSession(data);
-        history.push("/act");
+        history.push("/signin");
     }
 
     return <div>

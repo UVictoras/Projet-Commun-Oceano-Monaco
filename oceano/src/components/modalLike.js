@@ -54,7 +54,7 @@ export default function ModalLike(props) {
                 <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
                     {typeEvent.map((type) =>{
                         return  <button onClick={() => handleClick(type.Name)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
-                                    <img src={type.Logo} alt='petition make it blue' className='w-3 ml-2' />
+                                    <img src={type.Logo} alt='petition make it blue' className='w-4 ml-2' />
                                     <p className='text-sm extraBoldNunito px-3'>{type.Name}</p>
                                 </button>
                     })}
