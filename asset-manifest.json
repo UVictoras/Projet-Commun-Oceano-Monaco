@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.e3f76d76.css",
-    "main.js": "/react-gh-pages/static/js/main.f75ea280.js",
-    "static/js/787.4c23fc0e.chunk.js": "/react-gh-pages/static/js/787.4c23fc0e.chunk.js",
-    "static/media/bell2.png": "/react-gh-pages/static/media/bell2.61b5369dd2f1b38ed9c9.png",
-    "static/media/allActionBanner.svg": "/react-gh-pages/static/media/allActionBanner.87f5877ced8bb66362d7.svg",
-    "index.html": "/react-gh-pages/index.html",
-    "static/media/hearth.svg": "/react-gh-pages/static/media/hearth.63ecdb78c24d5242f588.svg",
-    "main.e3f76d76.css.map": "/react-gh-pages/static/css/main.e3f76d76.css.map",
-    "main.f75ea280.js.map": "/react-gh-pages/static/js/main.f75ea280.js.map",
-    "787.4c23fc0e.chunk.js.map": "/react-gh-pages/static/js/787.4c23fc0e.chunk.js.map"
+    "main.css": "/Projet-Commun-Oceano-Monaco/static/css/main.03546fb0.css",
+    "main.js": "/Projet-Commun-Oceano-Monaco/static/js/main.eed6a4b9.js",
+    "static/js/787.4c23fc0e.chunk.js": "/Projet-Commun-Oceano-Monaco/static/js/787.4c23fc0e.chunk.js",
+    "static/media/bell2.png": "/Projet-Commun-Oceano-Monaco/static/media/bell2.61b5369dd2f1b38ed9c9.png",
+    "static/media/allActionBanner.svg": "/Projet-Commun-Oceano-Monaco/static/media/allActionBanner.87f5877ced8bb66362d7.svg",
+    "index.html": "/Projet-Commun-Oceano-Monaco/index.html",
+    "static/media/hearth.svg": "/Projet-Commun-Oceano-Monaco/static/media/hearth.63ecdb78c24d5242f588.svg",
+    "main.03546fb0.css.map": "/Projet-Commun-Oceano-Monaco/static/css/main.03546fb0.css.map",
+    "main.eed6a4b9.js.map": "/Projet-Commun-Oceano-Monaco/static/js/main.eed6a4b9.js.map",
+    "787.4c23fc0e.chunk.js.map": "/Projet-Commun-Oceano-Monaco/static/js/787.4c23fc0e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3f76d76.css",
-    "static/js/main.f75ea280.js"
+    "static/css/main.03546fb0.css",
+    "static/js/main.eed6a4b9.js"
   ]
 }
