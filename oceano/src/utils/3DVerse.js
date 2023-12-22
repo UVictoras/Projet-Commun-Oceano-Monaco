@@ -123,31 +123,42 @@ export function Mouvcamera() {
         console.log(vectore1)
         let scalaire = math.dot(vectorcameranorme,vectorlabelanorme)
         let sin = Math.asin(scalaire);
-        let scalaire2 = math.dot(vectorlabelanorme, vectorcameranorme )
+        let scalaire2 = math.dot(vectorcameranorme, vectorcameranorme )
         let angle = Math.acos(scalaire2);
         if (sin < 0){
             angle*= -1
             
         }
         console.log(angle)
-        var matriceMBT = math.matrix([[vectore1[0],vectore1[1],vectore1[2]],[vectorcameranorme[0],vectorcameranorme[1],vectorcameranorme[2]],[vectorlabelanorme[0],vectorlabelanorme[1],vectorlabelanorme[2]]])
-        var matriceMB = math.matrix([[vectore1[0],vectorcameranorme[0],vectorlabelanorme[0]],[vectore1[1],vectorcameranorme[1],vectorlabelanorme[1]],[vectore1[2],vectorcameranorme[2],vectorlabelanorme[2]]])
+        if(angle != 0){
+            var matriceMBT = math.matrix([[vectore1[0],vectore1[1],vectore1[2]],[vectorcameranorme[0],vectorcameranorme[1],vectorcameranorme[2]],[vectorlabelanorme[0],vectorlabelanorme[1],vectorlabelanorme[2]]])
+            var matriceMB = math.matrix([[vectore1[0],vectorcameranorme[0],vectorlabelanorme[0]],[vectore1[1],vectorcameranorme[1],vectorlabelanorme[1]],[vectore1[2],vectorcameranorme[2],vectorlabelanorme[2]]])
 
-        var matrice = math.matrix([[1,0,0],[0,Math.cos(angle),Math.sin(angle)],[0,-Math.sin(angle),Math.cos(angle)]])
-        var matriceFinale = math.multiply(matriceMB,matrice,matriceMBT )
-        console.log(matriceFinale)
-        
-        var vectorcameraprim = math.multiply(math.matrix([vectorcamera[0], vectorcamera[1], vectorcamera[2]]) , matriceFinale)
-        console.log(vectorcameraprim)
-        console.log(math.subset(vectorcameraprim, math.index(0)))
+            var matrice = math.matrix([[1,0,0],[0,Math.cos(angle),Math.sin(angle)],[0,-Math.sin(angle),Math.cos(angle)]])
+            var matriceFinale = math.multiply(matriceMB,matrice,matriceMBT )
+            console.log(matriceFinale)
+            
+            var vectorcameraprim = math.multiply(math.matrix([vectorcamera[0], vectorcamera[1], vectorcamera[2]]) , matriceFinale)
+            console.log(vectorcameraprim)
+            console.log(math.subset(vectorcameraprim, math.index(0)))
 
-       
-        
-        window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [math.subset(vectorcameraprim, math.index(0)), math.subset(vectorcameraprim, math.index(1)),math.subset(vectorcameraprim, math.index(2))]
-        ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-        , 1, 
-        [camera[0].getTransform().position[0],camera[0].getTransform().position[1],camera[0].getTransform().position[2]], 
-        [camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]])
+            // var normeVectorCameraPrim = norme(vectorcameraprim)
+            // var vectorD = [0, 0, 1]
+            // var vectorE1bis = math.cross(vectorD, normeVectorCameraPrim)
+            // var vectorE2bis = normeVectorCameraPrim
+            // var vectorE3bis = vectorD
+            // let scalaire3 = math.dot(vectorD,vectorE2bis)
+            // let sin2 = Math.asin(scalaire3);
+            // let scalaire4 = math.dot(vectorD, vectorE3bis )
+            // let angle2 = Math.acos(scalaire2);
+            // if (sin2 < 0){
+            //     angle2*= -1
+            // }
+            
+            window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [math.subset(vectorcameraprim, math.index(0)), math.subset(vectorcameraprim, math.index(1)),math.subset(vectorcameraprim, math.index(2))]
+            ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+            , 1)
+        }
     })
 }
 
