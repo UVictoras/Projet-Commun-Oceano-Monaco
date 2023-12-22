@@ -12,6 +12,8 @@ In the first :
 
 cd backend
 
+npm i
+
 node index.js
 
 In the second :
