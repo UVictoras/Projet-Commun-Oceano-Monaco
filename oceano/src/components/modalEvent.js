@@ -10,7 +10,7 @@ export default function ModalEvent(props) {
             </button>
             <div className='flex justify-end pr-5'>
                 <button className='relative border-2 bg-white border-neutral-200 rounded-full p-4 heartPlace'>
-                    <img src='img/icon/hearth/hearth.svg' alt='hearth make it blue' className='w-6 re' />
+                    <img src='img/icon/hearth/hearth.png' alt='hearth make it blue' className='w-6 re' />
                 </button>
             </div>
         </div>
