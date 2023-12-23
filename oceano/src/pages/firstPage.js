@@ -2,7 +2,7 @@ export default function FirstPage() {
     return <div className="md:container md:mx-auto flex-col md:flex-row flex items-center justify-center min-h-screen grid grid-cols-2 gap-x-24">
 
         <div className="w-full  md:flex-col flex items-end justify-center">
-            <img src="img/mascotte.png" alt="Make a blue logo" className="w-16 h-16 lg:w-64 lg:h-64 md:w-32 md:h-32"></img>
+            <img src="img/profil/loutre.gif" alt="Make a blue logo" className="w-16 h-16 lg:w-64 lg:h-64 md:w-32 md:h-32"></img>
         </div>
         <div className="w-full md:w-1/2 md:flex-col justify-center blackNunito">
             <p className="font-bold  size28 text-center titleFont">
