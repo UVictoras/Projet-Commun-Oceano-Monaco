@@ -621,3 +621,8 @@ export function showVisibleLabelsOnly() {
 //     await anim.init();
 //     anim.gotoSplineAndTravel(boat[0], anim.splines[0], 0.1);
 // }
+
+
+export async function getAllLabelPosition(){
+    return window.SDK3DVerse.extensions.LabelDisplay.labelEntities
+}
