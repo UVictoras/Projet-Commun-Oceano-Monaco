@@ -1,7 +1,6 @@
 import Act from "./pages/act.js"
 import Impact from "./pages/impact.js";
 import Community from "./pages/community.js";
-import Test from "./pages/test.js"
 import Profile from "./pages/profil.js";
 import React, {useState} from 'react'
 
@@ -11,9 +10,7 @@ import {
   Route 
 } from "react-router-dom"
 
-import { Anim, createImgTag } from "./utils/3DVerse.js";
 import FirstPage from "./pages/firstPage.js";
-import LoadingScreen from "./pages/loadingScreen.js";
 import Signin from "./pages/signin.js";
 import Signup from "./pages/signup.js";
 import Shop from "./pages/shop.js";
@@ -29,9 +26,6 @@ function App(props){
         <Route exact path="/">
           <FirstPage /> 
         </Route>
-        {/* <Route exact path="/loading">
-          <LoadingScreen /> 
-        </Route> */}
         <Route path ="/act">
           <Act/>
         </Route>
@@ -52,9 +46,6 @@ function App(props){
         </Route>
         <Route path="/community">
           <Community /> 
-        </Route>
-        <Route exact path="/test">
-          <Test /> 
         </Route>
         <Route exact path="/threadcontent">
           <Threadcontent /> 

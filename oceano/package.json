@@ -1,7 +1,9 @@
 {
   "name": "oceano",
   "version": "0.1.0",
-  "private": true,
+  "proxy": "http://localhost:3000",
+  "homepage": ".",
+  "private": true, 
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
