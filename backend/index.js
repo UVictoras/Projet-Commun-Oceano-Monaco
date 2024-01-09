@@ -290,10 +290,10 @@ app.post("/type/event/user", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
   const body = req.body;
   dbConnect
-          .query("SELECT  t.Name                  , \
-                          t.Color                 , \
-                          t.Logo                  , \
-                          COUNT(e.ID) AS NbEvents   \
+          .query("SELECT  t.Name                        , \
+                          t.Color                       , \
+                          t.Logo                        , \
+                          COUNT(ue.ID_User) AS NbEvents   \
                   FROM type_event t LEFT JOIN event e ON t.ID = e.Type                                                  \
                                     LEFT JOIN users_in_event ue ON e.ID = ue.ID_Event AND ue.ID_User = " + body.id + "  \
                   GROUP BY t.Name \
