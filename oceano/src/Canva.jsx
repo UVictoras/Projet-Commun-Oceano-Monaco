@@ -26,13 +26,13 @@ export const Canvas = (props) => {
             removeOnUnmount: false,
         }
     );
-    const splineDisplay = useScript(
-        `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_SplineDisplay_Ext.js`,
+    // const splineDisplay = useScript(
+    //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_SplineDisplay_Ext.js`,
 
-        {
-            removeOnUnmount: false,
-        }
-    ); 
+    //     {
+    //         removeOnUnmount: false,
+    //     }
+    // );
     // const label = useScript(
     //     `https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse_LabelDisplay_Ext.js`,
 
@@ -52,7 +52,9 @@ export const Canvas = (props) => {
         await SDK3DVerse.installExtension(window.SDK3DVerse_ViewportDomOverlay_Ext);
         const labelExt = await SDK3DVerse.installExtension(SDK3DVerse_LabelDisplay_Ext);
         await window.SDK3DVerse.installExtension(window.SDK3DVerse_ThreeJS_Ext);
-        await window.SDK3DVerse.installExtension(window.SDK3DVerse_SplineDisplay_Ext);
+        window.SDK3DVerse.engineAPI.playAnimationSequence('e0b8e825-1f98-41f8-95ba-edd6c3e1a5e9',{playbackSpeed : 0.3});
+    
+        // await window.SDK3DVerse.installExtension(window.SDK3DVerse_SplineDisplay_Ext);
 
         if (props.onChange) {
             //moveShip();
@@ -65,10 +67,10 @@ export const Canvas = (props) => {
     useEffect(() => {
         if (status === 'ready') {
             initApp();
-            //Mouvcamera();
             Camera();
             Click();
             desactiveKey()
+           
         }
     }, [status]);
 
@@ -77,10 +79,10 @@ export const Canvas = (props) => {
         if (!sessionReady) {
             return;
         }
-
-        // Check if the element is found before attempting to modify its style
-
         showVisibleLabelsOnly();
+        // Check if the element is found before attempting to modify its style
+        //Mouvcamera();
+
 
         setTime(time);
         setDeltaTime(deltaTime);
@@ -99,5 +101,4 @@ export const Canvas = (props) => {
             ></canvas>
         </>
     );
-    //AnimationShip();
 }

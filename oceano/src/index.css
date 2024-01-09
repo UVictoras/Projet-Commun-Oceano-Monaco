@@ -112,6 +112,9 @@ input[type=password] {
 .colorD3{
   color:#D3D3D3;
 }
+.colorAE{
+  color: #AEAEAE;
+}
 /********************* CSS pour les modal *****************/
 
 .loune:before, .loune:after {
@@ -173,7 +176,7 @@ input[type=password] {
   background-size:100%;
 }
 .myActionYellowColor{
-  background-color: #FFD600;
+  background-color: #FFD600;  
 }
 .myActionGreyColor{
   background-color: #D1D1D1;
@@ -223,7 +226,7 @@ input[type=password] {
 .likeButton:active {
   border: solid;
   transform: translateY(4px);
-  content: url(../public/img/icon/hearth/hearth.svg);
+  content: url(../public/img/icon/hearth/hearth.png);
 }
 
 .locateButton {
@@ -569,4 +572,72 @@ input[type=password] {
 .label-container:focus .attendees,
 .label-container:focus .attendees-txt {
   display: block;
+}
+/********************* CSS pour le shop  *****************/
+
+.custom-shop-item {
+  width: 235px;
+  height: 100%;
+  border: 2px solid #E5E5E5;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+  border-radius: 18.814px
+}
+
+.top-section {
+  border-radius: 18.814px 18.814px 0px 0px;
+  background: #3CB532;
+}
+
+.center-section {
+  height: 100%;
+  position: relative; /* Ajout de position relative */
+}
+
+.center-image {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: -20px; /* Ajustez cette valeur pour la superposition */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopButton{
+  border-radius: 18.814px;
+  border: 2.258px solid #1CB0F6;
+  background: #1CB0F6;
+  filter: drop-shadow(0px 4px 0px #1899D6);
+}
+
+.shopButton:active {
+  filter: drop-shadow(0px 0px 0px #1899D6);
+  transform: translateY(4px);
+}
+  
+
+.shopText{
+  color: #FDC62E
+}
+
+.lineShop:before,
+.lineShop:after{
+  display: block;
+  position: absolute;
+  content: "" !important;
+  border-top-width: 1px !important;
+  top: 50%;
+  width: 42%;
+  border-color: #E5E5E5 !important;
+}
+.lineShop:after{
+  left: 58%;
 }

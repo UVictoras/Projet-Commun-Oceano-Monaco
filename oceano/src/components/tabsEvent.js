@@ -8,8 +8,8 @@ export default function Tab(props) {
             content: props.event.Description,
             span: "Voir plus",
             imgDatePicker: "img/event/calendar.png",
-            textDatePicker: "Du " + new Intl.DateTimeFormat("fr-FR", {month: "long", day: "numeric"}).format(new Date(props.event.Start_date)) + 
-                            " au " + new Intl.DateTimeFormat("fr-FR", {month: "long", day: "numeric"}).format(new Date(props.event.End_date)),
+            textDatePicker: "Du " + new Intl.DateTimeFormat("fr-FR", { month: "long", day: "numeric" }).format(new Date(props.event.Start_date)) +
+                " au " + new Intl.DateTimeFormat("fr-FR", { month: "long", day: "numeric" }).format(new Date(props.event.End_date)),
             imgLocate: "img/event/locate.png",
             textLocate: "En ligne",
             imgLink: "img/event/link.png",
@@ -35,7 +35,7 @@ export default function Tab(props) {
             logoShare: "img/event/share.png",
             phoneImage: "img/event/phone.png",
             phoneText: "06.50.41.92.25",
-            mailImage:"img/event/mail.png",
+            mailImage: "img/event/mail.png",
             mailText: props.event.Email,
         }
     ];
@@ -59,17 +59,17 @@ export default function Tab(props) {
                 </button>))
                 }
             </div>
-        
+
             <div className="flex mx-10 w-full ">
                 {Menu.map(item => (
                     <div
                         key={item.id}
-                        
-                        className={`${item.color} panel flex ${(item.id===2)? "h-80 overflow-y-scroll customScrollbar" : ""} ${checkActive(item.id, "active flex nunito400")}`}
-                    >
-                        {item.id === 2 ? <div className="grid grid-cols-2   customScrollbar ">
 
-                            <div className="profile ">
+                        className={`${item.color} panel flex ${(item.id === 2) ? "h-80 overflow-y-scroll customScrollbar" : ""} ${checkActive(item.id, "active flex nunito400")}`}
+                    >
+                        {item.id === 2 ? <div className="grid grid-cols-2 customScrollbar space-y-4">
+
+                            <div className="profile">
                                 <div className="grid grid-cols-2">
                                     <div className="flex justify-center">
                                         <img src={item.imgProfile} alt="profile Make it blue" className="w-28 h-28 rounded-full" />
@@ -80,20 +80,15 @@ export default function Tab(props) {
                                         <p className="extraBold800 text-start mt-6">{item.level}</p>
                                     </div>
                                 </div>
-                                <div className="icon mt-5 flex space-x-4 mb-[22.5px]">
-                                    <div className="w-11 h-11 backD9 rounded-2xl"></div>
-                                    <div className="w-11 h-11 backD9 rounded-2xl"></div>
-                                    <div className="w-11 h-11 backD9 rounded-2xl"></div>
-                                    <div className="w-11 h-11 backD9 rounded-2xl"></div>
-                                </div>
+
                             </div>
-                            <div className="contact space-y-5 mt-4">
+                            <div className="contact space-y-3 mt-4">
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.phoneImage} alt="phone make it blue"/>
+                                    <img src={item.phoneImage} alt="phone make it blue" />
                                     <p>{item.phoneText}</p>
                                 </div>
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.mailImage} alt="mail make it blue"/>
+                                    <img src={item.mailImage} alt="mail make it blue" />
                                     <p>{item.mailText}</p>
                                 </div>
                             </div>
@@ -101,9 +96,12 @@ export default function Tab(props) {
 
                         </div> : ""
                         }
-                        <p className="text-left mr-16">{item.content}<span className="blueTextColor">
-                            {item.span}
-                        </span></p>
+                        <div>
+                            <p className="text-left mr-16">{item.content}<span className="blueTextColor">
+                                {item.span}
+                            </span></p>
+                        </div>
+
 
                         {item.id === 1 ? <div className="mt-4 text-left space-y-4">
                             <div className="flex semiBoldNunito items-center space-x-2">
@@ -115,20 +113,20 @@ export default function Tab(props) {
                                 <p>{item.textLocate}</p>
                             </div>
                             <div className="flex semiBoldNunito items-center space-x-1">
-                                <img src={item.imgLink} alt="link make it blue"/>
+                                <img src={item.imgLink} alt="link make it blue" />
                                 <a href className="underline blueTextColor">{item.textLink}</a>
                             </div>
                             <div className="flex extraBold800 items-center space-x-2">
-                                <img src={item.imgGoal} alt="goal make it blue"/>
+                                <img src={item.imgGoal} alt="goal make it blue" />
                                 <p >{item.textGoal}</p>
                             </div>
                             <div className="w-[425px] h-[14px] bg-neutral-200 rounded-l-lg">
                                 <div className=" w-[321px] h-[14px] progressBarObjectif rounded-l-lg"></div>
                             </div>
                         </div> :
-                        <div className="lastAction text-start blackNunito text-2xl mt-7">
-                            <h2>Dernières actions</h2>
-                        </div>
+                            <div className="lastAction text-start blackNunito text-2xl mt-7">
+                                <h2>Dernières actions</h2>
+                            </div>
                         }
 
 

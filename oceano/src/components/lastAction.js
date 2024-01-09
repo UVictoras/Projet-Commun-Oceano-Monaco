@@ -1,7 +1,7 @@
 export default function LastAction(props) {
     return <div className="border-2 border-neutral-200 rounded-2xl flex  space-x-5">
         <div className="img">
-            <img src="img/event/whale.svg" className="resizeImage rounded-2xl" alt="whale make it blue" />
+            <img src={props.event.Image} className="resizeImage rounded-2xl" alt="whale make it blue" />
         </div>
         <div className="mt-3 ">
             <div className="space-y-2">
