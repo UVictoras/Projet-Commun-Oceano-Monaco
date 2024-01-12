@@ -15,6 +15,9 @@ import Signin from "./pages/signin.js";
 import Signup from "./pages/signup.js";
 import Shop from "./pages/shop.js";
 import Threadcontent from "./components/threadcontent.js";
+import CreateEvent from "./pages/createEvent/createEvent0.js";
+import CreateEvent1 from "./pages/createEvent/createEvent1.js";
+
 
 
 const SDK3DVerse = window.SDK3DVerse;
@@ -46,6 +49,12 @@ function App(props){
         </Route>
         <Route path="/community">
           <Community /> 
+        </Route>
+        <Route path = "/createEvent">
+          <CreateEvent/>
+        </Route>
+        <Route path="/createEventObj">
+          <CreateEvent1/>
         </Route>
         <Route exact path="/threadcontent">
           <Threadcontent /> 

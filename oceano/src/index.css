@@ -60,7 +60,15 @@
 .titleFont {
   color: #4B4B4B;
 }
-
+.blueButtonEvent{
+  background-color: #1CB0F6;
+  filter: drop-shadow(0px 4px 0px #1899D6);
+}
+.blueButtonEvent:active {
+  /* box-shadow: 0 5px #666; */
+  filter: drop-shadow(0px 0px 0px #1899D6);
+  transform: translateY(4px);
+}
 .blueButton {
   background-color: #1CB0F6;
   height: 50px !important;
