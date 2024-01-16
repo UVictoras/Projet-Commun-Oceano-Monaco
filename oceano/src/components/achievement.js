@@ -5,7 +5,7 @@ export default function Achievement() {
                 <img src="img/icon/achievement.svg" className="w-16 " alt="achievement make it blue" />
             </div>
             <div className="text space-y-1.5 ">
-                <h3 className="fontColor3C text-lg extraBold800">Streak Killer</h3>
+                <h3 className="fontColor3C text-lg extraBold800">Streak Master</h3>
                 <p className="fontColor3C nunito500 text-base ">Vous avez atteint un streak de 30 actions consécutives </p>
             </div>
         </div>
