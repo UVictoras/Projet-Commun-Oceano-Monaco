@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import EventLike from "../components/eventLike";
 import { getFavoriteEvent, getTypeEvent } from "../api/event";
+import TabImpact from "../components/tabsImpact";
 
 function Impact(props) {
     const [favoriteEvent, setfavoriteEvent] = useState([]);
@@ -54,7 +55,7 @@ function Impact(props) {
                     </form>
                 </div>
                 <div className='filter '>
-                    <div className='filter overflow-x-scroll horizontalScrollbar  whitespace-nowrap '>
+                    <div className='filter overflow-x-auto horizontalScrollbar  whitespace-nowrap '>
                         <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
                             {typeEvent.map((type) => {
                                 return <button onClick={() => handleClick(type.Name)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
@@ -65,7 +66,7 @@ function Impact(props) {
                         </div>
                     </div>
                 </div>
-                <div className='space-y-4 h-[630px] customScrollbar overflow-y-scroll'>
+                <div className='space-y-4 h-[630px] customScrollbar overflow-y-auto'>
                     {EventShow.map((fav) => {
                         return <EventLike event={fav} />
                     })}
@@ -73,7 +74,7 @@ function Impact(props) {
             </div>
             <div className="w-1/3 px-9 py-6 stat">
                 <div className="flex ">
-                    <h1 className="extraBold800 text-2xl text-center p-6">12 derniers mois</h1>
+                    <h1 className="extraBold800 text-2xl text-center py-6 pr-6">12 derniers mois</h1>
                     <button>
                         <img src="img/impact/arrow.svg" alt="fleche make it blue" />
                     </button>
@@ -110,9 +111,13 @@ function Impact(props) {
                     </div>
                 </div>
             </div>
-            <div className="w-1/3 classement flex items-end">
-                <h2 className="extraBoldNunito text-[28px]">Classement</h2>
-                
+            <div className="w-1/3 classement flex items-end px-12 mt-14 pb-6">
+                <div className="w-full">
+                    <h2 className="extraBoldNunito text-[28px] py-2 ">Classement</h2>
+                    <div className="border-2 border-neutral-200 rounded-2xl h-full">
+                        <TabImpact />
+                    </div>
+                </div>
             </div>
         </div>
 
