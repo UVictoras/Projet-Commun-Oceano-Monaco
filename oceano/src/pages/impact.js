@@ -38,8 +38,21 @@ function Impact(props) {
     };
     return <div className="impact">
         <Navbar />
-        <div className="w-full">
-            <div className="w-1/3">
+        <div className="w-full h-full flex">
+            <div className="w-1/3 p-5 action">
+                <h1 className="extraBold800 text-3xl text-center p-6">Mes actions</h1>
+                <div className="w-full">
+                    <form className="">
+                        <div class="text-gray-600 flex items-center">
+                            <span class="absolute pl-2">
+                                <svg class="w-6 h-6 searchBarGlassColor ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </span>
+                            <input class="w-full pl-12 pr-4 p-4 text-sm border-2 border-neutral-200 rounded-xl bg-white w-96 extraBoldNunito " placeholder="Rechercher une action..." />
+                        </div>
+                    </form>
+                </div>
                 <div className='filter '>
                     <div className='filter overflow-x-scroll horizontalScrollbar  whitespace-nowrap '>
                         <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
@@ -52,11 +65,54 @@ function Impact(props) {
                         </div>
                     </div>
                 </div>
-                <div className='space-y-4 h-[700px] customScrollbar overflow-y-scroll'>
+                <div className='space-y-4 h-[630px] customScrollbar overflow-y-scroll'>
                     {EventShow.map((fav) => {
                         return <EventLike event={fav} />
                     })}
                 </div>
+            </div>
+            <div className="w-1/3 px-9 py-6 stat">
+                <div className="flex ">
+                    <h1 className="extraBold800 text-2xl text-center p-6">12 derniers mois</h1>
+                    <button>
+                        <img src="img/impact/arrow.svg" alt="fleche make it blue" />
+                    </button>
+                </div>
+                <div className="space-y-10">
+                    <div className="activity space-y-2">
+                        <h2 className="extraBoldNunito text-[28px]">Activité</h2>
+                        <div className="border-2 border-neutral-200 rounded-2xl flex justify-center px-2 py-8">
+                            <img src="img/impact/graph.png" alt="graph make it blue" />
+                        </div>
+                    </div>
+                    <div className="figure space-y-3">
+                        <h2 className="extraBoldNunito text-[28px]">Chiffres clé</h2>
+                        <div className="flex space-x-3 w-full ">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
+                                <p className="fontColor3C extraBoldNunito text-4xl">36</p>
+                                <p className="text-xl nunito500 greyText">animaux sauvés</p>
+                            </div>
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
+                                <p className="fontColor3C extraBoldNunito text-4xl">12</p>
+                                <p className="text-xl nunito500 greyText">régions protégées</p>
+                            </div>
+                        </div>
+                        <div className="flex space-x-3 w-full">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
+                                <p className="fontColor3C extraBoldNunito text-4xl">4</p>
+                                <p className="text-xl nunito500 greyText">lieux nettoyés</p>
+                            </div>
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-8">
+                                <p className="fontColor3C extraBoldNunito text-4xl">5</p>
+                                <p className="text-xl nunito500 greyText">recherches soutenues</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="w-1/3 classement flex items-end">
+                <h2 className="extraBoldNunito text-[28px]">Classement</h2>
+                
             </div>
         </div>
 
