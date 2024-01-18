@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import EventLike from "../components/eventLike";
 import { getFavoriteEvent, getTypeEvent } from "../api/event";
 import TabImpact from "../components/tabsImpact";
+import Chat from "../components/chat";
 
 function Impact(props) {
     const [favoriteEvent, setfavoriteEvent] = useState([]);
@@ -39,8 +40,9 @@ function Impact(props) {
     };
     return <div className="impact">
         <Navbar />
+        <Chat/>
         <div className="w-full h-full flex">
-            <div className="w-1/3 p-5 action">
+            <div className="w-1/3 px-5 pt-5 action">
                 <h1 className="extraBold800 text-3xl text-center p-6">Mes actions</h1>
                 <div className="w-full">
                     <form className="">
@@ -72,21 +74,21 @@ function Impact(props) {
                     })}
                 </div>
             </div>
-            <div className="w-1/3 px-9 py-6 stat">
+            <div className="w-1/3 px-9 pt-6 stat h-full">
                 <div className="flex ">
                     <h1 className="extraBold800 text-2xl text-center py-6 pr-6">12 derniers mois</h1>
                     <button>
                         <img src="img/impact/arrow.svg" alt="fleche make it blue" />
                     </button>
                 </div>
-                <div className="space-y-10">
-                    <div className="activity space-y-2">
+                <div className="space-y-6">
+                    <div className="activity space-y-2 h-2/5">
                         <h2 className="extraBoldNunito text-[28px]">Activité</h2>
                         <div className="border-2 border-neutral-200 rounded-2xl flex justify-center px-2 py-8">
                             <img src="img/impact/graph.png" alt="graph make it blue" />
                         </div>
                     </div>
-                    <div className="figure space-y-3">
+                    <div className="figure space-y-3 h-2/5 ">
                         <h2 className="extraBoldNunito text-[28px]">Chiffres clé</h2>
                         <div className="flex space-x-3 w-full ">
                             <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
@@ -111,8 +113,8 @@ function Impact(props) {
                     </div>
                 </div>
             </div>
-            <div className="w-1/3 classement flex items-end px-12 mt-14 pb-6">
-                <div className="w-full">
+            <div className="w-1/3 classement flex items-end pb-5 px-12 ">
+                <div className="w-full ">
                     <h2 className="extraBoldNunito text-[28px] py-2 ">Classement</h2>
                     <div className="border-2 border-neutral-200 rounded-2xl h-full">
                         <TabImpact />

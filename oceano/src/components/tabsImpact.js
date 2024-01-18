@@ -66,7 +66,7 @@ export default function TabShop(props) {
 
 
     return <>
-        <div className="mt-4 flex flex-col space-y-4 h-[688px]">
+        <div className="mt-4 flex flex-col space-y-4 h-[675px]">
             <div className="border-b border-b-neutral-200 border-b-2">
                 {Menu.map(item =>
                 (<button
@@ -90,7 +90,7 @@ export default function TabShop(props) {
                     <BannierFriend />
                     <BannierFriend />
                     <BannierFriend />
-                    <BannierFriend />
+
                     
                 </div>))
             }
