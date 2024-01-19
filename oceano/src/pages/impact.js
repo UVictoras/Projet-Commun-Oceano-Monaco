@@ -1,15 +1,26 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
-import EventLike from "../components/eventLike";
 import { getFavoriteEvent, getTypeEvent } from "../api/event";
 import TabImpact from "../components/tabsImpact";
 import Chat from "../components/chat";
+import ActionImpact from "../components/actionImpact";
+import { isSelected } from "../utils/webFunction";
 
 function Impact(props) {
     const [favoriteEvent, setfavoriteEvent] = useState([]);
     const [EventShow, setEventShow] = useState([]);
     const [typeEvent, settypeEvent] = useState([]);
     const [triTypes, settriTypes] = useState("all");
+    const [isChatOpen, setChatOpen] = useState(false);
+
+    const openChat = () => {
+        setChatOpen(true);
+        isSelected("chat","changedLightBlue");
+    }
+    const closeChat = () => {
+        setChatOpen(false);
+        isSelected("chat","changedLightBlue");
+    }
 
     useEffect(() => {
         const favoriteEventFetched = getFavoriteEvent({ id: 1 });
@@ -38,9 +49,10 @@ function Impact(props) {
             settriTypes(typeName)
         }
     };
+
     return <div className="impact">
         <Navbar />
-        <Chat/>
+        {isChatOpen ? <Chat closeChat={closeChat} openChat={openChat}/>: ""}
         <div className="w-full h-full flex">
             <div className="w-1/3 px-5 pt-5 action">
                 <h1 className="extraBold800 text-3xl text-center p-6">Mes actions</h1>
@@ -70,7 +82,7 @@ function Impact(props) {
                 </div>
                 <div className='space-y-4 h-[630px] customScrollbar overflow-y-auto'>
                     {EventShow.map((fav) => {
-                        return <EventLike event={fav} />
+                        return <ActionImpact event={fav} openChat={openChat} closeChat={closeChat} isChatOpen={isChatOpen}/>
                     })}
                 </div>
             </div>

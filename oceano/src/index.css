@@ -408,12 +408,48 @@ input[type=password] {
 }
 
 /********************* CSS pour la page Impact *************/
+.changedLightBlue{
+  background-color: #E2EEF4;
+  border:  solid  #1CB0F6 !important;
+  border-width: 2px !important; 
+}
 .bottomImpact{
   bottom: 10% !important;
 }
 .backgroundE45757{
   background-color: #E45757;
 }
+.backgroundChat{
+  position: absolute !important;
+  margin-top: 1.25rem !important;
+  right: 0 !important;
+  margin-right: 1rem !important;
+  background-color: white;
+  z-index: 20 !important;
+  width: 65%;
+  height: 90%;
+  border-radius: 1rem;
+  border: 2px solid #E5E5E5;
+}
+.plusButton{
+  border: solid #E1E1E1;
+  border-width: 2px 2px 4px 2px;
+}
+
+.plusButton:active{
+  border: solid  #E1E1E1;
+  transform: translateY(2px);
+}
+.inputChat{
+  border: 2px solid #E1E1E1;
+}
+.backBlue{
+  background-color: #1CB0F6;
+}
+.backGrey{
+  background-color: #F0F0F0;
+}
+
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {
   top: 4rem !important;
