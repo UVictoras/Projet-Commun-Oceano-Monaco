@@ -81,6 +81,7 @@
   transform: translateY(4px);
 }
 
+
 .whiteButton {
   filter: drop-shadow(0px 4px 0px #e5e5e5);
 }
@@ -353,6 +354,18 @@ input[type=password] {
 .line:after {
   left: 54%;
 }
+/********************* CSS pour la création d'event *********/
+.whiteButtonAll {
+  border-color: #E5E5E5 !important;
+  border: solid;
+  border-width: 2px 2px 4px 2px;
+}
+
+.whiteButtonAll:active {
+  border: solid;
+  transform: translateY(2px);
+}
+
 
 /********************* CSS pour le loading screen **********/
 
@@ -449,6 +462,7 @@ input[type=password] {
 .backGrey{
   background-color: #F0F0F0;
 }
+
 
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {

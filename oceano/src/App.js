@@ -17,6 +17,7 @@ import Shop from "./pages/shop.js";
 import Threadcontent from "./components/threadcontent.js";
 import CreateEvent from "./pages/createEvent/createEvent0.js";
 import CreateEvent1 from "./pages/createEvent/createEvent1.js";
+import CreateEvent2 from "./pages/createEvent/createEvent2.js";
 
 
 
@@ -55,6 +56,9 @@ function App(props){
         </Route>
         <Route path="/createEventObj">
           <CreateEvent1/>
+        </Route>
+        <Route path="/createEventObj2">
+          <CreateEvent2/>
         </Route>
         <Route exact path="/threadcontent">
           <Threadcontent /> 
