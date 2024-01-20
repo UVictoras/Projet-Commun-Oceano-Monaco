@@ -53,7 +53,7 @@ function Impact(props) {
     return <div className="impact">
         <Navbar />
         {isChatOpen ? <Chat closeChat={closeChat} openChat={openChat}/>: ""}
-        <div className="w-full h-full flex">
+        <div className="w-full flex">
             <div className="w-1/3 px-5 pt-5 action">
                 <h1 className="extraBold800 text-3xl text-center p-6">Mes actions</h1>
                 <div className="w-full">
@@ -69,7 +69,7 @@ function Impact(props) {
                     </form>
                 </div>
                 <div className='filter '>
-                    <div className='filter overflow-x-auto horizontalScrollbar  whitespace-nowrap '>
+                    <div className='filter overflow-x-auto horizontalScrollbar   whitespace-nowrap '>
                         <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
                             {typeEvent.map((type) => {
                                 return <button onClick={() => handleClick(type.Name)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
@@ -80,13 +80,14 @@ function Impact(props) {
                         </div>
                     </div>
                 </div>
-                <div className='space-y-4 h-[630px] customScrollbar overflow-y-auto'>
+                <div className='space-y-4 h-2/3 customScrollbar overflow-y-auto'>
                     {EventShow.map((fav) => {
                         return <ActionImpact event={fav} openChat={openChat} closeChat={closeChat} isChatOpen={isChatOpen}/>
                     })}
+                    
                 </div>
             </div>
-            <div className="w-1/3 px-9 pt-6 stat h-full">
+            <div className="w-1/3 px-9 pt-6 stat h-3/5">
                 <div className="flex ">
                     <h1 className="extraBold800 text-2xl text-center py-6 pr-6">12 derniers mois</h1>
                     <button>
@@ -100,7 +101,7 @@ function Impact(props) {
                             <img src="img/impact/graph.png" alt="graph make it blue" />
                         </div>
                     </div>
-                    <div className="figure space-y-3 h-2/5 ">
+                    {/* <div className="figure space-y-3 h-2/5 ">
                         <h2 className="extraBoldNunito text-[28px]">Chiffres clé</h2>
                         <div className="flex space-x-3 w-full ">
                             <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
@@ -122,19 +123,18 @@ function Impact(props) {
                                 <p className="text-xl nunito500 greyText">recherches soutenues</p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
-            <div className="w-1/3 classement flex items-end pb-5 px-12 ">
-                <div className="w-full ">
+            <div className="w-1/3 classement flex px-12 ">
+                <div className="w-full  ">
                     <h2 className="extraBoldNunito text-[28px] py-2 ">Classement</h2>
-                    <div className="border-2 border-neutral-200 rounded-2xl h-full">
+                    <div className="border-2 border-neutral-200 rounded-2xl h-4/6">
                         <TabImpact />
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 }
 export default Impact;

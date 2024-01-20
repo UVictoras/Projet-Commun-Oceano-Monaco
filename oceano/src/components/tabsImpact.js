@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BannierFriend from "./bannierFriend";
+import { updateHeight } from "../utils/webFunction";
 
 
 export default function TabShop(props) {
@@ -7,54 +8,17 @@ export default function TabShop(props) {
         {
             id: 1,
             title: "Amis",
-            content: "props.event.Description",
-            span: "Voir plus",
-            imgDatePicker: "img/event/calendar.png",
-            textDatePicker: "Du ",
-            imgLocate: "img/event/locate.png",
-            textLocate: "En ligne",
-            imgLink: "img/event/link.png",
-            textLink: "props.event.Link",
-            imgGoal: "img/event/goal.svg",
-            textGoal: "14 152€ sur 30 000€ collectés",
             color: "fontColor3C",
-            participer: "Participer",
-            logoShare: "img/event/share.png",
-
         },
         {
             id: 2,
             title: "Région",
-            content: "Hello je m’appelle Loris P., j’ai 19 ans et depuis toujours je kiffe les poissons, je les préfère en sauce LOL, non en vrai je suis passionné des océans et membre de beaucoup d’associations dans ma région, si jamais vous aussi vous êtes passionné n’hésitez pas à me contacter pour discuter...",
-            span: "Voir plus",
             color: "fontColor3C",
-            imgProfile: "props.event.ImageProfil",
-            name: 'props.event.First_name + " " + props.event.Last_name',
-            titleLevel: "props.event.TitleName",
-            level: "Niveau " + "props.event.Number",
-            participer: "Participer",
-            logoShare: "img/event/share.png",
-            phoneImage: "img/event/phone.png",
-            phoneText: "06.50.41.92.25",
-            mailImage: "img/event/mail.png",
-            mailText: "props.event.Email",
         },
         {
             id: 3,
             title: "Monde",
-            content: "Hello je m’appelle Loris P., j’ai 19 ans et depuis toujours je kiffe les poissons, je les préfère en sauce LOL, non en vrai je suis passionné des océans et membre de beaucoup d’associations dans ma région, si jamais vous aussi vous êtes passionné n’hésitez pas à me contacter pour discuter...",
-            span: "Voir plus",
             color: "fontColor3C",
-            imgProfile: "props.event.ImageProfil",
-            name: 'props.event.First_name + " " + props.event.Last_name',
-            titleLevel: "props.event.TitleName",
-            level: "Niveau " + "props.event.Number",
-            participer: "Participer",
-            logoShare: "img/event/share.png",
-            phoneImage: "img/event/phone.png",
-            phoneText: "06.50.41.92.25",
-            mailImage: "img/event/mail.png",
-            mailText: "props.event.Email",
         },
 
 
@@ -66,7 +30,7 @@ export default function TabShop(props) {
 
 
     return <>
-        <div className="mt-4 flex flex-col space-y-4 h-[675px]">
+        <div className="mt-2 space-y-4 h-5/6">
             <div className="border-b border-b-neutral-200 border-b-2">
                 {Menu.map(item =>
                 (<button
@@ -78,22 +42,28 @@ export default function TabShop(props) {
                 </button>))
                 }
             </div>
+            <div className="overflow-y-auto customScrollbar h-full flex-1 px-5 space-y-4">
+                {Menu.map(item => (
+                    <div
+                        key={item.id}
+                        
+                        className={`${item.color} panel  ${checkActive(item.id, "active nunito400 h-1/2")}`}
+                        
+                    >
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
 
-            {Menu.map(item => (
-                <div
-                    key={item.id}
 
-                    className={`${item.color} panel  ${checkActive(item.id, "active nunito400 overflow-y-auto customScrollbar h-full px-5 space-y-4")}`}
-                >
-                    <BannierFriend />
-                    <BannierFriend />
-                    <BannierFriend />
-                    <BannierFriend />
-                    <BannierFriend />
 
-                    
-                </div>))
-            }
+
+                    </div>))
+                }
+            </div>
+
 
 
 
