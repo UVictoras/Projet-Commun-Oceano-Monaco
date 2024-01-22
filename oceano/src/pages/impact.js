@@ -15,11 +15,11 @@ function Impact(props) {
 
     const openChat = () => {
         setChatOpen(true);
-        isSelected("chat","changedLightBlue");
+        isSelected("chat", "changedLightBlue");
     }
     const closeChat = () => {
         setChatOpen(false);
-        isSelected("chat","changedLightBlue");
+        isSelected("chat", "changedLightBlue");
     }
 
     useEffect(() => {
@@ -52,7 +52,7 @@ function Impact(props) {
 
     return <div className="impact">
         <Navbar />
-        {isChatOpen ? <Chat closeChat={closeChat} openChat={openChat}/>: ""}
+        {isChatOpen ? <Chat closeChat={closeChat} openChat={openChat} /> : ""}
         <div className="w-full flex">
             <div className="w-1/3 px-5 pt-5 action">
                 <h1 className="extraBold800 text-3xl text-center p-6">Mes actions</h1>
@@ -82,49 +82,53 @@ function Impact(props) {
                 </div>
                 <div className='space-y-4 h-2/3 customScrollbar overflow-y-auto'>
                     {EventShow.map((fav) => {
-                        return <ActionImpact event={fav} openChat={openChat} closeChat={closeChat} isChatOpen={isChatOpen}/>
+                        return <ActionImpact event={fav} openChat={openChat} closeChat={closeChat} isChatOpen={isChatOpen} />
                     })}
-                    
+
                 </div>
             </div>
-            <div className="w-1/3 px-9  stat heightImpact">
-                <div className="flex ">
-                    <h1 className="extraBold800 text-2xl text-center py-6 pr-6">12 derniers mois</h1>
-                    <button>
-                        <img src="img/impact/arrow.svg" alt="fleche make it blue" />
-                    </button>
-                </div>
-                <div className="space-y-6">
+            <div className="w-1/3 px-9  stat heightImpact space-y-6">
+                <div className="h-1/2">
+                    <div className="flex ">
+                        <h1 className="extraBold800 text-2xl text-center py-6 pr-6">12 derniers mois</h1>
+                        <button>
+                            <img src="img/impact/arrow.svg" alt="fleche make it blue" />
+                        </button>
+                    </div>
+
                     <div className="activity space-y-2 h-2/5">
                         <h2 className="extraBoldNunito text-[28px]">Activité</h2>
                         <div className="border-2 border-neutral-200 rounded-2xl flex justify-center px-2 py-8">
                             <img src="img/impact/graph.png" alt="graph make it blue" />
                         </div>
                     </div>
-                    <div className="figure space-y-3 h-2/5 ">
+                </div>
+                <div className="h-1/2">
+                    <div className="figure space-y-3  ">
                         <h2 className="extraBoldNunito text-[28px]">Chiffres clé</h2>
                         <div className="flex space-x-3 w-full ">
-                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 h-1/2 ">
                                 <p className="fontColor3C extraBoldNunito text-4xl">36</p>
                                 <p className="text-xl nunito500 greyText">animaux sauvés</p>
                             </div>
-                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2">
                                 <p className="fontColor3C extraBoldNunito text-4xl">12</p>
                                 <p className="text-xl nunito500 greyText">régions protégées</p>
                             </div>
                         </div>
                         <div className="flex space-x-3 w-full">
-                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2">
                                 <p className="fontColor3C extraBoldNunito text-4xl">4</p>
                                 <p className="text-xl nunito500 greyText">lieux nettoyés</p>
                             </div>
-                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-8">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2">
                                 <p className="fontColor3C extraBoldNunito text-4xl">5</p>
                                 <p className="text-xl nunito500 greyText">recherches soutenues</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div className="w-1/3 classement flex px-12 ">
                 <div className="w-full h-screen heightImpact">
