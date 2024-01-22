@@ -30,25 +30,26 @@ export default function TabShop(props) {
 
 
     return <>
-        <div className="mt-2 space-y-4 h-5/6">
-            <div className="border-b border-b-neutral-200 border-b-2">
-                {Menu.map(item =>
-                (<button
-                    key={item.id}
-                    className={`${checkActive(item.id, "w-1/3 text-lg blueTextColor extraBold800 pb-3 tabsActiveBorder uppercaseText")}`}
-                    onClick={() => handleClick(item.id)}>
-                    {item.title}
 
-                </button>))
-                }
-            </div>
-            <div className="overflow-y-auto customScrollbar h-full flex-1 px-5 space-y-4">
+        <div className="border-b border-b-neutral-200 border-b-2">
+            {Menu.map(item =>
+            (<button
+                key={item.id}
+                className={`${checkActive(item.id, "w-1/3 text-lg blueTextColor extraBold800 p-3 tabsActiveBorder uppercaseText")}`}
+                onClick={() => handleClick(item.id)}>
+                {item.title}
+
+            </button>))
+            }
+        </div>
+        <div className="h-[90%] mt-2 ">
+            <div className="overflow-y-auto customScrollbar h-full px-5 space-y-4">
                 {Menu.map(item => (
                     <div
                         key={item.id}
-                        
-                        className={`${item.color} panel  ${checkActive(item.id, "active nunito400 h-1/2")}`}
-                        
+
+                        className={`${item.color} panel  ${checkActive(item.id, "active nunito400 ")}`}
+
                     >
                         <BannierFriend />
                         <BannierFriend />
@@ -56,6 +57,17 @@ export default function TabShop(props) {
                         <BannierFriend />
                         <BannierFriend />
                         <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+                        <BannierFriend />
+
+
+
+
 
 
 
@@ -63,12 +75,8 @@ export default function TabShop(props) {
                     </div>))
                 }
             </div>
-
-
-
-
-
         </div>
+
     </>;
 }
 

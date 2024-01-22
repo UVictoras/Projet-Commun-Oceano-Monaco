@@ -87,7 +87,7 @@ function Impact(props) {
                     
                 </div>
             </div>
-            <div className="w-1/3 px-9 pt-6 stat h-3/5">
+            <div className="w-1/3 px-9  stat heightImpact">
                 <div className="flex ">
                     <h1 className="extraBold800 text-2xl text-center py-6 pr-6">12 derniers mois</h1>
                     <button>
@@ -101,7 +101,7 @@ function Impact(props) {
                             <img src="img/impact/graph.png" alt="graph make it blue" />
                         </div>
                     </div>
-                    {/* <div className="figure space-y-3 h-2/5 ">
+                    <div className="figure space-y-3 h-2/5 ">
                         <h2 className="extraBoldNunito text-[28px]">Chiffres clé</h2>
                         <div className="flex space-x-3 w-full ">
                             <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-9">
@@ -123,13 +123,13 @@ function Impact(props) {
                                 <p className="text-xl nunito500 greyText">recherches soutenues</p>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
             <div className="w-1/3 classement flex px-12 ">
-                <div className="w-full  ">
-                    <h2 className="extraBoldNunito text-[28px] py-2 ">Classement</h2>
-                    <div className="border-2 border-neutral-200 rounded-2xl h-4/6">
+                <div className="w-full h-screen heightImpact">
+                    <h2 className="extraBoldNunito text-[28px] mt-10 ">Classement</h2>
+                    <div className="border-2 border-neutral-200 rounded-2xl h-[85%] pb-6">
                         <TabImpact />
                     </div>
                 </div>

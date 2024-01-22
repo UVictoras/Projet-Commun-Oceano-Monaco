@@ -1,4 +1,3 @@
-import ActionFilter from "../../components/actionFilter";
 import Onedate from "../../components/pickonedate";
 
 export default function CreateEvent2() {
@@ -136,7 +135,9 @@ export default function CreateEvent2() {
                 </a>
             </div>
             <div className="w-1/2 ">
-                <button type="button" className="uppercaseText blueButtonEvent py-3 blackNunito text-base rounded-2xl text-white w-full mt-8 mr-auto ">Continuer</button>
+                <a href="createEventObj3" className="w-full flex">
+                    <button type="button" className="uppercaseText blueButtonEvent py-3 blackNunito text-base rounded-2xl text-white w-full mt-8 mr-auto ">Continuer</button>
+                </a>
             </div>
         </div>
 
