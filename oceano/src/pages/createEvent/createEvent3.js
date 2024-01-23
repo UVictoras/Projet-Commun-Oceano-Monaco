@@ -2,18 +2,18 @@ import { useState } from "react";
 import Onedate from "../../components/pickonedate";
 
 export default function CreateEvent3() {
-    const [imgSrc,setImgSrc] = useState("img/impact/addImage.png");
+    const [imgSrc, setImgSrc] = useState("img/impact/addImage.png");
 
     const changeImage = (event) => {
         const img = event.target.files[0];
         console.log(img)
-        if(img){
+        if (img) {
             setImgSrc(URL.createObjectURL(img))
-        }else{
+        } else {
             setImgSrc("img/impact/addImage.png")
         }
     }
-    
+
     return <div className="firsStep">
         <div className="top flex  border-b-2 border-neutral-200 p-4">
             <div className="w-1/3 flex items-center">
@@ -75,7 +75,7 @@ export default function CreateEvent3() {
                 <div className="border-2 border-neutral-200 rounded-2xl h-3/4 flex items-center justify-center">
                     <div className="space-y-8">
                         <div className="flex justify-center">
-                            <img src={imgSrc} alt="add image make it blue" className="w-32"/>
+                            <img src={imgSrc} alt="add image make it blue" className="w-32" />
                         </div>
                         <div>
                             <input type="file" hidden id="upload" onChange={changeImage} />
@@ -93,7 +93,9 @@ export default function CreateEvent3() {
                 </a>
             </div>
             <div className="w-1/2 ">
-                <button type="button" className="uppercaseText blueButtonEvent py-3 blackNunito text-base rounded-2xl text-white w-full mt-8 mr-auto ">Continuer</button>
+                <a href="createEventObj4" className="w-full flex justify-end">
+                    <button type="button" className="uppercaseText blueButtonEvent py-3 blackNunito text-base rounded-2xl text-white w-full mt-8 mr-auto ">Continuer</button>
+                </a>
             </div>
         </div>
 
