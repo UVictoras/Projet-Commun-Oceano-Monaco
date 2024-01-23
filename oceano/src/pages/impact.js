@@ -87,10 +87,10 @@ function Impact(props) {
 
                 </div>
             </div>
-            <div className="w-1/3 px-9  stat heightImpact space-y-6">
+            <div className="w-1/3 px-9  stat heightImpact">
                 <div className="h-1/2">
                     <div className="flex ">
-                        <h1 className="extraBold800 text-2xl text-center py-6 pr-6">12 derniers mois</h1>
+                        <h1 className="extraBold800 text-2xl text-center pb-9 mt-10 pr-6">12 derniers mois</h1>
                         <button>
                             <img src="img/impact/arrow.svg" alt="fleche make it blue" />
                         </button>
@@ -104,24 +104,24 @@ function Impact(props) {
                     </div>
                 </div>
                 <div className="h-1/2">
-                    <div className="figure space-y-3  ">
+                    <div className="figure space-y-3 pt-11">
                         <h2 className="extraBoldNunito text-[28px]">Chiffres clé</h2>
                         <div className="flex space-x-3 w-full ">
-                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 h-1/2 ">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 h-1/2 p-8">
                                 <p className="fontColor3C extraBoldNunito text-4xl">36</p>
                                 <p className="text-xl nunito500 greyText">animaux sauvés</p>
                             </div>
-                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-8">
                                 <p className="fontColor3C extraBoldNunito text-4xl">12</p>
                                 <p className="text-xl nunito500 greyText">régions protégées</p>
                             </div>
                         </div>
                         <div className="flex space-x-3 w-full">
-                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-8">
                                 <p className="fontColor3C extraBoldNunito text-4xl">4</p>
                                 <p className="text-xl nunito500 greyText">lieux nettoyés</p>
                             </div>
-                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2">
+                            <div className="border-2 border-neutral-200 rounded-2xl w-1/2 p-8">
                                 <p className="fontColor3C extraBoldNunito text-4xl">5</p>
                                 <p className="text-xl nunito500 greyText">recherches soutenues</p>
                             </div>
