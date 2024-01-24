@@ -15,11 +15,7 @@ import Signin from "./pages/signin.js";
 import Signup from "./pages/signup.js";
 import Shop from "./pages/shop.js";
 import Threadcontent from "./components/threadcontent.js";
-import CreateEvent from "./pages/createEvent/createEvent0.js";
-import CreateEvent1 from "./pages/createEvent/createEvent1.js";
-import CreateEvent2 from "./pages/createEvent/createEvent2.js";
-import CreateEvent3 from "./pages/createEvent/createEvent3.js";
-import CreateEvent4 from "./pages/createEvent/createEvent4.js";
+import CreateEventMain from "./pages/createEvent.js";
 
 
 
@@ -53,21 +49,10 @@ function App(props){
         <Route path="/community">
           <Community /> 
         </Route>
-        <Route path = "/createEvent">
-          <CreateEvent/>
+        <Route path="/createEvent">
+          <CreateEventMain/>
         </Route>
-        <Route path="/createEventObj">
-          <CreateEvent1/>
-        </Route>
-        <Route path="/createEventObj2">
-          <CreateEvent2/>
-        </Route>
-        <Route path="/createEventObj3">
-          <CreateEvent3/>
-        </Route>
-        <Route path="/createEventObj4">
-          <CreateEvent4/>
-        </Route>
+
         <Route exact path="/threadcontent">
           <Threadcontent /> 
         </Route>
