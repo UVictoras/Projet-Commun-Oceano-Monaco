@@ -1,5 +1,7 @@
-export default function CreateEvent() {
-    return <div className="newEvent h-full ">
+import ActionFilter from "../../components/actionFilter";
+
+export default function CreateEvent1() {
+    return <div className="firsStep">
         <div className="top flex border-b-2 border-neutral-200 p-4">
             <div className="w-1/3 flex items-center">
                 <button type="button">
@@ -15,15 +17,19 @@ export default function CreateEvent() {
                 </button>
             </div>
         </div>
-        <div className="main flex mt-20 ">
-            <div className="w-1/3 flex justify-center mt-20">
+        <div className="main flex mt-20 h-full ">
+            <div className="w-1/3 flex justify-center items-center mt-20">
                 <ol class="relative border-s-2 border-[#1CB0F6]">
                     <li class="mb-24 ms-4 flex items-center ">
-                        <div class="absolute w-9 h-9 backBlue rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
+                        <span class="absolute flex items-center justify-center bg-white w-9 h-9 rounded-full -start-[1.125rem] border-2 border-[#1CB0F6] ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="13" viewBox="0 0 18 13" fill="none">
+                                <path d="M2 6.61538L5.98972 10.9997C6.47798 11.5362 7.32202 11.5362 7.81028 10.9997L16 2" stroke="#1CB0F6" stroke-width="3" stroke-linecap="round" />
+                            </svg>
+                        </span>
                         <p class=" text-xl text-[#9F9FA4] semiBoldNunito ml-4">Description</p>
                     </li>
                     <li class="mb-24 ms-4 flex items-center">
-                        <div class="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
+                        <div class="absolute w-9 h-9  backBlue bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
                         <p class="text-xl leading-none text-[#9F9FA4] semiBoldNunito ml-4">Type d'action</p>
                     </li>
                     <li class="mb-24 ms-4 flex items-center">
@@ -39,33 +45,25 @@ export default function CreateEvent() {
                         <p class="text-xl text-[#9F9FA4] semiBoldNunito ml-4">Confirmation</p>
                     </li>
                 </ol>
-
             </div>
             <div className="w-1/2">
-                <h1 className="text-5xl extraBoldNunito fontColor3C">
-                    Dis-nous ce que tu souhaites <br /> changer
-                </h1>
-                <p className="text-[#9F9FA4] semiBoldNunito text-2xl py-4">Sois le plus précis possible dans ce que tu dis !</p>
-
-                <form className="mt-10">
-                    <p className="fontColor3C extraBoldNunito text-2xl">Je souhaite...</p>
-                    <input className="w-full border-2 border-neutral-200 rounded-2xl p-3 pl-5 mt-3" placeholder="Que la pêche aux baleines soit interdite dans les eaux protégées du Pacifique.">
-                    </input>
-                    <p className="fontColor3C extraBoldNunito text-2xl mt-11">Dites-nous en plus sur votre engagement</p>
-                    <textarea
-                        id="message"
-                        rows="6" class="block p-2.5 w-full rounded-2xl border-2 border-neutral-200 mt-3"
-                        placeholder="On adore les baleines donc on veut les sauver ! " />
-
-                </form>
+                
 
             </div>
+
         </div>
-        <div className="w-5/6 flex justify-end">
-            <a href="createEventObj" className="w-3/5 flex">
-                <button type="button" className="uppercaseText blueButtonEvent py-3 blackNunito text-base rounded-2xl text-white w-full mt-8 mr-auto ">Continuer</button>
-            </a>
+        <div className="flex  w-full ">
+            <div className="w-2/6">
+                <a href="createEvent" className="w-full flex justify-end">
+                    <button type="button" className="uppercaseText whiteButtonAll blueTextColor blackNunito text-base py-3 rounded-2xl text-white w-1/2 mt-8 mr-9 ">Précédent</button>
+                </a>
+            </div>
+            <div className="w-1/2 ">
+                <a href="createEventObj2" className="w-full flex">
+                    <button type="button" className="uppercaseText blueButtonEvent py-3 blackNunito text-base rounded-2xl text-white w-full mt-8 mr-auto ">Continuer</button>
+                </a>
+            </div>
         </div>
 
-    </div>
+    </div >
 }
