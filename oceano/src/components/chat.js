@@ -23,7 +23,7 @@ export default function Chat(props) {
             </div>
 
             <div className="flex items-center justify-end w-1/2 p-6">
-                <button onClick={props.closeChat} className="">
+                <button onClick={props.handleChat} className="">
                     <img src="img/icon/exit.png" alt="croix make it blue" className="" />
                 </button>
             </div>

@@ -1,7 +1,5 @@
-import { isSelected } from "../utils/webFunction";
-
 export default function ActionImpact(props) {
-    return <button id="chat" className="border-2 w-full rounded-2xl flex space-x-7 hover:bg-neutral-200" onClick={props.isChatOpen?props.closeChat:props.openChat}>
+    return <button id="chat" className="border-2 w-full rounded-2xl flex space-x-7 hover:bg-neutral-200" onClick={props.handleChat}>
         <div className="w-1/3">
             <img src={props.event.Image} alt="dolphin make it blue" className="h-[196px] w-[196px] rounded-2xl object-cover " />
         </div>

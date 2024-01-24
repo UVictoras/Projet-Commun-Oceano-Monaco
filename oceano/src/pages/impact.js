@@ -1,31 +1,29 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
-import { getFavoriteEvent, getTypeEvent } from "../api/event";
+import { getLastEvent, getTypeEvent } from "../api/event";
 import TabImpact from "../components/tabsImpact";
 import Chat from "../components/chat";
 import ActionImpact from "../components/actionImpact";
 import { isSelected } from "../utils/webFunction";
 
 function Impact(props) {
-    const [favoriteEvent, setfavoriteEvent] = useState([]);
+    const [events, setEvents] = useState([]);
     const [EventShow, setEventShow] = useState([]);
     const [typeEvent, settypeEvent] = useState([]);
     const [triTypes, settriTypes] = useState("all");
     const [isChatOpen, setChatOpen] = useState(false);
 
-    const openChat = () => {
-        setChatOpen(true);
-        isSelected("chat", "changedLightBlue");
-    }
-    const closeChat = () => {
-        setChatOpen(false);
+    const handleChat = () => {
+        console.log(isChatOpen);
+        setChatOpen(!isChatOpen);
         isSelected("chat", "changedLightBlue");
     }
 
+
     useEffect(() => {
-        const favoriteEventFetched = getFavoriteEvent({ id: 1 });
-        favoriteEventFetched
-            .then(result => setfavoriteEvent(result))
+        const eventsFetched = getLastEvent({ id: 1 });
+        eventsFetched
+            .then(result => setEvents(result))
             .catch(error => console.error("Error :", error.message))
 
         const typeEventFetched = getTypeEvent();
@@ -36,11 +34,11 @@ function Impact(props) {
 
     useEffect(() => {
         if (triTypes === "all") {
-            setEventShow(favoriteEvent)
+            setEventShow(events)
         } else {
-            setEventShow(favoriteEvent.filter(fav => fav.Name === triTypes))
+            setEventShow(events.filter(event => event.Name === triTypes))
         }
-    }, [triTypes, favoriteEvent])
+    }, [triTypes, events])
 
     const handleClick = (typeName) => {
         if (typeName === triTypes) {
@@ -52,7 +50,7 @@ function Impact(props) {
 
     return <div className="impact">
         <Navbar />
-        {isChatOpen ? <Chat closeChat={closeChat} openChat={openChat} /> : ""}
+        {isChatOpen ? <Chat handleChat={handleChat} /> : ""}
         <div className="w-full flex">
             <div className="w-1/3 px-5 pt-5 action">
                 <h1 className="extraBold800 text-3xl text-center p-6">Mes actions</h1>
@@ -81,8 +79,8 @@ function Impact(props) {
                     </div>
                 </div>
                 <div className='space-y-4 h-2/3 customScrollbar overflow-y-auto'>
-                    {EventShow.map((fav) => {
-                        return <ActionImpact event={fav} openChat={openChat} closeChat={closeChat} isChatOpen={isChatOpen} />
+                    {EventShow.map((event) => {
+                        return <ActionImpact event={event} handleChat={handleChat} />
                     })}
 
                 </div>
