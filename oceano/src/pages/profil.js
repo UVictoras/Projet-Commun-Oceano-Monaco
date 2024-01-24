@@ -136,7 +136,7 @@ function Profile(props) {
                 <div className="action border-2 border-neutral-200 rounded-2xl">
                     <div className="mx-8 my-8">
                         <div className="imgBanner h-full  rounded-xl flex items-center">
-                            <img src="img/profil/thunder.svg" className="px-8 pb-7" alt="thunder make it blue" />
+                            <img src="img/profil/thunder.svg" className="px-8" alt="thunder make it blue" />
                             <div className="p-4">
                                 <p className="extraBold800 text-white text-4xl">{lastEvent.length}</p>
                                 <p className="text-white extraBoldNunito text-base">Actions menées</p>
