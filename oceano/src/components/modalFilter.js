@@ -22,21 +22,21 @@ export default function ModalFilter(props) {
                 <div className="filter flex space-x-5 mt-5">
                     <div className="space-y-4">
                         <div className="flex space-x-2">
-                            <ActionFilter id={"donation"} index={"changedYellow"} />
+                            <ActionFilter id={"donation"} index={"changedYellow"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
 
-                            <ActionFilter id={"donne"} index={"changedYellow"} />
-
-                        </div>
-                        <div className="flex space-x-2">
-                            <ActionFilter id={"dechet"} index={"changedGreen"} />
-
-                            <ActionFilter id={"petition"} index={"changedGreen"} />
+                            <ActionFilter id={"donne"} index={"changedYellow"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
 
                         </div>
                         <div className="flex space-x-2">
-                            <ActionFilter id={"donation"} index={"changedYellow"} />
+                            <ActionFilter id={"dechet"} index={"changedGreen"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
 
-                            <ActionFilter id={"marche"} index={"changedBlue"} />
+                            <ActionFilter id={"petition"} index={"changedGreen"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
+
+                        </div>
+                        <div className="flex space-x-2">
+                            <ActionFilter id={"donation"} index={"changedYellow"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
+
+                            <ActionFilter id={"marche"} index={"changedBlue"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
 
                         </div>
                     </div>

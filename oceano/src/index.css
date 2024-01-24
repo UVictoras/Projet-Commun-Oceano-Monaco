@@ -4,13 +4,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
 
+:root {
+  --heightNavbar: calc(100vh - (4rem + 2px));
+}
+
 .body {
   margin: 0 !important;
   padding: 0 !important;
 }
 
 #display-canvas {
-  height: calc(100vh - (4rem + 2px));
+  height: var(--heightNavbar);
   vertical-align: middle !important;
 }
 
@@ -30,7 +34,7 @@
   font-weight: 600;
 }
 
-.extraBoldNunito{
+.extraBoldNunito {
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
 }
@@ -61,6 +65,17 @@
   color: #4B4B4B;
 }
 
+.blueButtonEvent {
+  background-color: #1CB0F6;
+  filter: drop-shadow(0px 4px 0px #1899D6);
+}
+
+.blueButtonEvent:active {
+  /* box-shadow: 0 5px #666; */
+  filter: drop-shadow(0px 0px 0px #1899D6);
+  transform: translateY(4px);
+}
+
 .blueButton {
   background-color: #1CB0F6;
   height: 50px !important;
@@ -72,6 +87,7 @@
   filter: drop-shadow(0px 0px 0px #1899D6);
   transform: translateY(4px);
 }
+
 
 .whiteButton {
   filter: drop-shadow(0px 4px 0px #e5e5e5);
@@ -103,18 +119,28 @@ input[type=email],
 input[type=password] {
   background-color: #E5E5E5;
 }
-.badgeColor{
+
+.badgeColor {
   background-color: #D9D9D9;
 }
-.colorE5{
-  background-color: #E5E5E5;;
+
+.colorE5 {
+  background-color: #E5E5E5;
+  ;
 }
-.colorD3{
-  color:#D3D3D3;
+
+.colorD3 {
+  color: #D3D3D3;
 }
+
+.colorAE {
+  color: #AEAEAE;
+}
+
 /********************* CSS pour les modal *****************/
 
-.loune:before, .loune:after {
+.loune:before,
+.loune:after {
   display: block;
   position: absolute;
   content: "" !important;
@@ -127,6 +153,7 @@ input[type=password] {
 .loune:after {
   left: 65%;
 }
+
 /********************* CSS Navbar **************************/
 .fontTarget {
   color: #FA4A4E
@@ -159,35 +186,42 @@ input[type=password] {
 }
 
 /********************* CSS Profil **************************/
-.levelBarColor{
+.levelBarColor {
   background-color: #D81F26;
   /* width: 50% !important; */
   height: 16px !important;
 }
-.textProfilColorRed{
+
+.textProfilColorRed {
   color: #D81F26;
 }
-.imgBanner{
+
+.imgBanner {
   background-image: url(../public/img/profil/allActionBanner.svg);
   background-repeat: no-repeat;
-  background-size:100%;
+  background-size: 100%;
 }
-.myActionYellowColor{
+
+.myActionYellowColor {
   background-color: #FFD600;
 }
-.myActionGreyColor{
+
+.myActionGreyColor {
   background-color: #D1D1D1;
 }
-.profilPosition{
+
+.profilPosition {
   top: -80px !important;
   right: -40px !important;
 }
-.resizeImage{
+
+.resizeImage {
   width: 100px !important;
   height: 100% !important;
   object-fit: cover !important;
 }
-.test2{
+
+.test2 {
   width: 100% !important;
   height: 99% !important;
   object-fit: cover !important;
@@ -223,7 +257,7 @@ input[type=password] {
 .likeButton:active {
   border: solid;
   transform: translateY(4px);
-  content: url(../public/img/icon/hearth/hearth.svg);
+  content: url(../public/img/icon/hearth/hearth.png);
 }
 
 .locateButton {
@@ -251,7 +285,8 @@ input[type=password] {
 .filterButton:active>.rotateFilter {
   transform: rotate(180deg);
 }
-.plus{
+
+.plus {
   border-color: #d1d5db !important;
   border: solid;
   border-width: 3px 3px 6px 3px;
@@ -301,32 +336,38 @@ input[type=password] {
 .horizontalScrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .customScrollbar {
-  
+
   scrollbar-width: thin !important;
   scrollbar-color: #4a5568 #cbd5e0 !important;
 }
 
-.customScrollbar::-webkit-scrollbar, ::-webkit-scrollbar{
+.customScrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
   width: 6px;
 }
 
-.customScrollbar::-webkit-scrollbar-track, ::-webkit-scrollbar-track{
+.customScrollbar::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
   background: #E5E5E5;
   border-radius: 20px;
 }
 
-.customScrollbar::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb{
+.customScrollbar::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
   background-color: #9D9D9D;
   border-radius: 20px;
 }
 
-.heartPlace{
-  top: -66px  !important;
+.heartPlace {
+  top: -66px !important;
 }
-.buttonPlace{
+
+.buttonPlace {
   bottom: 80px !important;
 }
+
 /********************* CSS Signin  *************************/
 .line:before,
 .line:after {
@@ -343,6 +384,19 @@ input[type=password] {
   left: 54%;
 }
 
+/********************* CSS pour la création d'event *********/
+.whiteButtonAll {
+  border-color: #E5E5E5 !important;
+  border: solid;
+  border-width: 2px 2px 4px 2px;
+}
+
+.whiteButtonAll:active {
+  border: solid;
+  transform: translateY(2px);
+}
+
+
 /********************* CSS pour le loading screen **********/
 
 .loader {
@@ -350,21 +404,30 @@ input[type=password] {
   --r2: 68.5%;
   width: 80px;
   aspect-ratio: 1;
-  border-radius: 50%; 
+  border-radius: 50%;
   background:
-    radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#269af2 80%),
-    radial-gradient(var(--r1) var(--r2) at bottom,#269af2 79.5%,#0000 80%),
-    radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#269af2 80%),
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%),
+    radial-gradient(var(--r1) var(--r2) at bottom, #269af2 79.5%, #0000 80%),
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%),
     #ccc;
   background-size: 50.5% 220%;
-  background-position: -100% 0%,0% 0%,100% 0%;
-  background-repeat:no-repeat;
+  background-position: -100% 0%, 0% 0%, 100% 0%;
+  background-repeat: no-repeat;
   animation: l9 4s infinite linear;
 }
+
 @keyframes l9 {
-    33%  {background-position:    0% 33% ,100% 33% ,200% 33% }
-    66%  {background-position: -100%  66%,0%   66% ,100% 66% }
-    100% {background-position:    0% 100%,100% 100%,200% 100%}
+  33% {
+    background-position: 0% 33%, 100% 33%, 200% 33%
+  }
+
+  66% {
+    background-position: -100% 66%, 0% 66%, 100% 66%
+  }
+
+  100% {
+    background-position: 0% 100%, 100% 100%, 200% 100%
+  }
 }
 
 
@@ -375,31 +438,83 @@ input[type=password] {
   border-width: 2px 2px 2px 2px;
 }
 
-.changedYellow{
+.changedYellow {
   background-color: #FFF8D6;
-  border:  solid  #FFE68B !important;
+  border: solid #FFE68B !important;
   border-width: 2px !important;
 }
-.changedGreen{
+
+.changedGreen {
   background-color: #E9FFEF;
-  border:  solid  #65B77C !important;
+  border: solid #65B77C !important;
   border-width: 2px !important;
 }
-.changedBlue{
+
+.changedBlue {
   background-color: #E9EEFF;
-  border:  solid  #7593FF !important;
-  border-width: 2px !important; 
+  border: solid #7593FF !important;
+  border-width: 2px !important;
 }
-.changedCreator{
+
+.changedCreator {
   background-color: #E2EEF4;
-  border:  solid  #1CB0F6 !important;
-  border-width: 2px !important; 
+  border: solid #1CB0F6 !important;
+  border-width: 2px !important;
 }
 
 /********************* CSS pour la page Impact *************/
-.bottomImpact{
+.changedLightBlue {
+  background-color: #E2EEF4;
+  border: solid #1CB0F6 !important;
+  border-width: 2px !important;
+}
+
+.bottomImpact {
   bottom: 10% !important;
 }
+
+.backgroundE45757 {
+  background-color: #E45757;
+}
+
+.backgroundChat {
+  position: absolute !important;
+  margin-top: 1.25rem !important;
+  right: 0 !important;
+  margin-right: 1rem !important;
+  background-color: white;
+  z-index: 20 !important;
+  width: 65%;
+  height: 90%;
+  border-radius: 1rem;
+  border: 2px solid #E5E5E5;
+}
+
+.plusButton {
+  border: solid #E1E1E1;
+  border-width: 2px 2px 4px 2px;
+}
+
+.plusButton:active {
+  border: solid #E1E1E1;
+  transform: translateY(2px);
+}
+
+.inputChat {
+  border: 2px solid #E1E1E1;
+}
+
+.backBlue {
+  background-color: #1CB0F6;
+}
+
+.backGrey {
+  background-color: #F0F0F0;
+}
+.heightImpact{
+  height: var(--heightNavbar);
+}
+
 /********************* CSS pour les labels *****************/
 .SDK3DVerse-viewport-container {
   top: 4rem !important;
@@ -427,7 +542,7 @@ input[type=password] {
 
 .label-container.active .label,
 .label-container:hover .label,
-.label-container:focus .label{
+.label-container:focus .label {
   width: 80px;
   height: 40px;
   background-color: white;
@@ -569,4 +684,76 @@ input[type=password] {
 .label-container:focus .attendees,
 .label-container:focus .attendees-txt {
   display: block;
+}
+
+/********************* CSS pour le shop  *****************/
+
+.custom-shop-item {
+  width: 235px;
+  height: 100%;
+  border: 2px solid #E5E5E5;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 18.814px
+}
+
+.top-section {
+  border-radius: 18.814px 18.814px 0px 0px;
+  background: #3CB532;
+}
+
+.center-section {
+  height: 100%;
+  position: relative;
+  /* Ajout de position relative */
+}
+
+.center-image {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: -20px;
+  /* Ajustez cette valeur pour la superposition */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopButton {
+  border-radius: 18.814px;
+  border: 2.258px solid #1CB0F6;
+  background: #1CB0F6;
+  filter: drop-shadow(0px 4px 0px #1899D6);
+}
+
+.shopButton:active {
+  filter: drop-shadow(0px 0px 0px #1899D6);
+  transform: translateY(4px);
+}
+
+
+.shopText {
+  color: #FDC62E
+}
+
+.lineShop:before,
+.lineShop:after {
+  display: block;
+  position: absolute;
+  content: "" !important;
+  border-top-width: 1px !important;
+  top: 50%;
+  width: 42%;
+  border-color: #E5E5E5 !important;
+}
+
+.lineShop:after {
+  left: 58%;
 }

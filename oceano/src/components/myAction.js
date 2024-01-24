@@ -8,13 +8,17 @@ export default function MyAction(props) {
             let Pct = (props.type.NbEvents / props.nbEvents) * 100
             progressBar.style.width = `${Pct}%`;
         }
-    },[props.type]);
+    }, [props.type]);
 
     return <div className=" ">
-        <div className="myActionGreyColor rounded-2xl">
-            <div id={"progressBarEvent" + props.type.Name} className="myActionYellowColor rounded-2xl h-11 flex items-center">
-                <div>
-                    <img src={props.type.Logo} className="h-3.5 mx-3.5 " alt="coin make it blue"/>
+        <div className="myActionGreyColor flex items-center rounded-2xl relative">
+            <div id={"progressBarEvent" + props.type.Name} className="myActionYellowColor rounded-2xl h-11 flex items-center ">
+
+            </div>
+            <div className="absolute flex items-center w-full">
+                <img src={props.type.Logo} className="h-3.5 mx-3.5 " alt="coin make it blue" />
+                <div className="w-2/3">
+                    <p className="text-white w-2/3 extraBoldNunito text-xl whitespace-nowrap">{props.type.Name}</p>
                 </div>
                 <div class =" flex items-center space-x-80">
                     <div className="">                    

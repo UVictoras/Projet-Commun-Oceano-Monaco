@@ -35,7 +35,7 @@ function Above(props) {
     },[])
     return <div className="Act ">
 
-        <div className="searchAndBell flex absolute left-12 mt-10">
+        <div className="searchAndBell flex absolute left-12 mt-10 z-30">
             <button className="w-[60px] h-[60px] p-3 rounded-2xl bg-white flex items-center bellButton" onClick={openNotif}>
                 <img src="img/icon/bell/bell.png" className="changeBell" alt="make it blue" />
             </button>
@@ -43,10 +43,10 @@ function Above(props) {
         {isNotifOpen ? <ModalNotif closeNotif={closeNotif} /> : ""}
 
 
-        <div className="mt-10 flex left-1/2 centerIcon justify-center absolute ">
+        <div className="mt-10 flex left-1/2 centerIcon justify-center absolute z-30">
             <Searchbar />
         </div>
-        <div className="objectiv absolute bg-white border-2 border-normal-200 rounded-lg bottom-12 left-12 w-[435px]">
+        <div className="objectiv absolute bg-white border-2 border-normal-200 rounded-lg bottom-12 left-12 w-[435px] z-30">
             <div className="flex items-end">
                 <div className="flex mt-4 items-center extraBold800 ml-[32px] mr-[30px] w-2/3">
                     <h1 className="ml-3 text-[21px]">Objectifs</h1>
@@ -76,13 +76,13 @@ function Above(props) {
         </div>
         {isModalOpen ? <Modal closeModal={closeModal} isClicked={isClicked} event={event[0]}/>: ""}
 
-        <div className="bottomIcon flex items-end absolute bottom-8 left-1/2 centerIcon space-x-3 ">
+        <div className="bottomIcon flex items-end absolute bottom-8 left-1/2 centerIcon space-x-3 z-30">
 
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center locateButton  z-20" onClick={() => openModal("event")}>
                 <img src="img/icon/locate.svg" alt="locate make it blue" />
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center likeButton z-20" onClick={() => openModal("like")}>
-                <img src="img/icon/hearth/hearthGrey.svg" alt="coeur Make it blue" />
+                <img src="img/icon/hearth/hearthGrey.png" alt="coeur Make it blue" />
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center filterButton z-20 " onClick={() => openModal("filter")}>
 
@@ -90,7 +90,7 @@ function Above(props) {
             </button>
         </div>
 
-        <div className="network absolute bottom-12 right-11 space-y-6">
+        <div className="network absolute bottom-12 right-11 space-y-6 z-30">
 
             <img src="img/icon/network/twitter.svg" alt="twitter make it blue" />
 

@@ -15,10 +15,11 @@ function Searchbar(props) {
             </form>
         </div>
         <div className="flex ">
-            <button className="bg-white flex items-center justify-center filterButton rounded-xl w-[60px] h-[60px]">
-                <img src="img/icon/plus.svg" alt="add make it blue"/>
-            </button>
-
+            <a href="createEvent">
+                <button className="bg-white flex items-center justify-center filterButton rounded-xl w-[60px] h-[60px]">
+                    <img src="img/icon/plus.svg" alt="add make it blue" />
+                </button>
+            </a>
         </div>
 
     </div>

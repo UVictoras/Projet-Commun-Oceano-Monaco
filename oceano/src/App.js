@@ -1,7 +1,6 @@
 import Act from "./pages/act.js"
 import Impact from "./pages/impact.js";
 import Community from "./pages/community.js";
-import Test from "./pages/test.js"
 import Profile from "./pages/profil.js";
 import React, {useState} from 'react'
 
@@ -11,13 +10,17 @@ import {
   Route 
 } from "react-router-dom"
 
-import { Anim, createImgTag } from "./utils/3DVerse.js";
 import FirstPage from "./pages/firstPage.js";
-import LoadingScreen from "./pages/loadingScreen.js";
 import Signin from "./pages/signin.js";
 import Signup from "./pages/signup.js";
 import Shop from "./pages/shop.js";
 import Threadcontent from "./components/threadcontent.js";
+import CreateEvent from "./pages/createEvent/createEvent0.js";
+import CreateEvent1 from "./pages/createEvent/createEvent1.js";
+import CreateEvent2 from "./pages/createEvent/createEvent2.js";
+import CreateEvent3 from "./pages/createEvent/createEvent3.js";
+import CreateEvent4 from "./pages/createEvent/createEvent4.js";
+
 
 
 const SDK3DVerse = window.SDK3DVerse;
@@ -29,9 +32,6 @@ function App(props){
         <Route exact path="/">
           <FirstPage /> 
         </Route>
-        {/* <Route exact path="/loading">
-          <LoadingScreen /> 
-        </Route> */}
         <Route path ="/act">
           <Act/>
         </Route>
@@ -53,8 +53,20 @@ function App(props){
         <Route path="/community">
           <Community /> 
         </Route>
-        <Route exact path="/test">
-          <Test /> 
+        <Route path = "/createEvent">
+          <CreateEvent/>
+        </Route>
+        <Route path="/createEventObj">
+          <CreateEvent1/>
+        </Route>
+        <Route path="/createEventObj2">
+          <CreateEvent2/>
+        </Route>
+        <Route path="/createEventObj3">
+          <CreateEvent3/>
+        </Route>
+        <Route path="/createEventObj4">
+          <CreateEvent4/>
         </Route>
         <Route exact path="/threadcontent">
           <Threadcontent /> 

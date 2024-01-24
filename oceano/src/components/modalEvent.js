@@ -10,16 +10,16 @@ export default function ModalEvent(props) {
             </button>
             <div className='flex justify-end pr-5'>
                 <button className='relative border-2 bg-white border-neutral-200 rounded-full p-4 heartPlace'>
-                    <img src='img/icon/hearth/hearth.svg' alt='hearth make it blue' className='w-6 re' />
+                    <img src='img/icon/hearth/hearth.png' alt='hearth make it blue' className='w-6 re' />
                 </button>
             </div>
         </div>
 
-        <div className='mx-10 '>
+        <div className='mx-10 mt-5 '>
             <h2 class="text-[28px] extraBold800">{props.event.Title}</h2>
             <p className='greyText'>Lancé par <span className='blueTextColor semiBoldNunito'>{props.event.Pseudo}</span></p>
             <div className='mt-5 flex'>
-                <div className='donationDate w-2/3 flex space-x-2.5'>
+                <div className='donationDate w-2/3 flex space-x-1.5'>
                     <div className='donation px-4 rounded-2xl flex items-center justify-center space-x-2 '>
                         <img src={props.event.Logo} alt='coin make it blue' className='w-4' />
                         <p className='text-sm extraBoldNunito'>{props.event.Name}</p>
