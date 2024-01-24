@@ -3,7 +3,7 @@ import Navbar from "../components/navbar"
 
 
 function Community(props){
-    return <div className="Commmunity">
+    return <div className="Commmunity space space-y-10">
     <Navbar/>
     <Thread/>
     <Thread/>
