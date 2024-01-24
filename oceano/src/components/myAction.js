@@ -20,20 +20,10 @@ export default function MyAction(props) {
                 <div className="w-2/3">
                     <p className="text-white w-2/3 extraBoldNunito text-xl whitespace-nowrap">{props.type.Name}</p>
                 </div>
-                <div class =" flex items-center space-x-80">
-                    <div className="">                    
-                        <p className="text-white w-2/3 extraBoldNunito text-xl whitespace-nowrap">{props.type.Name}</p>                  
-                    </div>
-                    <div className="">
-                        
-                        <p className="text-white  extraBoldNunito text-xl">{props.type.NbEvents}</p>
-                    
-                    </div>
-                    
-                </div>               
-                
+                <div className="flex justify-end w-1/3 px-3">
+                    <p className="text-white extraBoldNunito text-xl">{props.type.NbEvents}</p>
+                </div>
             </div>
-             
         </div>
     </div>
 }
