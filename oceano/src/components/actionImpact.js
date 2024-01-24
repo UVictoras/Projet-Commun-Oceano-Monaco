@@ -8,7 +8,7 @@ export default function ActionImpact(props) {
                 <h2 className="extraBold800 text-base fontColor3C text-start">{props.event.Title}</h2>
             </div>
             <p className="nunito400 fontColor3C text-sm  text-start p-2">{props.event.Description}</p>
-            <div className='donationDate flex space-x-2.5 my-4'>
+            <div className='donationDate flex space-x-2.5 mt-2'>
                 <div className='changedYellow p-2 rounded-2xl flex items-center justify-center space-x-2 '>
                     <img src={props.event.Logo} alt='coin make it blue' className='w-5' />
                     <p className='text-sm extraBoldNunito'>{props.event.Name}</p>
