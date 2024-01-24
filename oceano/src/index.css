@@ -320,6 +320,10 @@ input[type=password] {
   background-color: #FFF8D6;
   border: 2.118px solid #FFE68B;
 }
+.donation {
+  background-color: #65B77C;
+  border: 2.118px solid #E9FFEF;
+}
 
 .panel {
   display: none;

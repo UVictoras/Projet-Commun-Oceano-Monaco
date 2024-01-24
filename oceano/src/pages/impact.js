@@ -130,8 +130,8 @@ function Impact(props) {
             </div>
             <div className="w-1/3 classement flex px-12 ">
                 <div className="w-full h-screen heightImpact">
-                    <h2 className="extraBoldNunito text-[28px] mt-10 ">Classement</h2>
-                    <div className="border-2 border-neutral-200 rounded-2xl h-[85%] pb-6">
+                    <h2 className="extraBoldNunito text-[28px] mt-24 py-2.5 ">Classement</h2>
+                    <div className="border-2 border-neutral-200 rounded-2xl h-[74%] pb-6">
                         <TabImpact />
                     </div>
                 </div>
