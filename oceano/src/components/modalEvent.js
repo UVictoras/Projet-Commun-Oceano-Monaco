@@ -20,7 +20,7 @@ export default function ModalEvent(props) {
             <p className='greyText'>Lancé par <span className='blueTextColor semiBoldNunito'>{props.event.Pseudo}</span></p>
             <div className='mt-5 flex'>
                 <div className='donationDate w-2/3 flex space-x-1.5'>
-                    <div className='donation px-4 rounded-2xl flex items-center justify-center space-x-2 '>
+                    <div className={props.event.Color + ' px-4 rounded-2xl flex items-center justify-center space-x-2 '}>
                         <img src={props.event.Logo} alt='coin make it blue' className='w-4' />
                         <p className='text-sm extraBoldNunito'>{props.event.Name}</p>
                     </div>

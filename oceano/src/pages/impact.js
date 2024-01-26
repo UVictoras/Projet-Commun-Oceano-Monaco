@@ -12,13 +12,22 @@ function Impact(props) {
     const [typeEvent, settypeEvent] = useState([]);
     const [triTypes, settriTypes] = useState("all");
     const [isChatOpen, setChatOpen] = useState(false);
+    const [chatEvent, setChatEvent] = useState([]);
 
-    const handleChat = () => {
-        console.log(isChatOpen);
-        setChatOpen(!isChatOpen);
+    const openChat = (event) => {
+        setChatOpen(true);
+        isSelected("chat", "changedLightBlue");
+        setChatEvent(event)
+    }
+    const closeChat = () => {
+        setChatOpen(false);
         isSelected("chat", "changedLightBlue");
     }
 
+    // const handleChat = () => {
+    //     setChatOpen(!isChatOpen);
+    //     isSelected("chat", "changedLightBlue");
+    // }
 
     useEffect(() => {
         const eventsFetched = getLastEvent({ id: 1 });
@@ -36,21 +45,25 @@ function Impact(props) {
         if (triTypes === "all") {
             setEventShow(events)
         } else {
-            setEventShow(events.filter(event => event.Name === triTypes))
+            setEventShow(events.filter(event => event.Name === triTypes.Name))
         }
     }, [triTypes, events])
 
-    const handleClick = (typeName) => {
-        if (typeName === triTypes) {
+    const handleClick = (type) => {
+        if (type === triTypes) {
             settriTypes("all")
         } else {
-            settriTypes(typeName)
+            settriTypes(type)
+            if(triTypes != "all"){
+                isSelected(triTypes.Name, triTypes.Color)
+            }
         }
+        isSelected(type.Name, type.Color)
     };
 
     return <div className="impact">
         <Navbar />
-        {isChatOpen ? <Chat handleChat={handleChat} /> : ""}
+        {isChatOpen ? <Chat closeChat={closeChat} event={chatEvent} /> : ""}
         <div className="w-full flex">
             <div className="w-1/3 px-5 pt-5 action">
                 <h1 className="extraBold800 text-3xl text-center p-6">Mes actions</h1>
@@ -70,7 +83,7 @@ function Impact(props) {
                     <div className='filter overflow-x-auto horizontalScrollbar   whitespace-nowrap '>
                         <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
                             {typeEvent.map((type) => {
-                                return <button onClick={() => handleClick(type.Name)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
+                                return <button id={type.Name} onClick={() => handleClick(type)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
                                     <img src={type.Logo} alt='petition make it blue' className='w-4 ml-2' />
                                     <p className='text-sm extraBoldNunito px-3'>{type.Name}</p>
                                 </button>
@@ -80,7 +93,7 @@ function Impact(props) {
                 </div>
                 <div className='space-y-4 h-2/3 customScrollbar overflow-y-auto'>
                     {EventShow.map((event) => {
-                        return <ActionImpact event={event} handleChat={handleChat} />
+                        return <ActionImpact event={event} openChat={() => openChat(event)} closeChat={closeChat} isChatOpen={isChatOpen} />
                     })}
 
                 </div>
