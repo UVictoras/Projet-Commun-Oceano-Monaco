@@ -43,12 +43,12 @@ export default function TabShop(props) {
             }
         </div>
         <div className="h-[90%] mt-2 ">
-            <div className="overflow-y-auto customScrollbar h-full px-5 space-y-4">
+            <div className="overflow-y-auto customScrollbar h-full px-5 ">
                 {Menu.map(item => (
                     <div
                         key={item.id}
 
-                        className={`${item.color} panel  ${checkActive(item.id, "active nunito400 ")}`}
+                        className={`${item.color} panel  ${checkActive(item.id, "active nunito400 space-y-4")}`}
 
                     >
                         <BannierFriend />

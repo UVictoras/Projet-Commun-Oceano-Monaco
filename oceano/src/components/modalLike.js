@@ -1,6 +1,7 @@
 import EventLike from './eventLike';
 import { getFavoriteEvent, getTypeEvent } from "../api/event";
 import { useEffect, useState } from "react";
+import { isSelected } from "../utils/webFunction";
 
 export default function ModalLike(props) {
     const [ favoriteEvent, setfavoriteEvent ] = useState([]);
@@ -24,17 +25,22 @@ export default function ModalLike(props) {
         if(triTypes==="all"){
             setEventShow(favoriteEvent)
         }else{
-            setEventShow(favoriteEvent.filter(fav => fav.Name === triTypes))
+            setEventShow(favoriteEvent.filter(fav => fav.Name === triTypes.Name))
         }
     },[triTypes, favoriteEvent])
 
-    const handleClick = (typeName) => {
-        if(typeName === triTypes){
+    const handleClick = (type) => {
+        if (type === triTypes) {
             settriTypes("all")
-        }else{
-            settriTypes(typeName)
+        } else {
+            settriTypes(type)
+            if(triTypes != "all"){
+                isSelected(triTypes.Name, triTypes.Color)
+            }
         }
+        isSelected(type.Name, type.Color)
     };
+
     return <div className='mx-9 '>
         <div className='mt-9 flex' >
             <div className='text flex space-x-4 items-end w-2/3'>
@@ -53,7 +59,7 @@ export default function ModalLike(props) {
             <div className='filter overflow-x-scroll horizontalScrollbar  whitespace-nowrap '>
                 <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
                     {typeEvent.map((type) =>{
-                        return  <button onClick={() => handleClick(type.Name)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
+                        return  <button id={type.Name} onClick={() => handleClick(type)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
                                     <img src={type.Logo} alt='petition make it blue' className='w-4 ml-2' />
                                     <p className='text-sm extraBoldNunito px-3'>{type.Name}</p>
                                 </button>

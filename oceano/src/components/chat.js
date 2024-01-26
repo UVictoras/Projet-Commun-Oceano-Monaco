@@ -14,11 +14,11 @@ export default function Chat(props) {
         <div className="headband w-full flex  border-x-2 border-b-2 border-neutral-200 rounded-2xl">
             <div className="w-1/2 flex">
                 <div>
-                    <img src='img/event/whale.svg' alt='Whale make it blue' className="rounded-2xl w-20 h-20 object-cover" />
+                    <img src={props.event.Image} alt='Whale make it blue' className="rounded-2xl w-20 h-20 object-cover" />
                 </div>
                 <div className="p-4 ml-2">
-                    <h1 className="extraBold800 fontColor3C text-base">Sauvons la baleine franche de la mer Baltique</h1>
-                    <p className="text-start greyText nunito500 text-base">Loris P.</p>
+                    <h1 className="extraBold800 fontColor3C text-base">{props.event.Title}</h1>
+                    <p className="text-start greyText nunito500 text-base">{props.event.Pseudo}</p>
                 </div>
             </div>
 

@@ -241,13 +241,17 @@ app.post("/last/event", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
   const body = req.body;
   dbConnect
-          .query("SELECT  e.Image   , \
-                          e.Title   , \
-                          te.Name   , \
-                          te.Logo   , \
-                          te.Color    \
+          .query("SELECT  e.Image       , \
+                          e.Title       , \
+                          e.Description , \
+                          e.End_date    , \
+                          u.Pseudo      , \
+                          te.Name       , \
+                          te.Logo       , \
+                          te.Color        \
                   FROM users_in_event ue  INNER JOIN event e ON e.ID = ue.ID_Event    \
                                           INNER JOIN type_event te ON te.ID = e.Type  \
+                                          INNER JOIN user u ON e.Organizator = u.ID   \
                   WHERE ue.ID_User = " + body.id, 
           
           function (err, result) {
