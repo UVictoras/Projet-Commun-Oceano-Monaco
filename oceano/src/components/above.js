@@ -4,13 +4,18 @@ import Searchbar from "./searchbar";
 import Modal from "./modal";
 import ModalNotif from "./modalNotif";
 import { getEvent } from "../api/event";
+import PlacePing from "./placePing";
 
 function Above(props) {
     const [isModalOpen, setModalOpen] = useState(false);
     const [isClicked, setClicked] = useState();
     const [isNotifOpen, setNotifOpen] = useState(false);
-    const [ event, setEvent ] = useState([]);
+    const [event, setEvent] = useState([]);
+    const [isPlacePing, setPlacePing] = useState(false);
 
+    const handlePing = () => {
+        setPlacePing(!isPlacePing);
+    }
     const openNotif = () => {
         setNotifOpen(true);
     }
@@ -28,11 +33,11 @@ function Above(props) {
     };
 
     useEffect(() => {
-        const eventFetched = getEvent({id: 1});
+        const eventFetched = getEvent({ id: 1 });
         eventFetched
-        .then(result => setEvent(result))
-        .catch(error=>console.error("Error :",error.message))
-    },[])
+            .then(result => setEvent(result))
+            .catch(error => console.error("Error :", error.message))
+    }, [])
     return <div className="Act ">
 
         <div className="searchAndBell flex absolute left-12 mt-10 z-30">
@@ -42,10 +47,15 @@ function Above(props) {
         </div>
         {isNotifOpen ? <ModalNotif closeNotif={closeNotif} /> : ""}
 
-
         <div className="mt-10 flex left-1/2 centerIcon justify-center absolute z-30">
-            <Searchbar />
+            <Searchbar handlePing={handlePing} />
         </div>
+        
+        <div className="absolute top-1/4 right-0 z-30">
+            {isPlacePing ? <PlacePing handlePing={handlePing}/> : ""}
+
+        </div>
+
         <div className="objectiv absolute bg-white border-2 border-normal-200 rounded-lg bottom-12 left-12 w-[435px] z-30">
             <div className="flex items-end">
                 <div className="flex mt-4 items-center extraBold800 ml-[32px] mr-[30px] w-2/3">
@@ -74,7 +84,7 @@ function Above(props) {
             </div>
 
         </div>
-        {isModalOpen ? <Modal closeModal={closeModal} isClicked={isClicked} event={event[0]}/>: ""}
+        {isModalOpen ? <Modal closeModal={closeModal} isClicked={isClicked} event={event[0]} /> : ""}
 
         <div className="bottomIcon flex items-end absolute bottom-8 left-1/2 centerIcon space-x-3 z-30">
 
@@ -86,7 +96,7 @@ function Above(props) {
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center filterButton z-20 " onClick={() => openModal("filter")}>
 
-                <img src="img/icon/filter.svg" className="rotateFilter" alt="filter make it blue"/>
+                <img src="img/icon/filter.svg" className="rotateFilter" alt="filter make it blue" />
             </button>
         </div>
 

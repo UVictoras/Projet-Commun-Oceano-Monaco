@@ -1,5 +1,5 @@
 function Searchbar(props) {
-    return <div className="z-15 flex justify-center space-x-2.5 ">
+    return <div className="z-40 flex justify-center space-x-2.5 ">
         <div>
             <form className="">
                 <div class="">
@@ -15,13 +15,12 @@ function Searchbar(props) {
             </form>
         </div>
         <div className="flex ">
-            <a href="createEvent">
-                <button className="bg-white flex items-center justify-center filterButton rounded-xl w-[60px] h-[60px]">
-                    <img src="img/icon/plus.svg" alt="add make it blue" />
-                </button>
-            </a>
+        
+            <button className="bg-white flex items-center justify-center filterButton rounded-xl w-[60px] h-[60px]" onClick={props.handlePing}>
+                <img src="img/icon/plus.svg" alt="add make it blue" />
+            </button>
+            {console.log(props.isPlacePing)}
         </div>
-
-    </div>
+    </div >
 }
 export default Searchbar
