@@ -2,6 +2,7 @@
 
 import * as THREE from 'three';
 import TravelAnimation from './travelAnimation';
+import { glMatrix, vec3 }   from 'gl-matrix';
 let labelDisplay = null;
 
 let isVisible = false
@@ -104,43 +105,69 @@ export function Mouvcamera() {
         const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
 
         const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
-        console.log(labelEntities[2])
 
-        const vectorlabel = [labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]];
+        /*----------  Test cam ------------------- */
 
-        const vectorcamera = [camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]];
-        console.log(vectorcamera)
+        // console.log(labelEntities[2])
+        // const target = [0,0,0]
+        // const cam = [0, 0.5005945563316345, 0.5005945563316345]
+        // const targetPosition    = vec3.fromValues(...target);
+        // const globalPosition    = vec3.fromValues(...cam);
+        // let direction   = vec3.create();
+        // vec3.sub(direction, globalPosition, targetPosition);
+        // vec3.normalize(direction, direction);
+        // let rightVector         = vec3.create();
+        // vec3.cross(rightVector, direction, SDK3DVerse_Utils.neutralUp);
+
+        // let upVector            = vec3.create();
+        // vec3.cross(upVector, rightVector, direction);
+
+        // let targetToMat         = mat4.create();
+        // mat4.targetTo(targetToMat, globalPosition, targetPosition, upVector);
+
+        // let targetOrientation   = quat.create();
+        // mat4.getRotation(targetOrientation, targetToMat);
+    
+        // console.log(Array.from(targetOrientation))
+        // console.log(Array.from(camera[0].getTransform().orientation))
+
+        /*----------  Ancien code------------------- */
+
+        // const vectorlabel = [labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]];
+
+        // const vectorcamera = [camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]];
+        // console.log(vectorcamera)
 
         
-        const vectorcameranorme = norme(vectorcamera);
+        // const vectorcameranorme = norme(vectorcamera);
 
-        console.log(vectorcameranorme)
-        var vectorlabelanorme = norme(vectorlabel)
-        console.log(vectorlabelanorme)
+        // console.log(vectorcameranorme)
+        // var vectorlabelanorme = norme(vectorlabel)
+        // console.log(vectorlabelanorme)
         
 
-        var vectore1 = math.cross(vectorcameranorme, vectorlabelanorme)
-        console.log(vectore1)
-        let scalaire = math.dot(vectorcameranorme,vectorlabelanorme)
-        let sin = Math.asin(scalaire);
-        let scalaire2 = math.dot(vectorcameranorme, vectorcameranorme )
-        let angle = Math.acos(scalaire2);
-        if (sin < 0){
-            angle*= -1
+        // var vectore1 = math.cross(vectorcameranorme, vectorlabelanorme)
+        // console.log(vectore1)
+        // let scalaire = math.dot(vectorcameranorme,vectorlabelanorme)
+        // let sin = Math.asin(scalaire);
+        // let scalaire2 = math.dot(vectorcameranorme, vectorcameranorme )
+        // let angle = Math.acos(scalaire2);
+        // if (sin < 0){
+        //     angle*= -1
             
-        }
-        console.log(angle)
-        if(angle != 0){
-            var matriceMBT = math.matrix([[vectore1[0],vectore1[1],vectore1[2]],[vectorcameranorme[0],vectorcameranorme[1],vectorcameranorme[2]],[vectorlabelanorme[0],vectorlabelanorme[1],vectorlabelanorme[2]]])
-            var matriceMB = math.matrix([[vectore1[0],vectorcameranorme[0],vectorlabelanorme[0]],[vectore1[1],vectorcameranorme[1],vectorlabelanorme[1]],[vectore1[2],vectorcameranorme[2],vectorlabelanorme[2]]])
+        // }
+        // console.log(angle)
+        // if(angle != 0){
+        //     var matriceMBT = math.matrix([[vectore1[0],vectore1[1],vectore1[2]],[vectorcameranorme[0],vectorcameranorme[1],vectorcameranorme[2]],[vectorlabelanorme[0],vectorlabelanorme[1],vectorlabelanorme[2]]])
+        //     var matriceMB = math.matrix([[vectore1[0],vectorcameranorme[0],vectorlabelanorme[0]],[vectore1[1],vectorcameranorme[1],vectorlabelanorme[1]],[vectore1[2],vectorcameranorme[2],vectorlabelanorme[2]]])
 
-            var matrice = math.matrix([[1,0,0],[0,Math.cos(angle),Math.sin(angle)],[0,-Math.sin(angle),Math.cos(angle)]])
-            var matriceFinale = math.multiply(matriceMB,matrice,matriceMBT )
-            console.log(matriceFinale)
+        //     var matrice = math.matrix([[1,0,0],[0,Math.cos(angle),Math.sin(angle)],[0,-Math.sin(angle),Math.cos(angle)]])
+        //     var matriceFinale = math.multiply(matriceMB,matrice,matriceMBT )
+        //     console.log(matriceFinale)
             
-            var vectorcameraprim = math.multiply(math.matrix([vectorcamera[0], vectorcamera[1], vectorcamera[2]]) , matriceFinale)
-            console.log(vectorcameraprim)
-            console.log(math.subset(vectorcameraprim, math.index(0)))
+        //     var vectorcameraprim = math.multiply(math.matrix([vectorcamera[0], vectorcamera[1], vectorcamera[2]]) , matriceFinale)
+        //     console.log(vectorcameraprim)
+        //     console.log(math.subset(vectorcameraprim, math.index(0)))
 
             // var normeVectorCameraPrim = norme(vectorcameraprim)
             // var vectorD = [0, 0, 1]
@@ -155,10 +182,10 @@ export function Mouvcamera() {
             //     angle2*= -1
             // }
             
-            window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [math.subset(vectorcameraprim, math.index(0)), math.subset(vectorcameraprim, math.index(1)),math.subset(vectorcameraprim, math.index(2))]
-            ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-            , 1)
-        }
+            // window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [math.subset(vectorcameraprim, math.index(0)), math.subset(vectorcameraprim, math.index(1)),math.subset(vectorcameraprim, math.index(2))]
+            // ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+            // , 1)
+        // }
     })
 }
 
