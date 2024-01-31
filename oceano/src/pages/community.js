@@ -1,12 +1,31 @@
-import Thread from "../components/thread"
-import Navbar from "../components/navbar"
+import { useState } from "react";
+import Navbar from "../components/navbar";
 
+// import AboveImpact from "../components/aboveImpact";
+import LoadingScreen from "./loadingScreen";
+import { CommunityScene } from "../communityScene";
+import AboveCommunity from "../components/aboveCommunity";
 
 function Community(props){
-    return <div className="Commmunity space space-y-10">
-    <Navbar/>
-    <Thread/>
-    <Thread/>
-</div>
+    const [ load, setLoad ] = useState(false);
+
+    const handleCanvaChange = (isLoaded) => {
+        setLoad(isLoaded);
+    };
+    
+    return <div className="community">
+        {!load ? 
+            (
+                <LoadingScreen/>
+            ) : (
+                null
+            )
+        }
+        <Navbar/>
+        
+        <AboveCommunity/>
+        <CommunityScene onChange={handleCanvaChange}/>
+
+    </div>
 }
-export default Community
+export default Community;
