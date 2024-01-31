@@ -277,7 +277,7 @@ export function Mouvcamera() {
         //const destinationPosition = [0, 0, -1.2]
         // const { targetOrientation } = computeOrientationToTarget([0, 0, 0], destinationPosition);
         // console.log("targetOrientation", targetOrientation)
-        labelTravel(labelPosition, 0.5);
+        // labelTravel(labelPosition, 0.5);
 
 
 
@@ -678,7 +678,7 @@ export async function Click(props) {
             position[1] = pickedPosition[1];
             position[2] = pickedPosition[2];
             if (entity.getName() === "continents" || entity.getName() === "seas") {
-                // newElement.apply(null, position);
+                newElement.apply(null, position);
                 isVisible = false;
             } else if (entity.getName() === "SM_Cube") {
                 isVisible = true;
