@@ -2,10 +2,23 @@
 
 import * as THREE from 'three';
 import TravelAnimation from './travelAnimation';
-import { glMatrix, vec3 }   from 'gl-matrix';
-let labelDisplay = null;
+import { glMatrix, vec3, quat, mat4 }   from 'gl-matrix';
 
+
+
+let labelDisplay = null;
 let isVisible = false
+
+export const controller_type =
+{
+    none    : -1,
+    fps     : 0,
+    orbit   : 1,
+    fixed   : 2,
+    editor  : 4
+};
+export const neutralUp = vec3.fromValues(0.0, 1.0, 0.0)
+
 export async function Anim(props) {
 
     // const meshUUID = ['c77be900-43c3-4598-a6db-d67dd9a7585d', '6e8b13bd-cf97-4d39-b6f1-250cf134da54']
@@ -28,16 +41,13 @@ export async function Anim(props) {
 // --------------------- Partie Mouvement camera ---------------------
 
 export function norme(vector) {
-    let carre = vector[0] ** 2 + vector[1] ** 2 + vector[2] ** 2;
-    let racine = Math.sqrt(carre);
-    const vectornorme = [vector[0] / racine, vector[1] / racine, vector[2] / racine]
-    return vectornorme;
+    let racine = calculnorme(vector);
+    return [vector[0] / racine, vector[1] / racine, vector[2] / racine];
 }
 
 export function calculnorme(vector) {
-    let carre = vector.x ** 2 + vector.y ** 2 + vector.z ** 2;
-    let norme = Math.sqrt(carre);
-    return norme;
+    let carre = vector[0] ** 2 + vector[1] ** 2 + vector[2] ** 2;
+    return Math.sqrt(carre);
 }
 export function multiplication(vector, matrice) {
     const math = require('mathjs');
@@ -50,14 +60,12 @@ export function multiplication(vector, matrice) {
     return newvector;
 }
 
-
-
 export function multiplicationVectorNorme(vector, scalaire) {
-    let vectorx1 = vector.x * scalaire;
-    let vectory2 = vector.y * scalaire;
-    let vectorz3 = vector.z * scalaire;
-    var newvector = new THREE.Vector3(vectorx1, vectory2, vectorz3);
-    return newvector;
+    let x = vector[0] * scalaire;
+    console.log("x", x)
+    let y = vector[1] * scalaire;
+    let z = vector[2] * scalaire;
+    return [x, y, z];
 }
 
 export function produitScalaire(vecteur1, vecteur2) {
@@ -90,24 +98,193 @@ export function multiplicationVector(vecteur1, vecteur2) {
     return newvector;
 }
 
+export function slerpInterpolation(cartesianStart, cartesianEnd, t) {
+    // Convertir les coordonnées cartésiennes en coordonnées polaires
+    const polarStart = cartesianToPolar(cartesianStart);
+    const polarEnd = cartesianToPolar(cartesianEnd);
+    polarEnd.radius = polarStart.radius;
+
+    // Interpolation sphérique (slerp) des coordonnées polaires
+    const resultPolar = slerp(polarStart, polarEnd, t);
+
+    // Convertir les coordonnées polaires interpolées en coordonnées cartésiennes
+    const resultCartesian = polarToCartesian(resultPolar);
+
+    return resultCartesian;
+}
+
+// Fonction pour convertir les coordonnées cartésiennes en coordonnées polaires
+export function cartesianToPolar(cartesian) {
+    const radius = Math.sqrt(cartesian.x * cartesian.x + cartesian.y * cartesian.y + cartesian.z * cartesian.z);
+    const inclination = Math.acos(cartesian.y / radius);
+    const azimuth = Math.atan2(cartesian.z, cartesian.x);
+    return { radius, inclination, azimuth };
+}
+
+// Fonction pour convertir les coordonnées polaires en coordonnées cartésiennes
+export function polarToCartesian(polar) {
+    const {radius, inclination, azimuth} = polar;
+    const x = radius * Math.sin(inclination) * Math.cos(azimuth);
+    const y = radius * Math.cos(inclination);
+    const z = radius * Math.sin(inclination) * Math.sin(azimuth);
+    return { x, y, z };
+}
+
+// Fonction d'interpolation sphérique (slerp) entre deux coordonnées polaires
+export function slerp(polar1, polar2, t) {
+    const radius = polar1.radius + t * (polar2.radius - polar1.radius);
+    const inclination = polar1.inclination + t * (polar2.inclination - polar1.inclination);
+    const azimuth = polar1.azimuth + t * (polar2.azimuth - polar1.azimuth);
+
+    return { radius, inclination, azimuth };
+}
+
+export function labelTravel(destinationPosition, speed, startPosition, startOrientation) {
+    const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+    camera[0].engineAPI.cameraAPI.streamer.inputRelay.suspendInputs();
+
+    const intervalFrequency = 30;
+
+    const currentCameraTransform =
+    {
+        position    : vec3.fromValues(...(startPosition || camera[0].getTransform().position))
+        // orientation : quat.fromValues(...(startOrientation || camera[0].getTransform().orientation))
+    };
+    console.log("currentCameraTransform", currentCameraTransform)
+
+    const destinationTransform =
+    {
+        position    : vec3.fromValues(...destinationPosition)
+        // orientation : quat.fromValues(...destinationOrientation)
+    };
+
+    const distance          = vec3.distance(currentCameraTransform.position, destinationTransform.position);
+    const travelingDuration = distance > 0.001 ? (distance / speed) : 0.5;
+    const stepCount         = travelingDuration * intervalFrequency;
+    const stepInterval      = 1 / stepCount;
+
+    let step                = 0.0;
+    let currentPosition     = vec3.create();
+    let currentOrientation  = quat.create();
+
+    if(camera[0].interval)
+    {
+        clearInterval(camera[0].interval);
+    }
+
+    return new Promise(resolve =>
+    {
+        let [x, y, z] = currentCameraTransform.position;
+        const camStartPosition = {x, y, z};
+        [x, y, z] = destinationTransform.position;
+        const camEndPosition = {x, y, z};
+        camera[0].interval = setInterval(
+            () =>
+            {
+                step        += stepInterval;
+                const alpha = Math.min(camera[0].smoothStep(step), 1.0);
+
+                // vec3.lerp(currentPosition, currentCameraTransform.position, destinationTransform.position, alpha);
+                // quat.slerp(currentOrientation, currentCameraTransform.orientation, destinationTransform.orientation, alpha);
+                
+                currentPosition = slerpInterpolation(camStartPosition, camEndPosition, alpha);
+                console.log("currentPosition", currentPosition)
+
+                const {x, y, z} = currentPosition;
+                const resultOrientation = computeOrientationToTarget([0, 0, 0], [x, y, z]);
+                currentOrientation = resultOrientation.targetOrientation
+
+                //quat.slerp(currentOrientation, currentCameraTransform.orientation, destinationTransform.orientation, alpha)
+                console.log("currentOrientation", currentOrientation)
+
+                
+                camera[0].setGlobalTransform(
+                {
+                    position    : [x, y, z],
+                    orientation : Array.from(currentOrientation)
+                });
+
+                if(alpha >= 1.0)
+                {
+                    camera[0].stopTravel();
+                    resolve();
+
+                    // Dirty fix to reset the orbit controller distance with the look at point.
+                    const controllerType = camera[0].getControllerType();
+                    if(controllerType !== controller_type.orbit)
+                    {
+                        return;
+                    }
+
+                    setTimeout(() =>
+                    {
+                        camera[0].setControllerType(controllerType);
+                    }, 100);
+                }
+            },
+            1000 / intervalFrequency
+        );
+    });
+}
+
+export function computeOrientationToTarget(target, position) {
+    const targetPosition    = vec3.fromValues(...target);
+    const globalPosition    = vec3.fromValues(...position);
+
+    let direction   = vec3.create();
+    vec3.sub(direction, globalPosition, targetPosition);
+    vec3.normalize(direction, direction);
+
+    let rightVector         = vec3.create();
+    vec3.cross(rightVector, direction, neutralUp);
+    // vec3.cross(rightVector, direction, SDK3DVerse_Utils.neutralUp);
+
+    let upVector            = vec3.create();
+    vec3.cross(upVector, rightVector, direction);
+
+    let targetToMat         = mat4.create();
+    mat4.targetTo(targetToMat, globalPosition, targetPosition, upVector);
+
+    let targetOrientation   = quat.create();
+    mat4.getRotation(targetOrientation, targetToMat);
+
+    return {
+        targetOrientation : Array.from(targetOrientation),
+        direction
+    };
+}
 
 export function Mouvcamera() {
     const canvas = document.getElementById('display-canvas')
 
 
     canvas.addEventListener('mouseup', async (event) => {
-        const math = require('mathjs');
-
-
-
-        console.log("5")
+       
         const componentFilter = { mandatoryComponents: ['label'], forbiddenComponents: [] };
         const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
+        // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
 
-        const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
+        let labelPosition = labelEntities[0].getGlobalTransform().position;
+        console.log("labelPosition", labelPosition);
+        let test = norme(labelPosition);
+        console.log("test", test);
+        let test2 = multiplicationVectorNorme(test, 0.5);
+        console.log("test2", test2);
+        for(var i = 0; i < 3; i++){
+            labelPosition[i] += test2[i]
+        }
+        console.log("labelPosition", labelPosition);
+        //const destinationPosition = [0, 0, -1.2]
+        // const { targetOrientation } = computeOrientationToTarget([0, 0, 0], destinationPosition);
+        // console.log("targetOrientation", targetOrientation)
+        labelTravel(labelPosition, 0.5);
+
+
+
+
 
         /*----------  Test cam ------------------- */
-
+        // const math = require('mathjs');
         // console.log(labelEntities[2])
         // const target = [0,0,0]
         // const cam = [0, 0.5005945563316345, 0.5005945563316345]
@@ -223,6 +400,7 @@ export function Open() {
     let label = window.SDK3DVerse.extensions.LabelDisplay.labelEntities
     console.log(window.SDK3DVerse.extensions.LabelDisplay.labelEntities)
     window.SDK3DVerse.extensions.LabelDisplay.onLabelClicked = function (label, viewport) {
+        console.log("test")
     }
     const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports()
 
