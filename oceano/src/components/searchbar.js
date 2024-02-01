@@ -15,11 +15,9 @@ function Searchbar(props) {
             </form>
         </div>
         <div className="flex ">
-        
             <button className="bg-white flex items-center justify-center filterButton rounded-xl w-[60px] h-[60px]" onClick={props.handlePing}>
                 <img src="img/icon/plus.svg" alt="add make it blue" />
             </button>
-            {console.log(props.isPlacePing)}
         </div>
     </div >
 }

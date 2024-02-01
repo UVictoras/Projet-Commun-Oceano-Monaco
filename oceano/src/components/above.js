@@ -5,6 +5,7 @@ import Modal from "./modal";
 import ModalNotif from "./modalNotif";
 import { getEvent } from "../api/event";
 import PlacePing from "./placePing";
+import ValidePing from "./validatePing";
 
 function Above(props) {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -52,8 +53,10 @@ function Above(props) {
         </div>
         
         <div className="absolute top-1/4 right-0 z-30">
-            {isPlacePing ? <PlacePing handlePing={handlePing}/> : ""}
-
+            {isPlacePing ? <PlacePing /> : ""}
+        </div>
+        <div className="absolute bottom-0 right-0 z-30">
+            {isPlacePing ? <ValidePing handlePing={handlePing}/> : ""}
         </div>
 
         <div className="objectiv absolute bg-white border-2 border-normal-200 rounded-lg bottom-12 left-12 w-[435px] z-30">
