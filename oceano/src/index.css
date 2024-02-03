@@ -392,6 +392,29 @@ input[type=password] {
 .line:after {
   left: 54%;
 }
+/********************* CSS pour place le ping ***************/
+
+.tri-right.right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -20px;
+  top: 30px;
+	bottom: auto;
+  transform: rotate(270deg);
+	border: 12px solid;
+	border-color: white transparent transparent white;
+}
+
+
+/* talk bubble contents */
+.talktext p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
 
 /********************* CSS pour la création d'event *********/
 .whiteButtonAll {
