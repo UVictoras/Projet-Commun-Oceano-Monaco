@@ -1,8 +1,31 @@
 import { isSelected } from "../utils/webFunction";
 import ActionFilter from "./actionFilter";
 import Onedate from "./pickonedate";
+import { useEffect, useState } from "react";
+import { getTypeEvent } from "../api/event";
 
 export default function ModalFilter(props) {
+    const [ typeEvent, settypeEvent ] = useState([]);
+    const [ typeSelect, settypeSelect ] = useState("");
+
+    useEffect(() => {
+        const typeEventFetched = getTypeEvent();
+        typeEventFetched
+        .then(result => settypeEvent(result))
+        .catch(error=>console.error("Error :",error.message))
+    },[])
+
+    const handleClick = (type) => {
+        // if(typeSelect.Name == type.Name){
+        //     settypeSelect("")
+        // }else {
+        //     settypeSelect(type)
+        //     if(typeSelect != ""){
+        //         isSelected(typeSelect.Name, typeSelect.Color)
+        //     }
+        // }
+        isSelected(type.Name, type.Color)
+    };
 
     return <div className='mx-9 '>
         <div className='mt-9 flex' >
@@ -21,7 +44,14 @@ export default function ModalFilter(props) {
                 <h2 className="fontColor3C text-xl extraBold800 ">Actions</h2>
                 <div className="filter flex space-x-5 mt-5">
                     <div className="space-y-4">
-                        <div className="flex space-x-2">
+                        <div class="grid grid-cols-2">
+                            {typeEvent.map((type) =>{
+                                return  <div class="p-2"> 
+                                            <ActionFilter type={type} handleClick={handleClick} fontpSize={"text-xs"} fonth3Size={"text-sm"} />
+                                        </div>
+                            })}
+                        </div>
+                        {/* <div className="flex space-x-2">
                             <ActionFilter id={"donation"} index={"changedYellow"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
 
                             <ActionFilter id={"donne"} index={"changedYellow"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
@@ -38,7 +68,7 @@ export default function ModalFilter(props) {
 
                             <ActionFilter id={"marche"} index={"changedBlue"} fontpSize={"text-xs"} fonth3Size = {"text-sm"}/>
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="date mt-6 mx-2">

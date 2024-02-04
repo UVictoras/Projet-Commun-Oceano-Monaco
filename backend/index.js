@@ -1,5 +1,7 @@
 const express = require("express");
 const session = require('express-session');
+const multer = require('multer');
+const path = require('path');
 const app = express();
 
 const dbo = require("./db/db");
@@ -23,6 +25,24 @@ app.get("/", function (req, res) {
 app.listen(port, function () {
   console.log(`App listening on port ${port}!`);
 });
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, path.join(path.resolve(__dirname, '..'), 'oceano', 'public', 'img', 'event'));
+//     console.log("ppppppppppppp")
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//     console.log("oooooooooooo")
+//   },
+// });
+
+// const upload = multer({ storage: storage });
+
+// app.post('/upload', upload.single("img"), (req, res) => {
+//   res.send('Fichier téléchargé avec succès.');
+//   console.log("hhhhhhhhhhh")
+// });
 
 /*------------- GET ALL USERS --------------*/
 app.get("/user/all", jsonParser, function (req, res) {
@@ -325,4 +345,52 @@ app.get("/type/event", jsonParser, function (req, res) {
             res.json(result);
             console.log(result);     
           })
+});
+
+/*------------- INSERT EVENT --------------*/
+app.post('/event/insert', jsonParser, (req, res) => {
+  const dbConnect = dbo.getDb();
+  const body = req.body;
+  console.log('Got body:', body);
+  dbConnect
+          .query("INSERT INTO event (Title      , \
+                                    Description , \
+                                    Start_date  , \
+                                    End_date    , \
+                                    Type        , \
+                                    Image       , \
+                                    Link        , \
+                                    X           , \
+                                    Y           , \
+                                    Z           , \
+                                    Region      , \
+                                    Feedback    , \
+                                    Thread      , \
+                                    Organizator , \
+                                    Money       , \
+                                    XP          ) \
+                  VALUES (\"" + body.title       + "\" , \
+                          \"" + body.description + "\" , \
+                          \"" + body.Start_date  + "\" , \
+                          \"" + body.End_date    + "\" , \
+                            " + body.type        + "   , \
+                          \"" + body.Image       + "\" , \
+                          \"" + body.link        + "\" , \
+                            " + body.x           + "   , \
+                            " + body.y           + "   , \
+                            " + body.z           + "   , \
+                            " + body.region      + "   , \
+                          \"" + body.feedback    + "\" , \
+                            " + body.thread      + "   , \
+                            " + body.user        + "   , \
+                            " + body.money       + "   , \
+                            " + body.XP          + ")", 
+          
+          function (err, result) {
+              if (err){
+                throw err;
+              }
+              console.log(result);     
+          })
+  res.json(body);
 });
