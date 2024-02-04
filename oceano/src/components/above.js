@@ -92,7 +92,7 @@ function Above(props) {
                 <img src="img/icon/locate.svg" alt="locate make it blue" />
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center likeButton z-20" onClick={() => openModal("like")}>
-                <img src="img/icon/hearth/hearthGrey.png" alt="coeur Make it blue" />
+                <img src="img/icon/hearth/hearthGrey.svg" alt="coeur Make it blue" />
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center filterButton z-20 " onClick={() => openModal("filter")}>
 
