@@ -71,3 +71,30 @@ export const getTypeEvent = async () => {
     const typeEvent = await response.json();
     return typeEvent;
 }
+
+export const addEvent = async (event) => {
+    await fetch(
+        'http://localhost:4444/event/insert', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(event)
+        }
+    )
+    .then(response => response.json())
+    .then(response => console.log(JSON.stringify(response)))
+}
+
+// export const uploadImage = async (image) => {
+//     await fetch(
+//         'http://localhost:4444/upload', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': image.type
+//             },
+//             body: image
+//         }
+//     )
+// }

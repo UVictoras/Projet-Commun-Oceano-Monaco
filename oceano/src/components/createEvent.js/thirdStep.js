@@ -1,6 +1,15 @@
 import Onedate from "../pickonedate";
 
-export default function ThirdStep() {
+export default function ThirdStep(props) {
+
+    const handleStart_date = (newValue) => {
+        props.register("Start_date", {value : newValue.startDate, shouldValidate: true, shouldDirty: true })
+    };
+
+    const handleEnd_date = (newValue) => {
+        props.register("End_date", {value : newValue.startDate, shouldValidate: true, shouldDirty: true })
+    };
+
     return <div>
         <div>
             <h1 className="text-5xl extraBoldNunito fontColor3C">Dis-nous en plus sur ton <br /> engagement.</h1>
@@ -9,14 +18,14 @@ export default function ThirdStep() {
             <div className="flex items-end">
                 <div className="w-[48%]">
                     <p className="fontColor3C extraBoldNunito text-2xl py-2">Heure de début</p>
-                    <Onedate contentPlaceHolder={"Date de début"} />
+                    <Onedate contentPlaceHolder={"Date de début"} onChange={handleStart_date} />
                 </div>
                 <div>
                     <img src="img/icon/arrow.svg" alt="arrow make it blue" className="transform rotate-180 p-3 w-10" />
                 </div>
                 <div className="w-[48%]">
                     <p className="fontColor3C extraBoldNunito text-2xl py-2">Heure de fin</p>
-                    <Onedate contentPlaceHolder={"Date de fin"} />
+                    <Onedate contentPlaceHolder={"Date de fin"} onChange={handleEnd_date} />
                 </div>
             </div>
             <div className="flex items-end mt-5 space-x-10 ">
@@ -26,7 +35,7 @@ export default function ThirdStep() {
                 </div>
                 <div className="w-[48%]">
                     <p className="fontColor3C extraBoldNunito text-2xl py-2">Lien (optionnel)</p>
-                    <input className="w-full bg-neutral-200 border-2 border-neutral-200 rounded-2xl p-2 px-4" placeholder="https://oceano.org" />
+                    <input className="w-full bg-neutral-200 border-2 border-neutral-200 rounded-2xl p-2 px-4" placeholder="https://oceano.org" {...props.register("link")}/>
                 </div>
             </div>
             <div className="mt-5">

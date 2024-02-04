@@ -7,7 +7,7 @@ export default function EventLike(props) {
             <div className="flex justify-start">
                 <h2 className="extraBold800 text-base fontColor3C text-start">{props.event.Title}</h2>
                 <button className="w-[37px] h-[37px] p-2 mr-3 rounded-full bg-white border-solid border-2 border-neutral-200">
-                    <img src="img/icon/hearth/hearth.png" alt="like make it blue" className="w-[20px]" />
+                    <img src="img/icon/hearth/hearth.svg" alt="like make it blue" className="w-[20px]" />
                 </button>
             </div>
             <p className="nunito400 fontColor3C text-sm  text-start p-2">{props.event.Description}</p>
