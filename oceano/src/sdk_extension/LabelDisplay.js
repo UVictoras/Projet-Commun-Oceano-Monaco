@@ -1,6 +1,7 @@
 //------------------------------------------------------------------------------
 import SDK3DVerse_ExtensionInterface from './ExtensionInterface';
 import { quat, vec3 } from 'gl-matrix';
+import {norme, multiplicationVectorNorme, labelTravel} from '../utils/3DVerse'
 
 //------------------------------------------------------------------------------
 /**
@@ -473,45 +474,60 @@ const titleElement          = labelElement.domElement.children[1];
             viewport = this.sdk.engineAPI.cameraAPI.currentViewportEnabled;
         }
 
-        const labelComponent = label.getComponent('label');
-        const cameraPosition = labelComponent.camera.slice(0, 3);
-        const cameraOrientation = labelComponent.camera.slice(3, 7);
-
-        const labelCameraTransform =
-        {
-            position    : vec3.fromValues(...cameraPosition),
-            orientation : quat.fromValues(...cameraOrientation)
-        };
-
-        if(label.linker)
-        {
-            const globalMatrix    = label.linker.getGlobalMatrix();
-            const globalTransform = label.linker.getGlobalTransform();
-
-            vec3.transformMat4(labelCameraTransform.position, vec3.clone(labelCameraTransform.position), globalMatrix);
-            quat.mul(labelCameraTransform.orientation, globalTransform.orientation, quat.clone(labelCameraTransform.orientation));
+        let labelPosition = label.getGlobalTransform().position;
+        console.log("labelPosition", labelPosition);
+        let test = norme(labelPosition);
+        console.log("test", test);
+        let test2 = multiplicationVectorNorme(test, 0.5);
+        console.log("test2", test2);
+        for(var i = 0; i < 3; i++){
+            labelPosition[i] += test2[i]
         }
+        console.log("labelPosition", labelPosition);
+        //const destinationPosition = [0, 0, -1.2]
+        // const { targetOrientation } = computeOrientationToTarget([0, 0, 0], destinationPosition);
+        // console.log("targetOrientation", targetOrientation)
+        labelTravel(labelPosition, 0.5);
 
-        const eventProperties = {
-            label,
-            viewport,
-            destination : {
-                position    : Array.from(labelCameraTransform.position),
-                orientation : Array.from(labelCameraTransform.orientation),
-            }
-        };
+        // const labelComponent = label.getComponent('label');
+        // const cameraPosition = labelComponent.camera.slice(0, 3);
+        // const cameraOrientation = labelComponent.camera.slice(3, 7);
 
-        this.sdk.notifier.emit('onLabelTravelBegins', eventProperties);
+        // const labelCameraTransform =
+        // {
+        //     position    : vec3.fromValues(...cameraPosition),
+        //     orientation : quat.fromValues(...cameraOrientation)
+        // };
 
-        this.sdk.engineAPI.cameraAPI.travel(
-            viewport,
-            eventProperties.destination.position,
-            eventProperties.destination.orientation,
-            labelComponent.speed
-        ).then(() =>
-        {
-            this.sdk.notifier.emit('onLabelTravelEnds', eventProperties);
-        });
+        // if(label.linker)
+        // {
+        //     const globalMatrix    = label.linker.getGlobalMatrix();
+        //     const globalTransform = label.linker.getGlobalTransform();
+
+        //     vec3.transformMat4(labelCameraTransform.position, vec3.clone(labelCameraTransform.position), globalMatrix);
+        //     quat.mul(labelCameraTransform.orientation, globalTransform.orientation, quat.clone(labelCameraTransform.orientation));
+        // }
+
+        // const eventProperties = {
+        //     label,
+        //     viewport,
+        //     destination : {
+        //         position    : Array.from(labelCameraTransform.position),
+        //         orientation : Array.from(labelCameraTransform.orientation),
+        //     }
+        // };
+
+        // this.sdk.notifier.emit('onLabelTravelBegins', eventProperties);
+
+        // this.sdk.engineAPI.cameraAPI.travel(
+        //     viewport,
+        //     eventProperties.destination.position,
+        //     eventProperties.destination.orientation,
+        //     labelComponent.speed
+        // ).then(() =>
+        // {
+        //     this.sdk.notifier.emit('onLabelTravelEnds', eventProperties);
+        // });
 
         this.currentSelectedLabel = label;
         this.onLabelSelected(this.currentSelectedLabel);
