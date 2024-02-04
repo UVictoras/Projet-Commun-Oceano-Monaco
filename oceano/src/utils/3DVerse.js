@@ -255,115 +255,115 @@ export function computeOrientationToTarget(target, position) {
 }
 
 export function Mouvcamera() {
-    const canvas = document.getElementById('display-canvas')
+    // const canvas = document.getElementById('display-canvas')
 
 
-    canvas.addEventListener('mouseup', async (event) => {
+//     canvas.addEventListener('mouseup', async (event) => {
        
-        const componentFilter = { mandatoryComponents: ['label'], forbiddenComponents: [] };
-        const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
-        // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
+//         const componentFilter = { mandatoryComponents: ['label'], forbiddenComponents: [] };
+//         const labelEntities = await window.SDK3DVerse.engineAPI.findEntitiesByComponents(componentFilter);
+//         // const camera = window.SDK3DVerse.engineAPI.cameraAPI.getActiveViewports();
 
-        let labelPosition = labelEntities[0].getGlobalTransform().position;
-        console.log("labelPosition", labelPosition);
-        let test = norme(labelPosition);
-        console.log("test", test);
-        let test2 = multiplicationVectorNorme(test, 0.5);
-        console.log("test2", test2);
-        for(var i = 0; i < 3; i++){
-            labelPosition[i] += test2[i]
-        }
-        console.log("labelPosition", labelPosition);
-        //const destinationPosition = [0, 0, -1.2]
-        // const { targetOrientation } = computeOrientationToTarget([0, 0, 0], destinationPosition);
-        // console.log("targetOrientation", targetOrientation)
-        // labelTravel(labelPosition, 0.5);
-
-
+//         let labelPosition = labelEntities[0].getGlobalTransform().position;
+//         console.log("labelPosition", labelPosition);
+//         let test = norme(labelPosition);
+//         console.log("test", test);
+//         let test2 = multiplicationVectorNorme(test, 0.5);
+//         console.log("test2", test2);
+//         for(var i = 0; i < 3; i++){
+//             labelPosition[i] += test2[i]
+//         }
+//         console.log("labelPosition", labelPosition);
+//         //const destinationPosition = [0, 0, -1.2]
+//         // const { targetOrientation } = computeOrientationToTarget([0, 0, 0], destinationPosition);
+//         // console.log("targetOrientation", targetOrientation)
+//         // labelTravel(labelPosition, 0.5);
 
 
 
-        /*----------  Test cam ------------------- */
-        // const math = require('mathjs');
-        // console.log(labelEntities[2])
-        // const target = [0,0,0]
-        // const cam = [0, 0.5005945563316345, 0.5005945563316345]
-        // const targetPosition    = vec3.fromValues(...target);
-        // const globalPosition    = vec3.fromValues(...cam);
-        // let direction   = vec3.create();
-        // vec3.sub(direction, globalPosition, targetPosition);
-        // vec3.normalize(direction, direction);
-        // let rightVector         = vec3.create();
-        // vec3.cross(rightVector, direction, SDK3DVerse_Utils.neutralUp);
 
-        // let upVector            = vec3.create();
-        // vec3.cross(upVector, rightVector, direction);
 
-        // let targetToMat         = mat4.create();
-        // mat4.targetTo(targetToMat, globalPosition, targetPosition, upVector);
+//         /*----------  Test cam ------------------- */
+//         // const math = require('mathjs');
+//         // console.log(labelEntities[2])
+//         // const target = [0,0,0]
+//         // const cam = [0, 0.5005945563316345, 0.5005945563316345]
+//         // const targetPosition    = vec3.fromValues(...target);
+//         // const globalPosition    = vec3.fromValues(...cam);
+//         // let direction   = vec3.create();
+//         // vec3.sub(direction, globalPosition, targetPosition);
+//         // vec3.normalize(direction, direction);
+//         // let rightVector         = vec3.create();
+//         // vec3.cross(rightVector, direction, SDK3DVerse_Utils.neutralUp);
 
-        // let targetOrientation   = quat.create();
-        // mat4.getRotation(targetOrientation, targetToMat);
+//         // let upVector            = vec3.create();
+//         // vec3.cross(upVector, rightVector, direction);
+
+//         // let targetToMat         = mat4.create();
+//         // mat4.targetTo(targetToMat, globalPosition, targetPosition, upVector);
+
+//         // let targetOrientation   = quat.create();
+//         // mat4.getRotation(targetOrientation, targetToMat);
     
-        // console.log(Array.from(targetOrientation))
-        // console.log(Array.from(camera[0].getTransform().orientation))
+//         // console.log(Array.from(targetOrientation))
+//         // console.log(Array.from(camera[0].getTransform().orientation))
 
-        /*----------  Ancien code------------------- */
+//         /*----------  Ancien code------------------- */
 
-        // const vectorlabel = [labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]];
+//         // const vectorlabel = [labelEntities[0].getComponents().local_transform.position[0], labelEntities[0].getComponents().local_transform.position[1], labelEntities[0].getComponents().local_transform.position[2]];
 
-        // const vectorcamera = [camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]];
-        // console.log(vectorcamera)
+//         // const vectorcamera = [camera[0].getTransform().position[0], camera[0].getTransform().position[1], camera[0].getTransform().position[2]];
+//         // console.log(vectorcamera)
 
         
-        // const vectorcameranorme = norme(vectorcamera);
+//         // const vectorcameranorme = norme(vectorcamera);
 
-        // console.log(vectorcameranorme)
-        // var vectorlabelanorme = norme(vectorlabel)
-        // console.log(vectorlabelanorme)
+//         // console.log(vectorcameranorme)
+//         // var vectorlabelanorme = norme(vectorlabel)
+//         // console.log(vectorlabelanorme)
         
 
-        // var vectore1 = math.cross(vectorcameranorme, vectorlabelanorme)
-        // console.log(vectore1)
-        // let scalaire = math.dot(vectorcameranorme,vectorlabelanorme)
-        // let sin = Math.asin(scalaire);
-        // let scalaire2 = math.dot(vectorcameranorme, vectorcameranorme )
-        // let angle = Math.acos(scalaire2);
-        // if (sin < 0){
-        //     angle*= -1
+//         // var vectore1 = math.cross(vectorcameranorme, vectorlabelanorme)
+//         // console.log(vectore1)
+//         // let scalaire = math.dot(vectorcameranorme,vectorlabelanorme)
+//         // let sin = Math.asin(scalaire);
+//         // let scalaire2 = math.dot(vectorcameranorme, vectorcameranorme )
+//         // let angle = Math.acos(scalaire2);
+//         // if (sin < 0){
+//         //     angle*= -1
             
-        // }
-        // console.log(angle)
-        // if(angle != 0){
-        //     var matriceMBT = math.matrix([[vectore1[0],vectore1[1],vectore1[2]],[vectorcameranorme[0],vectorcameranorme[1],vectorcameranorme[2]],[vectorlabelanorme[0],vectorlabelanorme[1],vectorlabelanorme[2]]])
-        //     var matriceMB = math.matrix([[vectore1[0],vectorcameranorme[0],vectorlabelanorme[0]],[vectore1[1],vectorcameranorme[1],vectorlabelanorme[1]],[vectore1[2],vectorcameranorme[2],vectorlabelanorme[2]]])
+//         // }
+//         // console.log(angle)
+//         // if(angle != 0){
+//         //     var matriceMBT = math.matrix([[vectore1[0],vectore1[1],vectore1[2]],[vectorcameranorme[0],vectorcameranorme[1],vectorcameranorme[2]],[vectorlabelanorme[0],vectorlabelanorme[1],vectorlabelanorme[2]]])
+//         //     var matriceMB = math.matrix([[vectore1[0],vectorcameranorme[0],vectorlabelanorme[0]],[vectore1[1],vectorcameranorme[1],vectorlabelanorme[1]],[vectore1[2],vectorcameranorme[2],vectorlabelanorme[2]]])
 
-        //     var matrice = math.matrix([[1,0,0],[0,Math.cos(angle),Math.sin(angle)],[0,-Math.sin(angle),Math.cos(angle)]])
-        //     var matriceFinale = math.multiply(matriceMB,matrice,matriceMBT )
-        //     console.log(matriceFinale)
+//         //     var matrice = math.matrix([[1,0,0],[0,Math.cos(angle),Math.sin(angle)],[0,-Math.sin(angle),Math.cos(angle)]])
+//         //     var matriceFinale = math.multiply(matriceMB,matrice,matriceMBT )
+//         //     console.log(matriceFinale)
             
-        //     var vectorcameraprim = math.multiply(math.matrix([vectorcamera[0], vectorcamera[1], vectorcamera[2]]) , matriceFinale)
-        //     console.log(vectorcameraprim)
-        //     console.log(math.subset(vectorcameraprim, math.index(0)))
+//         //     var vectorcameraprim = math.multiply(math.matrix([vectorcamera[0], vectorcamera[1], vectorcamera[2]]) , matriceFinale)
+//         //     console.log(vectorcameraprim)
+//         //     console.log(math.subset(vectorcameraprim, math.index(0)))
 
-            // var normeVectorCameraPrim = norme(vectorcameraprim)
-            // var vectorD = [0, 0, 1]
-            // var vectorE1bis = math.cross(vectorD, normeVectorCameraPrim)
-            // var vectorE2bis = normeVectorCameraPrim
-            // var vectorE3bis = vectorD
-            // let scalaire3 = math.dot(vectorD,vectorE2bis)
-            // let sin2 = Math.asin(scalaire3);
-            // let scalaire4 = math.dot(vectorD, vectorE3bis )
-            // let angle2 = Math.acos(scalaire2);
-            // if (sin2 < 0){
-            //     angle2*= -1
-            // }
+//             // var normeVectorCameraPrim = norme(vectorcameraprim)
+//             // var vectorD = [0, 0, 1]
+//             // var vectorE1bis = math.cross(vectorD, normeVectorCameraPrim)
+//             // var vectorE2bis = normeVectorCameraPrim
+//             // var vectorE3bis = vectorD
+//             // let scalaire3 = math.dot(vectorD,vectorE2bis)
+//             // let sin2 = Math.asin(scalaire3);
+//             // let scalaire4 = math.dot(vectorD, vectorE3bis )
+//             // let angle2 = Math.acos(scalaire2);
+//             // if (sin2 < 0){
+//             //     angle2*= -1
+//             // }
             
-            // window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [math.subset(vectorcameraprim, math.index(0)), math.subset(vectorcameraprim, math.index(1)),math.subset(vectorcameraprim, math.index(2))]
-            // ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
-            // , 1)
-        // }
-    })
+//             // window.SDK3DVerse.engineAPI.cameraAPI.travel(camera[0], [math.subset(vectorcameraprim, math.index(0)), math.subset(vectorcameraprim, math.index(1)),math.subset(vectorcameraprim, math.index(2))]
+//             // ,[camera[0].getTransform().orientation[0],camera[0].getTransform().orientation[1],camera[0].getTransform().orientation[2],camera[0].getTransform().orientation[3]]
+//             // , 1)
+//         // }
+//     })
 }
 
 // --------------------- Desactivé les touche ---------------------
@@ -657,47 +657,73 @@ export function Modalll(props) {
 //     }
 // }
 
-export async function Click(props) {
-
-    const twoDPos = [0, 0];
-    const position = [0, 0, 0];
-
-    const canvas = document.getElementById('display-canvas')
-    canvas.addEventListener('mouseup', async (e) => {
-
+export async function Click(callback) {
+    const handleMouseUp = async (e) => {
+        const canvas = document.getElementById('display-canvas');
         const keepOldSelection = e.ctrlKey;
 
         const x = e.clientX + (canvas.width - canvas.clientWidth) / 2;
         const y = e.clientY + (canvas.height - canvas.clientHeight) / 2;
         const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(x, y, keepOldSelection);
 
-        console.log(e);
         if (entity) {
+            const position = [pickedPosition[0], pickedPosition[1], pickedPosition[2]];
 
-            position[0] = pickedPosition[0];
-            position[1] = pickedPosition[1];
-            position[2] = pickedPosition[2];
             if (entity.getName() === "continents" || entity.getName() === "seas") {
                 // newElement.apply(null, position);
-                isVisible = false;
-            } else if (entity.getName() === "SM_Cube") {
-                isVisible = true;
-            } else {
-                console.log('No entity selected');
-                isVisible = false
+                console.log("new ping")
             }
-            twoDPos[0] = e.clientX
-            twoDPos[1] = e.clientY
-        } else {
-            console.log('No entity selected');
-            isVisible = false;
-        }
-        twoDPos[0] = e.clientX;
-        twoDPos[1] = e.clientY;
 
-    }, false);
-    console.log(labelDisplay);
+            // Notify that the function has been used
+            callback(position);
+        }
+
+        // Remove the event listener after use
+        canvas.removeEventListener('mouseup', handleMouseUp, false);
+    };
+
+    // Attach the event listener
+    const canvas = document.getElementById('display-canvas');
+    canvas.addEventListener('mouseup', handleMouseUp, false);
 }
+//     // const twoDPos = [0, 0];
+//     // const position = [0, 0, 0];
+
+//     const canvas = document.getElementById('display-canvas')
+//     canvas.addEventListener('mouseup', async (e) => {
+
+//         const keepOldSelection = e.ctrlKey;
+
+//         const x = e.clientX + (canvas.width - canvas.clientWidth) / 2;
+//         const y = e.clientY + (canvas.height - canvas.clientHeight) / 2;
+//         const { entity, pickedPosition, pickedNormal } = await window.SDK3DVerse.engineAPI.castScreenSpaceRay(x, y, keepOldSelection);
+
+//         if (entity) {
+
+//             position[0] = pickedPosition[0];
+//             position[1] = pickedPosition[1];
+//             position[2] = pickedPosition[2];
+//             if (entity.getName() === "continents" || entity.getName() === "seas") {
+//                 // newElement.apply(null, position);
+//             }
+//         }
+//                 // isVisible = false;
+//             // } else if (entity.getName() === "SM_Cube") {
+//             //     isVisible = true;
+//         //     } else {
+//         //         console.log('No entity selected');
+//         //         isVisible = false
+//         //     }
+//         //     twoDPos[0] = e.clientX
+//         //     twoDPos[1] = e.clientY
+//         // } else {
+//         //     console.log('No entity selected');
+//         //     isVisible = false;
+//         // }
+//         // twoDPos[0] = e.clientX;
+//         // twoDPos[1] = e.clientY;
+//     }, false);
+// }
 
 //--------------------- Création d'élément ---------------------
 
@@ -716,6 +742,51 @@ async function newElement(x, y, z) {
 
     entityTemplate.instantiateEntity();
 }
+
+// export function updateLabel(entity, event) {
+//     var labelComponent          = entity.getComponent('label');
+
+//     var containerElement        = document.createElement('div');
+//     containerElement.className  = 'label-container';
+
+//     var labelElement            = document.createElement('div');
+//     labelElement.className      = 'label';
+//     labelElement.innerText      = '';
+
+//     containerElement.appendChild(labelElement);
+
+//     var newImg = document.createElement('img');
+//     newImg.src = event.Logo;
+//     newImg.alt = 'Description of the image';
+//     newImg.classList.add('collect');
+
+//     containerElement.appendChild(newImg);
+
+//     var newParagraph = document.createElement('p');
+//     newParagraph.textContent = event.NbUsers;
+//     newParagraph.classList.add('attendees');
+
+//     containerElement.appendChild(newParagraph);
+
+//     var newParagraphAtt = document.createElement('p');
+//     newParagraphAtt.textContent = 'participants';
+//     newParagraphAtt.classList.add('attendees-txt');
+
+//     containerElement.appendChild(newParagraphAtt);
+
+//     var titleElement            = document.createElement('div');
+//     titleElement.className      = 'label-title';
+//     titleElement.innerText      = labelComponent.title;
+    
+//     containerElement.appendChild(titleElement);
+    
+//     containerElement.onmousedown    = (e, viewport) => this.onLabelClicked(entity, viewport);
+
+//     const domElement                = this.domRenderer.createDomElement(containerElement);
+//     domElement.renderedTitle        = labelComponent.title;
+
+//     return domElement;
+// }
 
 
 export function OpenModal() {

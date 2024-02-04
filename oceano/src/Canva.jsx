@@ -68,8 +68,8 @@ export const Canvas = (props) => {
         if (status === 'ready') {
             initApp();
             Camera();
-            Mouvcamera();
-            Click();
+            // Mouvcamera();
+            // Click();
             desactiveKey()
            
         }
