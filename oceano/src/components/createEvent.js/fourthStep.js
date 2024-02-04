@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function FourthStep() {
+export default function FourthStep(props) {
     const [imgSrc, setImgSrc] = useState("img/impact/addImage.png");
 
     const changeImage = (event) => {
@@ -8,6 +8,7 @@ export default function FourthStep() {
         console.log(img)
         if (img) {
             setImgSrc(URL.createObjectURL(img))
+            props.register("Image", {value : img, shouldValidate: true, shouldDirty: true })
         } else {
             setImgSrc("img/impact/addImage.png")
         }
@@ -23,7 +24,7 @@ export default function FourthStep() {
                     <img src={imgSrc} alt="add image make it blue" className="w-32" />
                 </div>
                 <div>
-                    <input type="file" hidden id="upload" onChange={changeImage} />
+                    <input type="file" hidden id="upload" onChange={changeImage}/>
                     <label for="upload" className="blueTextColor border-2 border-neutral-200 rounded-2xl px-8 py-3 extraBoldNunito" >Ajouter une image</label>
                 </div>
             </div>
