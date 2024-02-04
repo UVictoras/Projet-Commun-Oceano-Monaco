@@ -6,6 +6,7 @@ import ModalNotif from "./modalNotif";
 import { getEvent } from "../api/event";
 import PlacePing from "./placePing";
 import ValidePing from "./validatePing";
+import { Click } from '../utils/3DVerse';
 
 function Above(props) {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -13,9 +14,22 @@ function Above(props) {
     const [isNotifOpen, setNotifOpen] = useState(false);
     const [event, setEvent] = useState([]);
     const [isPlacePing, setPlacePing] = useState(false);
+    const [isPing, setIsPing] = useState(false);
+
+    const handleClick = () => {
+        Click((position) => {
+            if(position){
+                setIsPing(true)
+                setPlacePing(false);
+            }
+        });
+    }
 
     const handlePing = () => {
-        setPlacePing(!isPlacePing);
+        setPlacePing(true);
+        setIsPing(false)
+        setModalOpen(false);
+        handleClick();
     }
     const openNotif = () => {
         setNotifOpen(true);
@@ -27,6 +41,8 @@ function Above(props) {
     const openModal = (index) => {
         setClicked(index)
         setModalOpen(true);
+        setIsPing(false)
+        setPlacePing(false);
     };
 
     const closeModal = () => {
@@ -52,12 +68,12 @@ function Above(props) {
             <Searchbar handlePing={handlePing} />
         </div>
         
-        <div className="absolute top-1/4 right-0 z-30">
+        {/* <div className="absolute top-1/4 right-0 z-30"> */}
             {isPlacePing ? <PlacePing /> : ""}
-        </div>
-        <div className="absolute bottom-0 right-0 z-30">
-            {isPlacePing ? <ValidePing handlePing={handlePing}/> : ""}
-        </div>
+        {/* </div> */}
+        {/* <div className="absolute bottom-0 right-0 z-30"> */}
+            {isPing ? <ValidePing handlePing={handlePing}/> : ""}
+        {/* </div> */}
 
         <div className="objectiv absolute bg-white border-2 border-normal-200 rounded-lg bottom-12 left-12 w-[435px] z-30">
             <div className="flex items-end">
