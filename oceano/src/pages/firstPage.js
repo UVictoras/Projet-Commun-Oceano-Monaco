@@ -13,7 +13,7 @@ export default function FirstPage() {
 
                 <div className="mt-8 flex justify-center">
                     <a href="signup">
-                        <button class="text-[13px] blueButton text-white font-bold py-2 px-4
+                        <button className="text-[13px] blueButton text-white font-bold py-2 px-4
                         rounded-xl lg:w-[330px] w-56 uppercaseText text-12 blackNunito">
                             C'est Parti !
                         </button>
@@ -22,7 +22,7 @@ export default function FirstPage() {
                 </div>
                 <div className="pt-4 flex justify-center">
                     <a href="signin">
-                        <button class="lg:w-[330px] w-56 text-[13px] h-[50px] bg-white blueTextColor whiteButton font-bold py-2 px-4 
+                        <button className="lg:w-[330px] w-56 text-[13px] h-[50px] bg-white blueTextColor whiteButton font-bold py-2 px-4 
                      rounded-xl border border-neutral-200 uppercaseText text-12 blackNunito">
                             J'ai déjà un compte
                         </button>

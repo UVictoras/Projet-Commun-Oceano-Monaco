@@ -84,32 +84,32 @@ export default function CreateEventMain() {
         <form className="main mt-20 " onSubmit={handleSubmit(onSubmit)} enctype="multipart/form-data">
             <div className="flex">
                 <div className="w-1/3 h-1/2 flex justify-center  mt-10">
-                    <ol class="relative border-s-2 border-[#1CB0F6]">
+                    <ol className="relative border-s-2 border-[#1CB0F6]">
                         {nameSteps.map((nameStep, index) => (
                             <a key={index} onClick={() => handleData(index)} className={`ms-4 flex items-center ${index != 4 ? " mb-24" : ""}`}>
-                                <div class={`absolute w-9 h-9 rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] ${index ==numStep ? " backBlue" : " bg-white"}`}></div>
-                                <p class={`text-xl text-[#9F9FA4] semiBoldNunito ml-4 ${index != 0 && index != 4 ? " leading-none" : ""}`}>{nameStep}</p>
+                                <div className={`absolute w-9 h-9 rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] ${index ==numStep ? " backBlue" : " bg-white"}`}></div>
+                                <p className={`text-xl text-[#9F9FA4] semiBoldNunito ml-4 ${index != 0 && index != 4 ? " leading-none" : ""}`}>{nameStep}</p>
                             </a>
                         ))}
-                        {/* <a onClick={() => setNumStep(0)} class="mb-24 ms-4 flex items-center ">
-                            <div class="absolute w-9 h-9 backBlue rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
-                            <p class="text-xl text-[#9F9FA4] semiBoldNunito ml-4">Description</p>
+                        {/* <a onClick={() => setNumStep(0)} className="mb-24 ms-4 flex items-center ">
+                            <div className="absolute w-9 h-9 backBlue rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
+                            <p className="text-xl text-[#9F9FA4] semiBoldNunito ml-4">Description</p>
                         </a>
-                        <a onClick={() => setNumStep(1)} class="mb-24 ms-4 flex items-center">
-                            <div class="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
-                            <p class="text-xl leading-none text-[#9F9FA4] semiBoldNunito ml-4">Type d'action</p>
+                        <a onClick={() => setNumStep(1)} className="mb-24 ms-4 flex items-center">
+                            <div className="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
+                            <p className="text-xl leading-none text-[#9F9FA4] semiBoldNunito ml-4">Type d'action</p>
                         </a>
-                        <a onClick={() => setNumStep(2)} class="mb-24 ms-4 flex items-center">
-                            <div class="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
-                            <p class="text-xl leading-none text-[#9F9FA4] semiBoldNunito ml-4">Détails</p>
+                        <a onClick={() => setNumStep(2)} className="mb-24 ms-4 flex items-center">
+                            <div className="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
+                            <p className="text-xl leading-none text-[#9F9FA4] semiBoldNunito ml-4">Détails</p>
                         </a>
-                        <a onClick={() => setNumStep(3)} class="mb-24 ms-4 flex items-center">
-                            <div class="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
-                            <p class="text-xl leading-none text-[#9F9FA4] semiBoldNunito ml-4">Média</p>
+                        <a onClick={() => setNumStep(3)} className="mb-24 ms-4 flex items-center">
+                            <div className="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6] "></div>
+                            <p className="text-xl leading-none text-[#9F9FA4] semiBoldNunito ml-4">Média</p>
                         </a>
-                        <a onClick={() => setNumStep(4)} class="ms-4 flex items-center">
-                            <div class="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6]"></div>
-                            <p class="text-xl text-[#9F9FA4] semiBoldNunito ml-4">Confirmation</p>
+                        <a onClick={() => setNumStep(4)} className="ms-4 flex items-center">
+                            <div className="absolute w-9 h-9 bg-white rounded-full mt-1.5 -start-[1.125rem] border-2 border-[#1CB0F6]"></div>
+                            <p className="text-xl text-[#9F9FA4] semiBoldNunito ml-4">Confirmation</p>
                         </a> */}
                     </ol>
 

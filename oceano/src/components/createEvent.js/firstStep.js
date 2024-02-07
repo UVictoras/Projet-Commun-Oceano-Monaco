@@ -14,7 +14,7 @@ export default function FirstStep(props) {
             <p className="fontColor3C extraBoldNunito text-2xl mt-11">Dites-nous en plus sur votre engagement</p>
             <textarea
                 id="message"
-                rows="6" class="block p-2.5 w-full rounded-2xl border-2 border-neutral-200 mt-3"
+                rows="6" className="block p-2.5 w-full rounded-2xl border-2 border-neutral-200 mt-3"
                 placeholder="On adore les baleines donc on veut les sauver ! " 
                 {...props.register("description")}
                 />

@@ -48,18 +48,18 @@ function Signin(props) {
       </a>
 
       <div className="title h-1/3 flex items-end">
-        <h1 class=" grid place-content-center text font-medium blackNunito titleFont text-[26px] ">Connexion</h1>
+        <h1 className=" grid place-content-center text font-medium blackNunito titleFont text-[26px] ">Connexion</h1>
       </div>
       <div className="text h-2/3 mt-9 w-full">
-        <form class="max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
-          <div class="mb-5">
+        <form className="max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-5">
             <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl block w-full p-2.5" placeholder="Nom d'utilisateur ou E-mail" name="email" {...register("pseudo")} required></input>
           </div>
-          <div class="mb-5">
+          <div className="mb-5">
             <input type="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl block w-full p-2.5" placeholder="Mot de passe" name="password" {...register("password")} required></input>
           </div>
-          <div class="mb-5 h-[46px]">
-            <button type="submit" class="text-white blueButton  blackNunito rounded-xl text-sm w-full  text-center h-[46px] ">SE CONNECTER</button>
+          <div className="mb-5 h-[46px]">
+            <button type="submit" className="text-white blueButton  blackNunito rounded-xl text-sm w-full  text-center h-[46px] ">SE CONNECTER</button>
           </div>
         </form>
 
@@ -67,8 +67,8 @@ function Signin(props) {
           <p className="text-center line relative">ou</p>
         </div>
 
-        <div class="mb-5  max-w-sm mx-auto">
-          <div class="flex justify-center ml-1 space-x-4 mb-4">
+        <div className="mb-5  max-w-sm mx-auto">
+          <div className="flex justify-center ml-1 space-x-4 mb-4">
             <div className="flex justify-center space-x-4 ">
               <button className="flex items-center justify-center mr-2 whiteButton border border-gray-300 bg-white facebookColor border-gray-300 facebookTextColor font-medium rounded-lg text-sm lg:w-44 w-32 p-2.5 blackNunito " >
                 <img src="img/icon/network/facebook_logo.svg" alt="Facebook Logo" className="mr-2" />
@@ -82,7 +82,7 @@ function Signin(props) {
               </button>
             </div>
           </div>
-          <p class="block mb-2 text-xs regularNunito ">
+          <p className="block mb-2 text-xs regularNunito ">
             En te connectant à Make it Blue, tu acceptes nos
             <a href="#viveLilian" className="extraBoldNunito hover:underline"> Conditions d’utilisation </a>
             et notre

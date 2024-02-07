@@ -16,7 +16,7 @@ export default function ModalEvent(props) {
         </div>
 
         <div className='mx-10 mt-5 '>
-            <h2 class="text-[28px] extraBold800">{props.event.Title}</h2>
+            <h2 className="text-[28px] extraBold800">{props.event.Title}</h2>
             <p className='greyText'>Lancé par <span className='blueTextColor semiBoldNunito'>{props.event.Pseudo}</span></p>
             <div className='mt-5 flex'>
                 <div className='donationDate w-2/3 flex space-x-1.5'>
@@ -36,7 +36,7 @@ export default function ModalEvent(props) {
                     </div>
                 </div>
             </div>
-            <div class="text-sm font-medium text-center text-gray-500">
+            <div className="text-sm font-medium text-center text-gray-500">
                 <Tab event={props.event}/>
                 <div className="flex mx-10 justify-center absolute w-2/3 buttonPlace items-center">
                     <boutton className="w-full h-11 blueButton rounded-2xl blackNunito text-white flex items-center justify-center ">Participer</boutton>

@@ -10,18 +10,18 @@ export default function AboveCommunity() {
             </div>
         </div>
         <div className="timeline">
-            <div class="absolute bottom-36 left-[20%] flex justify-center items-center px-3 h-14 backBlue text-white rounded-2xl mb-12">
+            <div className="absolute bottom-36 left-[20%] flex justify-center items-center px-3 h-14 backBlue text-white rounded-2xl mb-12">
 
-                <div class="w-5 h-5  backBlue absolute -bottom-6 transform rounded-full z-10 mt-2"></div>
+                <div className="w-5 h-5  backBlue absolute -bottom-6 transform rounded-full z-10 mt-2"></div>
 
-                <div class="w-10 h-1.5 backBlue absolute -bottom-10 z-0 transform rotate-90 "></div>
+                <div className="w-10 h-1.5 backBlue absolute -bottom-10 z-0 transform rotate-90 "></div>
 
-                <div class="flex space-x-2 h-full">
+                <div className="flex space-x-2 h-full">
                     <div className="flex mt-2 items-start ">
                         <img src="img/icon/star.svg" className="" />
                     </div>
                     <div className="flex items-center">
-                        <h1 class="text-lg">Bannière “My Dear Beach”</h1>
+                        <h1 className="text-lg">Bannière “My Dear Beach”</h1>
                     </div>
                     <div className="flex items-start mt-2">
                         <img src="img/icon/star.svg" className="w-6" />
@@ -29,18 +29,18 @@ export default function AboveCommunity() {
                 </div>
 
             </div>
-            <div class="absolute bottom-36 flex left-[42%] justify-center items-center px-3 h-14 backBlue text-white rounded-2xl mb-12">
+            <div className="absolute bottom-36 flex left-[42%] justify-center items-center px-3 h-14 backBlue text-white rounded-2xl mb-12">
 
-                <div class="w-5 h-5  backBlue absolute -bottom-6 transform rounded-full z-10 mt-2"></div>
+                <div className="w-5 h-5  backBlue absolute -bottom-6 transform rounded-full z-10 mt-2"></div>
 
-                <div class="w-10 h-1.5 backBlue absolute -bottom-10 z-0 transform rotate-90 "></div>
+                <div className="w-10 h-1.5 backBlue absolute -bottom-10 z-0 transform rotate-90 "></div>
 
-                <div class="flex space-x-2 h-full">
+                <div className="flex space-x-2 h-full">
                     <div className="flex mb-2 items-end ">
                         <img src="img/icon/star.svg" className="" />
                     </div>
                     <div className="flex items-center">
-                        <h1 class="text-lg">Bannière “My Dear Beach”</h1>
+                        <h1 className="text-lg">Bannière “My Dear Beach”</h1>
                     </div>
                     <div className="flex items-start mt-2">
                         <img src="img/icon/star.svg" className="w-6" />
@@ -48,13 +48,13 @@ export default function AboveCommunity() {
                 </div>
 
             </div>
-            <div class="absolute bottom-36 flex left-[68%] justify-center items-center  py-4 text-white rounded-2xl mb-12">
+            <div className="absolute bottom-36 flex left-[68%] justify-center items-center  py-4 text-white rounded-2xl mb-12">
 
-                <div class="w-5 h-5  bg-neutral-200 absolute -bottom-6 transform rounded-full z-10 mt-2"></div>
+                <div className="w-5 h-5  bg-neutral-200 absolute -bottom-6 transform rounded-full z-10 mt-2"></div>
 
-                <div class="w-8 h-1.5 bg-neutral-200 absolute -bottom-10 z-0 transform rotate-90 "></div>
+                <div className="w-8 h-1.5 bg-neutral-200 absolute -bottom-10 z-0 transform rotate-90 "></div>
 
-                <div class="flex-auto">
+                <div className="flex-auto">
                     <img src="img/icon/locker.png" alt="locker make it blue" />
 
                 </div>

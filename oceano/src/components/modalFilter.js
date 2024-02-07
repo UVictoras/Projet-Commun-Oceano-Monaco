@@ -44,9 +44,9 @@ export default function ModalFilter(props) {
                 <h2 className="fontColor3C text-xl extraBold800 ">Actions</h2>
                 <div className="filter flex space-x-5 mt-5">
                     <div className="space-y-4">
-                        <div class="grid grid-cols-2">
+                        <div className="grid grid-cols-2">
                             {typeEvent.map((type) =>{
-                                return  <div class="p-2"> 
+                                return  <div className="p-2"> 
                                             <ActionFilter type={type} handleClick={handleClick} fontpSize={"text-xs"} fonth3Size={"text-sm"} />
                                         </div>
                             })}
@@ -88,22 +88,22 @@ export default function ModalFilter(props) {
                         <img src="img/graph.svg" alt="graphics make it blue" />
                     </div>
                     <div className="w-1/2 flex items-center space-x-2">
-                        <div class="relative w-full flex">
-                            {/* <div class="absolute inset-y-0 start-0 flex items-center ml-2 pointer-events-none w-4">
+                        <div className="relative w-full flex">
+                            {/* <div className="absolute inset-y-0 start-0 flex items-center ml-2 pointer-events-none w-4">
                             <img src="img/event/people.svg" alt="people make it blue" />
                         </div> */}
-                            <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito p-2"
+                            <input type="text" className="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito p-2"
                                 id="inline-full-name"
                                 name="userInput"
                                 value="20"
                             />
                         </div>
                         <p>-</p>
-                        <div class="relative w-full flex">
-                            {/* <div class="absolute inset-y-0 start-0 flex items-center ml-2 pointer-events-none w-4">
+                        <div className="relative w-full flex">
+                            {/* <div className="absolute inset-y-0 start-0 flex items-center ml-2 pointer-events-none w-4">
                             <img src="img/event/people.svg" alt="people make it blue" />
                         </div> */}
-                            <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito p-2"
+                            <input type="text" className="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito p-2"
                                 id="inline-full-name"
                                 name="userInput"
                                 value="300"

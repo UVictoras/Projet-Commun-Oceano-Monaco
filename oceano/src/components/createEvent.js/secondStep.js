@@ -33,9 +33,9 @@ export default function SecondStep(props) {
         </div>
 
         <div className="space-y-5 mt-10">
-            <div class="grid grid-cols-2">
+            <div className="grid grid-cols-2">
                 {typeEvent.map((type) =>{
-                    return  <div class="p-2"> 
+                    return  <div className="p-2"> 
                                 <ActionFilter type={type} handleClick={handleClick} fontpSize={"text-base"} fonth3Size={"text-2xl"} />
                             </div>
                 })}

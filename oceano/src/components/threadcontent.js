@@ -10,7 +10,7 @@ function Threadcontent(props){
             </p>
             <div className=" space-y-8">
                 <div className=" space-y-3">
-                    <div class=" flex  space-x-2 items-center ">               
+                    <div className=" flex  space-x-2 items-center ">               
                         <img className="h-10 w-10 rounded-full " src="../img/avatar1.png" alt="avatar de l'utilisateur"/>                
                         <p className="extraBoldNunito">Natt</p>                               
                     </div>
@@ -19,7 +19,7 @@ function Threadcontent(props){
                     </div>
                 </div>
                 <div className=" space-y-3">
-                    <div class=" flex  space-x-2 items-center ">               
+                    <div className=" flex  space-x-2 items-center ">               
                         <img className="h-10 w-10 rounded-full " src="../img/avatar1.png" alt="avatar de l'utilisateur"/>                
                         <p className="extraBoldNunito">Lilian</p>                               
                     </div>
@@ -28,12 +28,12 @@ function Threadcontent(props){
                     </div>
                 </div>
             </div>
-                <form class="max-w-sm mx-auto">
-                    <div class="space-y-3">
-                        <label for="message" class="mediumNunito">Ton message</label>
-                        <textarea id="message" rows="4" class="block p-2.5  mediumNunito w-full border  bg-neutral-200 rounded " placeholder="Envoyer un message..."></textarea>
-                        <div class="">
-                            <button type="submit" class="text-white blueButton  blackNunito rounded-xl text-sm w-[375px]  text-center h-[46px] ">Envoyer</button>
+                <form className="max-w-sm mx-auto">
+                    <div className="space-y-3">
+                        <label for="message" className="mediumNunito">Ton message</label>
+                        <textarea id="message" rows="4" className="block p-2.5  mediumNunito w-full border  bg-neutral-200 rounded " placeholder="Envoyer un message..."></textarea>
+                        <div className="">
+                            <button type="submit" className="text-white blueButton  blackNunito rounded-xl text-sm w-[375px]  text-center h-[46px] ">Envoyer</button>
                         </div>
                     </div>     
                 </form>                          

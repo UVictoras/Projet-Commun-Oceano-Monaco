@@ -45,12 +45,12 @@ export default function ThirdStep(props) {
             <div className="flex space-x-9">
                 <div className="mt-5 w-[31%]">
                     <p className="fontColor3C extraBoldNunito text-base py-3">Palier 1</p>
-                    <div class="relative w-full">
-                        <div class="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
+                    <div className="relative w-full">
+                        <div className="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
                             <img src="img/event/people.svg" alt="people make it blue" />
                         </div>
                     </div>
-                    <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"
+                    <input type="text" className="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"
                         id="inline-full-name"
                         name="userInput"
                         value="20"
@@ -58,12 +58,12 @@ export default function ThirdStep(props) {
                 </div>
                 <div className="mt-5 w-[31%]">
                     <p className="fontColor3C extraBoldNunito text-base py-3">Palier 2</p>
-                    <div class="relative w-full">
-                        <div class="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
+                    <div className="relative w-full">
+                        <div className="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
                             <img src="img/event/people.svg" alt="people make it blue" />
                         </div>
                     </div>
-                    <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"
+                    <input type="text" className="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"
                         id="inline-full-name"
                         name="userInput"
                         value="20"
@@ -71,12 +71,12 @@ export default function ThirdStep(props) {
                 </div>
                 <div className="mt-5 w-[31%]">
                     <p className="fontColor3C extraBoldNunito text-base py-3">Palier 3</p>
-                    <div class="relative w-full">
-                        <div class="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
+                    <div className="relative w-full">
+                        <div className="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
                             <img src="img/event/people.svg" alt="people make it blue" />
                         </div>
                     </div>
-                    <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"
+                    <input type="text" className="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"
                         id="inline-full-name"
                         name="userInput"
                         value="20"

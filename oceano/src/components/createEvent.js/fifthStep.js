@@ -12,8 +12,8 @@ export default function FifthStep(props) {
             <div className="h-3/4 px-5">
                 <div className="h-1/3 grid grid-cols-1 gap-4 content-center">
                     <h1 className="fontColor3C text-3xl extraBold800 mt-4">{props.data.title}</h1>
-                    <div class="flex items-center">
-                        <p class="flex-grow semiBoldNunito greyText">
+                    <div className="flex items-center">
+                        <p className="flex-grow semiBoldNunito greyText">
                             Lancé par <span className="text-[#1CB0F6] extraBold800">{props.data.user.Pseudo}</span>
                         </p>
                         <div className="flex-shrink-0 flex space-x-3.5 ">

@@ -75,7 +75,7 @@ function Navbar() {
 
                 {navigation.map((item) => (
 
-                  <div className=''>
+                  <div className='' key={item.name}>
                     <div className='absolute'>
                       {item.svg}
                     </div>

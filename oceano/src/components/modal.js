@@ -20,7 +20,7 @@ export function Modal(props) {
 
   return (
     <>
-      <div id="modal" class="moddal fixed z-50 bg-white h-screen w-1/3 right-0 rounded-l-3xl">
+      <div id="modal" className="moddal fixed z-50 bg-white h-screen w-1/3 right-0 rounded-l-3xl">
         {activeModal}
       </div>
 

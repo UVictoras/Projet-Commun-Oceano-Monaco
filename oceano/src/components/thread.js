@@ -1,6 +1,6 @@
 function Thread(props){
     return <div className=" grid place-content-center">
-        <div class="grid place-content-center hover:bg-slate-100 rounded-md ">
+        <div className="grid place-content-center hover:bg-slate-100 rounded-md ">
             <a className=" inline-flex items-center justify-center  p-2  " href="/threadcontent">
                 <p className="extraBoldNunito">Sauvons la baleine franche de la mer Baltique</p>
             </a>

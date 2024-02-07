@@ -69,13 +69,13 @@ function Impact(props) {
                 <h1 className="extraBold800 text-3xl text-center p-6">Mes actions</h1>
                 <div className="w-full">
                     <form className="">
-                        <div class="text-gray-600 flex items-center">
-                            <span class="absolute pl-2">
-                                <svg class="w-6 h-6 searchBarGlassColor ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        <div className="text-gray-600 flex items-center">
+                            <span className="absolute pl-2">
+                                <svg className="w-6 h-6 searchBarGlassColor ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M21 21l-5-5m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </span>
-                            <input class="w-full pl-12 pr-4 p-4 text-sm border-2 border-neutral-200 rounded-xl bg-white w-96 extraBoldNunito " placeholder="Rechercher une action..." />
+                            <input className="w-full pl-12 pr-4 p-4 text-sm border-2 border-neutral-200 rounded-xl bg-white w-96 extraBoldNunito " placeholder="Rechercher une action..." />
                         </div>
                     </form>
                 </div>
@@ -83,7 +83,7 @@ function Impact(props) {
                     <div className='filter overflow-x-auto horizontalScrollbar   whitespace-nowrap '>
                         <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
                             {typeEvent.map((type) => {
-                                return <button id={type.Name} onClick={() => handleClick(type)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
+                                return <button id={type.Name} key={type.name} onClick={() => handleClick(type)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
                                     <img src={type.Logo} alt='petition make it blue' className='w-4 ml-2' />
                                     <p className='text-sm extraBoldNunito px-3'>{type.Name}</p>
                                 </button>
