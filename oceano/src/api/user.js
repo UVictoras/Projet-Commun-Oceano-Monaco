@@ -41,3 +41,18 @@ export const getUser = async (id) => {
     const user = await response.json();
     return user;
 }
+
+export const getEquipAccessories = async (id) => {
+    const response = await fetch(
+        'http://localhost:4444/equip/accessories', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(id)
+        }
+    )
+    const accessories = await response.json();
+    return accessories;
+}

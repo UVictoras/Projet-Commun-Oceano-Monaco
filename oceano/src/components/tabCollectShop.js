@@ -1,43 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ShopItems from "./shopItems";
 import Shop from "../pages/shop";
+import { getEquipAccessories } from "../api/user";
 
 export default function TabCollectShop(props) {
+    const [accessories, setAccessories] = useState([])
     const Menu = [
         {
             id: 1,
-            title: "Accessoires",
-            content: "props.event.Description",
-            span: "Voir plus",
-            imgDatePicker: "img/event/calendar.png",
-            textDatePicker: "Du ",
-            imgLocate: "img/event/locate.png",
-            textLocate: "En ligne",
-            imgLink: "img/event/link.png",
-            textLink: "props.event.Link",
-            imgGoal: "img/event/goal.svg",
-            textGoal: "14 152€ sur 30 000€ collectés",
-            color: "fontColor3C",
-            participer: "Participer",
-            logoShare: "img/event/share.png",
-
+            title: "Accessoires"
         },
         {
             id: 2,
-            title: "Bannières",
-            content: "Hello je m’appelle Loris P., j’ai 19 ans et depuis toujours je kiffe les poissons, je les préfère en sauce LOL, non en vrai je suis passionné des océans et membre de beaucoup d’associations dans ma région, si jamais vous aussi vous êtes passionné n’hésitez pas à me contacter pour discuter...",
-            span: "Voir plus",
-            color: "fontColor3C",
-            imgProfile: "props.event.ImageProfil",
-            name: 'props.event.First_name + " " + props.event.Last_name',
-            titleLevel: "props.event.TitleName",
-            level: "Niveau " + "props.event.Number",
-            participer: "Participer",
-            logoShare: "img/event/share.png",
-            phoneImage: "img/event/phone.png",
-            phoneText: "06.50.41.92.25",
-            mailImage: "img/event/mail.png",
-            mailText: "props.event.Email",
+            title: "Bannières"
         },
 
     ];
@@ -46,6 +21,12 @@ export default function TabCollectShop(props) {
     const handleClick = (index) => setActiveIndex(index);
     const checkActive = (index, className) => activeIndex === index ? className : "w-1/2 text-lg fontColor3C extraBold800  uppercaseText ";
 
+    useEffect(() => {
+        const userFetched = getEquipAccessories({ id: props.ID });
+        userFetched
+        .then(result => setAccessories(result))
+        .catch(error=>console.error("Error :",error.message))
+    },[]);
 
     return <>
         <div className="mt-6 flex flex-col space-y-4 h-full ">
@@ -71,6 +52,11 @@ export default function TabCollectShop(props) {
 
 
                         <div className="flex h-full">
+                        {accessories.map(accessorie => (
+                            <div className="w-1/4 flex justify-center">
+                                <ShopItems accessorie={accessorie}/>
+                            </div>
+                        ))}
                             <div className="w-1/4 flex justify-center">
                                 <ShopItems />
                             </div>

@@ -76,6 +76,7 @@ app.post("/user", jsonParser, function (req, res) {
                           u.Country                                                                  , \
                           u.Email                                                                    , \
                           u.Password                                                                 , \
+                          pp.ID AS Picture_ID                                                        , \
                           pp.Image AS Picture                                                        , \
                           u.X                                                                        , \
                           u.Y                                                                        , \
@@ -393,4 +394,24 @@ app.post('/event/insert', jsonParser, (req, res) => {
               console.log(result);     
           })
   res.json(body);
+});
+
+/*------------- GET Equip Accessories --------------*/
+app.get("/equip/accessories", jsonParser, function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT a.* \
+                  FROM profil_picture pp                               \
+                  RIGHT JOIN accessories a ON pp.ID_Accessorie1 = a.ID \
+                  AND pp.ID_Accessorie2 = a.ID                         \
+                  AND pp.ID_Accessorie3 = a.ID                         \
+                  AND pp.ID_Accessorie4 = a.ID", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
 });
