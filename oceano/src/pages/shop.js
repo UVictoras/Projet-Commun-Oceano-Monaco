@@ -4,9 +4,11 @@ import TabCollectShop from "../components/tabCollectShop";
 import TabShop from "../components/tabShop";
 import { useEffect, useState } from "react";
 import { getUserSession } from "../api/session";
+import { getEquipAccessories } from "../api/user";
 
 export default function Shop() {
     const [ user, setUser ] = useState([]);
+    const [accessories, setAccessories] = useState([])
 
     useEffect(() => {
         const userFetched = getUserSession();
@@ -14,6 +16,15 @@ export default function Shop() {
         .then(result => setUser(result))
         .catch(error=>console.error("Error :",error.message))
     },[]);
+
+    useEffect(() => {
+        if(user.length !== 0){
+            const userFetched = getEquipAccessories({ id: user.Picture_ID });
+            userFetched
+            .then(result => setAccessories(result))
+            .catch(error=>console.error("Error :",error.message))
+        }
+    },[user]);
 
     return (
         <>
@@ -35,15 +46,13 @@ export default function Shop() {
                         </div>
                     </div>
                     <div className="h-1/3">
-                        <TabCollectShop ID={user.Picture_ID}/>
+                        <TabCollectShop accessories={accessories}/>
                     </div>
                 </div>
                 <div className="w-1/2 flex justify-end ">
                     <div className=" border-l-2 border-neutral-200 ">
                         <TabShop />
                     </div>
-
-
                 </div>
 
 

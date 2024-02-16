@@ -397,7 +397,8 @@ app.post('/event/insert', jsonParser, (req, res) => {
 });
 
 /*------------- GET Equip Accessories --------------*/
-app.get("/equip/accessories", jsonParser, function (req, res) {
+app.post("/equip/accessories", jsonParser, function (req, res) {
+  const body = req.body;
   const dbConnect = dbo.getDb();
   dbConnect
           .query("SELECT a.* \
@@ -405,7 +406,8 @@ app.get("/equip/accessories", jsonParser, function (req, res) {
                   RIGHT JOIN accessories a ON pp.ID_Accessorie1 = a.ID \
                   AND pp.ID_Accessorie2 = a.ID                         \
                   AND pp.ID_Accessorie3 = a.ID                         \
-                  AND pp.ID_Accessorie4 = a.ID", 
+                  AND pp.ID_Accessorie4 = a.ID                         \
+                  WHERE pp.ID = " + body.id, 
           
           function (err, result) {
             if (err){
