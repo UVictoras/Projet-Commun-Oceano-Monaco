@@ -48,11 +48,14 @@ app.listen(port, function () {
 app.get("/user/all", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
-          .query("SELECT  ID        , \
-                          Pseudo    , \
-                          Email     , \
-                          Password    \
-                  FROM user u ",
+          .query("SELECT  u.ID                  , \
+                          u.Pseudo              , \
+                          u.Email               , \
+                          pp.Image AS Picture   , \
+                          u.Password            , \
+                          t.Name AS Title         \
+                  FROM user u INNER JOIN Title t ON u.Title = t.ID \
+                              INNER JOIN profil_picture pp ON u.Picture = pp.ID",
           
           function (err, result) {
             if (err){

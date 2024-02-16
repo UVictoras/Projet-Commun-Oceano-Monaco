@@ -1,12 +1,12 @@
-export default function BannierFriend() {
+export default function BannierFriend(props) {
 
     return (<button className="border-2 border-neutral-200 rounded-lg w-full p-2 flex items-center relative mt-3">
         <div className="w-1/5">
-            <img src="img/profil/loutre.png" alt="photo de profil make it blue" className="w-16" />
+            <img src={props.user.Picture} alt="photo de profil make it blue" className="w-16" />
         </div>
         <div className="w-1/3 text-start">
-            <h1 className="blackNunito text-xl fontColor3C">Victor</h1>
-            <p className="semiBoldNunito text-sm levelColor">Héros des océans</p>
+            <h1 className="blackNunito text-xl fontColor3C">{props.user.Pseudo}</h1>
+            <p className="semiBoldNunito text-sm levelColor">{props.user.Title}</p>
         </div>
         <div className="badge flex items-center space-x-4 ml-4">
             <div className="h-9 w-9 rounded-xl badgeColor">

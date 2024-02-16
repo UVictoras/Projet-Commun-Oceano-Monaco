@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BannierFriend from "./bannierFriend";
+import { getUsers } from "../api/user";
 import { updateHeight } from "../utils/webFunction";
 
 
 export default function TabShop(props) {
+    const [users, setUsers] = useState([]);
     const Menu = [
         {
             id: 1,
@@ -28,6 +30,13 @@ export default function TabShop(props) {
     const handleClick = (index) => setActiveIndex(index);
     const checkActive = (index, className) => activeIndex === index ? className : "w-1/3 text-lg fontColor3C extraBold800 uppercaseText ";
 
+    useEffect(() => {
+        const usersFetched = getUsers();
+        usersFetched
+          .then(result => setUsers(result))
+          .catch(error => console.error("Error :", error.message))
+      }, []);
+
 
     return <>
 
@@ -51,27 +60,9 @@ export default function TabShop(props) {
                         className={`${item.color} panel  ${checkActive(item.id, "active nunito400 space-y-4")}`}
 
                     >
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-                        <BannierFriend />
-
-
-
-
-
-
-
-
+                        {users.map(user => (
+                            <BannierFriend user={user} />
+                        ))}
                     </div>))
                 }
             </div>
