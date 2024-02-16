@@ -392,6 +392,11 @@ input[type=password] {
 .line:after {
   left: 54%;
 }
+
+.bgToast {
+  background-color: #fadada !important;
+}
+
 /********************* CSS pour place le ping ***************/
 
 .tri-right.right-in:after{
