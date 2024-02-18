@@ -19,7 +19,6 @@ export default function TabCollectShop(props) {
     const [activeIndex, setActiveIndex] = useState(1)
     const handleClick = (index) => setActiveIndex(index);
     const checkActive = (index, className) => activeIndex === index ? className : "w-1/2 text-lg fontColor3C extraBold800  uppercaseText ";
-    console.log(props.accessories)
 
     return <>
         <div className="mt-6 flex flex-col space-y-4 h-full ">
@@ -50,18 +49,6 @@ export default function TabCollectShop(props) {
                                     <ShopItems accessorie={accessorie}/>
                                 </div>
                             ))}
-                            {/* <div className="w-1/4 flex justify-center">
-                                <ShopItems />
-                            </div>
-                            <div className="w-1/4 flex justify-center">
-                                <ShopItems />
-                            </div>
-                            <div className="w-1/4 flex justify-center">
-                                <ShopItems />
-                            </div>
-                            <div className="w-1/4 flex justify-center">
-                                <ShopItems />
-                            </div> */}
                         </div>
 
 

@@ -403,10 +403,10 @@ app.post("/equip/accessories", jsonParser, function (req, res) {
   dbConnect
           .query("SELECT a.* \
                   FROM profil_picture pp                               \
-                  RIGHT JOIN accessories a ON pp.ID_Accessorie1 = a.ID \
-                  AND pp.ID_Accessorie2 = a.ID                         \
-                  AND pp.ID_Accessorie3 = a.ID                         \
-                  AND pp.ID_Accessorie4 = a.ID                         \
+                  INNER JOIN accessories a ON pp.ID_Accessorie1 = a.ID \
+                  OR pp.ID_Accessorie2 = a.ID                         \
+                  OR pp.ID_Accessorie3 = a.ID                         \
+                  OR pp.ID_Accessorie4 = a.ID                         \
                   WHERE pp.ID = " + body.id, 
           
           function (err, result) {
