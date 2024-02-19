@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ShopItems from "./shopItems";
 import Shop from "../pages/shop";
+import { getAccessories } from "../api/user";
 
 export default function TabShop(props) {
+    const [ accessories, setAccessories ] = useState([]);
+    const [ shopItem, setShopItem ] = useState([]);
     const Menu = [
         {
             id: 1,
@@ -27,6 +30,30 @@ export default function TabShop(props) {
     const handleClick = (index) => setActiveIndex(index);
     const checkActive = (index, className) => activeIndex === index ? className : "w-1/4 text-lg fontColor3C extraBold800  uppercaseText ";
 
+    useEffect(() => {
+        const userFetched = getAccessories();
+        userFetched
+        .then(result => setAccessories(result))
+        .catch(error=>console.error("Error :",error.message))
+    },[]);
+
+    useEffect(() => {
+        const generatedItems = accessories.reduce((acc, accessorie, index) => {
+            if (index % 3 === 0) {
+                acc.push([]);
+            }
+            acc[acc.length - 1].push(<ShopItems key={index} accessorie={accessorie} />);
+            return acc;
+        }, []);
+
+        const shopItemElements = generatedItems.map((group, index) => (
+            <div key={index} className="flex items-end space-x-9 h-2/5">
+                {group}
+            </div>
+        ));
+
+        setShopItem(shopItemElements);
+    },[accessories]);
 
     return <>
         <div className="mt-6 flex flex-col space-y-4 h-full ">
@@ -51,28 +78,22 @@ export default function TabShop(props) {
                     >
 
                         <div className="mx-20 justify-center space-y-2 h-full">
-                            <div className="grid grid-cols-3 space-y-32 justify-items-center">
-                                <ShopItems />
-                                <ShopItems />
-                                <ShopItems />
-                                <ShopItems />
-                                <ShopItems />
-                                <ShopItems />
-                                <ShopItems />
-                                <ShopItems />
-                                <ShopItems />
-                            </div>
-                        
                             {/* <div className="flex items-end space-x-9 h-2/5 ">
                                 <ShopItems />
                                 <ShopItems />
-                            </div>
-                            <div className="flex items-end space-x-9 h-2/5">
                                 <ShopItems />
                             </div>
                             <div className="flex items-end space-x-9 h-2/5">
+                                <ShopItems />
+                                <ShopItems />
+                                <ShopItems />
+                            </div>
+                            <div className="flex items-end space-x-9 h-2/5">
+                                <ShopItems />
+                                <ShopItems />
                                 <ShopItems />
                             </div> */}
+                            {shopItem}
                         </div>
 
 

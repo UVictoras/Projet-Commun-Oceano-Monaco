@@ -401,14 +401,33 @@ app.post("/equip/accessories", jsonParser, function (req, res) {
   const body = req.body;
   const dbConnect = dbo.getDb();
   dbConnect
-          .query("SELECT a.* \
+          .query("SELECT a.* , r.Color, r.price \
                   FROM profil_picture pp                               \
-                  INNER JOIN accessories a ON pp.ID_Accessorie1 = a.ID \
-                  OR pp.ID_Accessorie2 = a.ID                         \
-                  OR pp.ID_Accessorie3 = a.ID                         \
-                  OR pp.ID_Accessorie4 = a.ID                         \
-                  WHERE pp.ID = " + body.id, 
+                  INNER JOIN accessories a ON pp.ID_Animal = a.ID \
+                  OR pp.ID_Chapeau = a.ID                         \
+                  OR pp.ID_Lunettes = a.ID                         \
+                  OR pp.ID_Cravate = a.ID                         \
+                  INNER JOIN rarity_accessories r ON r.ID = a.Rarity \
+                  WHERE pp.ID = " + body.id +
+                  " ORDER BY a.Type", 
           
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET Accessories --------------*/
+app.get("/accessories", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT a.*, r.Color, r.price \
+                  FROM accessories a \
+                  INNER JOIN rarity_accessories r ON r.ID = a.Rarity \
+                  ORDER BY a.Type", 
           function (err, result) {
             if (err){
               throw err;

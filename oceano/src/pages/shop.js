@@ -52,7 +52,7 @@ export default function Shop() {
                 </div>
                 <div className="w-1/2 flex justify-end ">
                     <div className=" border-l-2 border-neutral-200 ">
-                        <TabShop accessories={accessories}/>
+                        <TabShop />
                     </div>
                 </div>
 
