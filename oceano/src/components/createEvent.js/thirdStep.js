@@ -21,7 +21,7 @@ export default function ThirdStep(props) {
                     <Onedate contentPlaceHolder={"Date de début"} onChange={handleStart_date} />
                 </div>
                 <div>
-                    <img src="img/icon/arrow.svg" alt="arrow make it blue" className="transform rotate-180 p-3 w-10" />
+                    <img src="img/icon/arrow.svg" alt="arrow Make A Wave" className="transform rotate-180 p-3 w-10" />
                 </div>
                 <div className="w-[48%]">
                     <p className="fontColor3C extraBoldNunito text-2xl py-2">Heure de fin</p>
@@ -47,7 +47,7 @@ export default function ThirdStep(props) {
                     <p className="fontColor3C extraBoldNunito text-base py-3">Palier 1</p>
                     <div class="relative w-full">
                         <div class="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
-                            <img src="img/event/people.svg" alt="people make it blue" />
+                            <img src="img/event/people.svg" alt="people Make A Wave" />
                         </div>
                     </div>
                     <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"
@@ -60,7 +60,7 @@ export default function ThirdStep(props) {
                     <p className="fontColor3C extraBoldNunito text-base py-3">Palier 2</p>
                     <div class="relative w-full">
                         <div class="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
-                            <img src="img/event/people.svg" alt="people make it blue" />
+                            <img src="img/event/people.svg" alt="people Make A Wave" />
                         </div>
                     </div>
                     <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"
@@ -73,7 +73,7 @@ export default function ThirdStep(props) {
                     <p className="fontColor3C extraBoldNunito text-base py-3">Palier 3</p>
                     <div class="relative w-full">
                         <div class="absolute inset-y-5 start-0 flex items-center ml-2 pointer-events-none w-4">
-                            <img src="img/event/people.svg" alt="people make it blue" />
+                            <img src="img/event/people.svg" alt="people Make A Wave" />
                         </div>
                     </div>
                     <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito px-7 py-2"

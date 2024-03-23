@@ -21,7 +21,7 @@ export default function FourthStep(props) {
         <div className="border-2 border-neutral-200 rounded-2xl h-3/4 flex items-center justify-center">
             <div className="space-y-8">
                 <div className="flex justify-center">
-                    <img src={imgSrc} alt="add image make it blue" className="w-32" />
+                    <img src={imgSrc} alt="add image Make A Wave" className="w-32" />
                 </div>
                 <div>
                     <input type="file" hidden id="upload" onChange={changeImage}/>

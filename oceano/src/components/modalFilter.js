@@ -34,7 +34,7 @@ export default function ModalFilter(props) {
             </div>
             <div className='flex w-1/3 items-center justify-end'>
                 <button onClick={props.closeModal}>
-                    <img src='img/icon/exit.png' alt='exit make it blue' />
+                    <img src='img/icon/exit.png' alt='exit Make A Wave' />
                 </button>
             </div>
         </div>
@@ -85,12 +85,12 @@ export default function ModalFilter(props) {
                 </div>
                 <div className="graphPeople pt-10 flex space-x-2">
                     <div className="graph w-1/2">
-                        <img src="img/graph.svg" alt="graphics make it blue" />
+                        <img src="img/graph.svg" alt="graphics Make A Wave" />
                     </div>
                     <div className="w-1/2 flex items-center space-x-2">
                         <div class="relative w-full flex">
                             {/* <div class="absolute inset-y-0 start-0 flex items-center ml-2 pointer-events-none w-4">
-                            <img src="img/event/people.svg" alt="people make it blue" />
+                            <img src="img/event/people.svg" alt="people Make A Wave" />
                         </div> */}
                             <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito p-2"
                                 id="inline-full-name"
@@ -101,7 +101,7 @@ export default function ModalFilter(props) {
                         <p>-</p>
                         <div class="relative w-full flex">
                             {/* <div class="absolute inset-y-0 start-0 flex items-center ml-2 pointer-events-none w-4">
-                            <img src="img/event/people.svg" alt="people make it blue" />
+                            <img src="img/event/people.svg" alt="people Make A Wave" />
                         </div> */}
                             <input type="text" class="bg-white border-2 border-gray-200 rounded-2xl w-full semiBoldNunito p-2"
                                 id="inline-full-name"
@@ -117,7 +117,7 @@ export default function ModalFilter(props) {
                         <div className="w-1/2 mt-5">
                             <button className="donationFiltre rounded-2xl flex items-center hover:bg-neutral-200 space-x-2 w-full p-2" id={"association"} onClick={() => isSelected("association", "changedCreator")}>
                                 <div className="ml-2 mr-2">
-                                    <img src='img/filter/defender.svg' alt='defender make it blue' className='w-16' />
+                                    <img src='img/filter/defender.svg' alt='defender Make A Wave' className='w-16' />
                                 </div>
                                 <div className="text-start py-2 pr-2 space-y-1">
                                     <h3 className='text-sm extraBoldNunito'>Associations</h3>
@@ -128,7 +128,7 @@ export default function ModalFilter(props) {
                         <div className="w-1/2 mt-5">
                             <button className="donationFiltre rounded-2xl flex items-center hover:bg-neutral-200 space-x-2 w-full p-2" id={"particular"} onClick={() => isSelected("particular", "changedCreator")}>
                                 <div className="ml-2 mr-2">
-                                    <img src='img/notif/girl.svg' alt='defender make it blue' className='w-18' />
+                                    <img src='img/notif/girl.svg' alt='defender Make A Wave' className='w-18' />
                                 </div>
                                 <div className="text-start py-2 pr-2 space-y-1">
                                     <h3 className='text-sm extraBoldNunito'>Particuliers</h3>

@@ -3,7 +3,7 @@ export default function History() {
         <div className="px-6 py-3 ">
             <div className="flex">
                 <div className="w-2/12">
-                    <img src="img/profil/loutre.png" alt="pp make it blue" className="w-full" />
+                    <img src="img/profil/loutre.png" alt="pp Make A Wave" className="w-full" />
                 </div>
                 <div className="w-4/5 flex items-center ml-4 text-start">
                     <div>
@@ -19,10 +19,10 @@ export default function History() {
 
             <div className="content mt-6 relative">
                 <p className="fontColor3C text-xl extraBoldNunito text-start">Nous avons sauvé une famille de baleines grâce à vous !</p>
-                <img src="img/event/whale.svg" alt="whale make it blue" className="rounded-2xl mt-4 "/>
+                <img src="img/event/whale.svg" alt="whale Make A Wave" className="rounded-2xl mt-4 "/>
                 <button className="absolute flex border-2 border-neutral-200 rounded-2xl px-2.5 space-x-2 py-1 bg-white right-3 bottom-3">
                     <p>268</p>
-                    <img src="img/icon/clap.svg" alt="clap hand make it blue" />
+                    <img src="img/icon/clap.svg" alt="clap hand Make A Wave" />
                 </button>
             </div>
         </div>

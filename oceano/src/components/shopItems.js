@@ -10,7 +10,7 @@ function ShopItems(props) {
             <h1 className="extraBold800 text-center mt-4 mb-4">Lunettes de soleil</h1>
             <button className="text-white shopButton extraBold800 rounded-xl text-sm flex items-center justify-center p-2">
               Obtenir pour : <p className="shopText mx-2">1000</p>
-              <img src="img/icon/coin.png" className='h-7' alt="coin make it blue" />
+              <img src="img/icon/coin.png" className='h-7' alt="coin Make A Wave" />
             </button>
           </div>
         </div>

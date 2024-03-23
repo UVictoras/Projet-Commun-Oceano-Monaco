@@ -53,7 +53,7 @@ function Signup(props) {
 
                 </div>
                 <div class="mb-5">
-                    <label for="date" class="block mb-2 text-xs mediumNunito  ">Tu dois avoir au moins 13 ans pour utiliser Make it Blue. Pour en savoir plus, tu peux consulter notre
+                    <label for="date" class="block mb-2 text-xs mediumNunito  ">Tu dois avoir au moins 13 ans pour utiliser Make A Wave. Pour en savoir plus, tu peux consulter notre
                         <a href="lien vers la politique de confidentialité" className="font-bold text-sky-400 hover:underline"> Politique de confidentialité.</a></label>
                 </div>
                 <div class="mb-5">
@@ -88,7 +88,7 @@ function Signup(props) {
                     </div>
                 </div>
                 <p class="block text-xs regularNunito ">
-                    En te connectant à Make it Blue, tu acceptes nos
+                    En te connectant à Make A Wave, tu acceptes nos
                     <a href="#viveLilian" className="extraBoldNunito hover:underline"> Conditions d’utilisation </a>
                     et notre
                     <a href="#viveLoan" className=" extraBoldNunito hover:underline"> Politique de confidentialité</a>.</p>

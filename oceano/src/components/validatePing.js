@@ -18,7 +18,7 @@ export default function ValidePing(props) {
                             </div>
                         </div>
                     </div>
-                    <img src="img/mascotte.png" alt="mascotte make it blue" className="w-96" />
+                    <img src="img/mascotte.png" alt="mascotte Make A Wave" className="w-96" />
                 </div>
             </div>
 }

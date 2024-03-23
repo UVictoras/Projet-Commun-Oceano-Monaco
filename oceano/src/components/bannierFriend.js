@@ -2,7 +2,7 @@ export default function BannierFriend(props) {
 
     return (<button className="border-2 border-neutral-200 rounded-lg w-full p-2 flex items-center relative mt-3">
         <div className="w-1/5">
-            <img src={props.user.Picture} alt="photo de profil make it blue" className="w-16" />
+            <img src={props.user.Picture} alt="photo de profil Make A Wave" className="w-16" />
         </div>
         <div className="w-1/3 text-start">
             <h1 className="blackNunito text-xl fontColor3C">{props.user.Pseudo}</h1>

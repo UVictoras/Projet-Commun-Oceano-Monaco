@@ -5,7 +5,7 @@ export default function LoadingScreen() {
             <div class="loader"></div>
         </div>
         <div className="flex">
-            <p className="text-center text-lg mediumNunito">Make it Blue est la plus grande communauté de<br />
+            <p className="text-center text-lg mediumNunito">Make A Wave est la plus grande communauté de<br />
                 protecteurs de l'océan au monde.
             </p>
         </div>

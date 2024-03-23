@@ -72,7 +72,7 @@ export default function Tab(props) {
                             <div className="profile">
                                 <div className="grid grid-cols-2">
                                     <div className="flex justify-center">
-                                        <img src={item.imgProfile} alt="profile Make it blue" className="w-28 h-28 rounded-full" />
+                                        <img src={item.imgProfile} alt="profile Make A Wave" className="w-28 h-28 rounded-full" />
                                     </div>
                                     <div className="mt-4">
                                         <p className="blackNunito text-start">{item.name}</p>
@@ -84,11 +84,11 @@ export default function Tab(props) {
                             </div>
                             <div className="contact space-y-3 mt-4">
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.phoneImage} alt="phone make it blue" />
+                                    <img src={item.phoneImage} alt="phone Make A Wave" />
                                     <p>{item.phoneText}</p>
                                 </div>
                                 <div className="flex items-center space-x-4">
-                                    <img src={item.mailImage} alt="mail make it blue" />
+                                    <img src={item.mailImage} alt="mail Make A Wave" />
                                     <p>{item.mailText}</p>
                                 </div>
                             </div>
@@ -105,19 +105,19 @@ export default function Tab(props) {
 
                         {item.id === 1 ? <div className="mt-4 text-left space-y-4">
                             <div className="flex semiBoldNunito items-center space-x-2">
-                                <img src={item.imgDatePicker} alt="date picker make it blue" className="w-8" />
+                                <img src={item.imgDatePicker} alt="date picker Make A Wave" className="w-8" />
                                 <p>{item.textDatePicker}</p>
                             </div>
                             <div className="flex semiBoldNunito items-center space-x-2">
-                                <img src={item.imgLocate} alt="locate make it blue" />
+                                <img src={item.imgLocate} alt="locate Make A Wave" />
                                 <p>{item.textLocate}</p>
                             </div>
                             <div className="flex semiBoldNunito items-center space-x-1">
-                                <img src={item.imgLink} alt="link make it blue" />
+                                <img src={item.imgLink} alt="link Make A Wave" />
                                 <a href className="underline blueTextColor">{item.textLink}</a>
                             </div>
                             <div className="flex extraBold800 items-center space-x-2">
-                                <img src={item.imgGoal} alt="goal make it blue" />
+                                <img src={item.imgGoal} alt="goal Make A Wave" />
                                 <p >{item.textGoal}</p>
                             </div>
                             <div className="w-[425px] h-[14px] bg-neutral-200 rounded-l-lg">

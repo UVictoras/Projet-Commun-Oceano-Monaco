@@ -6,7 +6,7 @@ export default function PlacePing(props) {
                             <p className=" p-5 px-4 fontColor3C extraBoldNunito text-xl">Pour créer une action,<br /> sélectionne un lieu sur la carte !</p>
                         </div>
                     </div>
-                    <img src="img/mascotte.png" alt="mascotte make it blue" className="w-96" />
+                    <img src="img/mascotte.png" alt="mascotte Make A Wave" className="w-96" />
                 </div>
             </div>
 }

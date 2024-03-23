@@ -84,7 +84,7 @@ function Impact(props) {
                         <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
                             {typeEvent.map((type) => {
                                 return <button id={type.Name} onClick={() => handleClick(type)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
-                                    <img src={type.Logo} alt='petition make it blue' className='w-4 ml-2' />
+                                    <img src={type.Logo} alt='petition Make A Wave' className='w-4 ml-2' />
                                     <p className='text-sm extraBoldNunito px-3'>{type.Name}</p>
                                 </button>
                             })}
@@ -103,14 +103,14 @@ function Impact(props) {
                     <div className="flex ">
                         <h1 className="extraBold800 text-2xl text-center pb-9 mt-10 pr-6">12 derniers mois</h1>
                         <button>
-                            <img src="img/impact/arrow.svg" alt="fleche make it blue" />
+                            <img src="img/impact/arrow.svg" alt="fleche Make A Wave" />
                         </button>
                     </div>
 
                     <div className="activity space-y-2 h-2/5">
                         <h2 className="extraBoldNunito text-[28px]">Activité</h2>
                         <div className="border-2 border-neutral-200 rounded-2xl flex justify-center px-2 py-8">
-                            <img src="img/impact/graph.png" alt="graph make it blue" />
+                            <img src="img/impact/graph.png" alt="graph Make A Wave" />
                         </div>
                     </div>
                 </div>

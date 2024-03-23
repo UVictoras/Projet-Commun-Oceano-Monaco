@@ -6,7 +6,7 @@ export default function FifthStep(props) {
         </div>
         <div className="border-2 border-neutral-200 rounded-2xl h-3/4 overflow-hidden">
             <div className="h-1/4 w-full relative">
-                <img src={URL.createObjectURL(props.data.Image)} alt="whale make it blue" className=" rounded-2xl absolute inset-0 w-full h-full object-cover" />
+                <img src={URL.createObjectURL(props.data.Image)} alt="whale Make A Wave" className=" rounded-2xl absolute inset-0 w-full h-full object-cover" />
 
             </div>
             <div className="h-3/4 px-5">
@@ -18,11 +18,11 @@ export default function FifthStep(props) {
                         </p>
                         <div className="flex-shrink-0 flex space-x-3.5 ">
                             <div className={props.data.type.Color + ' px-4 rounded-2xl flex items-center justify-center space-x-2 py-2'}>
-                                <img src='img/icon/coinFilter.svg' alt='coin make it blue' className='w-4' />
+                                <img src='img/icon/coinFilter.svg' alt='coin Make A Wave' className='w-4' />
                                 <p className='text-sm extraBoldNunito'>{props.data.type.Name}</p>
                             </div>
                             <div className="date bg-white border-2 px-4 border-neutral-200 rounded-2xl flex items-center justify-center space-x-2 whitespace-nowrap">
-                                <img src='img/event/date.svg' alt='date make it blue' className='w-4' />
+                                <img src='img/event/date.svg' alt='date Make A Wave' className='w-4' />
                                 <p className='text-sm extraBoldNunito flex'>{new Intl.DateTimeFormat("fr-FR", {month: "long", day: "numeric"}).format(new Date(props.data.End_date))}</p>
                             </div>
                         </div>
@@ -34,19 +34,19 @@ export default function FifthStep(props) {
                 </div>
                 <div className="h-1/4 flex items-center justify-between">
                     <div className="flex semiBoldNunito items-center space-x-2">
-                        <img src="img/event/calendar.png" alt="date picker make it blue" className="w-8" />
+                        <img src="img/event/calendar.png" alt="date picker Make A Wave" className="w-8" />
                         <p>Du {new Intl.DateTimeFormat("fr-FR", {month: "long", day: "numeric"}).format(new Date(props.data.Start_date))} au {new Intl.DateTimeFormat("fr-FR", {month: "long", day: "numeric"}).format(new Date(props.data.End_date))}</p>
                     </div>
                     <div className="flex semiBoldNunito items-center space-x-2">
-                        <img src="img/event/locate.png" alt="locate make it blue" />
+                        <img src="img/event/locate.png" alt="locate Make A Wave" />
                         <p>En ligne</p>
                     </div>
                     <div className="flex semiBoldNunito items-center space-x-1">
-                        <img src="img/event/link.png" alt="link make it blue" />
+                        <img src="img/event/link.png" alt="link Make A Wave" />
                         <a href className="underline blueTextColor">{props.data.link}</a>
                     </div>
                     <div className="flex extraBold800 items-center space-x-2">
-                        <img src="img/event/goal.svg" alt="goal make it blue" />
+                        <img src="img/event/goal.svg" alt="goal Make A Wave" />
                         <p >1500 signatures</p>
                     </div>
                 </div>
