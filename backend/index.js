@@ -219,6 +219,20 @@ app.get('/getUserSession', (req, res) => {
   res.json(myVariable);
 });
 
+/*------------- SET SESSION ID EVENT --------------*/
+app.post('/setIDEventSession', jsonParser, (req, res) => {
+  const body = req.body;
+  req.session.idEvent = body;
+  req.session.save();
+  res.send('Variable de session définie');
+});
+
+/*------------- GET SESSION ID EVENT --------------*/
+app.get('/getIDEventSession', (req, res) => {
+const myVariable = req.session.idEvent || "";
+res.json(myVariable);
+});
+
 /*------------- GET EVENT --------------*/
 app.post("/event", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
@@ -247,6 +261,24 @@ app.post("/event", jsonParser, function (req, res) {
                                 INNER JOIN profil_picture pp ON u.Picture = pp.ID   \
                                 INNER JOIN title tt ON l.Title = tt.ID              \
                   WHERE e.ID = " + body.id, 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET ALL EVENT --------------*/
+app.get("/event/all", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT e.ID,                                                           \
+                        t.Logo,                                                          \
+                  (SELECT COUNT(*) FROM users_in_event WHERE ID_Event = e.ID) AS NbUsers \
+                  FROM event e INNER JOIN type_event t ON e.Type = t.ID", 
           
           function (err, result) {
             if (err){

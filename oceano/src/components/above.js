@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import { React } from 'react';
 import Searchbar from "./searchbar";
 import Modal from "./modal";
@@ -7,14 +7,46 @@ import { getEvent } from "../api/event";
 import PlacePing from "./placePing";
 import ValidePing from "./validatePing";
 import { Click } from '../utils/3DVerse';
+import { getIDEventSession } from "../api/session";
 
-function Above(props) {
+let GloabelIdEvent = [];
+// const StateContext = createContext();
+
+// export function StateProvider ({ children }) {
+//     const [idEvent, setIdEvent] = useState('valeur initiale');
+
+//     return (
+//       <StateContext.Provider value={{ idEvent, setIdEvent }}>
+//         {children}
+//       </StateContext.Provider>
+//     );
+//   };
+
+export function IdEvent(label) {
+    // const { idEvent, setIdEvent } = useContext(StateContext);
+
+    GloabelIdEvent = label.labelElement.domElement.querySelector(".label").id;
+    console.log("label", label.labelElement.domElement.querySelector(".label").id)
+    // label.labelElement.domElement.QuerySelector(".label").id
+    // setIdEvent('nouvelle valeur');
+};
+
+export function Above(props) {
     const [isModalOpen, setModalOpen] = useState(false);
     const [isClicked, setClicked] = useState();
     const [isNotifOpen, setNotifOpen] = useState(false);
     const [event, setEvent] = useState([]);
     const [isPlacePing, setPlacePing] = useState(false);
     const [isPing, setIsPing] = useState(false);
+    const [idEvent, setIdEvent] = useState([]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (idEvent !== GloabelIdEvent) {
+                setIdEvent(GloabelIdEvent);
+            }
+        }, 1000);
+    },[]);
 
     const handleClick = () => {
         Click((position) => {
@@ -50,11 +82,15 @@ function Above(props) {
     };
 
     useEffect(() => {
-        const eventFetched = getEvent({ id: 1 });
-        eventFetched
-            .then(result => setEvent(result))
-            .catch(error => console.error("Error :", error.message))
-    }, [])
+        if(idEvent.length !== 0){
+            console.log("idEvent", idEvent)
+            const eventFetched = getEvent({ id: idEvent });
+            eventFetched
+                .then(result => {setEvent(result); openModal("event");})
+                .catch(error => console.error("Error :", error.message))
+        }
+    }, [idEvent])
+
     return <div className="Act ">
 
         <div className="searchAndBell flex absolute left-12 mt-10 z-30">
@@ -130,4 +166,3 @@ function Above(props) {
         </div>
     </div>
 }
-export default Above

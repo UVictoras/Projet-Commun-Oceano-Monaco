@@ -1,5 +1,5 @@
 import Navbar from "../components/navbar";
-import Above from "../components/above.js";
+import { Above, StateProvider } from "../components/above.js";
 import { Canvas } from "../Canva.jsx";
 import { useState } from "react";
 import LoadingScreen from "./loadingScreen.js";
@@ -23,6 +23,9 @@ function Act(props) {
             )
         }
         <Navbar />
+        {/* <StateProvider>
+            <Above/>
+        </StateProvider> */}
         <Above/>
         <Canvas onChange={handleCanvaChange}/>
         

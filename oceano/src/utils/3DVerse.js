@@ -3,8 +3,14 @@
 import * as THREE from 'three';
 import TravelAnimation from './travelAnimation';
 import { glMatrix, vec3, quat, mat4 }   from 'gl-matrix';
+import { getAllEvents } from "../api/event";
 
-
+let allEvents = [];
+const AllEventsFetched = getAllEvents();
+AllEventsFetched
+.then(result => allEvents = result)
+.catch(error=>console.error("Error :",error.message))
+let numEvent = 0;
 
 let labelDisplay = null;
 let isVisible = false
@@ -150,7 +156,7 @@ export function labelTravel(destinationPosition, speed, startPosition, startOrie
         position    : vec3.fromValues(...(startPosition || camera[0].getTransform().position))
         // orientation : quat.fromValues(...(startOrientation || camera[0].getTransform().orientation))
     };
-    console.log("currentCameraTransform", currentCameraTransform)
+    // console.log("currentCameraTransform", currentCameraTransform)
 
     const destinationTransform =
     {
@@ -188,14 +194,14 @@ export function labelTravel(destinationPosition, speed, startPosition, startOrie
                 // quat.slerp(currentOrientation, currentCameraTransform.orientation, destinationTransform.orientation, alpha);
                 
                 currentPosition = slerpInterpolation(camStartPosition, camEndPosition, alpha);
-                console.log("currentPosition", currentPosition)
+                // console.log("currentPosition", currentPosition)
 
                 const {x, y, z} = currentPosition;
                 const resultOrientation = computeOrientationToTarget([0, 0, 0], [x, y, z]);
                 currentOrientation = resultOrientation.targetOrientation
 
                 //quat.slerp(currentOrientation, currentCameraTransform.orientation, destinationTransform.orientation, alpha)
-                console.log("currentOrientation", currentOrientation)
+                // console.log("currentOrientation", currentOrientation)
 
                 
                 camera[0].setGlobalTransform(
@@ -892,4 +898,35 @@ export function showVisibleLabelsOnly() {
 
 export async function getAllLabelPosition(){
     return window.SDK3DVerse.extensions.LabelDisplay.labelEntities
+}
+
+export function idLabel(labelElement)
+    {
+        labelElement.id = allEvents[numEvent].ID;
+    }
+
+export function imgLabel(newImg)
+    {
+        newImg.src = allEvents[numEvent].Logo;
+    }
+
+export function paragraphLabel(newParagraph)
+    {
+        newParagraph.textContent = allEvents[numEvent].NbUsers;
+        numEvent += 1;
+    }
+export function clickLabel(props){
+    var labels = document.getElementsByClassName("label");
+    console.log(labels);
+    console.log(labels.length);
+    for (var i = 0; i < labels.length; i++) {
+        console.log(labels[i]);
+        labels[i].addEventListener("click", function(event) {
+            var label = event.currentTarget;
+            console.log("yes");
+            if (label) {
+                props.setIdEvent(label.id);
+            }
+        });
+    }
 }

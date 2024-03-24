@@ -1,7 +1,9 @@
 //------------------------------------------------------------------------------
 import SDK3DVerse_ExtensionInterface from './ExtensionInterface';
 import { quat, vec3 } from 'gl-matrix';
-import {norme, multiplicationVectorNorme, labelTravel} from '../utils/3DVerse'
+import {norme, multiplicationVectorNorme, labelTravel, imgLabel, paragraphLabel, idLabel} from '../utils/3DVerse'
+import { StateContext, IdEvent } from '../components/above';
+import { setIDEventSession } from '../api/session';
 
 //------------------------------------------------------------------------------
 /**
@@ -382,22 +384,25 @@ const titleElement          = labelElement.domElement.children[1];
 
         var containerElement        = document.createElement('div');
         containerElement.className  = 'label-container';
-
+    
         var labelElement            = document.createElement('div');
         labelElement.className      = 'label';
         labelElement.innerText      = '';
+        idLabel(labelElement);
 
         containerElement.appendChild(labelElement);
 
         var newImg = document.createElement('img');
-        newImg.src = './img/icon/waste.png';
+        // newImg.src = './img/icon/waste.png';
+        imgLabel(newImg);
         newImg.alt = 'Description of the image';
         newImg.classList.add('collect');
 
         containerElement.appendChild(newImg);
 
         var newParagraph = document.createElement('p');
-        newParagraph.textContent = '128';
+        // newParagraph.textContent = '128';
+        paragraphLabel(newParagraph);
         newParagraph.classList.add('attendees');
 
         containerElement.appendChild(newParagraph);
@@ -418,7 +423,7 @@ const titleElement          = labelElement.domElement.children[1];
 
         const domElement                = this.domRenderer.createDomElement(containerElement);
         domElement.renderedTitle        = labelComponent.title;
-
+        
         return domElement;
     }
 
@@ -475,20 +480,23 @@ const titleElement          = labelElement.domElement.children[1];
         }
 
         let labelPosition = label.getGlobalTransform().position;
-        console.log("labelPosition", labelPosition);
+        // console.log("labelPosition", labelPosition);
         let test = norme(labelPosition);
-        console.log("test", test);
+        // console.log("test", test);
         let test2 = multiplicationVectorNorme(test, 0.5);
         console.log("test2", test2);
         for(var i = 0; i < 3; i++){
             labelPosition[i] += test2[i]
         }
-        console.log("labelPosition", labelPosition);
+        // console.log("labelPosition", labelPosition);
         //const destinationPosition = [0, 0, -1.2]
         // const { targetOrientation } = computeOrientationToTarget([0, 0, 0], destinationPosition);
         // console.log("targetOrientation", targetOrientation)
         labelTravel(labelPosition, 0.5);
 
+        IdEvent(label);
+        // setIDEventSession({id : label.labelElement.domElement.querySelector(".label").id});
+        
         // const labelComponent = label.getComponent('label');
         // const cameraPosition = labelComponent.camera.slice(0, 3);
         // const cameraOrientation = labelComponent.camera.slice(3, 7);
