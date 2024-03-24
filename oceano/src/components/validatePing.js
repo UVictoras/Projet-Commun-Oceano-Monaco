@@ -1,8 +1,8 @@
 export default function ValidePing(props) {
-    return  <div className="absolute bottom-0 right-0 z-30">
+    return  <div className="absolute bottom-0 right-14 z-30">
                 <div className=" z-40 flex ">
                     <div className="">
-                        <div className="absolute relative inline-block bg-white talk-bubble tri-right rounded-xl right-in -top-4 space-y-3">
+                        <div className="absolute background-bubble relative inline-block bg-white talk-bubble tri-right rounded-xl right-in -top-4 space-y-3">
                             <div className="talktext py-5 px-4">
                                 <p className=" mt-8 px-4 fontColor3C extraBoldNunito text-xl">Es-tu sûr de vouloir créer une <br /> action ici ?</p>
                                 <div className="flex justify-between ml-4 mt-4">
@@ -18,7 +18,7 @@ export default function ValidePing(props) {
                             </div>
                         </div>
                     </div>
-                    <img src="img/mascotte.png" alt="mascotte Make A Wave" className="w-96" />
+                    <img src="img/mascotte.png" alt="mascotte Make A Wave" className="w-52" />
                 </div>
             </div>
 }
