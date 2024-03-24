@@ -79,6 +79,7 @@ app.post("/user", jsonParser, function (req, res) {
                           u.Country                                                                  , \
                           u.Email                                                                    , \
                           u.Password                                                                 , \
+                          pp.ID AS Picture_ID                                                        , \
                           pp.Image AS Picture                                                        , \
                           u.X                                                                        , \
                           u.Y                                                                        , \
@@ -221,6 +222,20 @@ app.get('/getUserSession', (req, res) => {
   res.json(myVariable);
 });
 
+/*------------- SET SESSION ID EVENT --------------*/
+app.post('/setIDEventSession', jsonParser, (req, res) => {
+  const body = req.body;
+  req.session.idEvent = body;
+  req.session.save();
+  res.send('Variable de session définie');
+});
+
+/*------------- GET SESSION ID EVENT --------------*/
+app.get('/getIDEventSession', (req, res) => {
+const myVariable = req.session.idEvent || "";
+res.json(myVariable);
+});
+
 /*------------- GET EVENT --------------*/
 app.post("/event", jsonParser, function (req, res) {
   const dbConnect = dbo.getDb();
@@ -249,6 +264,24 @@ app.post("/event", jsonParser, function (req, res) {
                                 INNER JOIN profil_picture pp ON u.Picture = pp.ID   \
                                 INNER JOIN title tt ON l.Title = tt.ID              \
                   WHERE e.ID = " + body.id, 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET ALL EVENT --------------*/
+app.get("/event/all", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT e.ID,                                                           \
+                        t.Logo,                                                          \
+                  (SELECT COUNT(*) FROM users_in_event WHERE ID_Event = e.ID) AS NbUsers \
+                  FROM event e INNER JOIN type_event t ON e.Type = t.ID", 
           
           function (err, result) {
             if (err){
@@ -396,4 +429,61 @@ app.post('/event/insert', jsonParser, (req, res) => {
               console.log(result);     
           })
   res.json(body);
+});
+
+/*------------- GET Equip Accessories --------------*/
+app.post("/equip/accessories", jsonParser, function (req, res) {
+  const body = req.body;
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT a.* , r.Color, r.price \
+                  FROM profil_picture pp                               \
+                  INNER JOIN accessories a ON pp.ID_Animal = a.ID \
+                  OR pp.ID_Chapeau = a.ID                         \
+                  OR pp.ID_Lunettes = a.ID                         \
+                  OR pp.ID_Cravate = a.ID                         \
+                  INNER JOIN rarity_accessories r ON r.ID = a.Rarity \
+                  WHERE pp.ID = " + body.id +
+                  " ORDER BY a.Type", 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET Accessories --------------*/
+app.get("/accessories", function (req, res) {
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT a.*, r.Color, r.price \
+                  FROM accessories a \
+                  INNER JOIN rarity_accessories r ON r.ID = a.Rarity \
+                  ORDER BY a.Type", 
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});
+
+/*------------- GET Badges --------------*/
+app.post("/badges", jsonParser, function (req, res) {
+  const body = req.body;
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM badges b INNER JOIN badges_by_users bu ON bu.ID_Badge = b.ID WHERE bu.ID_User = " + body.id, 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
 });

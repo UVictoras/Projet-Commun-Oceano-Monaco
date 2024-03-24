@@ -13,6 +13,20 @@ export const getEvent = async (id) => {
     return event;
 }
 
+export const getAllEvents = async () => {
+    const response = await fetch(
+        'http://localhost:4444/event/all', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            }
+        }
+    )
+    const allevent = await response.json();
+    return allevent;
+}
+
 export const getLastEvent = async (id) => {
     const response = await fetch(
         'http://localhost:4444/last/event', {

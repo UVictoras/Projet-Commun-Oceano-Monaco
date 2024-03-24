@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import { React } from 'react';
 import Searchbar from "./searchbar";
 import Modal from "./modal";
@@ -7,14 +7,30 @@ import { getEvent } from "../api/event";
 import PlacePing from "./placePing";
 import ValidePing from "./validatePing";
 import { Click } from '../utils/3DVerse';
+import { getIDEventSession } from "../api/session";
 
-function Above(props) {
+let GloabelIdEvent = [];
+
+export function IdEvent(label) {
+    GloabelIdEvent = label.labelElement.domElement.querySelector(".label").id;
+};
+
+export function Above(props) {
     const [isModalOpen, setModalOpen] = useState(false);
     const [isClicked, setClicked] = useState();
     const [isNotifOpen, setNotifOpen] = useState(false);
     const [event, setEvent] = useState([]);
     const [isPlacePing, setPlacePing] = useState(false);
     const [isPing, setIsPing] = useState(false);
+    const [idEvent, setIdEvent] = useState([]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (idEvent !== GloabelIdEvent) {
+                setIdEvent(GloabelIdEvent);
+            }
+        }, 1000);
+    },[]);
 
     const handleClick = () => {
         Click((position) => {
@@ -50,11 +66,15 @@ function Above(props) {
     };
 
     useEffect(() => {
-        const eventFetched = getEvent({ id: 1 });
-        eventFetched
-            .then(result => setEvent(result))
-            .catch(error => console.error("Error :", error.message))
-    }, [])
+        if(idEvent.length !== 0){
+            console.log("idEvent", idEvent)
+            const eventFetched = getEvent({ id: idEvent });
+            eventFetched
+                .then(result => {setEvent(result); openModal("event");})
+                .catch(error => console.error("Error :", error.message))
+        }
+    }, [idEvent])
+
     return <div className="Act ">
 
         <div className="searchAndBell flex absolute left-12 mt-10 z-30">
@@ -107,7 +127,7 @@ function Above(props) {
 
         <div className="bottomIcon flex items-end absolute bottom-8 left-1/2 centerIcon space-x-3 z-30">
 
-            <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center locateButton  z-20" onClick={() => openModal("event")}>
+            <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center locateButton  z-20">
                 <img src="img/icon/locate.svg" alt="locate make it blue" />
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center likeButton z-20" onClick={() => openModal("like")}>
@@ -130,4 +150,3 @@ function Above(props) {
         </div>
     </div>
 }
-export default Above

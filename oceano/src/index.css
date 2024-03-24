@@ -565,6 +565,7 @@ input[type=password] {
   transform-origin: 50% 50%;
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 
 .label-container>.active,
@@ -733,6 +734,9 @@ input[type=password] {
 
 .top-section {
   border-radius: 18.814px 18.814px 0px 0px;
+}
+
+.commun{
   background: #3CB532;
 }
 
