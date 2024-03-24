@@ -10,25 +10,9 @@ import { Click } from '../utils/3DVerse';
 import { getIDEventSession } from "../api/session";
 
 let GloabelIdEvent = [];
-// const StateContext = createContext();
-
-// export function StateProvider ({ children }) {
-//     const [idEvent, setIdEvent] = useState('valeur initiale');
-
-//     return (
-//       <StateContext.Provider value={{ idEvent, setIdEvent }}>
-//         {children}
-//       </StateContext.Provider>
-//     );
-//   };
 
 export function IdEvent(label) {
-    // const { idEvent, setIdEvent } = useContext(StateContext);
-
     GloabelIdEvent = label.labelElement.domElement.querySelector(".label").id;
-    console.log("label", label.labelElement.domElement.querySelector(".label").id)
-    // label.labelElement.domElement.QuerySelector(".label").id
-    // setIdEvent('nouvelle valeur');
 };
 
 export function Above(props) {
