@@ -72,16 +72,16 @@ export default function AboveCommunity() {
         </div>
         <div className="stat absolute w-full grid grid-cols-3 px-8 -bottom-1/3">
             <div className="text-center">
-                <h1 className="text-8xl extraBold800 text-white">231</h1>
-                <p className="text-5xl text-white semiBoldNunito">animaux <br /> réhabilités</p>
+                <h1 className="text-8xl fontColor3C extraBold800">231</h1>
+                <p className="text-5xl fontColor3C semiBoldNunito">animaux <br /> réhabilités</p>
             </div>
             <div className="text-center">
-                <h1 className="text-8xl extraBold800 text-white">231</h1>
-                <p className="text-5xl text-white semiBoldNunito">hectares  <br /> protégés</p>
+                <h1 className="text-8xl extraBold800 fontColor3C">122</h1>
+                <p className="text-5xl fontColor3C semiBoldNunito">hectares  <br /> protégés</p>
             </div>
             <div className="text-center">
-                <h1 className="text-8xl extraBold800 text-white">231</h1>
-                <p className="text-5xl text-white semiBoldNunito">plages <br /> nettoyées</p>
+                <h1 className="text-8xl extraBold800 fontColor3C">653</h1>
+                <p className="text-5xl fontColor3C semiBoldNunito">plages <br /> nettoyées</p>
             </div>
         </div>
     </div>

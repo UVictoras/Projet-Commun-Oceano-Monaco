@@ -3,7 +3,7 @@ export default function History() {
         <div className="px-6 py-3 ">
             <div className="flex">
                 <div className="w-2/12">
-                    <img src="img/profil/loutre.png" alt="pp Make A Wave" className="w-full" />
+                    <img src="img/shop/loutre.png" alt="pp Make A Wave" className="w-full" />
                 </div>
                 <div className="w-4/5 flex items-center ml-4 text-start">
                     <div>
