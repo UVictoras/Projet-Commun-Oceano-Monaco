@@ -4,7 +4,7 @@ export default function ModalEvent(props) {
     return <>
         <div className='h-1/4'>
 
-            <img src={props.event.ImageEvent} alt='Whale Make A Wave' />
+            <img src={props.event.ImageEvent} alt='Whale Make A Wave' className='object-cover w-full h-full rounded-b-2xl rounded-tl-2xl' />
             <button onClick={props.closeModal} className='absolute top-7 right-10'>
                 <img src='img/icon/exitWhite.svg' alt='croix Make A Wave' />
             </button>
