@@ -37,7 +37,7 @@ function Community(props) {
                 <div className="flex space-x-3">
                     <p className="text-2xl fontColor3C extraBold800">Récent</p>
                     <button>
-                        <img src="img/impact/arrow.svg" alt="fleche make it blue" />
+                        <img src="img/impact/arrow.svg" alt="fleche Make A Wave" />
                     </button>
                 </div>
             </div>

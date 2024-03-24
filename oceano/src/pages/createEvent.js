@@ -68,7 +68,7 @@ export default function CreateEventMain() {
             <div className="w-1/3 flex items-center ml-4">
                 <a href="/act" >
                     <button type="button">
-                        <img src="img/icon/arrow.svg" alt="arrow make it blue" />
+                        <img src="img/icon/arrow.svg" alt="arrow Make A Wave" />
                     </button>
                 </a>
             </div>

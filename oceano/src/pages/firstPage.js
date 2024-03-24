@@ -1,10 +1,9 @@
 export default function FirstPage() {
-    return <div className="md:container md:mx-auto flex-col md:flex-row flex items-center justify-center min-h-screen space-y-4">
+    return <div className="md:container md:mx-auto flex-col md:flex-row flex items-center justify-center min-h-screen space-y-4 relative">
+    
+        <img src="img/firstPage.png" alt="Make a Wave logo" className="absolute left-20"></img>
 
-        <div className="lg:w-1/2 flex-col flex items-end justify-center">
-            <img src="img/profil/loutre.gif" alt="Make a blue logo" className="w-32 h-32 lg:w-64 lg:h-64 md:w-32 md:h-32"></img>
-        </div>
-        <div className="lg:w-1/2 flex items-start blackNunito">
+        <div className="lg:w-1/2 flex items-start blackNunito relative ml-auto ">
             <div>
                 <p className="font-bold lg:text-3xl text-xl  text-center titleFont">
                     Notre quête pour un monde<br />

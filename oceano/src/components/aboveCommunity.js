@@ -55,7 +55,7 @@ export default function AboveCommunity() {
                 <div class="w-8 h-1.5 bg-neutral-200 absolute -bottom-10 z-0 transform rotate-90 "></div>
 
                 <div class="flex-auto">
-                    <img src="img/icon/locker.png" alt="locker make it blue" />
+                    <img src="img/icon/locker.png" alt="locker Make A Wave" />
 
                 </div>
 
@@ -64,7 +64,7 @@ export default function AboveCommunity() {
                 <div className="w-8/12 h-6 bg-neutral-200 rounded-l-full">
                     <div className="w-[70%] h-6 rounded-l-full backBlue "></div>
                 </div>
-                <img src="img/icon/chest.svg" alt="chest make it blue" className="ml-6 w-24" />
+                <img src="img/icon/chest.svg" alt="chest Make A Wave" className="ml-6 w-24" />
             </div>
 
 

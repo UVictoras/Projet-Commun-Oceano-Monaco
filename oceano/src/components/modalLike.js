@@ -49,7 +49,7 @@ export default function ModalLike(props) {
             </div>
             <div className='w-1/3 flex items-center justify-end'>
                 <button onClick={props.closeModal}>
-                    <img src='img/icon/exit.png' alt='exit make it blue' />
+                    <img src='img/icon/exit.png' alt='exit Make A Wave' />
                 </button>
 
             </div>
@@ -60,7 +60,7 @@ export default function ModalLike(props) {
                 <div className='min-w-full mb-7 my-3.5 space-x-2.5 flex'>
                     {typeEvent.map((type) =>{
                         return  <button id={type.Name} onClick={() => handleClick(type)} className='p-1 bg-white border-2 border-neutral-200 rounded-xl flex items-center justify-center '>
-                                    <img src={type.Logo} alt='petition make it blue' className='w-4 ml-2' />
+                                    <img src={type.Logo} alt='petition Make A Wave' className='w-4 ml-2' />
                                     <p className='text-sm extraBoldNunito px-3'>{type.Name}</p>
                                 </button>
                     })}

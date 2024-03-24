@@ -79,7 +79,7 @@ export function Above(props) {
 
         <div className="searchAndBell flex absolute left-12 mt-10 z-30">
             <button className="w-[60px] h-[60px] p-3 rounded-2xl bg-white flex items-center bellButton" onClick={openNotif}>
-                <img src="img/icon/bell/bell.png" className="changeBell" alt="make it blue" />
+                <img src="img/icon/bell/bell.png" className="changeBell" alt="Make A Wave" />
             </button>
         </div>
         {isNotifOpen ? <ModalNotif closeNotif={closeNotif} /> : ""}
@@ -107,7 +107,7 @@ export function Above(props) {
             </div>
 
             <div className="mt-[38px] flex ml-[32px] mr-[30px] flex items-start" >
-                <img src="img/icon/lightning.svg" alt="eclair make it blue" />
+                <img src="img/icon/lightning.svg" alt="eclair Make A Wave" />
                 <div className="ml-7">
 
                     <p className="extraBoldNunito fontColor3C mb-[17px]">Participer à 4 actions</p>
@@ -117,7 +117,7 @@ export function Above(props) {
                         </div>
                     </div>
                 </div>
-                <img src="img/icon/chest.svg" alt="chest make it blue" className="ml-4 mt-[26px] mb-[50px]" />
+                <img src="img/icon/chest.svg" alt="chest Make A Wave" className="ml-4 mt-[26px] mb-[50px]" />
 
 
             </div>
@@ -128,24 +128,24 @@ export function Above(props) {
         <div className="bottomIcon flex items-end absolute bottom-8 left-1/2 centerIcon space-x-3 z-30">
 
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center locateButton  z-20">
-                <img src="img/icon/locate.svg" alt="locate make it blue" />
+                <img src="img/icon/locate.svg" alt="locate Make A Wave" />
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center likeButton z-20" onClick={() => openModal("like")}>
-                <img src="img/icon/hearth/hearthGrey.svg" alt="coeur Make it blue" />
+                <img src="img/icon/hearth/hearthGrey.svg" alt="coeur Make A Wave" />
             </button>
             <button className="w-[60px] h-[60px] bg-white p-3 rounded-2xl border-2 border-solid border-neutral-200 bg-neutral-50 flex items-center filterButton z-20 " onClick={() => openModal("filter")}>
 
-                <img src="img/icon/filter.svg" className="rotateFilter" alt="filter make it blue" />
+                <img src="img/icon/filter.svg" className="rotateFilter" alt="filter Make A Wave" />
             </button>
         </div>
 
         <div className="network absolute bottom-12 right-11 space-y-6 z-30">
 
-            <img src="img/icon/network/twitter.svg" alt="twitter make it blue" />
+            <img src="img/icon/network/twitter.svg" alt="twitter Make A Wave" />
 
-            <img src="img/icon/network/instagram.svg" alt="instagram make it blue" />
+            <img src="img/icon/network/instagram.svg" alt="instagram Make A Wave" />
 
-            <img src="img/icon/network/facebook.svg" alt="facebook make it blue" />
+            <img src="img/icon/network/facebook.svg" alt="facebook Make A Wave" />
 
         </div>
     </div>

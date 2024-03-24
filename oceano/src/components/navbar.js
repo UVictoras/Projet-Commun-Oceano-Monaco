@@ -2,14 +2,14 @@ import { Disclosure, Menu } from '@headlessui/react'
 import { useEffect, useState } from "react";
 import { getUserSession } from "../api/session";
 
-const earthSelected = <img src='img/icon/earth/earth.png' className=' w-6 ' alt='earth make it blue'/>
-const earth = <img src='img/icon/earth/greyEarth.png' className='w-6 ' alt='earth make it blue' />
+const earthSelected = <img src='img/icon/earth/earth.png' className=' w-6 ' alt='earth Make A Wave'/>
+const earth = <img src='img/icon/earth/greyEarth.png' className='w-6 ' alt='earth Make A Wave' />
 
-const waterDropSelected = <img src='img/icon/waterDrop/waterDrop.png' className='w-6 ' alt='waterDrop make it blue'/>
-const waterDrop = <img src='img/icon/waterDrop/waterDropGrey.png' className='w-6' alt='waterDrop make it blue' />
+const waterDropSelected = <img src='img/icon/waterDrop/waterDrop.png' className='w-6 ' alt='waterDrop Make A Wave'/>
+const waterDrop = <img src='img/icon/waterDrop/waterDropGrey.png' className='w-6' alt='waterDrop Make A Wave' />
 
-const chatSelected = <img src='img/icon/chat/chat.png' className=' w-6' alt='chat make it blue' />
-const chat = <img src='img/icon/chat/chatGrey.png' className=' w-6' alt='chat make it blue' />
+const chatSelected = <img src='img/icon/chat/chat.png' className=' w-6' alt='chat Make A Wave' />
+const chat = <img src='img/icon/chat/chatGrey.png' className=' w-6' alt='chat Make A Wave' />
 
 
 
@@ -103,7 +103,7 @@ function Navbar() {
               type="button"
               className="relative rounded-full text-gray-400 flex items-center"
             >
-              <img src='img/icon/target.png' className='h-7 absolute' alt='target make it blue'/>
+              <img src='img/icon/target.png' className='h-7 absolute' alt='target Make A Wave'/>
               <p className='ml-10 extraBoldNunito fontTarget '>3</p>
 
             </button>
@@ -111,7 +111,7 @@ function Navbar() {
               type="button"
               className="relative rounded-full text-gray-400 p-4 flex items-center"
             >
-              <img src='img/icon/coin.png' className='h-7 absolute' alt="coin make it blue" />
+              <img src='img/icon/coin.png' className='h-7 absolute' alt="coin Make A Wave" />
               <a href='/shop' className='ml-8 extraBoldNunito fontBell'>{user.Money}</a>
 
             </button>
@@ -125,7 +125,7 @@ function Navbar() {
                         <img
                           className="h-10 w-10 rounded-full absolute positionImage "
                           src={user.Picture}
-                          alt="avatar make it blue"
+                          alt="avatar Make A Wave"
                         />
                       </div></div>
 

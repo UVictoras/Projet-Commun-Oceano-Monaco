@@ -16,7 +16,7 @@ export default function MyAction(props) {
 
             </div>
             <div className="absolute flex items-center w-full">
-                <img src={props.type.Logo} className="h-3.5 mx-3.5 " alt="coin make it blue" />
+                <img src={props.type.Logo} className="h-3.5 mx-3.5 " alt="coin Make A Wave" />
                 <div className="w-2/3">
                     <p className="text-white w-2/3 extraBoldNunito text-xl whitespace-nowrap">{props.type.Name}</p>
                 </div>

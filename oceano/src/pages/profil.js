@@ -65,14 +65,14 @@ function Profile(props) {
                 <div className="h-2/5 space-y-8">
                     <div className="banniere h-4/5">
                         <div className="bannier">
-                            <img src={user.Banner} alt="banier make it blue" />
+                            <img src={user.Banner} alt="banier Make A Wave" />
                         </div>
                         <div className="relative profilPosition flex items-center ">
                             <div className="border-2 border-neutral-200 bg-white rounded-2xl w-4/5  ">
                                 <div className="mx-6 flex">
                                     <div className="w-1/2 flex">
                                         <div className="profilPicture">
-                                            <img src={user.Picture} alt="profile make it blue" className="rounded-full h-28 w-28 my-4" />
+                                            <img src={user.Picture} alt="profile Make A Wave" className="rounded-full h-28 w-28 my-4" />
                                         </div>
                                         <div className="name mt-6 ml-8 space-y-3">
                                             <h1 className="text-left blackNunito fontColor3C text-4xl">{user.Pseudo}</h1>
@@ -153,7 +153,7 @@ function Profile(props) {
                 <div className="action border-2 border-neutral-200 rounded-2xl">
                     <div className="mx-8 my-8">
                         <div className="imgBanner h-full  rounded-xl flex items-center">
-                            <img src="img/profil/thunder.svg" className="px-8" alt="thunder make it blue" />
+                            <img src="img/profil/thunder.svg" className="px-8" alt="thunder Make A Wave" />
                             <div className="p-4">
                                 <p className="extraBold800 text-white text-4xl">{lastEvent.length}</p>
                                 <p className="text-white extraBoldNunito text-base">Actions menées</p>
