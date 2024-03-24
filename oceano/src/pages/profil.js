@@ -126,8 +126,11 @@ function Profile(props) {
                         <h2 className="fontColor3C text-3xl blackNunito">Hauts faits</h2>
                         <div className="achievementCard mt-3.5 space-y-5 ">
                             {badgesUser.slice(0, Math.ceil(badgesUser.length / 2)).map((badge, index) => {
+                                console.log("Math.ceil(badgesUser.length / 2)",Math.ceil(badgesUser.length / 2));
+                                console.log("index",index);
                                 return  <div className="space-x-3.5 flex">
-                                            {badgesUser.slice(index, badgesUser.length > index + 2 ? index + 2 : index + 1 ).map((badge, i) => {
+                                            {badgesUser.slice(0, badgesUser.length - 1 > index * 2 ? 2 : 1 ).map((badge, i) => {
+                                                console.log("i + index * 2",i + index * 2);
                                                 return <Achievement badge={badgesUser[i + index * 2]}/>
                                             })}
                                         </div>

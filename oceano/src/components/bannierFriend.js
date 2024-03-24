@@ -1,26 +1,17 @@
 import { getBadgesUser } from "../api/user";
 import { useEffect, useState } from "react";
-import { getUserSession } from "../api/session";
 
 export default function BannierFriend(props) {
-    const [ user, setUser ] = useState([]);
     const [ badgesUser, setBadgesUser ] = useState([]);
 
     useEffect(() => {
-        const userFetched = getUserSession();
-        userFetched
-        .then(result => setUser(result))
-        .catch(error=>console.error("Error :",error.message))
-    },[]);
-
-    useEffect(() => {
-        if (user.ID){
-            const badgesUserFetched = getBadgesUser({id: user.ID});
+        if (props.user.ID){
+            const badgesUserFetched = getBadgesUser({id: props.user.ID});
             badgesUserFetched
             .then(result => setBadgesUser(result.slice(0, 3)))
             .catch(error=>console.error("Error :",error.message))
         }
-    }, [user]);
+    }, [props.user]);
 
     return <button className="border-2 border-neutral-200 rounded-lg w-full p-2 flex items-center relative mt-3">
         <div className="w-1/5">
@@ -48,9 +39,12 @@ export default function BannierFriend(props) {
 
             </div> */}
         </div>
-        <div className="absolute backgroundE45757 top-[-14px] right-4 rounded-md">
-            <p className="px-2 py-1 blackNunito text-xs text-white">3ème semaine</p>
-        </div>
+        {Math.floor(Math.random() * 2) == 1 ?
+            <div className="absolute backgroundE45757 top-[-14px] right-4 rounded-md">
+                <p className="px-2 py-1 blackNunito text-xs text-white">{Math.floor(Math.random() * 3 + 2) + "ème semaine"}</p>
+            </div>
+            : ""}
+        
     </button>
 
 
