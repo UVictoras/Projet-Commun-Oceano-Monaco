@@ -468,3 +468,19 @@ app.get("/accessories", function (req, res) {
             console.log(result);     
           })
 });
+
+/*------------- GET Badges --------------*/
+app.post("/badges", jsonParser, function (req, res) {
+  const body = req.body;
+  const dbConnect = dbo.getDb();
+  dbConnect
+          .query("SELECT * FROM badges b INNER JOIN badges_by_users bu ON bu.ID_Badge = b.ID WHERE bu.ID_User = " + body.id, 
+          
+          function (err, result) {
+            if (err){
+              throw err;
+            }
+            res.json(result);
+            console.log(result);     
+          })
+});

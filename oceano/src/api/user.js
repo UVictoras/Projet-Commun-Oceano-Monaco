@@ -70,3 +70,18 @@ export const getAccessories = async () => {
     const accessories = await response.json();
     return accessories;
 }
+
+export const getBadgesUser = async (id) => {
+    const response = await fetch(
+        'http://localhost:4444/badges', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(id)
+        }
+    )
+    const badges = await response.json();
+    return badges;
+}

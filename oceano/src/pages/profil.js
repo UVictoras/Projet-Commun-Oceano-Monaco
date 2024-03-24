@@ -6,6 +6,7 @@ import Navbar from "../components/navbar";
 import { useEffect, useState } from "react";
 import { getUserSession } from "../api/session";
 import { getLastEvent, getTypeEventUser } from "../api/event";
+import { getBadgesUser } from "../api/user";
 
 function Profile(props) {
     const [ user, setUser ] = useState([]);
@@ -13,6 +14,7 @@ function Profile(props) {
     const [ typeEventUser, settypeEventUser ] = useState([]);
     const [ moreAction, setmoreAction ] = useState(false);
     const [ TextAction, setTextAction ] = useState("Voir toutes mes actions");
+    const [ badgesUser, setBadgesUser ] = useState([]);
 
     useEffect(() => {
         const userFetched = getUserSession();
@@ -31,6 +33,11 @@ function Profile(props) {
             const typeEventUserFetched = getTypeEventUser({id: user.ID});
             typeEventUserFetched
             .then(result => settypeEventUser(moreAction ? result : result.slice(0, 3)))
+            .catch(error=>console.error("Error :",error.message))
+
+            const badgesUserFetched = getBadgesUser({id: user.ID});
+            badgesUserFetched
+            .then(result => setBadgesUser(result))
             .catch(error=>console.error("Error :",error.message))
         }
     
@@ -74,18 +81,21 @@ function Profile(props) {
                                     </div>
                                     <div className="w-2/3 flex items-center justify-end">
                                         <div className="badge flex items-center space-x-7 ml-8">
-                                            <div className="h-16 w-16 rounded-xl badgeColor">
-
+                                            {badgesUser.slice(0, 3).map((badge) => {
+                                                return  <div className="h-16">
+                                                            <img src={badge.Image} className="w-16" alt="badge make it blue"/>   
+                                                        </div>
+                                            }) }
+                                            
+                                            {/* <div className="h-16">
+                                                <img src="img/badge/fire.png" className="w-16" alt="badge make it blue"/>
                                             </div>
-                                            <div className="h-16 w-16 rounded-xl badgeColor">
-
+                                            <div className="h-16">
+                                                <img src="img/badge/fire.png" className="w-16" alt="badge make it blue"/>
                                             </div>
-                                            <div className="h-16 w-16 rounded-xl badgeColor">
-
-                                            </div>
-                                            <div className="h-16 w-16 rounded-xl badgeColor">
-
-                                            </div>
+                                            <div className="h-16">
+                                                <img src="img/badge/fire.png" className="w-16" alt="badge make it blue"/>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +125,14 @@ function Profile(props) {
                     <div className="achievement mt-8">
                         <h2 className="fontColor3C text-3xl blackNunito">Hauts faits</h2>
                         <div className="achievementCard mt-3.5 space-y-5 ">
-                            <div className="space-x-3.5 flex">
+                            {badgesUser.slice(0, Math.ceil(badgesUser.length / 2)).map((badge, index) => {
+                                return  <div className="space-x-3.5 flex">
+                                            {badgesUser.slice(index, badgesUser.length > index + 2 ? index + 2 : index + 1 ).map((badge, i) => {
+                                                return <Achievement badge={badgesUser[i + index * 2]}/>
+                                            })}
+                                        </div>
+                            })}
+                            {/* <div className="space-x-3.5 flex">
                                 <Achievement />
                                 <Achievement />
                             </div>
@@ -126,7 +143,7 @@ function Profile(props) {
                             <div className="space-x-3.5  flex">
                                 <Achievement />
                                 <Achievement />
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>
