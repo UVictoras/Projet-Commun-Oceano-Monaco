@@ -40,7 +40,7 @@ export default function AboveCommunity() {
                         <img src="img/icon/star.svg" className="" />
                     </div>
                     <div className="flex items-center">
-                        <h1 class="text-lg">Bannière “My Dear Beach”</h1>
+                        <h1 class="text-lg">Titre “Héros des océans”</h1>
                     </div>
                     <div className="flex items-start mt-2">
                         <img src="img/icon/star.svg" className="w-6" />
