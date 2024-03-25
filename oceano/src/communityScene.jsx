@@ -31,6 +31,7 @@ export const CommunityScene = (props) => {
             userToken: 'public_0rtYmFmJfCyVxB7-',
             sceneUUID: '34462644-db76-4ed3-9420-8605b7fdb553',
             canvas: document.getElementById('community-scene'),
+            showLoadingOverlay : false,
             viewportProperties: {
                 defaultControllerType: window.SDK3DVerse.controller_type.none,
             },
