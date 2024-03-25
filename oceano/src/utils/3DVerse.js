@@ -6,11 +6,14 @@ import { glMatrix, vec3, quat, mat4 }   from 'gl-matrix';
 import { getAllEvents } from "../api/event";
 
 let allEvents = [];
-const AllEventsFetched = getAllEvents();
-AllEventsFetched
-.then(result => allEvents = result)
-.catch(error=>console.error("Error :",error.message))
 let numEvent = 0;
+allEvent();
+export function allEvent(){
+    const AllEventsFetched = getAllEvents();
+    AllEventsFetched
+    .then(result => allEvents = result)
+    .catch(error=>console.error("Error :",error.message))
+}
 
 let labelDisplay = null;
 let isVisible = false
@@ -676,7 +679,7 @@ export async function Click(callback) {
             const position = [pickedPosition[0], pickedPosition[1], pickedPosition[2]];
 
             if (entity.getName() === "continents" || entity.getName() === "seas") {
-                // newElement.apply(null, position);
+                //newElement.apply(null, position);
                 console.log("new ping")
             }
 

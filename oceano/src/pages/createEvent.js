@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { getUserSession } from "../api/session";
 import { addEvent, uploadImage } from "../api/event";
 import { useHistory } from "react-router-dom";
+import { allEvent } from "../utils/3DVerse";
 
 export default function CreateEventMain() {
     let history = useHistory();
@@ -33,7 +34,7 @@ export default function CreateEventMain() {
         .catch(error=>console.error("Error :",error.message))
     },[]);
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         let allData = data;
         // uploadImage(allData.Image)
         allData.x = 1;
@@ -47,7 +48,8 @@ export default function CreateEventMain() {
         allData.type = data.type.ID;
         allData.Image = data.Image.name;
         allData.user = data.user.ID;
-        // addEvent(allData);
+        //await addEvent(allData);
+        //await allEvent();
         history.push("/act");
     }
 
